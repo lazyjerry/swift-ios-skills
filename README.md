@@ -13,7 +13,7 @@ Every skill is self-contained. No skill depends on another. Install only what yo
 Install a single skill:
 
 ```
-npx skills add dpearson2699/swift-ios-skills@storekit
+npx skills add dpearson2699/swift-ios-skills@<skill-name>
 ```
 
 Install all skills from this repo:
@@ -48,7 +48,7 @@ Or install a themed bundle:
 ### OpenAI Codex
 
 ```
-$skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/main/skills/storekit
+$skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/main/skills/<skill-name>
 ```
 
 ## Plugin Bundles (Claude Code)
