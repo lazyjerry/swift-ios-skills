@@ -1,10 +1,26 @@
-# Swift iOS Skills for Claude Code
+# Swift iOS Skills
 
-23 skills that teach Claude Code how to build iOS and Apple-platform apps with Swift. Each skill covers one framework or domain -- install only what you need.
+23 skills for building iOS and Apple-platform apps with Swift. Works with Claude Code, Cursor, Codex, Copilot, and [40+ other agents](https://skills.sh). Each skill covers one framework or domain -- install only what you need.
 
 Every skill is self-contained. No skill depends on another.
 
 ## Install
+
+### Any agent (via [skills CLI](https://github.com/vercel-labs/skills))
+
+Install a single skill:
+
+```
+npx skills add dpearson2699/swift-ios-skills@storekit
+```
+
+Install all skills from this repo:
+
+```
+npx skills add dpearson2699/swift-ios-skills
+```
+
+### Claude Code (via plugin marketplace)
 
 Add the marketplace (one-time):
 
