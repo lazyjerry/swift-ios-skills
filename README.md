@@ -1,4 +1,4 @@
-# Swift iOS Skills — Agent Skills for iOS 26+ & Apple-Platform Development
+# Swift iOS Skills — Agent Skills for iOS 26+ & SwiftUI Development
 
 [![License: GPLv2](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/dpearson2699/swift-ios-skills)](https://github.com/dpearson2699/swift-ios-skills/stargazers)
