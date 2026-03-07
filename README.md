@@ -18,16 +18,16 @@ Every skill is self-contained. No skill depends on another. Install only what yo
 
 ### Any agent (via [skills CLI](https://github.com/vercel-labs/skills))
 
-Install a single skill:
+Install all skills:
 
 ```
-npx skills add dpearson2699/swift-ios-skills@<skill-name>
+npx skills add dpearson2699/swift-ios-skills --all
 ```
 
-Install all skills from this repo:
+Install specific skills:
 
 ```
-npx skills add dpearson2699/swift-ios-skills
+npx skills add dpearson2699/swift-ios-skills --skill swiftui-patterns --skill swiftdata
 ```
 
 ### Claude Code (via plugin marketplace)
