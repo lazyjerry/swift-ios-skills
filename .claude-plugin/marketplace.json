@@ -75,7 +75,7 @@
     {
       "name": "ios-engineering-skills",
       "source": "./",
-      "description": "iOS engineering: networking, security, accessibility, localization, App Store review, on-device AI, Core ML, Vision, authentication, background processing, debugging, MetricKit",
+      "description": "iOS engineering: networking, security, device integrity, accessibility, localization, App Store review, on-device AI, Core ML, Vision, authentication, background processing, debugging, MetricKit",
       "version": "2.0.0",
       "keywords": ["ios", "networking", "security", "accessibility", "localization", "ai", "coreml", "vision"],
       "category": "development",

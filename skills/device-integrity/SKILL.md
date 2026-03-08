@@ -418,72 +418,17 @@ extension AppAttestManager {
 
 ### Full Integration Manager
 
-```swift
-import DeviceCheck
-import CryptoKit
-
-actor DeviceIntegrityManager {
-    static let shared = DeviceIntegrityManager()
-
-    private let attestService = DCAppAttestService.shared
-    private var keyId: String?
-    private var isAttested = false
-
-    private let serverURL = URL(string: "https://api.example.com")!
-
-    /// Set up device integrity on app launch.
-    func setup() async {
-        guard attestService.isSupported else {
-            // Fall back to DCDevice tokens for unsupported devices
-            await setupDeviceCheckFallback()
-            return
-        }
-
-        do {
-            let keyId = try await generateKeyIfNeeded()
-            self.keyId = keyId
-
-            if !isAttested {
-                _ = try await attestKeyWithRetry()
-                isAttested = true
-            }
-        } catch {
-            // Log but do not crash -- degrade gracefully
-            print("App Attest setup failed: \(error)")
-        }
-    }
-
-    private func setupDeviceCheckFallback() async {
-        guard DCDevice.current.isSupported else { return }
-        do {
-            let token = try await DCDevice.current.generateToken()
-            try await sendTokenToServer(token)
-        } catch {
-            print("DeviceCheck fallback failed: \(error)")
-        }
-    }
-
-    // ... (uses methods from sections above)
-}
-```
+Combine the patterns above into a single `actor` that manages the full lifecycle:
+1. Check `isSupported` and fall back to `DCDevice` tokens on unsupported devices.
+2. Call `generateKeyIfNeeded()` on launch to create or load the persisted key.
+3. Call `attestKeyWithRetry()` once after key generation.
+4. Use `generateAssertion(for:)` on each sensitive server request.
+5. Handle `DCError.invalidKey` by regenerating and re-attesting.
 
 ### Gradual Rollout
 
-Apple recommends a gradual rollout when adopting App Attest. Not all devices
-support it, and server infrastructure must be ready.
-
-```swift
-/// Check feature flag before requiring App Attest.
-func shouldRequireAppAttest() -> Bool {
-    // Feature flag from remote config
-    guard RemoteConfig.shared.isAppAttestRequired else { return false }
-
-    // Must be supported on this device
-    guard DCAppAttestService.shared.isSupported else { return false }
-
-    return true
-}
-```
+Apple recommends a gradual rollout. Gate App Attest behind a remote feature
+flag and fall back to `DCDevice` tokens on unsupported devices.
 
 ### Environment Entitlement
 
