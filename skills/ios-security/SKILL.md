@@ -1,6 +1,6 @@
 ---
 name: ios-security
-description: "iOS security best practices including Keychain Services, CryptoKit encryption, biometric authentication with Face ID and Touch ID, Secure Enclave key storage, LAContext configuration, App Transport Security (ATS), certificate pinning, data protection classes, secure coding patterns, and encryption implementation. Use when implementing app security features, auditing privacy manifests, configuring App Transport Security, securing keychain access, adding biometric authentication, or encrypting sensitive data with CryptoKit."
+description: "Secure iOS apps with Keychain Services, CryptoKit encryption, biometric authentication (Face ID, Touch ID), Secure Enclave key storage, LAContext, App Transport Security (ATS), certificate pinning, data protection classes, and secure coding patterns. Use when implementing app security features, auditing privacy manifests, configuring App Transport Security, securing keychain access, adding biometric authentication, or encrypting sensitive data with CryptoKit."
 ---
 
 # iOS Security

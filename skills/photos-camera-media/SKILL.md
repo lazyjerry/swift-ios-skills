@@ -1,6 +1,6 @@
 ---
 name: photos-camera-media
-description: "Implement, review, or improve photo picking, camera capture, and media handling in iOS apps. Use when working with PhotosPicker, PHPickerViewController, camera capture sessions (AVCaptureSession), photo library access, image loading and display, video recording, or media permissions. Trigger for any task involving selecting photos from the library, taking pictures, recording video, processing images, or handling photo/camera privacy permissions in Swift apps."
+description: "Implement, review, or improve photo picking, camera capture, and media handling in iOS apps. Use when working with PhotosPicker, PHPickerViewController, camera capture sessions (AVCaptureSession), photo library access, image loading and display, video recording, or media permissions. Also use when selecting photos from the library, taking pictures, recording video, processing images, or handling photo/camera privacy permissions in Swift apps."
 ---
 
 # Photos, Camera & Media
