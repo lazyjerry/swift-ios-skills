@@ -49,7 +49,9 @@ Or install a themed bundle:
 ```
 /plugin install swiftui-skills@swift-ios-skills
 /plugin install swift-core-skills@swift-ios-skills
-/plugin install ios-framework-skills@swift-ios-skills
+/plugin install ios-app-framework-skills@swift-ios-skills
+/plugin install ios-data-framework-skills@swift-ios-skills
+/plugin install ios-ai-ml-skills@swift-ios-skills
 /plugin install ios-engineering-skills@swift-ios-skills
 /plugin install ios-hardware-skills@swift-ios-skills
 /plugin install ios-platform-skills@swift-ios-skills
@@ -68,10 +70,12 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 | **all-ios-skills** | All 56 skills |
 | **swiftui-skills** | swiftui-animation, swiftui-gestures, swiftui-layout-components, swiftui-liquid-glass, swiftui-navigation, swiftui-patterns, swiftui-performance, swiftui-uikit-interop |
 | **swift-core-skills** | codable-patterns, swift-charts, swift-concurrency, swift-language, swift-testing, swiftdata |
-| **ios-framework-skills** | alarmkit, app-clips, app-intents, cloudkit-sync, contacts-framework, eventkit-calendar, healthkit, live-activities, mapkit-location, musickit-audio, passkit-wallet, photos-camera-media, push-notifications, storekit, tipkit, weatherkit, widgetkit |
-| **ios-engineering-skills** | app-store-review, apple-on-device-ai, authentication, background-processing, coreml, debugging-instruments, device-integrity, ios-accessibility, ios-localization, ios-networking, ios-security, metrickit-diagnostics, vision-framework |
+| **ios-app-framework-skills** | alarmkit, app-clips, app-intents, live-activities, mapkit-location, photos-camera-media, push-notifications, storekit, tipkit, widgetkit |
+| **ios-data-framework-skills** | cloudkit-sync, contacts-framework, eventkit-calendar, healthkit, musickit-audio, passkit-wallet, weatherkit |
+| **ios-ai-ml-skills** | apple-on-device-ai, coreml, natural-language, speech-recognition, vision-framework |
+| **ios-engineering-skills** | app-store-review, authentication, background-processing, debugging-instruments, device-integrity, ios-accessibility, ios-localization, ios-networking, ios-security, metrickit-diagnostics |
 | **ios-hardware-skills** | core-bluetooth, core-motion, core-nfc, pencilkit-drawing, realitykit-ar |
-| **ios-platform-skills** | callkit-voip, energykit, homekit-matter, natural-language, permissionkit, shareplay-activities, speech-recognition |
+| **ios-platform-skills** | callkit-voip, energykit, homekit-matter, permissionkit, shareplay-activities |
 
 ## Skills
 
@@ -99,45 +103,57 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 | [codable-patterns](skills/codable-patterns/) | Codable, custom encoding/decoding, nested containers, migration strategies |
 | [swift-language](skills/swift-language/) | Swift 6.2 features, macros, result builders, property wrappers |
 
-### iOS Frameworks
+### App Experience Frameworks
 
 | Skill | What it covers |
 |-------|---------------|
 | [alarmkit](skills/alarmkit/) | AlarmKit alarms and countdown timers, Live Activity integration, AlarmAttributes, AlarmButton |
 | [app-intents](skills/app-intents/) | Siri, Shortcuts, Spotlight, Apple Intelligence, AppEntity, AppShortcutsProvider |
-| [contacts-framework](skills/contacts-framework/) | CNContactStore, fetch requests, key descriptors, CNContactPickerViewController, save requests |
-| [eventkit-calendar](skills/eventkit-calendar/) | EKEventStore, EKEvent, EKReminder, recurrence rules, EventKitUI editors and choosers |
+| [app-clips](skills/app-clips/) | App Clip experiences, invocation, size limits, shared data |
 | [live-activities](skills/live-activities/) | ActivityKit, Dynamic Island, Lock Screen Live Activities |
 | [mapkit-location](skills/mapkit-location/) | MapKit, CoreLocation, annotations, geocoding, directions, geofencing |
-| [musickit-audio](skills/musickit-audio/) | MusicKit authorization, catalog search, ApplicationMusicPlayer, MPRemoteCommandCenter |
-| [passkit-wallet](skills/passkit-wallet/) | Apple Pay, PKPaymentRequest, PKPaymentAuthorizationController, Wallet passes |
 | [photos-camera-media](skills/photos-camera-media/) | PhotosPicker, AVCaptureSession, photo library, video recording, media permissions |
 | [push-notifications](skills/push-notifications/) | UNUserNotificationCenter, APNs, rich notifications, silent push, service extensions |
 | [storekit](skills/storekit/) | StoreKit 2 purchases, subscriptions, SubscriptionStoreView, transaction verification |
 | [tipkit](skills/tipkit/) | Feature discovery tooltips, contextual tips, tip rules, tip events |
-| [weatherkit](skills/weatherkit/) | WeatherService, current/hourly/daily forecasts, alerts, attribution requirements |
 | [widgetkit](skills/widgetkit/) | Home Screen, Lock Screen, and StandBy widgets, Control Center controls, timeline providers |
-| [app-clips](skills/app-clips/) | App Clip experiences, invocation, size limits, shared data |
+
+### Data & Service Frameworks
+
+| Skill | What it covers |
+|-------|---------------|
 | [cloudkit-sync](skills/cloudkit-sync/) | CKContainer, CKRecord, subscriptions, sharing, NSPersistentCloudKitContainer |
+| [contacts-framework](skills/contacts-framework/) | CNContactStore, fetch requests, key descriptors, CNContactPickerViewController, save requests |
+| [eventkit-calendar](skills/eventkit-calendar/) | EKEventStore, EKEvent, EKReminder, recurrence rules, EventKitUI editors and choosers |
 | [healthkit](skills/healthkit/) | HKHealthStore, queries, statistics, workout sessions, background delivery |
+| [musickit-audio](skills/musickit-audio/) | MusicKit authorization, catalog search, ApplicationMusicPlayer, MPRemoteCommandCenter |
+| [passkit-wallet](skills/passkit-wallet/) | Apple Pay, PKPaymentRequest, PKPaymentAuthorizationController, Wallet passes |
+| [weatherkit](skills/weatherkit/) | WeatherService, current/hourly/daily forecasts, alerts, attribution requirements |
+
+### AI & Machine Learning
+
+| Skill | What it covers |
+|-------|---------------|
+| [apple-on-device-ai](skills/apple-on-device-ai/) | Foundation Models framework, Core ML, MLX Swift, on-device LLM inference |
+| [coreml](skills/coreml/) | Core ML model loading, prediction, MLTensor, compute unit configuration, VNCoreMLRequest, MLComputePlan |
+| [natural-language](skills/natural-language/) | NLTokenizer, NLTagger, sentiment analysis, language identification, embeddings, Translation |
+| [speech-recognition](skills/speech-recognition/) | SFSpeechRecognizer, on-device recognition, audio buffer processing |
+| [vision-framework](skills/vision-framework/) | Vision text recognition, face/barcode detection, image segmentation, VisionKit DataScannerViewController |
 
 ### iOS Engineering
 
 | Skill | What it covers |
 |-------|---------------|
 | [ios-networking](skills/ios-networking/) | URLSession async/await, REST APIs, downloads/uploads, WebSockets, pagination, retry, caching |
+| [ios-security](skills/ios-security/) | Keychain, CryptoKit, Secure Enclave, ATS, certificate pinning, data protection, biometric Keychain access |
+| [authentication](skills/authentication/) | Sign in with Apple, ASAuthorizationController, passkeys, biometric auth (LAContext), credential management |
 | [device-integrity](skills/device-integrity/) | DeviceCheck (DCDevice per-device bits), App Attest (DCAppAttestService attestation and assertion flows) |
-| [ios-security](skills/ios-security/) | Keychain, CryptoKit, Face ID/Touch ID, Secure Enclave, ATS, certificate pinning, data protection |
 | [ios-accessibility](skills/ios-accessibility/) | VoiceOver, Dynamic Type, custom rotors, accessibility focus, assistive-technology support |
 | [ios-localization](skills/ios-localization/) | String Catalogs, pluralization, FormatStyle, right-to-left layout |
-| [app-store-review](skills/app-store-review/) | App Review guidelines, rejection prevention, privacy manifests, ATT, HIG compliance |
-| [apple-on-device-ai](skills/apple-on-device-ai/) | Foundation Models framework, Core ML, MLX Swift, on-device LLM inference |
-| [coreml](skills/coreml/) | Core ML model loading, prediction, MLTensor, compute unit configuration, VNCoreMLRequest, MLComputePlan |
-| [vision-framework](skills/vision-framework/) | Vision text recognition, face/barcode detection, image segmentation, VisionKit DataScannerViewController |
-| [authentication](skills/authentication/) | Sign in with Apple, ASAuthorizationController, passkeys, credential management |
 | [background-processing](skills/background-processing/) | BGTaskScheduler, background refresh, URLSession background transfers |
 | [debugging-instruments](skills/debugging-instruments/) | Xcode debugger, Instruments, os_signpost, MetricKit, crash symbolication |
 | [metrickit-diagnostics](skills/metrickit-diagnostics/) | MXMetricManager, hang diagnostics, crash reports, power metrics |
+| [app-store-review](skills/app-store-review/) | App Review guidelines, rejection prevention, privacy manifests, ATT, HIG compliance |
 
 ### Hardware & Device Integration
 
@@ -156,10 +172,8 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 | [callkit-voip](skills/callkit-voip/) | CXProvider, CXCallController, PushKit VoIP registration, call directory extensions |
 | [energykit](skills/energykit/) | ElectricityGuidance, EnergyVenue, grid forecasts, load event submission, electricity insights |
 | [homekit-matter](skills/homekit-matter/) | HMHomeManager, accessories, rooms, actions, triggers, MatterSupport commissioning |
-| [natural-language](skills/natural-language/) | NLTokenizer, NLTagger, sentiment analysis, language identification, embeddings, Translation |
 | [permissionkit](skills/permissionkit/) | AskCenter, PermissionQuestion, child communication safety, CommunicationLimits |
 | [shareplay-activities](skills/shareplay-activities/) | GroupActivity, GroupSession, GroupSessionMessenger, coordinated media playback |
-| [speech-recognition](skills/speech-recognition/) | SFSpeechRecognizer, on-device recognition, audio buffer processing |
 
 ## Structure
 
@@ -186,6 +200,24 @@ These skills work with any agent that supports the [Agent Skills standard](https
 - [Windsurf](https://codeium.com/windsurf)
 - [Roo Code](https://roocode.com)
 - And [many more](https://skills.sh)
+
+## Upgrading from v1.x
+
+v2.0 is a major release. If you previously installed v1.x skills, note the following changes:
+
+- **Skill count**: 23 skills in v1.1.0, 56 skills in v2.0.0. All new skills are additive.
+- **Bundle restructure**: `ios-framework-skills` split into `ios-app-framework-skills` (app experience) and `ios-data-framework-skills` (data/services). New `ios-ai-ml-skills` bundle created. AI/ML skills moved out of `ios-engineering-skills` and `ios-platform-skills`. Reinstall bundles after upgrading.
+- **Skill refactors**: `swiftui-patterns` was split into `swiftui-patterns`, `swiftui-navigation`, and `swiftui-layout-components`. `device-integrity` is now standalone (previously part of `ios-security`). `authentication` is standalone (previously part of `ios-security`).
+- **Beta frameworks**: `permissionkit`, `energykit`, and PaperKit (referenced in `pencilkit-drawing`) require iOS 26 beta and are subject to API changes before GM.
+- **All skills are self-contained**: No skill references or depends on another. Old internal cross-references between skill files have been removed.
+
+To upgrade via the skills CLI:
+
+```
+npx skills add dpearson2699/swift-ios-skills --all
+```
+
+To upgrade Claude Code bundles, reinstall the bundles you use (old bundle names will no longer resolve).
 
 ## License
 

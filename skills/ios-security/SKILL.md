@@ -242,6 +242,10 @@ let restored = try SecureEnclave.P256.Signing.PrivateKey(
 
 ## Biometric Authentication
 
+This section covers biometric protection for Keychain items and data
+access. For user-facing biometric sign-in flows (`LAContext.evaluatePolicy`
+as a login mechanism), see the `authentication` skill.
+
 ### LocalAuthentication (Face ID / Touch ID)
 
 ```swift

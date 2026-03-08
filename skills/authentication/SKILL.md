@@ -348,9 +348,10 @@ passwordField.textContentType = .password
 
 ## Biometric Authentication
 
-Use `LAContext` from LocalAuthentication for Face ID / Touch ID. See
-`references/keychain-biometric.md` for full biometric patterns, Keychain +
-biometric integration, and `SecAccessControl` flags.
+Use `LAContext` from LocalAuthentication for Face ID / Touch ID as a
+sign-in or re-authentication mechanism. For protecting Keychain items
+with biometric access control (`SecAccessControl`, `.biometryCurrentSet`),
+see the `ios-security` skill.
 
 ```swift
 import LocalAuthentication
