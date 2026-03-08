@@ -4,14 +4,54 @@
 
 ### New skills (33 added)
 
-alarmkit, app-clips, app-store-review, apple-on-device-ai, authentication,
-background-processing, callkit-voip, cloudkit-sync, contacts-framework,
-core-motion, core-nfc, coreml, device-integrity, energykit,
-eventkit-calendar, healthkit, homekit-matter, ios-localization,
-mapkit-location, metrickit-diagnostics, musickit-audio, natural-language,
-passkit-wallet, pencilkit-drawing, permissionkit, photos-camera-media,
-realitykit-ar, shareplay-activities, speech-recognition, swift-language,
-swiftui-gestures, swiftui-layout-components, swiftui-navigation
+**SwiftUI (3)**
+- `swiftui-gestures` — Tap, drag, magnify, rotate, long press, simultaneous and sequential gestures
+- `swiftui-layout-components` — Grid, LazyVGrid, Layout protocol, ViewThatFits, custom layouts
+- `swiftui-navigation` — NavigationStack, NavigationSplitView, programmatic navigation, deep linking
+
+**Core Swift (1)**
+- `swift-language` — Swift 6.2 features, macros, result builders, property wrappers
+
+**App Experience Frameworks (3)**
+- `alarmkit` — AlarmKit alarms and countdown timers, Live Activity integration, AlarmAttributes, AlarmButton
+- `app-clips` — App Clip experiences, invocation, size limits, shared data
+- `photos-camera-media` — PhotosPicker, AVCaptureSession, photo library, video recording, media permissions
+
+**Data & Service Frameworks (7)**
+- `cloudkit-sync` — CKContainer, CKRecord, subscriptions, sharing, NSPersistentCloudKitContainer
+- `contacts-framework` — CNContactStore, fetch requests, key descriptors, CNContactPickerViewController, save requests
+- `eventkit-calendar` — EKEventStore, EKEvent, EKReminder, recurrence rules, EventKitUI editors and choosers
+- `healthkit` — HKHealthStore, queries, statistics, workout sessions, background delivery
+- `musickit-audio` — MusicKit authorization, catalog search, ApplicationMusicPlayer, MPRemoteCommandCenter
+- `passkit-wallet` — Apple Pay, PKPaymentRequest, PKPaymentAuthorizationController, Wallet passes
+- `weatherkit` — WeatherService, current/hourly/daily forecasts, alerts, attribution requirements
+
+**AI & Machine Learning (3)**
+- `coreml` — Core ML model loading, prediction, MLTensor, compute unit configuration, VNCoreMLRequest, MLComputePlan
+- `natural-language` — NLTokenizer, NLTagger, sentiment analysis, language identification, embeddings, Translation
+- `speech-recognition` — SFSpeechRecognizer, on-device recognition, audio buffer processing
+
+**iOS Engineering (5)**
+- `authentication` — Sign in with Apple, ASAuthorizationController, passkeys, biometric auth (LAContext), credential management
+- `background-processing` — BGTaskScheduler, background refresh, URLSession background transfers
+- `device-integrity` — DeviceCheck (DCDevice per-device bits), App Attest (DCAppAttestService attestation and assertion flows)
+- `metrickit-diagnostics` — MXMetricManager, hang diagnostics, crash reports, power metrics
+- `ios-localization` — String Catalogs, pluralization, FormatStyle, right-to-left layout
+
+**Hardware & Device Integration (4)**
+- `core-motion` — CMMotionManager, CMPedometer, accelerometer, gyroscope, activity recognition, altitude
+- `core-nfc` — NFCNDEFReaderSession, NFCTagReaderSession, NDEF reading/writing, background tag reading
+- `pencilkit-drawing` — PKCanvasView, PKDrawing, PKToolPicker, Apple Pencil, PaperKit integration
+- `realitykit-ar` — RealityView, entities, anchors, ARKit world tracking, raycasting, scene understanding
+
+**Platform Integration (7)**
+- `callkit-voip` — CXProvider, CXCallController, PushKit VoIP registration, call directory extensions
+- `energykit` — ElectricityGuidance, EnergyVenue, grid forecasts, load event submission, electricity insights
+- `homekit-matter` — HMHomeManager, accessories, rooms, actions, triggers, MatterSupport commissioning
+- `mapkit-location` — MapKit, CoreLocation, annotations, geocoding, directions, geofencing
+- `permissionkit` — AskCenter, PermissionQuestion, child communication safety, CommunicationLimits
+- `shareplay-activities` — GroupActivity, GroupSession, GroupSessionMessenger, coordinated media playback
+- `apple-on-device-ai` — Foundation Models framework, Core ML, MLX Swift, on-device LLM inference
 
 ### Skill refactors
 
