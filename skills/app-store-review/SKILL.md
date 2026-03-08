@@ -7,6 +7,25 @@ description: "App Store review preparation and rejection prevention. Covers App 
 
 Guidance for catching App Store rejection risks before submission. Apple reviewed 7.7 million submissions in 2024 and rejected 1.9 million. Most rejections are preventable with proper preparation.
 
+## Contents
+
+- [Overview](#overview)
+- [Top Rejection Reasons and How to Avoid Them](#top-rejection-reasons-and-how-to-avoid-them)
+- [PrivacyInfo.xcprivacy -- Privacy Manifest Requirements](#privacyinfoxcprivacy-privacy-manifest-requirements)
+- [Data Use, Sharing, and Privacy Policy (Guideline 5.1.2)](#data-use-sharing-and-privacy-policy-guideline-512)
+- [In-App Purchase and StoreKit Rules (Guideline 3.1.1)](#in-app-purchase-and-storekit-rules-guideline-311)
+- [HIG Compliance Checklist](#hig-compliance-checklist)
+- [App Tracking Transparency (ATT)](#app-tracking-transparency-att)
+- [EU Digital Markets Act (DMA) Considerations](#eu-digital-markets-act-dma-considerations)
+- [Entitlements and Capabilities](#entitlements-and-capabilities)
+- [Common Mistakes](#common-mistakes)
+- [Pre-Submission Checklist](#pre-submission-checklist)
+- [References](#references)
+
+## Overview
+
+Use this SKILL.md for quick guidance on common rejection reasons and key policies. Use the references for detailed checklists and privacy manifest specifics.
+
 ## Top Rejection Reasons and How to Avoid Them
 
 ### Guideline 2.1 -- App Completeness
@@ -51,96 +70,13 @@ Apple rejects apps that are too simple or are just websites in a wrapper:
 
 This is the fastest-growing rejection category (Guideline 5.1.1). A privacy manifest is **required** if your app or any of its dependencies uses certain categories of APIs.
 
-### When a Privacy Manifest Is Required
+**See:** `references/privacy-manifest.md` for the full structure, reason codes, and checklists.
 
-A `PrivacyInfo.xcprivacy` file must be present if your app uses ANY of these API categories:
+### Summary
 
-- **File timestamp APIs** (`NSPrivacyAccessedAPICategoryFileTimestamp`)
-- **System boot time APIs** (`NSPrivacyAccessedAPICategorySystemBootTime`)
-- **Disk space APIs** (`NSPrivacyAccessedAPICategoryDiskSpace`)
-- **User defaults** (`NSPrivacyAccessedAPICategoryUserDefaults`) -- if storing user-identifiable data
-- **Active keyboard APIs** (`NSPrivacyAccessedAPICategoryActiveKeyboards`)
-
-### Privacy Manifest Structure
-
-```xml
-<!-- PrivacyInfo.xcprivacy -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyTracking</key>
-    <false/>
-    <key>NSPrivacyTrackingDomains</key>
-    <array/>
-    <key>NSPrivacyCollectedDataTypes</key>
-    <array>
-        <!-- Declare every data type you collect -->
-    </array>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>CA92.1</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-### Required API Reason Codes
-
-Each API category requires one or more reason codes explaining why the API is accessed:
-
-| API Category | Code | Reason |
-|---|---|---|
-| FileTimestamp | `C617.1` | Access files inside app container |
-| FileTimestamp | `3B52.1` | Access user-selected files |
-| FileTimestamp | `0A2A.1` | Third-party SDK accessed on behalf of user |
-| SystemBootTime | `35F9.1` | Measure elapsed time between events |
-| DiskSpace | `E174.1` | Check available space before writes |
-| UserDefaults | `CA92.1` | Access within your own app |
-| UserDefaults | `1C8F.1` | Access within same app group |
-| ActiveKeyboards | `3EC4.1` | Customize UI based on active keyboards |
-
-### Privacy Manifest Keys Reference
-
-| Key | Type | Purpose |
-|---|---|---|
-| `NSPrivacyTracking` | Boolean | Whether the app tracks users (triggers ATT requirement) |
-| `NSPrivacyTrackingDomains` | Array of strings | Domains used for tracking (connected only after ATT consent) |
-| `NSPrivacyCollectedDataTypes` | Array of dicts | Each data type collected, its purpose, and whether it is linked to identity |
-| `NSPrivacyAccessedAPITypes` | Array of dicts | Each required-reason API used and the justification codes |
-
-### Third-Party SDK Privacy Manifests
-
-Every third-party SDK must include its own privacy manifest. Apple specifically audits these categories of SDKs:
-
-- Analytics SDKs (Firebase Analytics, Mixpanel, Amplitude)
-- Advertising SDKs (AdMob, Meta Ads SDK)
-- Crash reporting SDKs (Crashlytics, Sentry)
-- Social SDKs (Facebook SDK, Google Sign-In)
-
-**Verification steps:**
-1. Check each dependency for a `PrivacyInfo.xcprivacy` in its bundle
-2. Confirm the SDK's declared API reasons match your actual usage
-3. Update SDKs to versions that include privacy manifests -- older versions may lack them
-
-### Collected Data Types Declaration
-
-When declaring `NSPrivacyCollectedDataTypes`, each entry must specify:
-
-- `NSPrivacyCollectedDataType` -- the category (e.g., `NSPrivacyCollectedDataTypeName`)
-- `NSPrivacyCollectedDataTypeLinked` -- whether linked to user identity
-- `NSPrivacyCollectedDataTypeTracking` -- whether used for tracking
-- `NSPrivacyCollectedDataTypePurposes` -- array of purposes (e.g., `NSPrivacyCollectedDataTypePurposeAnalytics`)
-
-Apple compares your privacy manifest declarations against your App Store privacy nutrition labels and actual network traffic. Mismatches cause rejection.
+- File timestamp, system boot time, disk space, user defaults, and active keyboard APIs all require reason codes.
+- Every third-party SDK must ship its own privacy manifest.
+- Manifest declarations must match App Store privacy nutrition labels and actual network behavior.
 
 ## Data Use, Sharing, and Privacy Policy (Guideline 5.1.2)
 
@@ -186,43 +122,7 @@ All digital content and services must use Apple's In-App Purchase system:
 
 ## HIG Compliance Checklist
 
-### Navigation
-
-- Use `NavigationStack` (not the deprecated `NavigationView`)
-- Back buttons must use the standard system chevron -- do not replace with "X" unless dismissing a modal
-- Tab bars: maximum 5 tabs; use a "More" tab if additional items are needed
-- Avoid hamburger menus -- Apple strongly discourages them on iOS
-
-### Modals and Sheets
-
-- Sheets must have a clear dismiss mechanism (button or swipe-down gesture)
-- Full-screen modals must have a visible close or done button
-- Alerts must use standard system alerts -- custom alert UI that mimics system alerts is rejected
-
-### System Feature Support
-
-- **Dark Mode** -- the app must not look broken in Dark Mode. Test all screens.
-- **Dynamic Type** -- text must scale with the user's preferred text size
-- **iPad multitasking** -- support Slide Over and Split View unless there is a justified exclusion
-- **Dynamic Island and Live Activities** -- if used, they must display correctly at all sizes
-- **System gestures** -- do not disable swipe-from-edge or home indicator gestures
-
-### Widgets and Live Activities
-
-- Widgets must show real, useful content -- no "Open app to see more" placeholders
-- Widget timelines must update meaningfully; static widgets that never change are rejected
-- Live Activities must display genuinely live, time-sensitive information
-- Lock Screen widgets must be legible and functional at small sizes
-
-### Launch Screen
-
-- The launch screen must not be an ad or splash page that delays app usage
-- Use a static launch storyboard or a simple branded screen that transitions quickly
-
-### Empty States
-
-- Every screen that can be empty must show guidance (e.g., a call to action or explanation)
-- "Nothing here yet" without direction is insufficient
+See `references/review-checklists.md` for the full HIG checklist (navigation, modals, widgets, system feature support, launch screen, empty states). This section stays intentionally brief to keep SKILL.md concise.
 
 ## App Tracking Transparency (ATT)
 
@@ -319,45 +219,18 @@ Apple rejects vague usage descriptions. Always state what the data is used for i
 
 ## Pre-Submission Checklist
 
-### Completeness
-- [ ] No placeholder content, test data, or lorem ipsum anywhere in the app
-- [ ] All features functional without special hardware
-- [ ] Demo credentials provided in App Review Information notes
-- [ ] No dead-end screens or broken navigation flows
+Quick-check before every submission (full version in `references/review-checklists.md`):
 
-### Metadata
-- [ ] App name matches functionality
-- [ ] Screenshots are actual app screenshots (not mockups)
-- [ ] Description contains no prices, platform references, or competitor names
-- [ ] App category is correct for the primary function
+- [ ] No placeholder/test content; all features functional; demo credentials provided
+- [ ] App name matches functionality; screenshots are real; no prices in description
+- [ ] PrivacyInfo.xcprivacy present with reason codes; nutrition labels match reality
+- [ ] Privacy policy URL set and accessible in-app
+- [ ] Digital content uses IAP; subscription terms visible; restore purchases works
+- [ ] Dark Mode and Dynamic Type supported; standard navigation patterns
+- [ ] Built with current Xcode GM; no private APIs; entitlements justified
+- [ ] ATT prompt only if cross-app tracking occurs
 
-### Privacy
-- [ ] `PrivacyInfo.xcprivacy` present with all required API reason codes
-- [ ] All third-party SDKs include their own privacy manifests
-- [ ] Privacy policy URL set in App Store Connect and accessible in-app
-- [ ] App Privacy nutrition labels match actual data collection
-- [ ] ATT prompt shown only if tracking occurs, and only before tracking begins
-- [ ] `NSPrivacyTracking` set correctly (true only if cross-app tracking occurs)
+## References
 
-### Payments
-- [ ] All digital content uses Apple IAP
-- [ ] Subscription terms clearly displayed (price, duration, renewal behavior)
-- [ ] No external payment links for digital content
-- [ ] Free trial clearly states post-trial pricing
-- [ ] Restore purchases button present and functional
-
-### Design
-- [ ] Standard navigation patterns used (`NavigationStack`, tab bars)
-- [ ] Dark Mode renders correctly on all screens
-- [ ] Dynamic Type supported -- text scales properly
-- [ ] No custom alerts mimicking system alerts
-- [ ] Launch screen is not an ad or extended splash
-- [ ] Empty states provide guidance or calls to action
-
-### Technical
-- [ ] Built with current Xcode GM release
-- [ ] No private API usage
-- [ ] No dynamic code download or execution
-- [ ] All entitlements justified with specific usage descriptions
-- [ ] All background modes justified and actively used
-- [ ] Minimum deployment target covers latest two major iOS versions
+- Review checklists: `references/review-checklists.md`
+- Privacy manifest guide: `references/privacy-manifest.md`

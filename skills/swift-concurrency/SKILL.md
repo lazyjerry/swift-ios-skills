@@ -9,6 +9,21 @@ Review, fix, and write concurrent Swift code targeting Swift 6.2+. Apply actor
 isolation, Sendable safety, and modern concurrency patterns with minimal
 behavior changes.
 
+## Contents
+
+- [Triage Workflow](#triage-workflow)
+- [Swift 6.2 Language Changes](#swift-62-language-changes)
+- [Actor Isolation Rules](#actor-isolation-rules)
+- [Sendable Rules](#sendable-rules)
+- [Structured Concurrency Patterns](#structured-concurrency-patterns)
+- [Task Cancellation](#task-cancellation)
+- [Actor Reentrancy](#actor-reentrancy)
+- [AsyncSequence and AsyncStream](#asyncsequence-and-asyncstream)
+- [@Observable and Concurrency](#observable-and-concurrency)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Triage Workflow
 
 When diagnosing a concurrency issue, follow this sequence:
@@ -171,15 +186,16 @@ Use for latency-sensitive work that should begin without delay. There is also
 `AsyncSequence`, enabling transactional change tracking.
 
 ```swift
-for await _ in Observations(tracking: { model.count }) {
+for await _ in Observations { model.count } {
     print("Count changed to \(model.count)")
 }
 ```
 
-### SE-0481: weak let
+### SE-0481: weak let (Proposed — Swift 6.2+)
 
 Immutable weak references (`weak let`) that enable `Sendable` conformance for
-types holding weak references.
+types holding weak references. Proposed in SE-0481; may not yet be available in
+shipping toolchains.
 
 ### Isolated Conformances
 
@@ -346,6 +362,7 @@ single-value callbacks. Resume exactly once.
    type. Isolate the entire type consistently.
 10. **MainActor.run instead of static isolation.** Prefer `@MainActor func`
     over `await MainActor.run { }`.
+11. **Using GCD APIs.** Never use DispatchQueue, DispatchGroup, DispatchSemaphore, or any GCD API. Use async/await, actors, and TaskGroups instead. GCD has no data-race safety guarantees.
 
 ## Review Checklist
 
@@ -360,7 +377,7 @@ single-value callbacks. Resume exactly once.
 - [ ] Heavy work uses `@concurrent`, not `@MainActor`
 - [ ] `.task` modifier used in SwiftUI instead of manual Task management
 
-## Reference Material
+## References
 
 - See `references/swift-6-2-concurrency.md` for detailed Swift 6.2 changes,
   patterns, and migration examples.

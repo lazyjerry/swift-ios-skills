@@ -11,6 +11,19 @@ with Swift 6.2, backward-compatible to iOS 16.1 unless noted.
 
 See `references/live-activity-patterns.md` for complete code patterns including push payload formats, concurrent activities, state observation, and testing.
 
+## Contents
+
+- [Workflow](#workflow)
+- [ActivityAttributes Definition](#activityattributes-definition)
+- [Activity Lifecycle](#activity-lifecycle)
+- [Lock Screen Presentation](#lock-screen-presentation)
+- [Dynamic Island](#dynamic-island)
+- [Push-to-Update](#push-to-update)
+- [iOS 26 Additions](#ios-26-additions)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Workflow
 
 ### 1. Create a new Live Activity
@@ -409,9 +422,9 @@ let activity = try Activity.request(
 )
 ```
 
-### ActivityStyle (iOS 26+)
+### ActivityStyle (iOS 16.1+ type, `style:` parameter iOS 26+)
 
-Control persistence: `.standard` (persists until ended, default) or `.transient` (system may dismiss automatically). Use `.transient` for short-lived updates like transit arrivals.
+Control persistence: `.standard` (persists until ended, default) or `.transient` (system may dismiss automatically). Use `.transient` for short-lived updates like transit arrivals. The `style:` parameter on `Activity.request` requires iOS 26+.
 
 ```swift
 let activity = try Activity.request(
@@ -424,7 +437,7 @@ let activity = try Activity.request(
 
 Live Activities automatically appear in macOS Tahoe menu bar (via iPhone Mirroring) and CarPlay Home Screen. No additional code needed — ensure Lock Screen layout is legible at smaller scales.
 
-### Channel-Based Push (iOS 26+)
+### Channel-Based Push (iOS 18+)
 
 Broadcast updates to many Live Activities at once with `.channel`:
 
@@ -484,8 +497,4 @@ let activity = try Activity.request(
 
 ## References
 
-- Patterns and code: `references/live-activity-patterns.md`
-- Apple docs: [ActivityKit](https://sosumi.ai/documentation/activitykit) |
-  [ActivityAttributes](https://sosumi.ai/documentation/activitykit/activityattributes) |
-  [DynamicIsland](https://sosumi.ai/documentation/widgetkit/dynamicisland) |
-  [Push notifications](https://sosumi.ai/documentation/activitykit/starting-and-updating-live-activities-with-activitykit-push-notifications)
+- See `references/live-activity-patterns.md` for patterns and code examples

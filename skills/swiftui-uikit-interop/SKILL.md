@@ -9,6 +9,19 @@ Bridge UIKit and SwiftUI in both directions. Wrap UIKit views and view controlle
 
 See `references/representable-recipes.md` for complete wrapping recipes and `references/hosting-migration.md` for UIKit-to-SwiftUI migration patterns.
 
+## Contents
+
+- [UIViewRepresentable Protocol](#uiviewrepresentable-protocol)
+- [UIViewControllerRepresentable Protocol](#uiviewcontrollerrepresentable-protocol)
+- [The Coordinator Pattern](#the-coordinator-pattern)
+- [UIHostingController](#uihostingcontroller)
+- [Sizing and Layout](#sizing-and-layout)
+- [State Synchronization Patterns](#state-synchronization-patterns)
+- [Swift 6.2 Sendable Considerations](#swift-62-sendable-considerations)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## UIViewRepresentable Protocol
 
 Use `UIViewRepresentable` to wrap any `UIView` subclass for use in SwiftUI.

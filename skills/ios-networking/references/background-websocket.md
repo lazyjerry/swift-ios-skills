@@ -5,6 +5,20 @@ URLSessionWebSocketTask with structured concurrency.
 
 ---
 
+## Contents
+
+- [Background URLSession Configuration](#background-urlsession-configuration)
+- [Background Download Tasks](#background-download-tasks)
+- [Handling Background Session Events](#handling-background-session-events)
+- [Background Upload Tasks](#background-upload-tasks)
+- [URLSessionWebSocketTask](#urlsessionwebsockettask)
+- [WebSocket Reconnection Strategy](#websocket-reconnection-strategy)
+- [WebSocket with Codable Messages](#websocket-with-codable-messages)
+- [Background Session Gotchas](#background-session-gotchas)
+- [Combining Background Downloads with SwiftUI Progress](#combining-background-downloads-with-swiftui-progress)
+- [WebSocket Authentication](#websocket-authentication)
+- [WebSocket Subprotocol Negotiation](#websocket-subprotocol-negotiation)
+
 ## Background URLSession Configuration
 
 Background sessions allow transfers to continue when the app is

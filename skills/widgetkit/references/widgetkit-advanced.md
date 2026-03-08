@@ -1,5 +1,27 @@
 # WidgetKit Advanced Reference
 
+## Contents
+
+- [Timeline Strategies](#timeline-strategies)
+- [Push-Based Timeline Reloads (iOS 26+)](#push-based-timeline-reloads-ios-26)
+- [Widget URL Handling and Deep Links](#widget-url-handling-and-deep-links)
+- [Intent-Driven Widget Configuration](#intent-driven-widget-configuration)
+- [Multiple Widget Support in WidgetBundle](#multiple-widget-support-in-widgetbundle)
+- [Widget Previews and Snapshots](#widget-previews-and-snapshots)
+- [AccessoryWidgetBackground](#accessorywidgetbackground)
+- [Dynamic Island Expanded Layout Patterns](#dynamic-island-expanded-layout-patterns)
+- [Alert Configuration for Live Activities](#alert-configuration-for-live-activities)
+- [Push Notification Support for Live Activities](#push-notification-support-for-live-activities)
+- [ActivityAuthorizationInfo](#activityauthorizationinfo)
+- [Widget Performance Best Practices](#widget-performance-best-practices)
+- [Xcode Setup](#xcode-setup)
+- [Widget Relevance and Smart Stacks](#widget-relevance-and-smart-stacks)
+- [ActivityState Lifecycle](#activitystate-lifecycle)
+- [ActivityStyle](#activitystyle)
+- [Dismissal Policies](#dismissal-policies)
+- [Querying Active Widgets and Activities](#querying-active-widgets-and-activities)
+- [Apple Documentation Links](#apple-documentation-links)
+
 ## Timeline Strategies
 
 ### TimelineReloadPolicy
@@ -64,8 +86,8 @@ Use push notifications to trigger timeline reloads without scheduled polling.
 
 ```swift
 struct MyWidgetPushHandler: WidgetPushHandler {
-    func pushTokenDidChange(_ token: Data, widgets: [WidgetPushInfo]) {
-        let tokenString = token.map { String(format: "%02x", $0) }.joined()
+    func pushTokenDidChange(_ pushInfo: WidgetPushInfo, widgets: [WidgetInfo]) {
+        let tokenString = pushInfo.token.map { String(format: "%02x", $0) }.joined()
         Task {
             try await ServerAPI.shared.register(widgetPushToken: tokenString)
         }
@@ -764,7 +786,7 @@ Task {
 
 ## ActivityStyle
 
-Control Live Activity persistence behavior (iOS 26+):
+Control Live Activity persistence behavior (iOS 18+):
 
 ```swift
 // Standard: persists until explicitly ended

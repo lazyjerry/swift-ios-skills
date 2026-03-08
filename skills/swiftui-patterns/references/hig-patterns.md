@@ -2,6 +2,16 @@
 
 iOS Human Interface Guidelines patterns for layout, typography, color, accessibility, and feedback in SwiftUI.
 
+## Contents
+
+- [Layout and Spacing](#layout-and-spacing)
+- [Typography](#typography)
+- [Color System](#color-system)
+- [Navigation Patterns](#navigation-patterns)
+- [Feedback](#feedback)
+- [Accessibility](#accessibility)
+- [Error and Empty States](#error-and-empty-states)
+
 ## Layout and Spacing
 
 ### Standard Margins

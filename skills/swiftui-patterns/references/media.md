@@ -6,7 +6,7 @@ Use consistent patterns for loading images, previewing media, and presenting a f
 
 ## Core patterns
 
-- Use `LazyImage` (or `AsyncImage`) for remote images with loading states.
+- Use `AsyncImage` for simple remote images. `LazyImage` is from the third-party Nuke library if you need advanced caching and prefetching.
 - Prefer a lightweight preview component for inline media.
 - Use a shared viewer state (e.g., `QuickLook`) to present a full-screen media viewer.
 - Use `openWindow` for desktop/visionOS and a sheet for iOS.

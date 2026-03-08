@@ -8,6 +8,24 @@ description: "Implement, review, or improve App Intents for Siri, Shortcuts, Spo
 Implement, review, and extend App Intents to expose app functionality to Siri,
 Shortcuts, Spotlight, widgets, Control Center, and Apple Intelligence.
 
+## Contents
+
+- [Triage Workflow](#triage-workflow)
+- [AppIntent Protocol](#appintent-protocol)
+- [@Parameter](#parameter)
+- [AppEntity](#appentity)
+- [EntityQuery (4 Variants)](#entityquery-4-variants)
+- [AppEnum](#appenum)
+- [AppShortcutsProvider](#appshortcutsprovider)
+- [Siri Integration](#siri-integration)
+- [Interactive Widget Intents](#interactive-widget-intents)
+- [Control Center Widgets (iOS 18+)](#control-center-widgets-ios-18)
+- [Spotlight and IndexedEntity (iOS 18+)](#spotlight-and-indexedentity-ios-18)
+- [iOS 26 Additions](#ios-26-additions)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Triage Workflow
 
 ### Step 1: Identify the integration surface
@@ -445,24 +463,12 @@ struct ProductValueQuery: IntentValueQuery {
 4. **Using Int raw value for AppEnum.** `AppEnum` requires `RawRepresentable`
    where `RawValue: LosslessStringConvertible`. Use `String`.
 
-5. **Forgetting `suggestedEntities()`.** Without it, the Shortcuts picker shows
-   no default options. Implement it on every `EntityQuery`.
-
-6. **Throwing for missing entities in `entities(for:)`.** Omit missing entities
-   from the returned array instead of throwing an error.
-
-7. **Stale Spotlight index.** Call `updateAppShortcutParameters()` when entity
-   data changes. For `IndexedEntity`, re-donate or update the entity.
-
-8. **Missing `typeDisplayRepresentation` on AppEntity or AppEnum.** Both
-   protocols require a static `typeDisplayRepresentation`. Omitting it causes
-   a compiler error that can be confusing.
-
-9. **Using deprecated `@AssistantIntent(schema:)`.** Use `@AppIntent(schema:)`
-   instead. The `@AssistantIntent` macro was deprecated in iOS 18.4.
-
-10. **Blocking perform() with synchronous work.** `perform()` is async -- use
-    `await` for I/O. Never block the thread with synchronous network calls.
+5. **Forgetting `suggestedEntities()`.** Without it, the Shortcuts picker shows no defaults.
+6. **Throwing for missing entities in `entities(for:)`.** Omit missing entities instead.
+7. **Stale Spotlight index.** Call `updateAppShortcutParameters()` when entity data changes.
+8. **Missing `typeDisplayRepresentation`.** Both `AppEntity` and `AppEnum` require it.
+9. **Using deprecated `@AssistantEntity(schema:)` / `@AssistantEnum(schema:)`.** Use `@AppEntity(schema:)` and `@AppEnum(schema:)` instead. Note: `@AssistantIntent(schema:)` is still active.
+10. **Blocking perform().** `perform()` is async -- use `await` for I/O.
 
 ## Review Checklist
 
@@ -470,22 +476,14 @@ struct ProductValueQuery: IntentValueQuery {
 - [ ] `@Parameter` types are optional or have defaults for system preview
 - [ ] `AppEntity` types are shadow models, not core data model conformances
 - [ ] `AppEntity` has `displayRepresentation` and `typeDisplayRepresentation`
-- [ ] `EntityQuery.entities(for:)` omits missing IDs (does not throw)
-- [ ] `suggestedEntities()` implemented on all entity queries
+- [ ] `EntityQuery.entities(for:)` omits missing IDs; `suggestedEntities()` implemented
 - [ ] `AppEnum` uses `String` raw value with `caseDisplayRepresentations`
-- [ ] `AppShortcutsProvider` phrases include `\(.applicationName)`
-- [ ] `parameterSummary` defined for Shortcuts UI readability
+- [ ] `AppShortcutsProvider` phrases include `\(.applicationName)`; `parameterSummary` defined
 - [ ] `IndexedEntity` properties use `@Property(indexingKey:)` on iOS 26+
-- [ ] Control Center intents conform to `ControlConfigurationIntent`
-- [ ] Widget intents conform to `WidgetConfigurationIntent`
-- [ ] No deprecated `@AssistantIntent` / `@AssistantEntity` macros
-- [ ] `perform()` uses async/await, no synchronous blocking
-- [ ] `perform()` runs in expected isolation context; intent parameter types are `Sendable`
+- [ ] Control Center intents conform to `ControlConfigurationIntent`; widget intents to `WidgetConfigurationIntent`
+- [ ] No deprecated `@AssistantEntity` / `@AssistantEnum` macros (note: `@AssistantIntent(schema:)` is still active)
+- [ ] `perform()` uses async/await (no blocking); runs in expected isolation context; intent types are `Sendable`
 
-## Reference Material
+## References
 
-- See `references/appintents-advanced.md` for @Parameter variants,
-  EntityPropertyQuery, assistant schemas, focus filters, SiriKit migration,
-  error handling, confirmation flows, authentication, URL-representable types,
-  and Spotlight indexing details.
-
+- See `references/appintents-advanced.md` for @Parameter variants, EntityPropertyQuery, assistant schemas, focus filters, SiriKit migration, error handling, confirmation flows, authentication, URL-representable types, and Spotlight indexing details.

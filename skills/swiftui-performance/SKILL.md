@@ -5,6 +5,22 @@ description: Audit and improve SwiftUI runtime performance. Use for slow renderi
 
 # SwiftUI Performance
 
+## Contents
+
+- [Overview](#overview)
+- [Workflow Decision Tree](#workflow-decision-tree)
+- [1. Code-First Review](#1-code-first-review)
+- [2. Guide the User to Profile](#2-guide-the-user-to-profile)
+- [3. Analyze and Diagnose](#3-analyze-and-diagnose)
+- [4. Remediate](#4-remediate)
+- [Common Code Smells (and Fixes)](#common-code-smells-and-fixes)
+- [5. Verify](#5-verify)
+- [Outputs](#outputs)
+- [MCP Tool Notes](#mcp-tool-notes)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Overview
 
 Audit SwiftUI view performance end-to-end, from instrumentation and baselining to root-cause analysis and concrete remediation steps.

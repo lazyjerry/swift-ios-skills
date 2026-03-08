@@ -10,6 +10,19 @@ iOS 17+ apps using Apple's TipKit framework. TipKit manages display frequency,
 eligibility rules, and persistence so tips appear at the right time and
 disappear once the user has learned the feature.
 
+## Contents
+
+- [Setup](#setup)
+- [Defining Tips](#defining-tips)
+- [Displaying Tips](#displaying-tips)
+- [Tip Rules](#tip-rules)
+- [Tip Actions](#tip-actions)
+- [Tip Groups](#tip-groups)
+- [Programmatic Control](#programmatic-control)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Setup
 
 Call `Tips.configure()` once in `App.init`, before any views render. This
@@ -469,7 +482,7 @@ struct DataLossTip: Tip {
 - [ ] Event donations placed at the correct user action points
 - [ ] Ensure custom Tip types are Sendable; configure Tips on @MainActor
 
-## Reference Material
+## References
 
 - See `references/tipkit-patterns.md` for complete implementation patterns
   including custom styles, event-based rules, tip groups, testing strategies,

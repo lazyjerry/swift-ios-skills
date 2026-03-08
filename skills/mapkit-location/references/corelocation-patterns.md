@@ -9,6 +9,21 @@ import CoreLocation
 
 ---
 
+## Contents
+
+- [CLLocationUpdate.liveUpdates() (iOS 17+)](#cllocationupdateliveupdates-ios-17)
+- [CLServiceSession (iOS 18+)](#clservicesession-ios-18)
+- [CLMonitor for Geofencing (iOS 17+)](#clmonitor-for-geofencing-ios-17)
+- [CLBackgroundActivitySession](#clbackgroundactivitysession)
+- [Significant Location Change Monitoring](#significant-location-change-monitoring)
+- [Visit Monitoring](#visit-monitoring)
+- [Region Monitoring Migration (CLCircularRegion to CLMonitor)](#region-monitoring-migration-clcircularregion-to-clmonitor)
+- [Location Accuracy Management](#location-accuracy-management)
+- [Testing Location in Simulator](#testing-location-in-simulator)
+- [Privacy and Info.plist Keys](#privacy-and-infoplist-keys)
+- [Common Pitfalls](#common-pitfalls)
+- [References](#references)
+
 ## CLLocationUpdate.liveUpdates() (iOS 17+)
 
 ### Basic Usage

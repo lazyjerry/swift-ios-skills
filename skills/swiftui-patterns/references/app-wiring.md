@@ -1,5 +1,18 @@
 # App Wiring and Dependency Graph
 
+## Contents
+
+- [Intent](#intent)
+- [Recommended Structure](#recommended-structure)
+- [Root Shell Example](#root-shell-example)
+- [Dependency Graph Modifier](#dependency-graph-modifier)
+- [SwiftData / ModelContainer](#swiftdata-modelcontainer)
+- [Sheet Routing (Enum-Driven)](#sheet-routing-enum-driven)
+- [App Entry Point](#app-entry-point)
+- [Deep Linking](#deep-linking)
+- [When to Use](#when-to-use)
+- [Caveats](#caveats)
+
 ## Intent
 
 Wire the app shell (TabView + NavigationStack + sheets) and install a global dependency graph (environment objects, services, streaming clients, SwiftData ModelContainer) in one place.

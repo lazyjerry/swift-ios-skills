@@ -7,6 +7,23 @@ description: "Use when building SwiftUI views, managing state with @Observable, 
 
 Modern SwiftUI patterns targeting iOS 26+ with Swift 6.2. Covers architecture, state management, navigation, view composition, and component usage. Patterns are backward-compatible to iOS 17 unless noted.
 
+## Contents
+
+- [Architecture: Model-View (MV) Pattern](#architecture-model-view-mv-pattern)
+- [State Management](#state-management)
+- [View Ordering Convention](#view-ordering-convention)
+- [View Composition](#view-composition)
+- [Navigation](#navigation)
+- [Environment](#environment)
+- [Async Data Loading](#async-data-loading)
+- [iOS 26+ New APIs](#ios-26-new-apis)
+- [Performance Guidelines](#performance-guidelines)
+- [Component Reference](#component-reference)
+- [HIG Alignment](#hig-alignment)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Architecture: Model-View (MV) Pattern
 
 Default to MV -- views are lightweight state expressions; models and services own business logic. Do not introduce view models unless the existing code already uses them.
@@ -291,21 +308,11 @@ Prefer `.sheet(item:)` over `.sheet(isPresented:)` when state represents a selec
 }
 ```
 
-**Dismissal confirmation (iOS 26+):**
-```swift
-.sheet(item: $selectedItem) { item in
-    EditItemSheet(item: item)
-        .dismissalConfirmationDialog("Discard changes?", shouldPresent: hasUnsavedChanges) {
-            Button("Discard", role: .destructive) { discardChanges() }
-        }
-}
-```
-
 **Enum-driven sheet routing:** Centralize sheets with an enum and a helper modifier. See `references/sheets.md` and `references/app-wiring.md` for full patterns.
 
 ### Tab-Based Navigation
 
-iOS 26 introduces an expanded Tab API with `Tab`, `TabSection`, roles, and customization:
+iOS 26 introduces an expanded Tab API with `Tab`, roles, and customization:
 
 ```swift
 struct MainTabView: View {
@@ -334,7 +341,7 @@ struct MainTabView: View {
 iOS 26 additions:
 - `Tab(role: .search)` replaces the tab bar with a search field
 - `.tabBarMinimizeBehavior(_:)` -- `.onScrollDown`, `.onScrollUp`, `.never`
-- `TabSection` for sidebar grouping, `.tabViewSidebarHeader/Footer/BottomBar`, `TabViewBottomAccessoryPlacement`
+- `.tabViewSidebarHeader/Footer` for iPadOS/macOS sidebar customization
 
 See `references/tabview.md` for full TabView patterns and `references/app-wiring.md` for root shell wiring.
 
@@ -402,31 +409,10 @@ Never create manual `Task` in `onAppear` unless you need to store a reference fo
 
 ## iOS 26+ New APIs
 
-### Scroll Edge Effects
-
-```swift
-ScrollView {
-    content
-}
-.scrollEdgeEffectStyle(.soft, for: .top)  // iOS 26: fading edge effect
-.backgroundExtensionEffect()              // iOS 26: mirror/blur at safe area edges
-```
-
-### @Animatable Macro (iOS 26+)
-
-Synthesizes `AnimatableData` conformance automatically:
-
-```swift
-@Animatable
-struct PulseEffect: ViewModifier {
-    var scale: Double
-    // scale is automatically animatable -- no manual AnimatableData needed
-}
-```
-
-### TextEditor Enhancements (iOS 26+)
-
-`TextEditor` now accepts `AttributedString` for rich text editing, with `FindContext` for in-editor find/replace.
+- **`.scrollEdgeEffectStyle(.soft, for: .top)`** -- fading edge effect on scroll edges
+- **`.backgroundExtensionEffect()`** -- mirror/blur at safe area edges
+- **`@Animatable`** macro -- synthesizes `AnimatableData` conformance automatically (see `swiftui-animation` skill)
+- **`TextEditor`** -- now accepts `AttributedString` for rich text
 
 ## Performance Guidelines
 
@@ -473,6 +459,7 @@ See `references/hig-patterns.md` for full HIG pattern examples.
 8. Using `NavigationView` -- deprecated; use `NavigationStack`
 9. Inline closures in body -- extract complex closures to methods
 10. `.sheet(isPresented:)` when state represents a model -- use `.sheet(item:)` instead
+11. **Using `AnyView` for type erasure** -- causes identity resets and disables diffing. Use `@ViewBuilder`, `Group`, or generics instead. See `references/deprecated-migration.md`
 
 ## Review Checklist
 
@@ -491,3 +478,11 @@ See `references/hig-patterns.md` for full HIG pattern examples.
 - [ ] MV pattern followed -- no unnecessary view models
 - [ ] `@Observable` view model classes are `@MainActor`-isolated
 - [ ] Model types passed across concurrency boundaries are `Sendable`
+
+## References
+
+- Component guides: `references/components-index.md`
+- MV pattern deep-dive: `references/mv-patterns.md`
+- HIG patterns: `references/hig-patterns.md`
+- Deprecated API migration: `references/deprecated-migration.md`
+

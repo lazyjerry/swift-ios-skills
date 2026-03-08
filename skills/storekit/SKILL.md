@@ -10,6 +10,24 @@ iOS 26+. Use only the modern `Product`, `Transaction`, `StoreView`, and
 `SubscriptionStoreView` APIs. Never use the deprecated original StoreKit
 (`SKProduct`, `SKPaymentQueue`, `SKStoreReviewController`).
 
+## Contents
+
+- [Product Types](#product-types)
+- [Loading Products](#loading-products)
+- [Purchase Flow](#purchase-flow)
+- [Transaction.updates Listener](#transactionupdates-listener)
+- [Entitlement Checking](#entitlement-checking)
+- [SubscriptionStoreView (iOS 17+)](#subscriptionstoreview-ios-17)
+- [StoreView (iOS 17+)](#storeview-ios-17)
+- [Subscription Status Checking](#subscription-status-checking)
+- [Restore Purchases](#restore-purchases)
+- [App Transaction (App Purchase Verification)](#app-transaction-app-purchase-verification)
+- [Purchase Options](#purchase-options)
+- [SwiftUI Purchase Callbacks](#swiftui-purchase-callbacks)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Product Types
 
 | Type | Enum Case | Behavior |
@@ -451,7 +469,7 @@ SubscriptionStoreView(groupID: "group_id")
 - [ ] Consumables delivered and finished promptly
 - [ ] Transaction observer types and product model types are `Sendable` when shared across concurrency boundaries
 
-## Cross-References
+## References
 
 - See `references/app-review-guidelines.md` for IAP rules (Guideline 3.1.1),
   subscription display requirements, and rejection prevention.

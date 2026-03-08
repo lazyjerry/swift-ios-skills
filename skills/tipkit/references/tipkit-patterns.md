@@ -4,6 +4,18 @@ Complete implementation patterns for TipKit including custom styles, event-based
 rules, tip groups, testing strategies, onboarding flows, and SwiftUI previews.
 All examples target iOS 17+ with Swift 6.2 conventions.
 
+## Contents
+
+- [Complete Tip with Rules and Events](#complete-tip-with-rules-and-events)
+- [TipView and popoverTip Placement](#tipview-and-popovertip-placement)
+- [Event-Based Rule with Donation Counting](#event-based-rule-with-donation-counting)
+- [Custom TipViewStyle](#custom-tipviewstyle)
+- [TipGroup Sequencing](#tipgroup-sequencing)
+- [Testing Strategies](#testing-strategies)
+- [Tip with Action Buttons](#tip-with-action-buttons)
+- [Integration with Onboarding Flow](#integration-with-onboarding-flow)
+- [Full App Integration Example](#full-app-integration-example)
+
 ## Complete Tip with Rules and Events
 
 A full-featured tip combining parameter-based and event-based rules. The tip

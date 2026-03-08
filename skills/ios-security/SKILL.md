@@ -8,6 +8,21 @@ description: "iOS security best practices including Keychain Services, CryptoKit
 Guidance for handling sensitive data, authenticating users, encrypting
 correctly, and following Apple's security best practices on iOS.
 
+## Contents
+
+- [Keychain Services](#keychain-services)
+- [Data Protection](#data-protection)
+- [CryptoKit](#cryptokit)
+- [Secure Enclave](#secure-enclave)
+- [Biometric Authentication](#biometric-authentication)
+- [App Transport Security (ATS)](#app-transport-security-ats)
+- [Certificate Pinning](#certificate-pinning)
+- [Secure Coding Patterns](#secure-coding-patterns)
+- [Privacy Manifests](#privacy-manifests)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Keychain Services
 
 The Keychain is the ONLY correct place to store sensitive data. Never store
@@ -111,6 +126,24 @@ let query: [String: Any] = [
 ]
 ```
 
+### @AppStorage vs Keychain
+
+| Storage | Use For | Security |
+|---------|---------|----------|
+| `@AppStorage` / `UserDefaults` | Non-sensitive preferences (theme, onboarding state, feature flags) | Not encrypted at rest |
+| Keychain | Passwords, tokens, API keys, secrets | Hardware-encrypted, access-controlled |
+
+**Rule:** If the data would be embarrassing or dangerous if exposed, it goes in Keychain. Everything else can use `@AppStorage`.
+
+```swift
+// Non-sensitive preference -- @AppStorage is fine
+@AppStorage("hasCompletedOnboarding") private var hasOnboarded = false
+
+// Sensitive credential -- MUST use Keychain
+// WRONG: @AppStorage("authToken") private var token = ""
+// CORRECT: Use saveToKeychain(account:data:service:)
+```
+
 ## Data Protection
 
 iOS encrypts files based on their protection class:
@@ -190,36 +223,20 @@ For the highest security, store keys in the Secure Enclave. Keys never leave
 the hardware. Only P256 is supported.
 
 ```swift
-// Check availability first
-guard SecureEnclave.isAvailable else {
-    // Fall back to software-based keys
-    return
-}
+guard SecureEnclave.isAvailable else { return }
 
-// Create access control
 let accessControl = SecAccessControlCreateWithFlags(
-    nil,
-    kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
-    [.privateKeyUsage, .biometryCurrentSet],
-    nil
+    nil, kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
+    [.privateKeyUsage, .biometryCurrentSet], nil
 )!
+let privateKey = try SecureEnclave.P256.Signing.PrivateKey(accessControl: accessControl)
 
-// Create a Secure Enclave key with access control
-let privateKey = try SecureEnclave.P256.Signing.PrivateKey(
-    accessControl: accessControl
-)
-
-// Sign data (may trigger biometric prompt)
-let signature = try privateKey.signature(for: data)
-
-// Verify with the public key (no hardware access needed)
+let signature = try privateKey.signature(for: data)  // May trigger biometric prompt
 let isValid = privateKey.publicKey.isValidSignature(signature, for: data)
 
-// Persist the key for later use
-let keyData = privateKey.dataRepresentation
-// Store keyData in Keychain, then restore with:
+// Persist: store dataRepresentation in Keychain, restore with:
 let restored = try SecureEnclave.P256.Signing.PrivateKey(
-    dataRepresentation: keyData
+    dataRepresentation: privateKey.dataRepresentation
 )
 ```
 
@@ -269,16 +286,9 @@ Missing this key causes a crash on Face ID devices.
 
 ```swift
 let context = LAContext()
-
-// Allow fallback to device passcode
 context.localizedFallbackTitle = "Use Passcode"
-
-// Reuse authentication for 30 seconds
 context.touchIDAuthenticationAllowableReuseDuration = 30
-
-// Detect biometry enrollment changes by comparing domain state
-let currentState = context.evaluatedPolicyDomainState
-// Compare currentState to a previously stored value
+let currentState = context.evaluatedPolicyDomainState // Compare to detect enrollment changes
 ```
 
 ### Biometric + Keychain
@@ -416,48 +426,29 @@ defer {
 ### Validate All Input
 
 ```swift
-// Validate URL schemes
 guard let url = URL(string: input),
       ["https"].contains(url.scheme?.lowercased()) else {
     throw SecurityError.invalidURL
 }
-
-// Prevent path traversal
 let resolved = url.standardized.path
 guard resolved.hasPrefix(allowedDirectory.path) else {
     throw SecurityError.pathTraversal
 }
 ```
 
-### Jailbreak Detection
+### API Key Placeholder Pattern
+
+Use `#error` to prevent accidental commits of placeholder API keys:
 
 ```swift
-func isDeviceCompromised() -> Bool {
-    let paths = [
-        "/Applications/Cydia.app",
-        "/Library/MobileSubstrate/MobileSubstrate.dylib",
-        "/usr/sbin/sshd",
-        "/etc/apt",
-        "/private/var/lib/apt/"
-    ]
-
-    for path in paths {
-        if FileManager.default.fileExists(atPath: path) { return true }
-    }
-
-    // Check if app can write outside sandbox
-    let testPath = "/private/test_jailbreak"
-    do {
-        try "test".write(toFile: testPath, atomically: true, encoding: .utf8)
-        try FileManager.default.removeItem(atPath: testPath)
-        return true
-    } catch {
-        return false
-    }
-}
+// Forces a build error until the real key is configured
+#error("Add your API key to Secrets.plist -- see README for setup")
+private let apiKey = Secrets.value(for: "API_KEY")
 ```
 
-Jailbreak detection is not foolproof. Use it as one layer, not the only layer.
+### Jailbreak Detection
+
+Check for known jailbreak file paths (`/Applications/Cydia.app`, `/usr/sbin/sshd`, etc.) and sandbox escape. Jailbreak detection is not foolproof -- use it as one layer, not the only layer. See `references/cryptokit-advanced.md` for full implementation.
 
 ## Privacy Manifests
 
@@ -491,4 +482,10 @@ compliance checklists, see `references/app-review-guidelines.md`.
 - [ ] HTTPS enforced; no `NSAllowsArbitraryLoads`; cert pinning for sensitive APIs
 - [ ] PrivacyInfo.xcprivacy present; all required-reason APIs declared
 - [ ] No sensitive data in logs; Data cleared after use; URLs/paths validated
+
+## References
+
+- CryptoKit advanced patterns: `references/cryptokit-advanced.md`
+- Privacy manifest guide: `references/privacy-manifest.md`
+- App Review security guidelines: `references/app-review-guidelines.md`
 

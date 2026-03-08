@@ -7,6 +7,18 @@ description: "Implement, review, or improve localization and internationalizatio
 
 Localize iOS 26+ apps using String Catalogs, modern string types, FormatStyle, and RTL-aware layout. Localization mistakes cause App Store rejections in non-English markets, mistranslated UI, and broken layouts. Ship with correct localization from the start.
 
+## Contents
+
+- [String Catalogs (.xcstrings)](#string-catalogs-xcstrings)
+- [String Types -- Decision Guide](#string-types-decision-guide)
+- [String Interpolation in Localized Strings](#string-interpolation-in-localized-strings)
+- [Pluralization](#pluralization)
+- [FormatStyle -- Locale-Aware Formatting](#formatstyle-locale-aware-formatting)
+- [Right-to-Left (RTL) Layout](#right-to-left-rtl-layout)
+- [Common Mistakes](#common-mistakes)
+- [Localization Review Checklist](#localization-review-checklist)
+- [References](#references)
+
 ## String Catalogs (.xcstrings)
 
 String Catalogs replaced `.strings` and `.stringsdict` files starting in Xcode 15 / iOS 17. They unify all localizable strings, pluralization rules, and device variations into a single JSON-based file with a visual editor.
@@ -398,4 +410,9 @@ Use Xcode scheme settings to override the app language without changing device l
 - [ ] Currency formatting uses explicit currency code, not locale default
 - [ ] Pseudolocalization tested (accented, right-to-left, double-length)
 - [ ] Ensure localized string types are Sendable; use @MainActor for locale-change UI updates
+
+## References
+
+- FormatStyle patterns: `references/formatstyle-locale.md`
+- String Catalogs guide: `references/string-catalogs.md`
 

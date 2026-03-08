@@ -2,6 +2,22 @@
 
 Comprehensive reference for locale-aware formatting in iOS 15+ using `FormatStyle`. Never hard-code date, number, or measurement formats -- these break in every locale except the one you tested.
 
+## Contents
+
+- [Date Formatting](#date-formatting)
+- [Number Formatting](#number-formatting)
+- [Measurement Formatting](#measurement-formatting)
+- [Duration Formatting](#duration-formatting)
+- [PersonNameComponents Formatting](#personnamecomponents-formatting)
+- [ByteCountFormatStyle](#bytecountformatstyle)
+- [ListFormatStyle](#listformatstyle)
+- [Custom FormatStyle Implementation](#custom-formatstyle-implementation)
+- [Forcing a Specific Locale](#forcing-a-specific-locale)
+- [RTL Layout Deep Dive](#rtl-layout-deep-dive)
+- [@ScaledMetric for Dynamic Type](#scaledmetric-for-dynamic-type)
+- [Layout Testing with Accessibility Inspector](#layout-testing-with-accessibility-inspector)
+- [Quick Reference Table](#quick-reference-table)
+
 ## Date Formatting
 
 ### Preset date and time styles

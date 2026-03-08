@@ -7,6 +7,22 @@ patterns.
 
 ---
 
+## Contents
+
+- [Custom Data Stores (iOS 18+)](#custom-data-stores-ios-18)
+- [History Tracking and Change Detection (iOS 18+)](#history-tracking-and-change-detection-ios-18)
+- [CloudKit Integration](#cloudkit-integration)
+- [Core Data Coexistence and Migration](#core-data-coexistence-and-migration)
+- [Batch Operations and Performance](#batch-operations-and-performance)
+- [Complex #Predicate Patterns](#complex-predicate-patterns)
+- [Composite Attributes (iOS 18+)](#composite-attributes-ios-18)
+- [Model Inheritance (iOS 26+)](#model-inheritance-ios-26)
+- [Multiple ModelContainer Configurations](#multiple-modelcontainer-configurations)
+- [Undo/Redo Support](#undoredo-support)
+- [Preview Patterns with In-Memory Stores](#preview-patterns-with-in-memory-stores)
+- [Notification Observation](#notification-observation)
+- [Error Handling](#error-handling)
+
 ## Custom Data Stores (iOS 18+)
 
 ### DataStore Protocol
@@ -461,7 +477,6 @@ let trips = try modelContext.fetch(descriptor)
 
 ### Performance Tips
 
-- Add `#Index` on frequently filtered/sorted properties.
 - Use `fetchLimit` and `fetchOffset` for pagination.
 - Use `enumerate` instead of `fetch` for processing large datasets.
 - Use `fetchCount` when only the count is needed.

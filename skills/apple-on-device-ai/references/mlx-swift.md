@@ -3,6 +3,15 @@
 Complete reference for running open-source LLMs on Apple platforms using
 MLX Swift and llama.cpp.
 
+## Contents
+
+- [MLX Swift](#mlx-swift)
+- [llama.cpp](#llamacpp)
+- [Multi-Backend Architecture](#multi-backend-architecture)
+- [Built-in Apple Frameworks](#built-in-apple-frameworks)
+- [Performance Best Practices](#performance-best-practices)
+- [Review Checklist](#review-checklist)
+
 ## MLX Swift
 
 Apple's ML framework for Swift. Highest sustained generation throughput on
@@ -235,7 +244,7 @@ No model downloads required:
 
 ### Vision Framework
 
-Built-in computer vision:
+Built-in computer vision (legacy `VN*` API; for iOS 18+ prefer modern Swift equivalents like `RecognizeTextRequest`):
 
 - `VNRecognizeTextRequest` -- OCR
 - `VNClassifyImageRequest` -- Image classification

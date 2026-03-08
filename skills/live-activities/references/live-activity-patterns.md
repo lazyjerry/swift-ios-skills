@@ -4,6 +4,25 @@ Complete implementation patterns for ActivityKit Live Activities, Dynamic
 Island, push-to-update, and lifecycle management. All patterns use modern
 Swift async/await and target iOS 16.1+ unless noted.
 
+## Contents
+
+- [Complete ActivityAttributes and ContentState](#complete-activityattributes-and-contentstate)
+- [Starting a Live Activity with All Parameters](#starting-a-live-activity-with-all-parameters)
+- [Updating from the App](#updating-from-the-app)
+- [Push-to-Update Server Payload Format](#push-to-update-server-payload-format)
+- [Ending with Different Dismissal Policies](#ending-with-different-dismissal-policies)
+- [Complete Dynamic Island Layout (All Regions)](#complete-dynamic-island-layout-all-regions)
+- [Lock Screen Layout with Timer and Progress](#lock-screen-layout-with-timer-and-progress)
+- [Multiple Concurrent Activities](#multiple-concurrent-activities)
+- [Observing Activity State Changes](#observing-activity-state-changes)
+- [Token Update Handling](#token-update-handling)
+- [Authorization Check](#authorization-check)
+- [Error Handling](#error-handling)
+- [Background Handling Considerations](#background-handling-considerations)
+- [Testing in Simulator and on Device](#testing-in-simulator-and-on-device)
+- [Info.plist Keys Reference](#infoplist-keys-reference)
+- [Apple Documentation Links](#apple-documentation-links)
+
 ## Complete ActivityAttributes and ContentState
 
 Define the data model for your Live Activity. Static properties go on the
@@ -130,7 +149,7 @@ let activity = try Activity.request(
 )
 ```
 
-### Starting with ActivityStyle (iOS 26+)
+### Starting with ActivityStyle (iOS 16.1+ type, `style:` parameter iOS 26+)
 
 ```swift
 // Transient: system may auto-dismiss after a period
@@ -138,7 +157,7 @@ let activity = try Activity.request(
     attributes: attributes,
     content: content,
     pushType: .token,
-    style: .transient  // iOS 26+
+    style: .transient  // style: parameter requires iOS 26+
 )
 ```
 

@@ -1,5 +1,22 @@
 # String Catalogs (.xcstrings) -- Detailed Reference
 
+## Contents
+
+- [What is a String Catalog?](#what-is-a-string-catalog)
+- [Creating a String Catalog](#creating-a-string-catalog)
+- [Automatic String Extraction](#automatic-string-extraction)
+- [Manual Key Management](#manual-key-management)
+- [Handling Strings in Non-SwiftUI Code](#handling-strings-in-non-swiftui-code)
+- [Bundle Access Patterns](#bundle-access-patterns)
+- [Multi-Module / SPM Localization](#multi-module-spm-localization)
+- [Pluralization in String Catalogs](#pluralization-in-string-catalogs)
+- [Device Variations](#device-variations)
+- [Exporting for Translators (XLIFF / xcloc)](#exporting-for-translators-xliff-xcloc)
+- [String Catalog JSON Structure](#string-catalog-json-structure)
+- [Testing Strategies](#testing-strategies)
+- [Migration from .strings / .stringsdict](#migration-from-strings-stringsdict)
+- [Best Practices](#best-practices)
+
 ## What is a String Catalog?
 
 A String Catalog is a single `.xcstrings` file (JSON-based) that holds every localizable string in a target, along with all translations, plural forms, and device variations. It replaces the combination of `.strings` and `.stringsdict` files that previously required manual synchronization.

@@ -1,5 +1,18 @@
 # Sheets
 
+## Contents
+
+- [Intent](#intent)
+- [Core architecture](#core-architecture)
+- [Example: SheetDestination enum](#example-sheetdestination-enum)
+- [Example: withSheetDestinations modifier](#example-withsheetdestinations-modifier)
+- [Example: presenting from a child view](#example-presenting-from-a-child-view)
+- [Required wiring](#required-wiring)
+- [Example: sheets that need their own navigation](#example-sheets-that-need-their-own-navigation)
+- [Design choices to keep](#design-choices-to-keep)
+- [iOS 26 Presentation Sizing](#ios-26-presentation-sizing)
+- [Pitfalls](#pitfalls)
+
 ## Intent
 
 Use a centralized sheet routing pattern so any view can present modals without prop-drilling. This keeps sheet state in one place and scales as the app grows.

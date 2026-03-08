@@ -4,6 +4,19 @@ Complete patterns for AVCaptureSession setup, photo capture, video recording, an
 
 ---
 
+## Contents
+
+- [1. Complete Camera Manager with Photo Capture](#1-complete-camera-manager-with-photo-capture)
+- [2. Camera Preview (UIViewRepresentable)](#2-camera-preview-uiviewrepresentable)
+- [3. Complete Camera Screen in SwiftUI](#3-complete-camera-screen-in-swiftui)
+- [4. Video Recording](#4-video-recording)
+- [5. Flash and Torch Control](#5-flash-and-torch-control)
+- [6. Focus and Exposure](#6-focus-and-exposure)
+- [7. Barcode and QR Code Scanning](#7-barcode-and-qr-code-scanning)
+- [8. Camera Preview Orientation](#8-camera-preview-orientation)
+- [9. Dual Camera and Device Discovery](#9-dual-camera-and-device-discovery)
+- [10. Restricting Scan Region](#10-restricting-scan-region)
+
 ## 1. Complete Camera Manager with Photo Capture
 
 A full-featured camera model with photo capture using the delegate pattern.
@@ -58,8 +71,10 @@ final class CameraManager: NSObject {
         }
         session.addOutput(photoOutput)
 
-        // Enable maximum quality
-        photoOutput.isHighResolutionCaptureEnabled = true
+        // Enable maximum quality (iOS 16+)
+        if let maxDimensions = photoOutput.maxPhotoDimensions(for: .photo) {
+            photoOutput.maxPhotoDimensions = maxDimensions
+        }
         photoOutput.maxPhotoQualityPrioritization = .quality
 
         session.commitConfiguration()

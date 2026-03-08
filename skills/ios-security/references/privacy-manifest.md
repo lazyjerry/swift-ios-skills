@@ -5,6 +5,14 @@ required-reason API declarations, data collection types, and tracking domains.
 For submission requirements and App Review compliance checklists, see
 `app-review-guidelines.md` in this references folder.
 
+## Contents
+
+- [Required API Declarations](#required-api-declarations)
+- [Data Collection Declarations](#data-collection-declarations)
+- [Tracking Domains](#tracking-domains)
+- [Auditing Dependencies](#auditing-dependencies)
+- [App Tracking Transparency (ATT)](#app-tracking-transparency-att)
+
 ## Required API Declarations
 
 If your code or any dependency calls these APIs, you must declare them in

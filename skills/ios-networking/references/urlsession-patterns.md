@@ -5,6 +5,22 @@ section is self-contained with production-ready code.
 
 ---
 
+## Contents
+
+- [Complete API Client with Protocol](#complete-api-client-with-protocol)
+- [Request Builder Pattern](#request-builder-pattern)
+- [Multipart Form Upload](#multipart-form-upload)
+- [Download with Progress Tracking](#download-with-progress-tracking)
+- [Cursor-Based Pagination](#cursor-based-pagination)
+- [Offset-Based Pagination](#offset-based-pagination)
+- [URLProtocol Mock for Testing](#urlprotocol-mock-for-testing)
+- [Retry with Exponential Backoff](#retry-with-exponential-backoff)
+- [Certificate Pinning (URLSessionDelegate)](#certificate-pinning-urlsessiondelegate)
+- [Request Logging / Debugging Middleware](#request-logging-debugging-middleware)
+- [Request Caching Strategies](#request-caching-strategies)
+- [Server-Sent Events (SSE) Parsing](#server-sent-events-sse-parsing)
+- [Configured URLSession for Production](#configured-urlsession-for-production)
+
 ## Complete API Client with Protocol
 
 A full-featured client with middleware support, configurable decoding,

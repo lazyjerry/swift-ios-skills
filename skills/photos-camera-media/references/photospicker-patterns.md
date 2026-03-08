@@ -4,6 +4,19 @@ Complete recipes for photo and video selection, loading, saving, and processing.
 
 ---
 
+## Contents
+
+- [1. Single Photo Selection with Loading State](#1-single-photo-selection-with-loading-state)
+- [2. Multi-Selection with Progress Tracking](#2-multi-selection-with-progress-tracking)
+- [3. Loading Videos from PhotosPicker](#3-loading-videos-from-photospicker)
+- [4. Loading Live Photos](#4-loading-live-photos)
+- [5. PHPickerViewController Wrapping (UIKit Interop)](#5-phpickerviewcontroller-wrapping-uikit-interop)
+- [6. Saving Images to Photo Library](#6-saving-images-to-photo-library)
+- [7. Thumbnail Generation with ImageIO Downsampling](#7-thumbnail-generation-with-imageio-downsampling)
+- [8. HEIC/HEIF Handling](#8-heicheif-handling)
+- [9. Custom PhotosPicker Appearance](#9-custom-photospicker-appearance)
+- [10. Image Cropping Pattern](#10-image-cropping-pattern)
+
 ## 1. Single Photo Selection with Loading State
 
 Handle the full lifecycle: idle, loading, loaded, and error.
@@ -396,7 +409,7 @@ import UIKit
 func downsample(
     data: Data,
     to pointSize: CGSize,
-    scale: CGFloat = UIScreen.main.scale
+    scale: CGFloat = UITraitCollection.current.displayScale
 ) -> UIImage? {
     let maxDimension = max(pointSize.width, pointSize.height) * scale
 
@@ -419,7 +432,7 @@ func downsample(
 func downsample(
     url: URL,
     to pointSize: CGSize,
-    scale: CGFloat = UIScreen.main.scale
+    scale: CGFloat = UITraitCollection.current.displayScale
 ) -> UIImage? {
     let maxDimension = max(pointSize.width, pointSize.height) * scale
 

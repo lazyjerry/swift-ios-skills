@@ -4,6 +4,19 @@ Extended CryptoKit usage beyond the basics covered in the main skill. Includes
 digital signatures, key agreement, alternative ciphers, key derivation, and
 post-quantum cryptography.
 
+## Contents
+
+- [ChaChaPoly (Alternative to AES-GCM)](#chachapoly-alternative-to-aes-gcm)
+- [Digital Signatures (P256 / ECDSA)](#digital-signatures-p256-ecdsa)
+- [Key Agreement (Diffie-Hellman)](#key-agreement-diffie-hellman)
+- [Key Derivation with HKDF](#key-derivation-with-hkdf)
+- [Authenticated Encryption with Associated Data (AEAD)](#authenticated-encryption-with-associated-data-aead)
+- [AES Key Wrapping](#aes-key-wrapping)
+- [Secure Enclave Key Agreement](#secure-enclave-key-agreement)
+- [Post-Quantum Cryptography](#post-quantum-cryptography)
+- [Storing CryptoKit Keys in Keychain](#storing-cryptokit-keys-in-keychain)
+- [Jailbreak Detection](#jailbreak-detection)
+
 ## ChaChaPoly (Alternative to AES-GCM)
 
 Same sealed-box API as AES-GCM. Use for interoperability with non-Apple systems
@@ -251,3 +264,34 @@ if let data = result as? Data {
     let restored = try P256.Signing.PrivateKey(rawRepresentation: data)
 }
 ```
+
+## Jailbreak Detection
+
+Use jailbreak detection as one signal, not a security boundary. Check for known jailbreak file paths and sandbox escape:
+
+```swift
+func isDeviceCompromised() -> Bool {
+    let paths = [
+        "/Applications/Cydia.app",
+        "/Library/MobileSubstrate/MobileSubstrate.dylib",
+        "/usr/sbin/sshd",
+        "/etc/apt",
+        "/private/var/lib/apt/"
+    ]
+
+    for path in paths {
+        if FileManager.default.fileExists(atPath: path) { return true }
+    }
+
+    let testPath = "/private/test_jailbreak"
+    do {
+        try "test".write(toFile: testPath, atomically: true, encoding: .utf8)
+        try FileManager.default.removeItem(atPath: testPath)
+        return true
+    } catch {
+        return false
+    }
+}
+```
+
+This is heuristic only. Treat a positive result as higher risk, not proof.

@@ -2,6 +2,29 @@
 
 Complete reference for converting models to Core ML format using coremltools.
 
+## Contents
+
+- [coremltools Installation](#coremltools-installation)
+- [Architecture Overview](#architecture-overview)
+- [Model Formats](#model-formats)
+- [Unified Conversion API](#unified-conversion-api)
+- [Converting from PyTorch](#converting-from-pytorch)
+- [Converting from TensorFlow](#converting-from-tensorflow)
+- [Converting from scikit-learn](#converting-from-scikit-learn)
+- [Converting from XGBoost](#converting-from-xgboost)
+- [ONNX Conversion (Deprecated)](#onnx-conversion-deprecated)
+- [Input and Output Types](#input-and-output-types)
+- [Flexible Input Shapes](#flexible-input-shapes)
+- [Deployment Targets](#deployment-targets)
+- [Compute Precision](#compute-precision)
+- [Compute Units](#compute-units)
+- [Stateful Models (iOS 18+)](#stateful-models-ios-18)
+- [Multifunction Models (iOS 18+)](#multifunction-models-ios-18)
+- [Model Utilities](#model-utilities)
+- [Graph Pass Control](#graph-pass-control)
+- [Custom Composite Operators](#custom-composite-operators)
+- [Common Mistakes to Avoid](#common-mistakes-to-avoid)
+
 ## coremltools Installation
 
 ```bash

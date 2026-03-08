@@ -3,6 +3,28 @@
 Covers subscription control styles, offer management, testing, server-side
 validation, and advanced subscription handling patterns for StoreKit 2.
 
+## Contents
+
+- [SubscriptionStoreView Control Styles](#subscriptionstoreview-control-styles)
+- [Subscription Group Management](#subscription-group-management)
+- [Introductory Offers](#introductory-offers)
+- [Promotional Offers](#promotional-offers)
+- [Win-Back Offers](#win-back-offers)
+- [Offer Codes](#offer-codes)
+- [Server-Side Validation](#server-side-validation)
+- [StoreKit Testing in Xcode](#storekit-testing-in-xcode)
+- [Subscription Renewal States](#subscription-renewal-states)
+- [Grace Period and Billing Retry](#grace-period-and-billing-retry)
+- [Refund Handling](#refund-handling)
+- [Family Sharing](#family-sharing)
+- [Ask to Buy Handling](#ask-to-buy-handling)
+- [.currentEntitlementTask SwiftUI Modifier](#currententitlementtask-swiftui-modifier)
+- [Subscription Status Listener](#subscription-status-listener)
+- [Product Promotion Management](#product-promotion-management)
+- [Price Increase Handling](#price-increase-handling)
+- [Unfinished Transactions](#unfinished-transactions)
+- [Common Advanced Mistakes](#common-advanced-mistakes)
+
 ## SubscriptionStoreView Control Styles
 
 Apply control styles to change how subscription options render in

@@ -2,6 +2,15 @@
 
 Default to Model-View (MV) in SwiftUI. Views are lightweight state expressions; models and services own business logic. Do not introduce view models unless the existing code already requires them.
 
+## Contents
+
+- [Core Principles](#core-principles)
+- [Why Not MVVM](#why-not-mvvm)
+- [MV Pattern in Practice](#mv-pattern-in-practice)
+- [When a View Model Already Exists](#when-a-view-model-already-exists)
+- [Testing Strategy](#testing-strategy)
+- [Source](#source)
+
 ## Core Principles
 
 - Views orchestrate UI flow using `@State`, `@Environment`, `@Query`, `.task`, and `.onChange`

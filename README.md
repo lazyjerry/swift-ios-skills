@@ -8,7 +8,7 @@
 [![OpenAI Codex](https://img.shields.io/badge/OpenAI%20Codex-compatible-10A37F.svg?logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4=)](https://developers.openai.com/codex)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-standard-green.svg?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE2IDAuNUwyOS40MjM0IDguMjVWMjMuNzVMMTYgMzEuNUwyLjU3NjYxIDIzLjc1VjguMjVMMTYgMC41WiBNMTYgNUwyNS41MjYzIDEwLjVWMjEuNUwxNiAyN0w2LjQ3MzcyIDIxLjVWMTAuNUwxNiA1WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4K)](https://agentskills.io)
 
-23 agent skills optimized for **iOS 26+** development with Swift 6.2 and modern Apple frameworks. All code examples, patterns, and guidance target the latest APIs -- Liquid Glass, Swift 6.2 approachable concurrency, Foundation Models, StoreKit 2, SwiftData, async/await URLSession, and more. No deprecated patterns.
+26 agent skills optimized for **iOS 26+** development with Swift 6.2 and modern Apple frameworks. All code examples, patterns, and guidance target the latest APIs -- Liquid Glass, Swift 6.2 approachable concurrency, Foundation Models, StoreKit 2, SwiftData, async/await URLSession, and more. No deprecated patterns.
 
 Compatible with [Claude Code](https://claude.ai/code), [OpenAI Codex](https://developers.openai.com/codex), [Cursor](https://cursor.com), [GitHub Copilot](https://github.com/features/copilot), and [40+ other agents](https://skills.sh). Follows the open [Agent Skills](https://agentskills.io) standard.
 
@@ -63,11 +63,11 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 
 | Plugin | Skills included |
 |--------|----------------|
-| **all-ios-skills** | All 23 skills |
+| **all-ios-skills** | All 26 skills |
 | **swiftui-skills** | swiftui-patterns, swiftui-animation, swiftui-liquid-glass, swiftui-performance, swiftui-uikit-interop |
 | **swift-core-skills** | swift-concurrency, swift-testing, swiftdata, swift-charts |
-| **ios-framework-skills** | app-intents, storekit, widgetkit, live-activities, mapkit-location, tipkit, push-notifications, photos-camera-media |
-| **ios-engineering-skills** | ios-networking, ios-security, ios-accessibility, ios-localization, app-store-review, apple-on-device-ai |
+| **ios-framework-skills** | app-intents, storekit, widgetkit, live-activities, mapkit-location, tipkit, push-notifications, photos-camera-media, alarmkit |
+| **ios-engineering-skills** | ios-networking, ios-security, ios-accessibility, ios-localization, app-store-review, apple-on-device-ai, coreml, vision-framework |
 
 ## Skills
 
@@ -102,6 +102,7 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 | [tipkit](skills/tipkit/) | Feature discovery tooltips, contextual tips, tip rules, tip events |
 | [push-notifications](skills/push-notifications/) | UNUserNotificationCenter, APNs, rich notifications, silent push, service extensions |
 | [photos-camera-media](skills/photos-camera-media/) | PhotosPicker, AVCaptureSession, photo library, video recording, media permissions |
+| [alarmkit](skills/alarmkit/) | AlarmKit alarms and countdown timers, Live Activity integration, AlarmAttributes, AlarmButton |
 
 ### iOS Engineering
 
@@ -113,6 +114,8 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 | [ios-localization](skills/ios-localization/) | String Catalogs, pluralization, FormatStyle, right-to-left layout |
 | [app-store-review](skills/app-store-review/) | App Review guidelines, rejection prevention, privacy manifests, ATT, HIG compliance |
 | [apple-on-device-ai](skills/apple-on-device-ai/) | Foundation Models framework, Core ML, MLX Swift, on-device LLM inference |
+| [coreml](skills/coreml/) | Core ML model loading, prediction, MLTensor, compute unit configuration, VNCoreMLRequest, MLComputePlan |
+| [vision-framework](skills/vision-framework/) | Vision text recognition, face/barcode detection, image segmentation, VisionKit DataScannerViewController |
 
 ## Structure
 

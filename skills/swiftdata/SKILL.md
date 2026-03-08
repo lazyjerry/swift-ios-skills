@@ -8,6 +8,21 @@ description: "Implement, review, or improve data persistence using SwiftData. Us
 Persist, query, and manage structured data in iOS 26+ apps using SwiftData
 with Swift 6.2.
 
+## Contents
+
+- [Model Definition](#model-definition)
+- [ModelContainer Setup](#modelcontainer-setup)
+- [CRUD Operations](#crud-operations)
+- [@Query in SwiftUI](#query-in-swiftui)
+- [#Predicate](#predicate)
+- [FetchDescriptor](#fetchdescriptor)
+- [Schema Versioning and Migration](#schema-versioning-and-migration)
+- [Concurrency (@ModelActor)](#concurrency-modelactor)
+- [SwiftUI Integration](#swiftui-integration)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Model Definition
 
 Apply `@Model` to a **class** (not struct). Generates `PersistentModel`, `Observable`, `Sendable`.
@@ -37,8 +52,6 @@ class Trip {
 **@Relationship**: `deleteRule:` `.cascade`/`.nullify`(default)/`.deny`/`.noAction`. Specify `inverse:` for reliable behavior. Unidirectional (iOS 18+): `inverse: nil`.
 
 **#Unique (iOS 18+)**: `#Unique<Person>([\.firstName, \.lastName])` -- compound uniqueness.
-
-**#Index (iOS 18+)**: `#Index<Trip>([\.name], [\.startDate, \.endDate])` -- query indexes.
 
 **Inheritance (iOS 26+)**: `@Model class BusinessTrip: Trip { var company: String }`.
 
@@ -306,11 +319,10 @@ struct DetailView: View {
 - [ ] Large data uses `@Attribute(.externalStorage)`
 - [ ] CloudKit models use optionals and avoid unique constraints
 - [ ] Explicit `save()` in `@ModelActor` methods
-- [ ] `#Index` on frequently queried properties (iOS 18+)
 - [ ] Previews use `ModelConfiguration(isStoredInMemoryOnly: true)`
 - [ ] `@Model` classes accessed from SwiftUI views are on `@MainActor` via `@ModelActor` or MainActor isolation
 
-## Reference Material
+## References
 
 - See `references/swiftdata-advanced.md` for custom data stores, history
   tracking, CloudKit, Core Data coexistence, composite attributes,

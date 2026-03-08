@@ -4,6 +4,15 @@ Patterns for incrementally migrating a UIKit app to SwiftUI. Each pattern is sel
 
 ---
 
+## Contents
+
+- [1. Screen-by-Screen Migration](#1-screen-by-screen-migration)
+- [2. UIHostingController as Child](#2-uihostingcontroller-as-child)
+- [3. Navigation Bridging](#3-navigation-bridging)
+- [4. Data Sharing Between UIKit and SwiftUI](#4-data-sharing-between-uikit-and-swiftui)
+- [5. UIHostingConfiguration (iOS 16+)](#5-uihostingconfiguration-ios-16)
+- [6. Environment Bridging](#6-environment-bridging)
+
 ## 1. Screen-by-Screen Migration
 
 Replace one `UIViewController` at a time with a `UIHostingController` wrapping a SwiftUI view. This is the safest migration path -- each screen is an isolated unit.

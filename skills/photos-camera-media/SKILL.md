@@ -9,6 +9,16 @@ Modern patterns for photo picking, camera capture, image loading, and media perm
 
 See `references/photospicker-patterns.md` for complete picker recipes and `references/camera-capture.md` for AVCaptureSession patterns.
 
+## Contents
+
+- [PhotosPicker (SwiftUI, iOS 16+)](#photospicker-swiftui-ios-16)
+- [Privacy and Permissions](#privacy-and-permissions)
+- [Camera Capture Basics](#camera-capture-basics)
+- [Image Loading and Display](#image-loading-and-display)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## PhotosPicker (SwiftUI, iOS 16+)
 
 `PhotosPicker` is the native SwiftUI replacement for `UIImagePickerController`. It runs out-of-process, requires no photo library permission for browsing, and supports single or multi-selection with media type filtering.
@@ -406,7 +416,7 @@ Load full-resolution photos from the library into a display-sized `CGImage` to a
 import ImageIO
 import UIKit
 
-func downsample(data: Data, to pointSize: CGSize, scale: CGFloat = UIScreen.main.scale) -> UIImage? {
+func downsample(data: Data, to pointSize: CGSize, scale: CGFloat = UITraitCollection.current.displayScale) -> UIImage? {
     let maxDimensionInPixels = max(pointSize.width, pointSize.height) * scale
 
     let options: [CFString: Any] = [
@@ -453,44 +463,38 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 *Why:* Full access is unnecessary for most pick-and-use workflows. The system's limited-library picker respects user privacy and still grants access to selected items.
 
 **DON'T:** Load full-resolution images into memory for thumbnails.
-**DO:** Use `CGImageSource` with `kCGImageSourceThumbnailMaxPixelSize` to downsample.
-*Why:* A 48MP image occupies over 200 MB uncompressed. Loading multiple at full resolution causes memory pressure warnings and termination.
+**DO:** Use `CGImageSource` with `kCGImageSourceThumbnailMaxPixelSize` to downsample. A 48MP image is over 200 MB uncompressed.
 
 **DON'T:** Block the main thread loading `PhotosPickerItem` data.
 **DO:** Use `async loadTransferable(type:)` in a `Task`.
-*Why:* Photo data loading involves disk I/O and potential format conversion. Blocking the main thread causes UI hangs and watchdog kills.
 
 **DON'T:** Forget to stop `AVCaptureSession` when the view disappears.
 **DO:** Call `session.stopRunning()` in `onDisappear` or `dismantleUIView`.
-*Why:* A running session holds the camera exclusively, preventing other apps from using it, and drains battery continuously.
 
 **DON'T:** Assume camera access is granted without checking.
-**DO:** Check `AVCaptureDevice.authorizationStatus(for: .video)` and handle `.denied` and `.restricted` with appropriate UI.
-*Why:* Attempting to add a camera input without authorization silently fails. The user sees a blank preview with no explanation.
+**DO:** Check `AVCaptureDevice.authorizationStatus(for: .video)` and handle `.denied`/`.restricted`.
 
 **DON'T:** Call `session.startRunning()` on the main thread.
 **DO:** Dispatch to a background thread with `Task.detached` or a dedicated serial queue.
 *Why:* `startRunning()` is a synchronous blocking call that can take hundreds of milliseconds while the hardware initializes.
 
 **DON'T:** Create `AVCaptureSession` inside a `UIViewRepresentable`.
-**DO:** Own the session in a separate `@Observable` model and pass it to the representable.
-*Why:* `updateUIView` runs on every state change. Creating a session there destroys and recreates the capture pipeline repeatedly.
+**DO:** Own the session in a separate `@Observable` model.
 
 ## Review Checklist
 
 - [ ] `PhotosPicker` used instead of deprecated `UIImagePickerController`
-- [ ] Privacy description strings set in Info.plist for camera and/or photo library
-- [ ] Loading states handled for async image/video loading from `PhotosPickerItem`
+- [ ] Privacy descriptions in Info.plist for camera/photo library
+- [ ] Loading states handled for async image/video loading
 - [ ] Large images downsampled with `CGImageSource` before display
-- [ ] Camera session properly started on background thread and stopped in `onDisappear`
-- [ ] Permission denial handled with Settings deep link and `ContentUnavailableView`
-- [ ] Memory pressure considered for multi-photo selection (sequential loading, downsampling)
-- [ ] `AVCaptureSession` owned by a model, not created inside `UIViewRepresentable`
-- [ ] Camera preview uses `layerClass` override for automatic resizing
+- [ ] Camera session started on background thread; stopped in `onDisappear`
+- [ ] Permission denial handled with Settings deep link
+- [ ] `AVCaptureSession` owned by model, not created inside `UIViewRepresentable`
 - [ ] `NSMicrophoneUsageDescription` included if recording video with audio
 - [ ] Media asset types and picker results are `Sendable` when passed across concurrency boundaries
 
 ## References
 
-- `references/photospicker-patterns.md` — Picker patterns, media loading, thumbnail generation, HEIC handling.
-- `references/camera-capture.md` — AVCaptureSession setup, photo/video capture, QR scanning, orientation.
+- `references/photospicker-patterns.md` — Picker patterns, media loading, HEIC handling
+- `references/camera-capture.md` — AVCaptureSession setup, photo/video capture, QR scanning
+- `references/image-loading-caching.md` — AsyncImage, caching, downsampling, prefetching

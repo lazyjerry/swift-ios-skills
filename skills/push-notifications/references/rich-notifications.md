@@ -2,6 +2,15 @@
 
 Rich notifications enhance the standard notification banner with images, video, audio, custom UI, and interactive elements. They use two extension types: Notification Service Extension (modifies content before display) and Notification Content Extension (provides custom UI in the expanded notification).
 
+## Contents
+
+- [Notification Service Extension](#notification-service-extension)
+- [Notification Attachments](#notification-attachments)
+- [Notification Content Extension](#notification-content-extension)
+- [Communication Notifications](#communication-notifications)
+- [Extension Gotchas](#extension-gotchas)
+- [Complete Service Extension Example](#complete-service-extension-example)
+
 ## Notification Service Extension
 
 A Notification Service Extension runs when a notification with `mutable-content: 1` arrives. It has approximately 30 seconds to modify the notification content before the system displays it. If the extension does not call the content handler in time, the system displays the original notification.

@@ -7,6 +7,30 @@ description: "Implement, review, or improve accessibility in iOS/macOS apps with
 
 Every user-facing view must be usable with VoiceOver, Switch Control, Voice Control, Full Keyboard Access, and other assistive technologies. This skill covers the patterns and APIs required to build accessible iOS apps.
 
+## Contents
+
+- [References](#references)
+- [Core Principles](#core-principles)
+- [How VoiceOver Reads Elements](#how-voiceover-reads-elements)
+- [SwiftUI Accessibility Modifiers](#swiftui-accessibility-modifiers)
+- [Focus Management](#focus-management)
+- [Dynamic Type](#dynamic-type)
+- [Custom Rotors](#custom-rotors)
+- [System Accessibility Preferences](#system-accessibility-preferences)
+- [Decorative Content](#decorative-content)
+- [Assistive Access (iOS 18+)](#assistive-access-ios-18)
+- [UIKit Accessibility Patterns](#uikit-accessibility-patterns)
+- [Accessibility Custom Content](#accessibility-custom-content)
+- [Testing Accessibility](#testing-accessibility)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+
+## References
+
+- Detailed patterns: `references/a11y-patterns.md`
+
+---
+
 ## Core Principles
 
 1. Every interactive element MUST have an accessible label. If no visible text exists, add `.accessibilityLabel`.
@@ -28,185 +52,7 @@ Design your labels, values, and hints with this reading order in mind.
 
 ## SwiftUI Accessibility Modifiers
 
-### Labels, Values, and Hints
-
-```swift
-// Label: the primary description VoiceOver reads
-Button(action: { }) {
-    Image(systemName: "heart.fill")
-}
-.accessibilityLabel("Favorite")
-
-// Hint: describes the result of activation (read after a pause)
-Button("Submit")
-    .accessibilityHint("Submits the form and sends your feedback")
-
-// Value: the current state for sliders, toggles, progress indicators
-Slider(value: $volume, in: 0...100)
-    .accessibilityValue("\(Int(volume)) percent")
-```
-
-- **Label**: Short, descriptive noun or noun phrase. Do not include the element type (VoiceOver announces the trait separately).
-- **Value**: Current state. Update dynamically as the value changes.
-- **Hint**: Starts with a verb, describes the result. Only add when the action is not obvious from the label and trait.
-
-### Input Labels
-
-Use `accessibilityInputLabels` to provide alternative labels for Voice Control:
-
-```swift
-Button("Go") { }
-    .accessibilityInputLabels(["Go", "Start", "Begin"])
-```
-
-### Traits
-
-Use `.accessibilityAddTraits` and `.accessibilityRemoveTraits` to modify traits. NEVER use direct trait assignment -- it overwrites the element's built-in traits.
-
-| Trait | Use For |
-|---|---|
-| `.isButton` | Custom tappable views that are not `Button` |
-| `.isHeader` | Section headers (enables rotor heading navigation) |
-| `.isLink` | Elements that navigate to external content |
-| `.isSelected` | Currently selected tab, segment, or radio button |
-| `.isImage` | Meaningful images |
-| `.isToggle` | Custom toggle controls |
-| `.isModal` | Trap VoiceOver focus inside a custom overlay |
-| `.updatesFrequently` | Timers, live counters, real-time displays |
-| `.isSearchField` | Custom search inputs |
-| `.startsMediaSession` | Elements that begin audio/video playback |
-
-```swift
-// WRONG: overwrites Button's built-in .isButton trait
-Button("Go") { }
-    .accessibilityTraits(.updatesFrequently)
-
-// CORRECT: adds to existing traits
-Button("Go") { }
-    .accessibilityAddTraits(.updatesFrequently)
-
-// Remove a trait when needed
-Text("Not really a header anymore")
-    .accessibilityRemoveTraits(.isHeader)
-```
-
-### Element Grouping
-
-Reduce VoiceOver swipe count by grouping related elements into a single accessibility stop.
-
-```swift
-// .combine: merge children into one VoiceOver element
-// VoiceOver concatenates child labels automatically
-HStack {
-    Image(systemName: "person.circle")
-    VStack {
-        Text("John Doe")
-        Text("Engineer")
-    }
-}
-.accessibilityElement(children: .combine)
-
-// .ignore: replace children with a completely custom label
-HStack {
-    Image(systemName: "envelope")
-    Text("inbox@example.com")
-}
-.accessibilityElement(children: .ignore)
-.accessibilityLabel("Email: inbox@example.com")
-
-// .contain: keep children individually navigable but logically grouped
-VStack {
-    Text("Order #1234")
-    Button("Track") { }
-}
-.accessibilityElement(children: .contain)
-```
-
-**List rows should use `.accessibilityElement(children: .combine)` unless individual child elements require separate focus** (e.g., a row with multiple independently interactive controls).
-
-### Custom Controls with accessibilityRepresentation
-
-Use `.accessibilityRepresentation` (iOS 15+) for custom controls that map to standard SwiftUI equivalents. The framework generates correct accessibility elements from the representation automatically, including traits, adjustable actions, and values.
-
-```swift
-HStack {
-    Text("Dark Mode")
-    Circle()
-        .fill(isDark ? .green : .gray)
-        .onTapGesture { isDark.toggle() }
-}
-.accessibilityRepresentation {
-    Toggle("Dark Mode", isOn: $isDark)
-}
-```
-
-```swift
-// Custom slider control
-VStack {
-    SliderTrack(value: value) // Custom visual implementation
-}
-.accessibilityRepresentation {
-    Slider(value: $value, in: 0...100) {
-        Text("Volume")
-    }
-}
-```
-
-### Adjustable Controls
-
-For controls that support increment/decrement (star ratings, steppers):
-
-```swift
-HStack { /* custom star rating UI */ }
-    .accessibilityElement()
-    .accessibilityLabel("Rating")
-    .accessibilityValue("\(rating) out of 5 stars")
-    .accessibilityAdjustableAction { direction in
-        switch direction {
-        case .increment: if rating < 5 { rating += 1 }
-        case .decrement: if rating > 1 { rating -= 1 }
-        @unknown default: break
-        }
-    }
-```
-
-VoiceOver users swipe up/down to adjust. The `.accessibilityAdjustableAction` modifier automatically adds the `.adjustable` trait.
-
-### Custom Actions
-
-Replace hidden swipe actions, context menus, or long-press gestures with named accessibility actions so VoiceOver users can discover and invoke them:
-
-```swift
-MessageRow(message: message)
-    .accessibilityAction(named: "Reply") { reply(to: message) }
-    .accessibilityAction(named: "Delete") { delete(message) }
-    .accessibilityAction(named: "Flag") { flag(message) }
-```
-
-System-level actions:
-
-```swift
-PlayerView()
-    .accessibilityAction(.magicTap) { togglePlayPause() }
-    .accessibilityAction(.escape) { dismiss() }
-```
-
-- **Magic Tap** (two-finger double-tap): Toggle the most relevant action (play/pause, answer/end call).
-- **Escape** (two-finger Z-scrub): Dismiss the current modal or go back.
-
-### Sort Priority
-
-Control VoiceOver reading order among sibling elements. Higher values are read first:
-
-```swift
-ZStack {
-    Image("photo").accessibilitySortPriority(0)     // Read third
-    Text("Credit").accessibilitySortPriority(1)      // Read second
-    Text("Breaking News").accessibilitySortPriority(2) // Read first
-}
-```
-
-Only use when the default visual order produces a confusing reading sequence.
+See `references/a11y-patterns.md` for detailed SwiftUI modifier examples (labels, hints, traits, grouping, custom controls, adjustable actions, and custom actions).
 
 ## Focus Management
 
@@ -296,74 +142,11 @@ UIAccessibility.post(notification: .screenChanged, argument: newScreenView)
 
 ## Dynamic Type
 
-### @ScaledMetric (iOS 14+)
-
-`@ScaledMetric` scales numeric values (spacing, icon sizes, padding) proportionally with the user's preferred text size. It takes a base value and optionally a text style to scale relative to.
-
-```swift
-@ScaledMetric(relativeTo: .title) private var iconSize: CGFloat = 24
-@ScaledMetric private var spacing: CGFloat = 8
-
-var body: some View {
-    HStack(spacing: spacing) {
-        Image(systemName: "star.fill")
-            .frame(width: iconSize, height: iconSize)
-        Text("Favorite")
-    }
-}
-```
-
-### Adaptive Layouts
-
-Switch from horizontal to vertical layout at large accessibility text sizes:
-
-```swift
-@Environment(\.dynamicTypeSize) var dynamicTypeSize
-
-var body: some View {
-    if dynamicTypeSize.isAccessibilitySize {
-        VStack(alignment: .leading) { icon; textContent }
-    } else {
-        HStack { icon; textContent }
-    }
-}
-```
-
-Use `dynamicTypeSize.isAccessibilitySize` (iOS 15+) rather than comparing against specific cases -- it covers all five accessibility size categories.
-
-### Minimum Tap Targets
-
-Every tappable element must be at least 44x44 points:
-
-```swift
-Button(action: { }) {
-    Image(systemName: "plus")
-        .frame(minWidth: 44, minHeight: 44)
-}
-.contentShape(Rectangle())
-```
+See `references/a11y-patterns.md` for Dynamic Type and adaptive layout examples, including @ScaledMetric and minimum tap target patterns.
 
 ## Custom Rotors
 
-Rotors let VoiceOver users quickly navigate to specific content types. Add custom rotors for content-heavy screens:
-
-```swift
-List(items) { item in
-    ItemRow(item: item)
-}
-.accessibilityRotor("Unread") {
-    ForEach(items.filter { !$0.isRead }) { item in
-        AccessibilityRotorEntry(item.title, id: item.id)
-    }
-}
-.accessibilityRotor("Flagged") {
-    ForEach(items.filter { $0.isFlagged }) { item in
-        AccessibilityRotorEntry(item.title, id: item.id)
-    }
-}
-```
-
-Users access rotors by rotating two fingers on screen. The system provides built-in rotors for headings, links, and form controls. Custom rotors extend this with app-specific navigation.
+Rotors let VoiceOver users quickly navigate to specific content types. Add custom rotors for content-heavy screens. See `references/a11y-patterns.md` for complete rotor examples.
 
 ## System Accessibility Preferences
 
@@ -417,9 +200,28 @@ Button(action: { }) {
 .accessibilityLabel("Settings")
 ```
 
-## Assistive Access (iOS 26+)
+## Assistive Access (iOS 18+)
 
-iOS 26 introduces `AssistiveAccess` for supporting Assistive Access mode in scenes. Use the `AssistiveAccess` scene modifier to provide simplified versions of your app's UI for users with cognitive disabilities. Test your app with Assistive Access enabled in Settings > Accessibility > Assistive Access.
+Assistive Access provides a simplified interface for users with cognitive disabilities. Apps should support this mode:
+
+```swift
+// Check if Assistive Access is active (iOS 18+)
+@Environment(\.accessibilityAssistiveAccessEnabled) var isAssistiveAccessEnabled
+
+var body: some View {
+    if isAssistiveAccessEnabled {
+        SimplifiedContentView()
+    } else {
+        FullContentView()
+    }
+}
+```
+
+Key guidelines:
+- Reduce visual complexity: fewer controls, larger tap targets, simpler navigation
+- Use clear, literal language for labels and instructions
+- Minimize the number of choices presented at once
+- Test with Assistive Access enabled in Settings > Accessibility > Assistive Access
 
 ## UIKit Accessibility Patterns
 
@@ -444,7 +246,7 @@ overlayView.accessibilityViewIsModal = true
 
 ## Accessibility Custom Content
 
-Use `accessibilityCustomContent` for supplementary details that should not clutter the primary label. VoiceOver users access custom content via the "More Content" rotor:
+See `references/a11y-patterns.md` for UIKit accessibility patterns and custom content examples.
 
 ```swift
 ProductRow(product: product)
@@ -456,6 +258,12 @@ ProductRow(product: product)
         importance: .high  // .high reads automatically with the element
     )
 ```
+
+## Testing Accessibility
+
+- **Accessibility Inspector** (Xcode > Open Developer Tool): Audit views for missing labels, traits, and contrast issues. Run audits against the Simulator or connected device.
+- **VoiceOver testing**: Enable in Settings > Accessibility > VoiceOver. Navigate every screen with swipe gestures.
+- **Dynamic Type**: Test with all text sizes in Settings > Accessibility > Display & Text Size > Larger Text.
 
 ## Common Mistakes
 

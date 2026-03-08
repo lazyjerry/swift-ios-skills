@@ -2,6 +2,19 @@
 
 Detailed implementation patterns for push notifications in iOS apps. Covers the complete lifecycle from AppDelegate wiring through debugging delivery issues.
 
+## Contents
+
+- [Complete AppDelegate Adaptor Setup](#complete-appdelegate-adaptor-setup)
+- [Full UNUserNotificationCenterDelegate](#full-unusernotificationcenterdelegate)
+- [Deep Link Router](#deep-link-router)
+- [Silent Push Handler](#silent-push-handler)
+- [Notification Scheduling Manager](#notification-scheduling-manager)
+- [Token Refresh and Update Flow](#token-refresh-and-update-flow)
+- [Category Registration](#category-registration)
+- [Testing Notifications](#testing-notifications)
+- [Badge Management](#badge-management)
+- [Provisional to Full Authorization Upgrade](#provisional-to-full-authorization-upgrade)
+
 ## Complete AppDelegate Adaptor Setup
 
 The full AppDelegate wiring for a SwiftUI app that handles both remote and local notifications.

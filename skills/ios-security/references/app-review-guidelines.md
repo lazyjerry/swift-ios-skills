@@ -4,6 +4,13 @@ App Store review rules relevant to security, privacy manifests, data handling,
 and App Tracking Transparency. Extracted from Apple's App Store Review
 Guidelines for self-contained reference.
 
+## Contents
+
+- [PrivacyInfo.xcprivacy -- Privacy Manifest Requirements (Guideline 5.1.1)](#privacyinfoxcprivacy-privacy-manifest-requirements-guideline-511)
+- [Data Use, Sharing, and Privacy Policy (Guideline 5.1.2)](#data-use-sharing-and-privacy-policy-guideline-512)
+- [App Tracking Transparency (ATT)](#app-tracking-transparency-att)
+- [Pre-Submission Privacy Checklist](#pre-submission-privacy-checklist)
+
 ## PrivacyInfo.xcprivacy -- Privacy Manifest Requirements (Guideline 5.1.1)
 
 This is the fastest-growing rejection category. A privacy manifest is

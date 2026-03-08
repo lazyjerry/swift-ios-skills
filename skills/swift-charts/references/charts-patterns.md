@@ -10,6 +10,28 @@ import Charts
 
 ---
 
+## Contents
+
+- [Data Modeling](#data-modeling)
+- [Bar Chart Patterns](#bar-chart-patterns)
+- [Line Chart Patterns](#line-chart-patterns)
+- [Pie and Donut Chart Patterns (SectorMark, iOS 17+)](#pie-and-donut-chart-patterns-sectormark-ios-17)
+- [Combined Chart Patterns](#combined-chart-patterns)
+- [Chart Selection with Overlay Annotation](#chart-selection-with-overlay-annotation)
+- [Scrollable Chart with Visible Domain](#scrollable-chart-with-visible-domain)
+- [Function Plotting (LinePlot, iOS 18+)](#function-plotting-lineplot-ios-18)
+- [Accessibility](#accessibility)
+- [Dynamic Type and Color Considerations](#dynamic-type-and-color-considerations)
+- [Performance: Vectorized Plots for Large Datasets](#performance-vectorized-plots-for-large-datasets)
+- [Dark Mode and Theming](#dark-mode-and-theming)
+- [Heat Map Pattern](#heat-map-pattern)
+- [Stacking Methods](#stacking-methods)
+- [MarkDimension Options](#markdimension-options)
+- [Symbol Configuration](#symbol-configuration)
+- [ChartProxy and Coordinate Conversion](#chartproxy-and-coordinate-conversion)
+- [Quick Reference: Chart View Modifiers](#quick-reference-chart-view-modifiers)
+- [Apple Documentation Links](#apple-documentation-links)
+
 ## Data Modeling
 
 Use `@Observable` for chart data models. Pair with `@State` in views.

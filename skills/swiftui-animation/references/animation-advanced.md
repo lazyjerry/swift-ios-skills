@@ -3,6 +3,19 @@
 Detailed API reference for SwiftUI animation types, protocols, and patterns.
 Covers material beyond the SKILL.md summary.
 
+## Contents
+
+- [CustomAnimation Protocol (iOS 17+)](#customanimation-protocol-ios-17)
+- [Spring Type -- All Initializer Variants](#spring-type-all-initializer-variants)
+- [UnitCurve Types (iOS 17+)](#unitcurve-types-ios-17)
+- [PhaseAnimator Deep Patterns](#phaseanimator-deep-patterns)
+- [KeyframeAnimator Multi-Track Examples](#keyframeanimator-multi-track-examples)
+- [Transaction and TransactionKey](#transaction-and-transactionkey)
+- [All Transition Types (iOS 17+)](#all-transition-types-ios-17)
+- [All Symbol Effect Types](#all-symbol-effect-types)
+- [Reduce Motion Implementation Patterns](#reduce-motion-implementation-patterns)
+- [Animation Performance Tips](#animation-performance-tips)
+
 ## CustomAnimation Protocol (iOS 17+)
 
 Create entirely custom animation curves by conforming to `CustomAnimation`.

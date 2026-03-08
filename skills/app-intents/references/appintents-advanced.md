@@ -5,6 +5,22 @@ Covers @Parameter variants, EntityPropertyQuery, assistant schemas, focus
 filters, SiriKit migration, error handling, confirmation flows, authentication,
 URL-representable types, and Spotlight indexing.
 
+## Contents
+
+- [@Parameter Initializer Variants](#parameter-initializer-variants)
+- [EntityPropertyQuery (Filter and Sort)](#entitypropertyquery-filter-and-sort)
+- [Assistant Schemas (iOS 18+)](#assistant-schemas-ios-18)
+- [Focus Filter Intents](#focus-filter-intents)
+- [SiriKit Migration (CustomIntentMigratedAppIntent)](#sirikit-migration-customintentmigratedappintent)
+- [Error Handling and Dialog](#error-handling-and-dialog)
+- [Confirmation Flows](#confirmation-flows)
+- [Authentication Policies](#authentication-policies)
+- [URLRepresentableIntent / Entity / Enum (iOS 18+)](#urlrepresentableintent-entity-enum-ios-18)
+- [IndexedEntity for Spotlight (iOS 18+)](#indexedentity-for-spotlight-ios-18)
+- [@ComputedProperty(indexingKey:) for Spotlight (iOS 26+)](#computedpropertyindexingkey-for-spotlight-ios-26)
+- [Onscreen Content for Siri (iOS 26+)](#onscreen-content-for-siri-ios-26)
+- [Parameter Summary Builder](#parameter-summary-builder)
+
 ## @Parameter Initializer Variants
 
 ### 1. Basic (String, Bool, URL, Date)
@@ -248,11 +264,15 @@ understands natively. Annotate conforming types with schema macros.
 ### Declaration
 
 ```swift
-// WRONG: Using deprecated macro
+// PREFERRED: Newer macro (iOS 18+)
+@AppIntent(schema: .photos.openAsset)
+struct OpenPhotoIntent: AppIntent { ... }
+
+// ALSO VALID: @AssistantIntent(schema:) still works but @AppIntent(schema:) is preferred
 @AssistantIntent(schema: .photos.openAsset)
 struct OpenPhotoIntent: AppIntent { ... }
 
-// CORRECT: Use current macro
+// CORRECT: Using preferred macro
 @AppIntent(schema: .photos.openAsset)
 struct OpenPhotoIntent: AppIntent {
     static var title: LocalizedStringResource = "Open Photo"

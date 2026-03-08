@@ -3,6 +3,22 @@
 Complete reference for optimizing Core ML models: quantization, palettization,
 pruning, performance tuning, and profiling.
 
+## Contents
+
+- [Optimization Technique Selection](#optimization-technique-selection)
+- [Post-Training Weight Quantization (Data-Free)](#post-training-weight-quantization-data-free)
+- [Palettization (Weight Clustering)](#palettization-weight-clustering)
+- [Pruning (Weight Sparsification)](#pruning-weight-sparsification)
+- [Joint Compression (Stacking Techniques)](#joint-compression-stacking-techniques)
+- [Per-Op Configuration](#per-op-configuration)
+- [Quantization-Aware Training (QAT)](#quantization-aware-training-qat)
+- [Swift Integration](#swift-integration)
+- [MLTensor (iOS 18+)](#mltensor-ios-18)
+- [Neural Engine Best Practices](#neural-engine-best-practices)
+- [Model Loading Optimization](#model-loading-optimization)
+- [Profiling](#profiling)
+- [Common Optimization Mistakes](#common-optimization-mistakes)
+
 ## Optimization Technique Selection
 
 | Technique | Size Reduction | Accuracy Impact | Best Compute Unit | Min OS |

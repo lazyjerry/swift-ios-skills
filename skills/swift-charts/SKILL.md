@@ -12,6 +12,23 @@ use vectorized plots for large datasets.
 See `references/charts-patterns.md` for extended patterns, accessibility, and
 theming guidance.
 
+## Contents
+
+- [Workflow](#workflow)
+- [Chart Container](#chart-container)
+- [Mark Types](#mark-types)
+- [Axis Customization](#axis-customization)
+- [Scale Configuration](#scale-configuration)
+- [Foreground Style and Encoding](#foreground-style-and-encoding)
+- [Selection (iOS 17+)](#selection-ios-17)
+- [Scrollable Charts (iOS 17+)](#scrollable-charts-ios-17)
+- [Annotations](#annotations)
+- [Legend](#legend)
+- [Vectorized Plots (iOS 18+)](#vectorized-plots-ios-18)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Workflow
 
 ### 1. Build a new chart

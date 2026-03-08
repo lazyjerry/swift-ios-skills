@@ -1,5 +1,25 @@
 # Liquid Glass API Reference for SwiftUI
 
+## Contents
+
+- [Overview](#overview)
+- [glassEffect(_:in:)](#glasseffect_in)
+- [Glass](#glass)
+- [GlassEffectContainer](#glasseffectcontainer)
+- [glassEffectID(_:in:)](#glasseffectid_in)
+- [glassEffectUnion(id:namespace:)](#glasseffectunionidnamespace)
+- [glassEffectTransition(_:)](#glasseffecttransition_)
+- [GlassEffectTransition](#glasseffecttransition)
+- [Button Styles](#button-styles)
+- [DefaultGlassEffectShape](#defaultglasseffectshape)
+- [Scroll Edge Effect](#scroll-edge-effect)
+- [Background Extension (Split Views)](#background-extension-split-views)
+- [Availability Gating](#availability-gating)
+- [Performance Guidelines](#performance-guidelines)
+- [Accessibility Considerations](#accessibility-considerations)
+- [Best Practices Summary](#best-practices-summary)
+- [Apple Documentation Links](#apple-documentation-links)
+
 ## Overview
 
 Liquid Glass is a dynamic translucent material available on iOS 26.0+, iPadOS 26.0+,
@@ -59,8 +79,8 @@ Text("Hello, World!")
 
 ## Glass
 
-A structure that configures the Liquid Glass material. Conforms to `Equatable` and
-`Sendable`.
+A structure that defines the configuration of the Liquid Glass material. Conforms to
+`Equatable`, `Sendable`, and `SendableMetatype`.
 
 ### Type Properties
 
@@ -222,7 +242,7 @@ Controls how a glass effect appears or disappears during view hierarchy changes.
 ## GlassEffectTransition
 
 A structure describing changes when a glass effect is added to or removed from the
-view hierarchy. Conforms to `Sendable`.
+view hierarchy. Conforms to `Sendable` and `SendableMetatype`.
 
 ### Type Properties
 
@@ -276,25 +296,40 @@ to `Capsule`.
 
 ## Scroll Edge Effect
 
-Helps maintain legibility for controls when content scrolls beneath them.
+Configures the scroll edge effect style for scroll views within a view hierarchy.
+
+```swift
+nonisolated func scrollEdgeEffectStyle(
+    _ style: ScrollEdgeEffectStyle?,
+    for edges: Edge.Set
+) -> some View
+```
+
+Available styles include `.soft` (soft edge) and `.hard`. System bars adopt this
+automatically. Apply to custom bars that float over scrollable content.
 
 ```swift
 .scrollEdgeEffectStyle(.soft, for: .top)
 ```
 
-System bars adopt this automatically. Apply to custom bars that float over scrollable
-content.
-
 ## Background Extension (Split Views)
 
-Extend content visually under sidebars and inspectors:
+Extend content visually under sidebars and inspectors by duplicating the view into
+mirrored copies with a blur effect applied on top:
 
 ```swift
-ScrollView(.horizontal) {
-    // content
+NavigationSplitView {
+    // sidebar content
+} detail: {
+    ZStack {
+        BannerView()
+            .backgroundExtensionEffect()
+    }
 }
-.scrollExtensionMode(.underSidebar)
 ```
+
+Also available as `backgroundExtensionEffect(isEnabled:)` for conditional use.
+Apply with discretion — typically to a single background view in the detail column.
 
 ## Availability Gating
 

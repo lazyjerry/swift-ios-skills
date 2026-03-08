@@ -10,6 +10,18 @@ structured concurrency. All examples target Swift 6.2. No third-party
 dependencies required -- URLSession covers the vast majority of networking
 needs.
 
+## Contents
+
+- [Core URLSession async/await](#core-urlsession-asyncawait)
+- [API Client Architecture](#api-client-architecture)
+- [Error Handling](#error-handling)
+- [Pagination](#pagination)
+- [Network Reachability](#network-reachability)
+- [Configuring URLSession](#configuring-urlsession)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Core URLSession async/await
 
 URLSession gained native async/await overloads in iOS 15. These are the
@@ -407,7 +419,7 @@ a 500 with an error body require different handling.
 - [ ] Server error responses decoded and surfaced to users
 - [ ] Ensure network response model types conform to Sendable; use @MainActor for UI-updating completion paths
 
-## Reference Material
+## References
 
 - See `references/urlsession-patterns.md` for complete API client
   implementation, multipart uploads, download progress, URLProtocol

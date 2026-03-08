@@ -8,6 +8,18 @@ description: "Use when integrating Foundation Models framework, implementing on-
 Guide for selecting, deploying, and optimizing on-device ML models. Covers Apple
 Foundation Models, Core ML, MLX Swift, and llama.cpp.
 
+## Contents
+
+- [Framework Selection Router](#framework-selection-router)
+- [Apple Foundation Models Overview](#apple-foundation-models-overview)
+- [Core ML Overview](#core-ml-overview)
+- [MLX Swift Overview](#mlx-swift-overview)
+- [Multi-Backend Architecture](#multi-backend-architecture)
+- [Performance Best Practices](#performance-best-practices)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Framework Selection Router
 
 Use this decision tree to pick the right framework for your use case.
@@ -78,11 +90,11 @@ deployments needing broad device support.
 
 ## Apple Foundation Models Overview
 
-On-device ~3B parameter model optimized for Apple Silicon. Available on devices
+On-device language model optimized for Apple Silicon. Available on devices
 supporting Apple Intelligence (iOS 26+, macOS 26+).
 
-- Context window: 4096 tokens (input + output combined)
-- 15 supported languages
+- Token budget covers input + output; check `contextSize` for the limit
+- Check `supportedLanguages` for supported locales
 - Guardrails always enforced, cannot be disabled
 
 ### Availability Checking (Required)
@@ -167,6 +179,7 @@ print(response.content.name)
 | `.minimumCount(n)` / `.maximumCount(n)` | Array length bounds |
 | `.constant(value)` | Always returns this value |
 | `.pattern(regex)` | String format enforcement |
+| `.element(guide)` | Guide applied to each array element |
 
 Properties generate in declaration order. Place foundational data before
 dependent data for better results.
@@ -221,6 +234,10 @@ do {
         // Another request is in progress on this session
     case .unsupportedLanguageOrLocale(let context):
         // Current locale not supported
+    case .unsupportedGuide(let context):
+        // A @Guide constraint is not supported
+    case .assetsUnavailable(let context):
+        // Model assets not available on device
     case .refusal(let refusal, _):
         // Model refused; stream refusal.explanation for details
     case .rateLimited(let context):
@@ -243,16 +260,15 @@ let options = GenerationOptions(
 let response = try await session.respond(to: prompt, options: options)
 ```
 
-Sampling modes: `.greedy`, `.random(top:)`, `.random(probabilityThreshold:)`.
+Sampling modes: `.greedy`, `.random(top:seed:)`, `.random(probabilityThreshold:seed:)`.
 
 ### Prompt Design Rules
 
-1. Be concise -- 4096 tokens is the total budget (input + output)
+1. Be concise -- use `tokenCount(for:)` to monitor the context window budget
 2. Use bracketed placeholders in instructions: `[descriptive example]`
 3. Use "DO NOT" in all caps for prohibitions
 4. Provide up to 5 few-shot examples for consistency
 5. Use length qualifiers: "in a few words", "in three sentences"
-6. Token estimate: ~4 characters per token
 
 ### Safety and Guardrails
 
@@ -444,9 +460,8 @@ actor ModelCoordinator {
    `SystemLanguageModel.default.availability` crashes on unsupported devices.
 2. **No fallback UI.** Users on pre-iOS 26 or devices without Apple Intelligence
    see nothing. Always provide a graceful degradation path.
-3. **Exceeding the context window.** Foundation Models has a 4096 token total
-   budget (input + output). Long prompts or multi-turn sessions hit this fast.
-   Monitor token usage and summarize when needed.
+3. **Exceeding the context window.** The token budget covers input + output.
+   Monitor usage via `tokenCount(for:)` and summarize when needed.
 4. **Concurrent requests on one session.** `LanguageModelSession` supports one
    request at a time. Check `session.isResponding` or serialize access.
 5. **Untrusted content in instructions.** User input placed in the instructions
@@ -455,11 +470,9 @@ actor ModelCoordinator {
    in eval mode before `torch.jit.trace`. Training-mode artifacts corrupt output.
 7. **Using neuralnetwork format.** Always use `mlprogram` (.mlpackage) for new
    Core ML models. The legacy neuralnetwork format is deprecated.
-8. **Exceeding 60% RAM on iOS (MLX Swift).** Large models cause OOM kills. Check
-   device RAM and select appropriate model sizes.
+8. **Exceeding 60% RAM on iOS (MLX Swift).** Large models cause OOM kills.
 9. **Running MLX in simulator.** MLX requires Metal GPU -- use physical devices.
-10. **Not unloading models on background.** iOS reclaims memory aggressively.
-    Unload MLX/llama.cpp models in `scenePhase == .background`.
+10. **Not unloading models on background.** Unload in `scenePhase == .background`.
 
 ## Review Checklist
 
@@ -468,7 +481,7 @@ actor ModelCoordinator {
 - [ ] Foundation Models: graceful fallback when model unavailable
 - [ ] Foundation Models: session prewarm called before user interaction
 - [ ] Foundation Models: @Generable properties in logical generation order
-- [ ] Foundation Models: token budget accounted for (4096 total)
+- [ ] Foundation Models: token budget accounted for (check `contextSize`)
 - [ ] Core ML: model format is mlprogram (.mlpackage) for iOS 15+
 - [ ] Core ML: model.eval() called before tracing/exporting PyTorch models
 - [ ] Core ML: minimum_deployment_target set explicitly
@@ -479,13 +492,9 @@ actor ModelCoordinator {
 - [ ] Concurrency: model types and tool implementations are `Sendable`-conformant or `@MainActor`-isolated
 - [ ] Physical device testing performed (not simulator)
 
-## Reference Files
+## References
 
-- [Foundation Models API](references/foundation-models.md) -- Complete
-  LanguageModelSession, @Generable, tool calling, and prompt design reference
-- [Core ML Conversion](references/coreml-conversion.md) -- Model conversion
-  pipeline from PyTorch, TensorFlow, and other frameworks
-- [Core ML Optimization](references/coreml-optimization.md) -- Quantization,
-  palettization, pruning, and performance tuning
-- [MLX Swift & llama.cpp](references/mlx-swift.md) -- MLX Swift patterns,
-  llama.cpp integration, and memory management
+- [Foundation Models API](references/foundation-models.md) -- LanguageModelSession, @Generable, tool calling, prompt design
+- [Core ML Conversion](references/coreml-conversion.md) -- Model conversion from PyTorch, TensorFlow, other frameworks
+- [Core ML Optimization](references/coreml-optimization.md) -- Quantization, palettization, pruning, performance tuning
+- [MLX Swift & llama.cpp](references/mlx-swift.md) -- MLX Swift patterns, llama.cpp integration, memory management

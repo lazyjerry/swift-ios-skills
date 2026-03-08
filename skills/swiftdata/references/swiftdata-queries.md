@@ -6,6 +6,17 @@ patterns, and aggregate queries.
 
 ---
 
+## Contents
+
+- [@Query Initializer Variants](#query-initializer-variants)
+- [FetchDescriptor Deep Dive](#fetchdescriptor-deep-dive)
+- [Complex Sort Descriptors](#complex-sort-descriptors)
+- [Sectioned Queries Pattern](#sectioned-queries-pattern)
+- [Dynamic Query Switching](#dynamic-query-switching)
+- [Background Fetch Patterns with @ModelActor](#background-fetch-patterns-with-modelactor)
+- [Aggregate Queries](#aggregate-queries)
+- [Enumerate for Large Datasets](#enumerate-for-large-datasets)
+
 ## @Query Initializer Variants
 
 `@Query` is a SwiftUI property wrapper (`DynamicProperty`) that automatically

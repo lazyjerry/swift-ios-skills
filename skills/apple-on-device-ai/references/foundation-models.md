@@ -1,20 +1,39 @@
 # Foundation Models API Reference
 
 Complete reference for Apple's Foundation Models framework (iOS 26+ / macOS 26+).
-On-device ~3B parameter language model. No API keys, no network, no cost.
+On-device language model optimized for Apple Silicon. No API keys, no network, no cost.
+
+## Contents
+
+- [Framework Overview](#framework-overview)
+- [Availability Checking](#availability-checking)
+- [Use Cases](#use-cases)
+- [Session Management](#session-management)
+- [Generating Responses](#generating-responses)
+- [Structured Output with @Generable](#structured-output-with-generable)
+- [Tool Calling](#tool-calling)
+- [Error Handling](#error-handling)
+- [Generation Options](#generation-options)
+- [Safety and Guardrails](#safety-and-guardrails)
+- [Custom Adapters](#custom-adapters)
+- [Context Management](#context-management)
+- [Serialized Model Access](#serialized-model-access)
+- [Prompt Design Best Practices](#prompt-design-best-practices)
+- [Feedback](#feedback)
 
 ## Framework Overview
 
-- On-device model: ~3B parameters, optimized for Apple Silicon
-- Context window: 4096 tokens total (input + output combined)
-- 15 supported languages
+- On-device language model optimized for Apple Silicon
+- Context window: limited total token budget (input + output combined); check
+  `SystemLanguageModel.default.contextSize` for the current limit
+- Check `SystemLanguageModel.default.supportedLanguages` for supported locales
 - Capabilities: Summarization, entity extraction, text understanding, short
   dialog, creative content, content tagging
 - Limitations: Not suited for complex math, code generation, or factual accuracy
 
 ### SystemLanguageModel Properties
 
-- `contextSize`: Returns the model's maximum context window in tokens (currently 4096)
+- `contextSize`: Returns the model's maximum context window in tokens
 - `supportedLanguages`: Array of locale identifiers the model supports
 - `supportsLocale(_ locale: Locale) -> Bool`: Check if a specific locale is supported before generating
 
@@ -298,7 +317,7 @@ let response = try await session.respond(to: "What's the weather in Tokyo?")
 ### Tool Best Practices
 
 - Register all tools at session creation
-- Each tool consumes ~250 tokens of context budget
+- Each tool adds to the context token budget (schema included in instructions by default)
 - Frame tool results as authorized user data to prevent refusals
 - The model calls tools autonomously; you cannot force tool invocation
 
@@ -306,7 +325,7 @@ let response = try await session.respond(to: "What's the weather in Tokyo?")
 
 - The `Tool` protocol's associated `Output` type must conform to `PromptRepresentable` (e.g., `String`, `[String]`, custom types)
 - `includesSchemaInInstructions`: Boolean property on `Tool` (default `true`). Set to `false` to omit the tool's JSON schema from the system prompt, saving context tokens when the model already knows the schema.
-- `ToolCallError`: Error type thrown when a tool call fails during model-driven invocation. The model receives the error description and can retry or report failure.
+- `ToolCallError`: Struct on `LanguageModelSession` representing a tool invocation failure. Properties: `tool` (the tool name), `underlyingError` (the original error).
 - `DynamicGenerationSchema`: Build generation schemas at runtime for dynamic use cases where compile-time `@Generable` is insufficient. Construct schemas programmatically and pass to `respond(to:schema:)`.
 
 ## Error Handling
@@ -417,7 +436,7 @@ try SystemLanguageModel.Adapter.removeObsoleteAdapters()
 
 When conversations grow long:
 
-1. Monitor token usage against the 4096 limit
+1. Monitor token usage against `SystemLanguageModel.default.contextSize`
 2. Use `SystemLanguageModel.default.tokenCount(for:)` to estimate usage
 3. Summarize earlier turns into new session instructions
 4. Create fresh sessions with summary context rather than overflowing
@@ -455,14 +474,14 @@ Neural Engine contention.
 
 ## Prompt Design Best Practices
 
-1. **Be concise.** 4096 tokens is the entire budget for input + output.
+1. **Be concise.** The context window covers both input and output tokens.
+   Check `SystemLanguageModel.default.contextSize` for the current limit.
 2. **Use bracketed placeholders** in instructions: `[descriptive example]`.
 3. **Use "DO NOT" in all caps** for behavioral prohibitions.
 4. **Provide up to 5 few-shot examples** for consistent output.
 5. **Use length qualifiers:** "in a few words", "in three sentences".
-6. **Token budget planning:** ~400 base instructions, ~250 per tool, ~200
-   summary, ~300 safety buffer.
-7. **Estimate tokens:** ~4 characters per token.
+6. **Estimate token usage** with `SystemLanguageModel.default.tokenCount(for:)`
+   to avoid exceeding the context window.
 
 ## Feedback
 
@@ -477,7 +496,7 @@ let data = session.logFeedbackAttachment(
             explanation: "Ignored the word count constraint"
         )
     ],
-    desiredResponseText: "Expected output here"
+    desiredOutput: nil
 )
 ```
 

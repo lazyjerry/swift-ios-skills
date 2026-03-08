@@ -11,6 +11,24 @@ presentations, Control Center controls, and StandBy surfaces for iOS 26+.
 See `references/widgetkit-advanced.md` for timeline strategies, push-based
 updates, Xcode setup, and advanced patterns.
 
+## Contents
+
+- [Workflow](#workflow)
+- [Widget Protocol and WidgetBundle](#widget-protocol-and-widgetbundle)
+- [Configuration Types](#configuration-types)
+- [TimelineProvider](#timelineprovider)
+- [AppIntentTimelineProvider](#appintenttimelineprovider)
+- [Widget Families](#widget-families)
+- [Interactive Widgets (iOS 17+)](#interactive-widgets-ios-17)
+- [Live Activities and Dynamic Island](#live-activities-and-dynamic-island)
+- [Control Center Widgets (iOS 18+)](#control-center-widgets-ios-18)
+- [Lock Screen Widgets](#lock-screen-widgets)
+- [StandBy Mode](#standby-mode)
+- [iOS 26 Additions](#ios-26-additions)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Workflow
 
 ### 1. Create a new widget
@@ -465,25 +483,15 @@ are legible at a glance for driver safety.
 
 - [ ] Widget extension target has App Groups entitlement matching the main app
 - [ ] `@main` is on the `WidgetBundle`, not on individual widgets
-- [ ] `placeholder(in:)` returns synchronously with sample data
-- [ ] `getSnapshot` / `snapshot(for:in:)` returns quickly when `context.isPreview` is true
-- [ ] Timeline reload policy matches data update frequency (`.atEnd`, `.after`, `.never`)
-- [ ] `WidgetCenter.shared.reloadTimelines(ofKind:)` called only when data actually changes
-- [ ] Layout adapts per `WidgetFamily` using `@Environment(\.widgetFamily)`
-- [ ] Accessory widgets use `AccessoryWidgetBackground` and test in `.vibrant` mode
-- [ ] Interactive widgets use `AppIntent` with `Button` or `Toggle` only
-- [ ] Live Activity has `NSSupportsLiveActivities = YES` in Info.plist
-- [ ] `ActivityContent` used (not deprecated `contentState` API)
-- [ ] Dynamic Island provides all four closures (expanded, compactLeading, compactTrailing, minimal)
-- [ ] `activity.end(_:dismissalPolicy:)` called to clean up Live Activities
-- [ ] Control widgets use `StaticControlConfiguration` or `AppIntentControlConfiguration`
-- [ ] Widget tested on device for StandBy, Dynamic Island, and Lock Screen
-- [ ] iOS 26 Liquid Glass rendering tested with `WidgetAccentedRenderingMode`
-- [ ] Ensure Timeline entries and Intent types are Sendable; widget configuration providers should be @MainActor-isolated if they access shared state
+- [ ] `placeholder(in:)` returns synchronously; `getSnapshot`/`snapshot(for:in:)` fast when `isPreview`
+- [ ] Timeline reload policy matches update frequency; `reloadTimelines(ofKind:)` only on data change
+- [ ] Layout adapts per `WidgetFamily`; accessory widgets tested in `.vibrant` mode
+- [ ] Interactive widgets use `AppIntent` with `Button`/`Toggle` only
+- [ ] Live Activity: `NSSupportsLiveActivities = YES`; `ActivityContent` used; Dynamic Island closures implemented
+- [ ] `activity.end(_:dismissalPolicy:)` called; controls use `StaticControlConfiguration`/`AppIntentControlConfiguration`
+- [ ] Timeline entries and Intent types are Sendable; tested on device
 
 ## References
 
 - Advanced guide: `references/widgetkit-advanced.md`
-- Apple docs: [WidgetKit](https://sosumi.ai/documentation/widgetkit) |
-  [ActivityKit](https://sosumi.ai/documentation/activitykit) |
-  [Keeping a widget up to date](https://sosumi.ai/documentation/widgetkit/keeping-a-widget-up-to-date)
+- Apple docs: [WidgetKit](https://sosumi.ai/documentation/widgetkit) | [ActivityKit](https://sosumi.ai/documentation/activitykit) | [Keeping a widget up to date](https://sosumi.ai/documentation/widgetkit/keeping-a-widget-up-to-date)

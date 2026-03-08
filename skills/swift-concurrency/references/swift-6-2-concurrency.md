@@ -3,6 +3,20 @@
 Swift 6.2 introduces "approachable concurrency" -- a philosophy shift where
 code stays single-threaded by default until you choose to introduce concurrency.
 
+## Contents
+
+- [Core Problem Solved](#core-problem-solved)
+- [SE-0466: Default MainActor Isolation](#se-0466-default-mainactor-isolation)
+- [SE-0461: nonisolated(nonsending)](#se-0461-nonisolatednonsending)
+- [@concurrent Attribute](#concurrent-attribute)
+- [SE-0472: Task.immediate](#se-0472-taskimmediate)
+- [Isolated Conformances](#isolated-conformances)
+- [SE-0481: weak let (Proposed)](#se-0481-weak-let-proposed--swift-62)
+- [SE-0475: Transactional Observation (Observations)](#se-0475-transactional-observation-observations)
+- [Global and Static State](#global-and-static-state)
+- [Migration and Build Settings](#migration-and-build-settings)
+- [Summary](#summary)
+
 ## Core Problem Solved
 
 In Swift 6.0/6.1, data-race safety was enforced at compile time, but the most
@@ -171,10 +185,11 @@ nonisolated struct GenericExporter {
 }
 ```
 
-## SE-0481: weak let
+## SE-0481: weak let (Proposed — Swift 6.2+)
 
 Immutable weak references (`weak let`) enable `Sendable` conformance for types
-that hold weak references, since immutability guarantees thread safety.
+that hold weak references, since immutability guarantees thread safety. Proposed
+in SE-0481; may not yet be available in shipping toolchains.
 
 ## SE-0475: Transactional Observation (Observations)
 
@@ -182,7 +197,7 @@ that hold weak references, since immutability guarantees thread safety.
 via `AsyncSequence`.
 
 ```swift
-for await _ in Observations(tracking: { model.count }) {
+for await _ in Observations { model.count } {
     print("Count changed to \(model.count)")
 }
 ```

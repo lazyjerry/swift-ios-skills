@@ -7,6 +7,34 @@ description: "Swift Testing framework guide for writing tests with @Test, @Suite
 
 Swift Testing is the modern testing framework for Swift (Xcode 16+, Swift 6+). Prefer it over XCTest for all new unit tests. Use XCTest only for UI tests, performance benchmarks, and snapshot tests.
 
+## Contents
+
+- [References](#references)
+- [Basic Tests](#basic-tests)
+- [@Test Traits](#test-traits)
+- [#expect and #require](#expect-and-require)
+- [@Suite and Test Organization](#suite-and-test-organization)
+- [Parameterized Tests](#parameterized-tests)
+- [Confirmation (Async Event Testing)](#confirmation-async-event-testing)
+- [Tags](#tags)
+- [Known Issues](#known-issues)
+- [TestScoping (Custom Test Lifecycle)](#testscoping-custom-test-lifecycle)
+- [Mocking and Test Doubles](#mocking-and-test-doubles)
+- [Testable Architecture](#testable-architecture)
+- [Async and Concurrent Test Patterns](#async-and-concurrent-test-patterns)
+- [XCTest: UI Testing](#xctest-ui-testing)
+- [Common Mistakes](#common-mistakes)
+- [Test Attachments](#test-attachments)
+- [Exit Testing](#exit-testing)
+- [Review Checklist](#review-checklist)
+- [MCP Integration](#mcp-integration)
+
+## References
+
+- Testing patterns: `references/testing-patterns.md`
+
+---
+
 ## Basic Tests
 
 ```swift
@@ -66,32 +94,11 @@ let first = try #require(items.first)
 
 ## @Suite and Test Organization
 
-```swift
-@Suite("Authentication Tests")
-struct AuthTests {
-    let auth: AuthService
-
-    // init() runs before EACH test (like setUp in XCTest)
-    init() {
-        auth = AuthService(store: MockKeychain())
-    }
-
-    @Test func loginWithValidCredentials() async throws {
-        let result = try await auth.login(email: "test@test.com", password: "pass123")
-        #expect(result.isAuthenticated)
-    }
-
-    @Test func loginWithInvalidPassword() async throws {
-        #expect(throws: AuthError.invalidCredentials) {
-            try await auth.login(email: "test@test.com", password: "wrong")
-        }
-    }
-}
-```
-
-Suites can be nested. Tags applied to a suite are inherited by all tests in that suite.
+See `references/testing-patterns.md` for suite organization, parameterized tests, confirmation patterns, and known-issue handling.
 
 ## Parameterized Tests
+
+Use `@Test(arguments:)` for parameterized cases. See `references/testing-patterns.md` for full examples.
 
 ```swift
 @Test("Email validation", arguments: [
@@ -127,62 +134,15 @@ Each argument combination runs as an independent test case reported separately.
 
 ## Confirmation (Async Event Testing)
 
-Replace XCTest's `expectation`/`fulfill`/`waitForExpectations` with `confirmation`:
-```swift
-@Test func notificationPosted() async {
-    await confirmation("Received notification") { confirm in
-        let observer = NotificationCenter.default.addObserver(
-            forName: .userLoggedIn, object: nil, queue: .main
-        ) { _ in confirm() }
-        await authService.login()
-        NotificationCenter.default.removeObserver(observer)
-    }
-}
-
-// Exact count -- confirm must be called exactly 3 times
-await confirmation("Items processed", expectedCount: 3) { confirm in
-    processor.onItemComplete = { _ in confirm() }
-    await processor.processAll()
-}
-
-// Range-based: at least once
-await confirmation("Orders placed", expectedCount: 1...) { confirm in
-    truck.orderHandler = { _ in confirm() }
-    await truck.operate()
-}
-
-// Confirm something does NOT happen
-await confirmation("No errors", expectedCount: 0) { confirm in
-    calculator.errorHandler = { _ in confirm() }
-    await calculator.compute()
-}
-```
+Use `confirmation` for async event testing. See `references/testing-patterns.md` for full examples.
 
 ## Tags
 
-Define custom tags for filtering and organizing test runs:
-
-```swift
-extension Tag {
-    @Tag static var networking: Self
-    @Tag static var database: Self
-    @Tag static var slow: Self
-    @Tag static var critical: Self
-}
-
-@Test(.tags(.networking, .slow))
-func downloadLargeFile() async throws { ... }
-
-// Tags on suites are inherited by all contained tests
-@Suite(.tags(.database))
-struct DatabaseTests {
-    @Test func insertUser() { ... }  // inherits .database tag
-}
-```
-
-Tags must be declared as static members in an extension on `Tag` using the `@Tag` macro.
+Tags must be declared as static members in an extension on `Tag`. See `references/testing-patterns.md` for tag patterns.
 
 ## Known Issues
+
+Use `withKnownIssue` to mark expected failures. See `references/testing-patterns.md` for full patterns.
 
 Mark expected failures so they do not cause test failure:
 
@@ -217,223 +177,25 @@ If no known issues are recorded, Swift Testing records a distinct issue notifyin
 
 ## TestScoping (Custom Test Lifecycle)
 
-Consolidate setup/teardown logic (Swift 6.1+, Xcode 16.3+):
-
-```swift
-struct DatabaseFixture: TestScoping {
-    func provideScope(
-        for test: Test, testCase: Test.Case?,
-        performing body: @Sendable () async throws -> Void
-    ) async throws {
-        let db = try await TestDatabase.create()
-        try await body()
-        try await db.destroy()
-    }
-}
-```
-
-Use `.serialized` on suites where tests share mutable state and cannot run concurrently.
+Use `TestScoping` to consolidate setup/teardown logic. See `references/testing-patterns.md` for full examples.
 
 ## Mocking and Test Doubles
 
-Every external dependency should be behind a protocol. Inject dependencies -- never hardcode them:
-
-```swift
-protocol UserRepository: Sendable {
-    func fetch(id: String) async throws -> User
-    func save(_ user: User) async throws
-}
-
-// Test double
-struct MockUserRepository: UserRepository {
-    var users: [String: User] = [:]
-    var fetchError: Error?
-    func fetch(id: String) async throws -> User {
-        if let error = fetchError { throw error }
-        guard let user = users[id] else { throw NotFoundError() }
-        return user
-    }
-    func save(_ user: User) async throws { }
-}
-```
+See `references/testing-patterns.md` for mocking patterns, protocol-based doubles, and testable architecture examples.
 
 ## Testable Architecture
 
-```swift
-@Observable
-class ProfileViewModel {
-    private let repository: UserRepository
-    var user: User?
-    var error: Error?
-    init(repository: UserRepository) { self.repository = repository }
-    func load() async {
-        do { user = try await repository.fetch(id: currentUserID) }
-        catch { self.error = error }
-    }
-}
-
-@Test func loadUserSuccess() async {
-    let mock = MockUserRepository(users: ["1": User(name: "Alice")])
-    let vm = ProfileViewModel(repository: mock)
-    await vm.load()
-    #expect(vm.user?.name == "Alice")
-}
-```
-
-### SwiftUI Environment Injection
-
-```swift
-private struct UserRepositoryKey: EnvironmentKey {
-    static let defaultValue: any UserRepository = RemoteUserRepository()
-}
-extension EnvironmentValues {
-    var userRepository: any UserRepository {
-        get { self[UserRepositoryKey.self] }
-        set { self[UserRepositoryKey.self] = newValue }
-    }
-}
-// In previews and tests:
-ContentView().environment(\.userRepository, MockUserRepository())
-```
+See `references/testing-patterns.md` for view model testing and environment injection examples.
 
 ## Async and Concurrent Test Patterns
 
-Swift Testing supports async natively. Use `@MainActor` for tests touching MainActor-isolated code:
-
-```swift
-@Test func fetchUser() async throws {
-    let service = UserService(repository: MockUserRepository())
-    let user = try await service.fetch(id: "1")
-    #expect(user.name == "Alice")
-}
-
-@Test @MainActor func viewModelUpdatesOnMainActor() async {
-    let vm = ProfileViewModel(repository: MockUserRepository())
-    await vm.load()
-    #expect(vm.user != nil)
-}
-```
-
-### Clock Injection
-
-Inject a clock protocol to test time-dependent code without real delays:
-
-```swift
-protocol AppClock: Sendable { func sleep(for duration: Duration) async throws }
-struct ImmediateClock: AppClock { func sleep(for duration: Duration) async throws { } }
-```
-
-### Testing Error Paths
-
-```swift
-@Test func fetchUserNetworkError() async {
-    var mock = MockUserRepository()
-    mock.fetchError = URLError(.notConnectedToInternet)
-    let vm = ProfileViewModel(repository: mock)
-    await vm.load()
-    #expect(vm.user == nil)
-    #expect(vm.error is URLError)
-}
-```
+See `references/testing-patterns.md` for async test patterns, clock injection, and error path testing.
 
 ## XCTest: UI Testing
 
-Swift Testing does not support UI testing. Use XCTest with XCUITest for all UI tests.
+Swift Testing does not support UI testing. Use XCTest with XCUITest for all UI tests. See `references/testing-patterns.md` for UI test and snapshot examples.
 
-```swift
-class LoginUITests: XCTestCase {
-    let app = XCUIApplication()
-    override func setUpWithError() throws {
-        continueAfterFailure = false
-        app.launchArguments = ["--ui-testing"]
-        app.launch()
-    }
-    func testLoginFlow() throws {
-        let emailField = app.textFields["Email"]
-        XCTAssertTrue(emailField.waitForExistence(timeout: 5))
-        emailField.tap(); emailField.typeText("user@test.com")
-        app.secureTextFields["Password"].tap()
-        app.secureTextFields["Password"].typeText("password123")
-        app.buttons["Sign In"].tap()
-        XCTAssertTrue(app.staticTexts["Welcome"].waitForExistence(timeout: 10))
-    }
-}
-```
-
-### Page Object Pattern
-
-Encapsulate UI element queries in page objects for reusable, readable UI tests:
-
-```swift
-struct LoginPage {
-    let app: XCUIApplication
-    var emailField: XCUIElement { app.textFields["Email"] }
-    var passwordField: XCUIElement { app.secureTextFields["Password"] }
-    var signInButton: XCUIElement { app.buttons["Sign In"] }
-    @discardableResult
-    func login(email: String, password: String) -> HomePage {
-        emailField.tap(); emailField.typeText(email)
-        passwordField.tap(); passwordField.typeText(password)
-        signInButton.tap()
-        return HomePage(app: app)
-    }
-}
-```
-
-### Performance Testing (XCTest)
-
-```swift
-func testFeedParsingPerformance() throws {
-    let data = try loadFixture("large-feed.json")
-    let metrics: [XCTMetric] = [XCTClockMetric(), XCTMemoryMetric()]
-    measure(metrics: metrics) {
-        _ = try? FeedParser.parse(data)
-    }
-}
-```
-
-## Snapshot Testing
-
-Use swift-snapshot-testing (pointfreeco) for visual regression. Requires XCTest:
-
-```swift
-import SnapshotTesting
-import XCTest
-
-class ProfileViewSnapshotTests: XCTestCase {
-    func testProfileView() {
-        let view = ProfileView(user: .preview)
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone13)))
-
-        // Dark mode
-        assertSnapshot(of: view.environment(\.colorScheme, .dark),
-                       as: .image(layout: .device(config: .iPhone13)), named: "dark")
-
-        // Large Dynamic Type
-        assertSnapshot(of: view.environment(\.dynamicTypeSize, .accessibility3),
-                       as: .image(layout: .device(config: .iPhone13)), named: "largeText")
-    }
-}
-```
-
-Always test Dark Mode and large Dynamic Type in snapshots.
-
-## Test File Organization
-
-```
-Tests/AppTests/          # Swift Testing (Models/, ViewModels/, Services/)
-Tests/AppUITests/        # XCTest UI tests (Pages/, Flows/)
-Tests/Fixtures/          # Test data (JSON, images)
-Tests/Mocks/             # Shared mock implementations
-```
-
-Name test files `<TypeUnderTest>Tests.swift`. Describe behavior in function names: `fetchUserReturnsNilOnNetworkError()` not `testFetchUser()`. Name mocks `Mock<ProtocolName>`.
-
-### What to Test
-
-**Always test:** business logic, validation rules, state transitions in view models, error handling paths, edge cases (empty collections, nil, boundaries), async success and failure, Task cancellation.
-
-**Skip:** SwiftUI view body layout (use snapshots), simple property forwarding, Apple framework behavior, private methods (test through public API).
+See `references/testing-patterns.md` for page object, performance testing, snapshot testing, and test file organization patterns.
 
 ## Common Mistakes
 
@@ -449,29 +211,19 @@ Name test files `<TypeUnderTest>Tests.swift`. Describe behavior in function name
 
 ## Test Attachments
 
-Attach diagnostic data to test results for debugging failures:
+Attach diagnostic data to test results for debugging failures. See `references/testing-patterns.md` for full examples.
 
 ```swift
 @Test func generateReport() async throws {
     let report = try generateReport()
-    // Attach the output for later inspection
     Attachment(report.data, named: "report.json").record()
     #expect(report.isValid)
 }
-
-// Attach from a file URL
-@Test func processImage() async throws {
-    let output = try processImage()
-    try await Attachment(contentsOf: output.url, named: "result.png")
-        .record()
-}
 ```
-
-Attachments support any `Attachable` type and images via `AttachableAsImage`.
 
 ## Exit Testing
 
-Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`:
+Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See `references/testing-patterns.md` for details.
 
 ```swift
 @Test func invalidInputCausesExit() async {

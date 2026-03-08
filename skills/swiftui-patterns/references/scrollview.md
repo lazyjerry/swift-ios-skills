@@ -1,5 +1,16 @@
 # ScrollView and Lazy stacks
 
+## Contents
+
+- [Intent](#intent)
+- [Core patterns](#core-patterns)
+- [Example: vertical custom feed](#example-vertical-custom-feed)
+- [Example: horizontal chips](#example-horizontal-chips)
+- [Example: adaptive grid](#example-adaptive-grid)
+- [Design choices to keep](#design-choices-to-keep)
+- [iOS 26 Scroll Edge Effects](#ios-26-scroll-edge-effects)
+- [Pitfalls](#pitfalls)
+
 ## Intent
 
 Use `ScrollView` with `LazyVStack`, `LazyHStack`, or `LazyVGrid` when you need custom layout, mixed content, or horizontal/ grid-based scrolling.

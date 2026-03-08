@@ -5,6 +5,17 @@ description: Implement, review, or improve SwiftUI Liquid Glass effects for iOS 
 
 # SwiftUI Liquid Glass
 
+## Contents
+
+- [Overview](#overview)
+- [Workflow](#workflow)
+- [Core API Summary](#core-api-summary)
+- [Code Examples](#code-examples)
+- [Do's and Don'ts](#dos-and-donts)
+- [Review Checklist](#review-checklist)
+- [Available MCP Tools](#available-mcp-tools)
+- [References](#references)
+
 ## Overview
 
 Liquid Glass is the dynamic translucent material introduced in iOS 26 (and iPadOS 26,
@@ -48,7 +59,7 @@ Run through the Review Checklist below and verify each item.
 Applies Liquid Glass behind a view. Default: `.regular` variant in a `Capsule` shape.
 
 ```swift
-func glassEffect(
+nonisolated func glassEffect(
     _ glass: Glass = .regular,
     in shape: some Shape = DefaultGlassEffectShape()
 ) -> some View
@@ -109,21 +120,21 @@ These complement Liquid Glass when building custom toolbars and scroll views:
 ScrollView {
     content
 }
-.scrollEdgeEffectStyle(.soft, for: .top)  // Fading edge effect at scroll boundaries
+.scrollEdgeEffectStyle(.soft, for: .top)  // Configures edge effect at scroll boundaries
 
-// Mirror and blur content at safe area edges (behind glass toolbars)
+// Duplicate view into mirrored copies at safe area edges with blur (e.g., under sidebars)
 content
     .backgroundExtensionEffect()
 ```
 
 ### ToolbarSpacer (iOS 26+)
 
-Creates a visual break between items in toolbars containing Liquid Glass:
+Creates a visual break between items in toolbars:
 
 ```swift
 .toolbar {
     ToolbarItem { Button("Edit") { } }
-    ToolbarItem { ToolbarSpacer() }
+    ToolbarSpacer(.fixed)
     ToolbarItem { Button("Share") { } }
 }
 ```

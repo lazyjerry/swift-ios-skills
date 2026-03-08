@@ -8,6 +8,24 @@ description: "Implement, review, or improve SwiftUI animations and transitions. 
 Review, write, and fix SwiftUI animations. Apply modern animation APIs with
 correct timing, transitions, and accessibility handling using Swift 6.2 patterns.
 
+## Contents
+
+- [Triage Workflow](#triage-workflow)
+- [withAnimation (Explicit Animation)](#withanimation-explicit-animation)
+- [.animation(_:value:) (Implicit Animation)](#animation_value-implicit-animation)
+- [Spring Type (iOS 17+)](#spring-type-ios-17)
+- [PhaseAnimator (iOS 17+)](#phaseanimator-ios-17)
+- [KeyframeAnimator (iOS 17+)](#keyframeanimator-ios-17)
+- [@Animatable Macro](#animatable-macro)
+- [matchedGeometryEffect (iOS 14+)](#matchedgeometryeffect-ios-14)
+- [Navigation Zoom Transition (iOS 18+)](#navigation-zoom-transition-ios-18)
+- [Transitions (iOS 17+)](#transitions-ios-17)
+- [ContentTransition (iOS 16+)](#contenttransition-ios-16)
+- [Symbol Effects (iOS 17+)](#symbol-effects-ios-17)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Triage Workflow
 
 ### Step 1: Identify the animation category
@@ -452,41 +470,18 @@ Text("\(count)")
 
 ### 7. navigationTransition on wrong view
 
-```swift
-// WRONG: Applied inside a container
-NavigationLink {
-    VStack {
-        DetailView(item: item)
-            .navigationTransition(.zoom(sourceID: item.id, in: ns))
-    }
-} label: { /* ... */ }
-
-// CORRECT: Applied on the outermost destination view
-NavigationLink {
-    DetailView(item: item)
-        .navigationTransition(.zoom(sourceID: item.id, in: ns))
-} label: { /* ... */ }
-```
+Apply `.navigationTransition(.zoom(sourceID:in:))` on the outermost destination view, not inside a container.
 
 ## Review Checklist
 
 - [ ] Animation curve matches intent (spring for natural, ease for mechanical)
-- [ ] `withAnimation` wraps the state change, not the view
-- [ ] `.animation(_:value:)` has an explicit `value` parameter
-- [ ] `matchedGeometryEffect` has exactly one source per ID at a time
-- [ ] Navigation zoom uses matching `id` and `namespace` on source and destination
+- [ ] `withAnimation` wraps state change, not view; `.animation(_:value:)` has explicit `value`
+- [ ] `matchedGeometryEffect` has exactly one source per ID; zoom uses matching `id`/`namespace`
 - [ ] `@Animatable` macro used instead of manual `animatableData`
-- [ ] `accessibilityReduceMotion` is checked and respected
-- [ ] No heavy computation inside keyframe/phase content closures
-- [ ] No `DispatchQueue` or `UIView.animate` for animation timing
-- [ ] Transitions use `.transition()` on conditionally inserted views
-- [ ] `contentTransition` is paired with `.animation(_:value:)`
-- [ ] Symbol effects use correct category (discrete vs indefinite)
-- [ ] Ensure animated state changes happen on @MainActor; types driving animations should be Sendable if passed across concurrency boundaries
+- [ ] `accessibilityReduceMotion` checked; no `DispatchQueue`/`UIView.animate`
+- [ ] Transitions use `.transition()`; `contentTransition` paired with `.animation(_:value:)`
+- [ ] Animated state changes on @MainActor; animation-driving types are Sendable
 
-## Reference Material
+## References
 
-- See `references/animation-advanced.md` for CustomAnimation protocol,
-  full Spring variants, all Transition types, symbol effect details, Transaction
-  system, UnitCurve types, and performance guidance.
-
+- See `references/animation-advanced.md` for CustomAnimation protocol, full Spring variants, all Transition types, symbol effect details, Transaction system, UnitCurve types, and performance guidance.

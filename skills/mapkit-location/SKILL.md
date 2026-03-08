@@ -13,6 +13,19 @@ for views, `CLLocationUpdate.liveUpdates()` for streaming location, and
 See `references/mapkit-patterns.md` for extended MapKit patterns and
 `references/corelocation-patterns.md` for CoreLocation patterns.
 
+## Contents
+
+- [Workflow](#workflow)
+- [SwiftUI Map View (iOS 17+)](#swiftui-map-view-ios-17)
+- [CoreLocation Modern API](#corelocation-modern-api)
+- [Geocoding](#geocoding)
+- [Search](#search)
+- [Directions](#directions)
+- [PlaceDescriptor (iOS 26+)](#placedescriptor-ios-26)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
+
 ## Workflow
 
 ### 1. Add a map with markers or annotations
