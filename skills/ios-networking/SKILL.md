@@ -431,3 +431,5 @@ a 500 with an error body require different handling.
 - See `references/lightweight-clients.md` for the lightweight closure-based
   client pattern (struct of async closures, injected via init for testability
   and preview support).
+- See `references/network-framework.md` for Network.framework (NWConnection,
+  NWListener, NWBrowser, NWPathMonitor) and low-level TCP/UDP/WebSocket patterns.

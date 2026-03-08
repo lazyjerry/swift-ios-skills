@@ -1,6 +1,6 @@
 ---
 name: coreml
-description: "Use when integrating Core ML models into iOS apps, loading .mlmodelc or .mlpackage models, making predictions with auto-generated classes or MLFeatureProvider, configuring compute units (CPU, GPU, Neural Engine), working with MLTensor, building multi-model pipelines, or profiling model performance. Covers model loading, prediction, MLModelConfiguration, MLTensor, VNCoreMLRequest, MLComputePlan, and deployment strategies."
+description: "Integrates and optimizes Core ML models in iOS apps for on-device machine learning inference. Covers model loading (.mlmodelc, .mlpackage), predictions with auto-generated classes and MLFeatureProvider, compute unit configuration (CPU, GPU, Neural Engine), MLTensor, VNCoreMLRequest, MLComputePlan, multi-model pipelines, and deployment strategies. Use when loading Core ML models, making predictions, configuring compute units, or profiling model performance."
 ---
 
 # Core ML Swift Integration

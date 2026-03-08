@@ -22,6 +22,7 @@ correct timing, transitions, and accessibility handling using Swift 6.2 patterns
 - [Transitions (iOS 17+)](#transitions-ios-17)
 - [ContentTransition (iOS 16+)](#contenttransition-ios-16)
 - [Symbol Effects (iOS 17+)](#symbol-effects-ios-17)
+- [Symbol Rendering Modes](#symbol-rendering-modes)
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
 - [References](#references)
@@ -381,91 +382,84 @@ All effects: `.bounce`, `.pulse`, `.variableColor`, `.scale`, `.appear`,
 
 Scope: `.byLayer`, `.wholeSymbol`. Direction varies per effect.
 
+## Symbol Rendering Modes
+
+Control how SF Symbol layers are colored with `.symbolRenderingMode(_:)`.
+
+| Mode | Effect | When to use |
+|------|--------|-------------|
+| `.monochrome` | Single color applied uniformly (default) | Toolbars, simple icons matching text |
+| `.hierarchical` | Single color with opacity layers for depth | Subtle depth without multiple colors |
+| `.multicolor` | System-defined fixed colors per layer | Weather, file types — Apple's intended palette |
+| `.palette` | Custom colors per layer via `.foregroundStyle` | Brand colors, custom multi-color icons |
+
+```swift
+// Hierarchical — single tint, opacity layers for depth
+Image(systemName: "speaker.wave.3.fill")
+    .symbolRenderingMode(.hierarchical)
+    .foregroundStyle(.blue)
+
+// Palette — custom color per layer
+Image(systemName: "person.crop.circle.badge.plus")
+    .symbolRenderingMode(.palette)
+    .foregroundStyle(.blue, .green)
+
+// Multicolor — system-defined colors
+Image(systemName: "cloud.sun.rain.fill")
+    .symbolRenderingMode(.multicolor)
+```
+
+**Variable color:** `.symbolVariableColor(value:)` for percentage-based fill (signal strength, volume):
+
+```swift
+Image(systemName: "wifi")
+    .symbolVariableColor(value: signalStrength) // 0.0–1.0
+```
+
+> **Docs:** [SymbolRenderingMode](https://sosumi.ai/documentation/swiftui/symbolrenderingmode) · [symbolRenderingMode(_:)](https://sosumi.ai/documentation/swiftui/view/symbolrenderingmode(_:))
+
 ## Common Mistakes
 
 ### 1. Animating without a value binding
 
 ```swift
-// WRONG: .animation without value triggers on any state change
-Text("Hello")
-    .opacity(isVisible ? 1 : 0)
-    .animation(.easeIn)
-
-// CORRECT: Bind to the specific value
-Text("Hello")
-    .opacity(isVisible ? 1 : 0)
-    .animation(.easeIn, value: isVisible)
+// WRONG — triggers on any state change
+.animation(.easeIn)
+// CORRECT — bind to specific value
+.animation(.easeIn, value: isVisible)
 ```
 
 ### 2. Expensive work inside animation closures
 
-```swift
-// WRONG: Heavy computation every frame
-.keyframeAnimator(initialValue: vals, trigger: t) { content, value in
-    let filtered = applyExpensiveFilter(content)  // runs every frame
-    return filtered.opacity(value.opacity)
-} keyframes: { _ in /* ... */ }
-
-// CORRECT: Precompute outside, animate only visual properties
-.keyframeAnimator(initialValue: vals, trigger: t) { content, value in
-    content.opacity(value.opacity)
-} keyframes: { _ in /* ... */ }
-```
+Never run heavy computation in `keyframeAnimator` / `PhaseAnimator` content closures — they execute every frame. Precompute outside, animate only visual properties.
 
 ### 3. Missing reduce motion support
 
 ```swift
-// WRONG: Ignores accessibility setting
-withAnimation(.bouncy) { showDetail = true }
-
-// CORRECT: Respect reduce motion
 @Environment(\.accessibilityReduceMotion) private var reduceMotion
-
 withAnimation(reduceMotion ? .none : .bouncy) { showDetail = true }
 ```
 
 ### 4. Multiple matchedGeometryEffect sources
 
-```swift
-// WRONG: Both visible with same ID -- undefined behavior
-HStack {
-    Circle().matchedGeometryEffect(id: "dot", in: ns)
-    Circle().matchedGeometryEffect(id: "dot", in: ns)
-}
-
-// CORRECT: Only one source visible at a time via conditional
-if onLeft {
-    Circle().matchedGeometryEffect(id: "dot", in: ns)
-} else {
-    Circle().matchedGeometryEffect(id: "dot", in: ns)
-}
-```
+Only one view per ID should be visible at a time. Two visible views with the same ID causes undefined layout.
 
 ### 5. Using DispatchQueue or UIView.animate
 
 ```swift
-// WRONG: UIKit patterns in SwiftUI
-DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-    withAnimation { isVisible = true }
-}
-UIView.animate(withDuration: 0.3) { /* ... */ }
-
-// CORRECT: SwiftUI animation with delay
+// WRONG
+DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { withAnimation { isVisible = true } }
+// CORRECT
 withAnimation(.spring.delay(0.5)) { isVisible = true }
-withAnimation(.easeInOut(duration: 0.3)) { /* state change */ }
 ```
 
 ### 6. Forgetting animation on ContentTransition
 
 ```swift
-// WRONG: No animation -- content transition has no effect
-Text("\(count)")
-    .contentTransition(.numericText(countsDown: true))
-
-// CORRECT: Pair with animation modifier
-Text("\(count)")
-    .contentTransition(.numericText(countsDown: true))
-    .animation(.snappy, value: count)
+// WRONG — no animation, content transition has no effect
+Text("\(count)").contentTransition(.numericText(countsDown: true))
+// CORRECT — pair with animation
+Text("\(count)").contentTransition(.numericText(countsDown: true)).animation(.snappy, value: count)
 ```
 
 ### 7. navigationTransition on wrong view

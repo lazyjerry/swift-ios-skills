@@ -393,7 +393,7 @@ Testing only in English hides truncation, layout, and RTL bugs.
 ### DO: Test with German (long) and Arabic (RTL) at minimum
 Use Xcode scheme settings to override the app language without changing device locale.
 
-## Localization Review Checklist
+## Review Checklist
 
 - [ ] All user-facing strings use localization (`LocalizedStringKey` in SwiftUI or `String(localized:)`)
 - [ ] No string concatenation for user-visible text

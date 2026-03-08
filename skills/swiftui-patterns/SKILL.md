@@ -1,6 +1,6 @@
 ---
 name: swiftui-patterns
-description: "Use when building SwiftUI views, managing state with @Observable, implementing NavigationStack or NavigationSplitView navigation patterns, composing view hierarchies, presenting sheets, wiring TabView, applying SwiftUI best practices, or structuring an MV-pattern app. Covers view architecture, state management, navigation, view composition, layout, List, Form, Grid, theming, environment, deep links, async loading, and performance."
+description: "Builds SwiftUI views with modern MV architecture, state management, and view composition patterns. Covers @Observable ownership rules, @State/@Bindable/@Environment wiring, view decomposition, custom ViewModifiers, environment values, async data loading with .task, iOS 26+ new APIs, Writing Tools, and performance guidelines. Use when structuring an MV-pattern app, managing state with @Observable, composing view hierarchies, or applying SwiftUI best practices. For navigation patterns see swiftui-navigation skill."
 ---
 
 # SwiftUI Patterns
@@ -13,16 +13,17 @@ Modern SwiftUI patterns targeting iOS 26+ with Swift 6.2. Covers architecture, s
 - [State Management](#state-management)
 - [View Ordering Convention](#view-ordering-convention)
 - [View Composition](#view-composition)
-- [Navigation](#navigation)
 - [Environment](#environment)
 - [Async Data Loading](#async-data-loading)
 - [iOS 26+ New APIs](#ios-26-new-apis)
 - [Performance Guidelines](#performance-guidelines)
-- [Component Reference](#component-reference)
 - [HIG Alignment](#hig-alignment)
+- [Writing Tools (iOS 18+)](#writing-tools-ios-18)
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
 - [References](#references)
+
+**Related skills:** For navigation patterns (NavigationStack, sheets, tabs, deep links), see the `swiftui-navigation` skill. For layout and components (grids, lists, scroll views, forms, controls), see the `swiftui-layout-components` skill.
 
 ## Architecture: Model-View (MV) Pattern
 
@@ -145,16 +146,7 @@ Only use if supporting iOS 16 or earlier. `@StateObject` → `@State`, `@Observe
 
 ## View Ordering Convention
 
-Order members top to bottom within a view struct:
-
-1. `@Environment` properties
-2. `private` / `public` `let` properties
-3. `@State` and other stored properties
-4. Computed `var` (non-view)
-5. `init`
-6. `body`
-7. Computed view builders and view helpers
-8. Helper and async functions
+Order members top to bottom: 1) `@Environment` 2) `let` properties 3) `@State` / stored properties 4) computed `var` 5) `init` 6) `body` 7) view builders / helpers 8) async functions
 
 ## View Composition
 
@@ -226,124 +218,11 @@ extension View { func cardStyle() -> some View { modifier(CardStyle()) } }
 
 ### Stable View Tree
 
-Avoid top-level conditional view swapping. Prefer a single stable base view with conditions inside sections or modifiers (`overlay`, `opacity`, `disabled`, `toolbar`).
-
-### Large File Handling
-
-When a view file exceeds ~300 lines, split with extensions and `// MARK: -` comments.
+Avoid top-level conditional view swapping. Prefer a single stable base view with conditions inside sections or modifiers. When a view file exceeds ~300 lines, split with extensions and `// MARK: -` comments.
 
 ## Navigation
 
-### NavigationStack (Push Navigation)
-
-```swift
-struct ContentView: View {
-    @State private var path = NavigationPath()
-
-    var body: some View {
-        NavigationStack(path: $path) {
-            List(items) { item in
-                NavigationLink(value: item) {
-                    ItemRow(item: item)
-                }
-            }
-            .navigationDestination(for: Item.self) { item in
-                DetailView(item: item)
-            }
-            .navigationTitle("Items")
-        }
-    }
-}
-```
-
-**Programmatic navigation:**
-
-```swift
-path.append(item)        // Push
-path.removeLast()        // Pop one
-path = NavigationPath()  // Pop to root
-```
-
-### NavigationSplitView (Multi-Column)
-
-```swift
-struct MasterDetailView: View {
-    @State private var selectedItem: Item?
-
-    var body: some View {
-        NavigationSplitView {
-            List(items, selection: $selectedItem) { item in
-                NavigationLink(value: item) { ItemRow(item: item) }
-            }
-            .navigationTitle("Items")
-        } detail: {
-            if let item = selectedItem {
-                ItemDetailView(item: item)
-            } else {
-                ContentUnavailableView("Select an Item", systemImage: "sidebar.leading")
-            }
-        }
-    }
-}
-```
-
-### Sheet Presentation
-
-Prefer `.sheet(item:)` over `.sheet(isPresented:)` when state represents a selected model. Sheets should own their actions and call `dismiss()` internally.
-
-```swift
-@State private var selectedItem: Item?
-
-.sheet(item: $selectedItem) { item in
-    EditItemSheet(item: item)
-}
-```
-
-**Presentation sizing (iOS 18+):** Control sheet dimensions with `.presentationSizing`:
-
-```swift
-.sheet(item: $selectedItem) { item in
-    EditItemSheet(item: item)
-        .presentationSizing(.form)  // .form, .page, .fitted, .automatic
-}
-```
-
-**Enum-driven sheet routing:** Centralize sheets with an enum and a helper modifier. See `references/sheets.md` and `references/app-wiring.md` for full patterns.
-
-### Tab-Based Navigation
-
-iOS 26 introduces an expanded Tab API with `Tab`, roles, and customization:
-
-```swift
-struct MainTabView: View {
-    @State private var selectedTab: AppTab = .home
-
-    var body: some View {
-        TabView(selection: $selectedTab) {
-            Tab("Home", systemImage: "house", value: .home) {
-                NavigationStack { HomeView() }
-            }
-            Tab("Search", systemImage: "magnifyingglass", value: .search) {
-                NavigationStack { SearchView() }
-            }
-            Tab("Profile", systemImage: "person", value: .profile) {
-                NavigationStack { ProfileView() }
-            }
-            Tab(role: .search) {
-                SearchView()
-            }
-        }
-        .tabBarMinimizeBehavior(.onScrollDown) // iOS 26: auto-hide tab bar on scroll
-    }
-}
-```
-
-iOS 26 additions:
-- `Tab(role: .search)` replaces the tab bar with a search field
-- `.tabBarMinimizeBehavior(_:)` -- `.onScrollDown`, `.onScrollUp`, `.never`
-- `.tabViewSidebarHeader/Footer` for iPadOS/macOS sidebar customization
-
-See `references/tabview.md` for full TabView patterns and `references/app-wiring.md` for root shell wiring.
+For NavigationStack, NavigationSplitView, sheets, tabs, and deep linking patterns, see the dedicated `swiftui-navigation` skill.
 
 ## Environment
 
@@ -423,17 +302,7 @@ Never create manual `Task` in `onAppear` unless you need to store a reference fo
 
 ## Component Reference
 
-See `references/components-index.md` for the full index of component-specific guides:
-
-- **Layout:** List, ScrollView, Grids, Split Views
-- **Navigation:** NavigationStack, TabView, Sheets, Deep Links
-- **Input:** Form, Controls, Focus, Searchable, Input Toolbar
-- **Presentation:** Overlay/Toasts, Loading/Placeholders, Matched Transitions
-- **Platform:** Top Bar, Title Menus, Menu Bar, macOS Settings
-- **Media & Theming:** Media, Theming, Haptics
-- **Architecture:** App Wiring, Lightweight Clients
-
-Each component file includes intent, minimal usage pattern, pitfalls, and performance notes.
+For layout, grids, lists, forms, controls, and scrollview patterns, see the dedicated `swiftui-layout-components` skill. For component-specific reference files, see `references/components-index.md`.
 
 ## HIG Alignment
 
@@ -446,6 +315,28 @@ Follow Apple Human Interface Guidelines for layout, typography, color, and acces
 - Provide VoiceOver labels (`.accessibilityLabel`) and support Dynamic Type accessibility sizes by switching layout orientation
 
 See `references/hig-patterns.md` for full HIG pattern examples.
+
+## Writing Tools (iOS 18+)
+
+Control the Apple Intelligence Writing Tools experience on text views with `.writingToolsBehavior(_:)`.
+
+| Level | Effect | When to use |
+|-------|--------|-------------|
+| `.complete` | Full inline rewriting (proofread, rewrite, transform) | Notes, email, documents |
+| `.limited` | Overlay panel only — original text untouched | Code editors, validated forms |
+| `.disabled` | Writing Tools hidden entirely | Passwords, search bars |
+| `.automatic` | System chooses based on context (default) | Most views |
+
+```swift
+TextEditor(text: $body)
+    .writingToolsBehavior(.complete)
+TextField("Search…", text: $query)
+    .writingToolsBehavior(.disabled)
+```
+
+**Detecting active sessions:** Read `isWritingToolsActive` on `UITextView` (UIKit) to defer validation or suspend undo grouping until a rewrite finishes.
+
+> **Docs:** [WritingToolsBehavior](https://sosumi.ai/documentation/swiftui/writingtoolsbehavior) · [writingToolsBehavior(_:)](https://sosumi.ai/documentation/swiftui/view/writingtoolsbehavior(_:))
 
 ## Common Mistakes
 
@@ -485,4 +376,7 @@ See `references/hig-patterns.md` for full HIG pattern examples.
 - MV pattern deep-dive: `references/mv-patterns.md`
 - HIG patterns: `references/hig-patterns.md`
 - Deprecated API migration: `references/deprecated-migration.md`
+- Transferable, drag/drop, ShareLink: `references/transferable.md`
+- Navigation patterns: see `swiftui-navigation` skill
+- Layout & components: see `swiftui-layout-components` skill
 

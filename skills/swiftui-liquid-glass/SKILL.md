@@ -11,7 +11,7 @@ description: Implement, review, or improve SwiftUI Liquid Glass effects for iOS 
 - [Workflow](#workflow)
 - [Core API Summary](#core-api-summary)
 - [Code Examples](#code-examples)
-- [Do's and Don'ts](#dos-and-donts)
+- [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
 - [Available MCP Tools](#available-mcp-tools)
 - [References](#references)
@@ -232,26 +232,73 @@ struct GlassBadge: View {
 }
 ```
 
-## Do's and Don'ts
+## Common Mistakes
 
-**Do:**
+### DON'T: Apply Liquid Glass to every surface
 
-- Use `GlassEffectContainer` whenever multiple glass views coexist.
-- Apply `.glassEffect()` after layout and appearance modifiers (padding, frame, font).
-- Use `.interactive()` only on tappable or focusable elements.
-- Match `GlassEffectContainer` spacing with the interior layout spacing.
-- Prefer `.buttonStyle(.glass)` / `.buttonStyle(.glassProminent)` over manual glass on buttons.
-- Gate with `if #available(iOS 26, *)` and provide a non-glass fallback.
-- Use `withAnimation` when toggling views that have `glassEffectID` for morphing.
+Overuse distracts from content. Glass should emphasize key interactive elements, not decorate everything.
 
-**Don't:**
+```swift
+// WRONG: Glass on everything
+VStack {
+    Text("Title").glassEffect()
+    Text("Subtitle").glassEffect()
+    Divider().glassEffect()
+    Text("Body").glassEffect()
+}
 
-- Apply Liquid Glass to every surface -- overuse distracts from content.
-- Nest `GlassEffectContainer` inside another `GlassEffectContainer`.
-- Add `.interactive()` to non-interactive decorative glass.
-- Use custom blur/material overlays when `.glassEffect()` can replace them.
-- Hard-code layout metrics that conflict with glass container spacing.
-- Forget to test with Reduce Transparency and Reduce Motion accessibility settings.
+// CORRECT: Glass on primary interactive elements only
+VStack {
+    Text("Title").font(.title)
+    Text("Subtitle").font(.subheadline)
+    Divider()
+    Text("Body")
+}
+.padding()
+.glassEffect()
+```
+
+### DON'T: Nest GlassEffectContainer inside another
+
+Nested containers cause undefined rendering behavior.
+
+```swift
+// WRONG
+GlassEffectContainer {
+    GlassEffectContainer {
+        content.glassEffect()
+    }
+}
+
+// CORRECT: Single container wrapping all glass views
+GlassEffectContainer {
+    content.glassEffect()
+}
+```
+
+### DON'T: Add .interactive() to non-interactive elements
+
+`.interactive()` adds visual affordance suggesting tappability. Using it on decorative glass misleads users.
+
+### DON'T: Apply .glassEffect() before layout modifiers
+
+Glass calculates its shape from the final frame. Applying it before padding/frame produces incorrect bounds.
+
+```swift
+// WRONG: Glass applied before padding
+Text("Label").glassEffect().padding()
+
+// CORRECT: Glass applied after layout
+Text("Label").padding().glassEffect()
+```
+
+### DON'T: Forget accessibility testing
+
+Always test with Reduce Transparency and Reduce Motion enabled. Glass degrades gracefully but verify content remains readable.
+
+### DON'T: Skip availability checks
+
+Liquid Glass requires iOS 26+. Gate with `if #available(iOS 26, *)` and provide a fallback.
 
 ## Review Checklist
 

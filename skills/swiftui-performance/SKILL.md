@@ -17,6 +17,10 @@ description: Audit and improve SwiftUI runtime performance. Use for slow renderi
 - [5. Verify](#5-verify)
 - [Outputs](#outputs)
 - [MCP Tool Notes](#mcp-tool-notes)
+- [Instruments Profiling](#instruments-profiling)
+- [Identity and Lifetime](#identity-and-lifetime)
+- [Lazy Loading Patterns](#lazy-loading-patterns)
+- [State and Observation Optimization](#state-and-observation-optimization)
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
 - [References](#references)
@@ -129,28 +133,12 @@ Prefer precompute or cache on change:
 ### Sorting/filtering in `body` or `ForEach`
 
 ```swift
-List {
-    ForEach(items.sorted(by: sortRule)) { item in
-        Row(item)
-    }
-}
+// DON'T: sorts or filters on every body evaluation
+ForEach(items.sorted(by: sortRule)) { item in Row(item) }
+ForEach(items.filter { $0.isEnabled }) { item in Row(item) }
 ```
 
-Prefer sort once before view updates:
-
-```swift
-let sortedItems = items.sorted(by: sortRule)
-```
-
-### Inline filtering in `ForEach`
-
-```swift
-ForEach(items.filter { $0.isEnabled }) { item in
-    Row(item)
-}
-```
-
-Prefer a prefiltered collection with stable identity.
+Prefer precomputed, cached collections with stable identity. Update on input change, not in `body`.
 
 ### Unstable identity
 
@@ -213,6 +201,264 @@ Provide:
 ## MCP Tool Notes
 
 - **xcodebuildmcp**: When building for profiling, use Release configuration. Debug builds include extra runtime checks that distort performance measurements. Always profile Release builds on a real device when possible.
+
+## Instruments Profiling
+
+### SwiftUI Instrument Template
+
+Instruments ships with a dedicated **SwiftUI** template (available in Xcode 15+ / Instruments 15+). This template provides:
+
+- **SwiftUI View Body** instrument -- counts how many times each view's `body` is evaluated.
+- **SwiftUI View Properties** instrument -- tracks `@State`, `@Binding`, and `@Observable` property changes that trigger view updates.
+- **Time Profiler** -- standard CPU profiler for identifying expensive `body` computations.
+- **Hangs** instrument -- flags main-thread hangs > 250ms.
+
+### Profiling Workflow
+
+1. **Build for Profiling.** Product > Profile (Cmd+I) in Xcode. This creates a Release build with profiling symbols.
+2. **Select the SwiftUI template.** Or create a custom template with SwiftUI + Time Profiler + Hangs.
+3. **Record the interaction.** Reproduce the exact scroll, navigation, or animation that is slow.
+4. **Inspect the SwiftUI lane.** Look for views with high body evaluation counts. A view evaluated hundreds of times during a single scroll is likely the bottleneck.
+5. **Cross-reference with Time Profiler.** If a view body is called often AND takes significant time per call, that is the priority fix.
+
+### View Body Evaluation Count
+
+In the SwiftUI instrument lane, each row represents a view type. Key signals:
+
+- **High count, low time per call:** Identity or state-invalidation problem (too many re-evaluations).
+- **Low count, high time per call:** Expensive computation inside `body` (formatting, sorting, image work).
+- **High count AND high time:** Both problems -- fix the expensive work first, then fix the invalidation.
+
+### Identifying Unnecessary Redraws
+
+Add `Self._printChanges()` in Debug builds to log exactly which property triggered a view update:
+
+```swift
+var body: some View {
+    #if DEBUG
+    let _ = Self._printChanges()  // prints: "MyView: @self, _count changed."
+    #endif
+    Text("Count: \(count)")
+}
+```
+
+Remove `_printChanges()` before submitting to the App Store -- it is a debug-only API.
+
+### Time Profiler for Body Hotspots
+
+When Time Profiler shows significant time in a view's `body`:
+
+1. Filter the call tree by the view type name.
+2. Look for allocations (`NumberFormatter()`, `DateFormatter()`), collection operations (`.sorted()`, `.filter()`), or image decoding.
+3. Move expensive operations to `onChange`, `task`, or precomputed `@State`.
+
+## Identity and Lifetime
+
+### Structural Identity vs Explicit Identity
+
+SwiftUI assigns every view an **identity** used to track its lifetime, state, and animations.
+
+- **Structural identity** (default): determined by the view's position in the view hierarchy. SwiftUI uses the call-site location in `body` to distinguish views.
+- **Explicit identity**: you assign with `.id(_:)` modifier or `ForEach(items, id: \.stableID)`.
+
+```swift
+// Structural identity: SwiftUI knows these are different views by position
+VStack {
+    Text("First")   // position 0
+    Text("Second")  // position 1
+}
+```
+
+### How Identity Tracks View Lifetime
+
+When a view's identity changes, SwiftUI treats it as a **new view**:
+
+- All `@State` is reset.
+- `onAppear` fires again.
+- Animations may restart.
+- Transition animations play (if defined).
+
+When identity stays the same, SwiftUI updates the **existing view** in place, preserving state and providing smooth transitions.
+
+### AnyView and Identity Reset
+
+`AnyView` erases type information, forcing SwiftUI to fall back to less efficient diffing:
+
+```swift
+// DON'T: AnyView destroys type identity
+func makeView(for item: Item) -> AnyView {
+    if item.isPremium {
+        return AnyView(PremiumRow(item: item))
+    } else {
+        return AnyView(StandardRow(item: item))
+    }
+}
+
+// DO: use @ViewBuilder to preserve structural identity
+@ViewBuilder
+func makeView(for item: Item) -> some View {
+    if item.isPremium {
+        PremiumRow(item: item)
+    } else {
+        StandardRow(item: item)
+    }
+}
+```
+
+`AnyView` also prevents SwiftUI from detecting which branch changed, causing full subtree replacement instead of targeted updates.
+
+### id() Modifier Impacts
+
+The `.id()` modifier assigns explicit identity. Changing the value **destroys and recreates** the view:
+
+```swift
+// DON'T: UUID() changes every render, destroying and recreating the view each time
+ScrollView {
+    LazyVStack {
+        ForEach(items) { item in
+            Row(item: item)
+                .id(UUID())  // kills performance -- new identity every render
+        }
+    }
+}
+
+// DO: use a stable identifier
+ForEach(items) { item in
+    Row(item: item)
+        .id(item.stableID)  // identity only changes when the item actually changes
+}
+```
+
+Intentional `.id()` change is useful for **resetting state** (e.g., `.id(selectedTab)` to reset a scroll position when switching tabs).
+
+## Lazy Loading Patterns
+
+### LazyVStack and LazyHStack
+
+Lazy stacks only create views for items currently visible on screen. Off-screen items are not evaluated until scrolled into view.
+
+```swift
+ScrollView {
+    LazyVStack(spacing: 12) {
+        ForEach(items) { item in
+            ItemRow(item: item)
+        }
+    }
+}
+```
+
+Key behaviors:
+- Views are created lazily but **not destroyed** when scrolled off screen (they remain in memory).
+- `onAppear` fires when the view first enters the visible area.
+- `onDisappear` fires when it leaves, but the view is still alive.
+
+### LazyVGrid and LazyHGrid
+
+Use lazy grids for multi-column layouts:
+
+```swift
+// Adaptive: as many columns as fit with minimum width
+let columns = [GridItem(.adaptive(minimum: 150))]
+
+ScrollView {
+    LazyVGrid(columns: columns, spacing: 16) {
+        ForEach(photos) { photo in
+            PhotoThumbnail(photo: photo)
+        }
+    }
+}
+
+// Fixed: exact number of equal columns
+let fixedColumns = [
+    GridItem(.flexible()),
+    GridItem(.flexible()),
+    GridItem(.flexible()),
+]
+```
+
+### When to Use Lazy vs Eager Stacks
+
+| Scenario | Use |
+|----------|-----|
+| < 50 items | `VStack` / `HStack` (eager is fine) |
+| 50-100 items | Either works; prefer `Lazy` if items are complex |
+| > 100 items | `LazyVStack` / `LazyHStack` (required for performance) |
+| Always-visible content | `VStack` (no benefit to lazy) |
+| Scrollable lists | `LazyVStack` inside `ScrollView`, or `List` |
+
+**Important:** Do not nest `GeometryReader` inside lazy containers. It forces eager measurement and defeats lazy loading. Use `.onGeometryChange` (iOS 18+) instead.
+
+## State and Observation Optimization
+
+### @Observable Granular Tracking
+
+`@Observable` (Observation framework, iOS 17+) tracks property access at the **per-property level**. A view only re-evaluates when properties it actually read in `body` change:
+
+```swift
+@Observable class UserProfile {
+    var name: String = ""
+    var avatarURL: URL?
+    var biography: String = ""
+}
+
+// This view ONLY re-renders when `name` changes -- not when
+// biography or avatarURL change, because it only reads `name`
+struct NameLabel: View {
+    let profile: UserProfile
+    var body: some View {
+        Text(profile.name)
+    }
+}
+```
+
+This is a significant improvement over `ObservableObject` + `@Published`, which invalidates all observing views when **any** published property changes.
+
+### Avoiding Observation Scope Pollution
+
+If a view reads many properties from an `@Observable` model in `body`, it re-renders when **any** of those properties change. Push reads into child views to narrow the scope:
+
+```swift
+// DON'T: reads name, email, avatar, and settings in one body
+struct ProfileView: View {
+    let model: ProfileModel
+    var body: some View {
+        VStack {
+            Text(model.name)           // tracks name
+            Text(model.email)          // tracks email
+            AsyncImage(url: model.avatar) // tracks avatar
+            SettingsForm(model.settings)  // tracks settings
+        }
+    }
+}
+
+// DO: split into child views so each only tracks what it reads
+struct ProfileView: View {
+    let model: ProfileModel
+    var body: some View {
+        VStack {
+            NameRow(model: model)      // only tracks name
+            EmailRow(model: model)     // only tracks email
+            AvatarView(model: model)   // only tracks avatar
+            SettingsForm(model: model) // only tracks settings
+        }
+    }
+}
+```
+
+### Computed Properties for Derived State
+
+Use computed properties on `@Observable` models to derive state without introducing extra stored properties that widen observation scope:
+
+```swift
+@Observable class ShoppingCart {
+    var items: [CartItem] = []
+
+    // Views reading `total` only re-render when `items` changes
+    var total: Decimal {
+        items.reduce(0) { $0 + $1.price * Decimal($1.quantity) }
+    }
+}
+```
 
 ## Common Mistakes
 

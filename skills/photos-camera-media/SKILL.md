@@ -498,3 +498,4 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 - `references/photospicker-patterns.md` — Picker patterns, media loading, HEIC handling
 - `references/camera-capture.md` — AVCaptureSession setup, photo/video capture, QR scanning
 - `references/image-loading-caching.md` — AsyncImage, caching, downsampling, prefetching
+- `references/av-playback.md` — AVPlayer, streaming, audio session, background audio, Now Playing

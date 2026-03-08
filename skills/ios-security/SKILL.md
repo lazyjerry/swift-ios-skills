@@ -488,4 +488,5 @@ compliance checklists, see `references/app-review-guidelines.md`.
 - CryptoKit advanced patterns: `references/cryptokit-advanced.md`
 - Privacy manifest guide: `references/privacy-manifest.md`
 - App Review security guidelines: `references/app-review-guidelines.md`
+- File storage directory guide and protection: `references/file-storage-patterns.md`
 

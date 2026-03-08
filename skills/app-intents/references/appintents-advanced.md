@@ -20,6 +20,7 @@ URL-representable types, and Spotlight indexing.
 - [@ComputedProperty(indexingKey:) for Spotlight (iOS 26+)](#computedpropertyindexingkey-for-spotlight-ios-26)
 - [Onscreen Content for Siri (iOS 26+)](#onscreen-content-for-siri-ios-26)
 - [Parameter Summary Builder](#parameter-summary-builder)
+- [Core Spotlight Direct Usage](#core-spotlight-direct-usage)
 
 ## @Parameter Initializer Variants
 
@@ -859,6 +860,217 @@ static var parameterSummary: some ParameterSummary {
                 \.$style
             }
         }
+    }
+}
+```
+
+## Core Spotlight Direct Usage
+
+Use Core Spotlight directly when you need full control over indexing without
+adopting App Intents, or when targeting iOS versions before IndexedEntity
+(pre-iOS 18). For apps already using App Intents, prefer `IndexedEntity`
+(iOS 18+) or `@ComputedProperty(indexingKey:)` (iOS 26+) instead.
+
+### When to Use Core Spotlight Directly vs IndexedEntity
+
+| Approach | When to Use |
+|---|---|
+| `IndexedEntity` (iOS 18+) | App already uses App Intents; entities are also Siri/Shortcuts-visible |
+| `@ComputedProperty(indexingKey:)` (iOS 26+) | Cleaner metadata mapping without manual `CSSearchableItemAttributeSet` |
+| Core Spotlight directly | No App Intents adoption; pre-iOS 18 targets; standalone indexing; fine-grained control over expiration, domain grouping, or batch operations |
+
+### CSSearchableItem and CSSearchableItemAttributeSet
+
+A `CSSearchableItem` uniquely identifies searchable content. Attach a
+`CSSearchableItemAttributeSet` to describe the item's metadata.
+
+Docs: [CSSearchableItem](https://sosumi.ai/documentation/corespotlight/cssearchableitem),
+[CSSearchableItemAttributeSet](https://sosumi.ai/documentation/corespotlight/cssearchableitemattributeset)
+
+```swift
+import CoreSpotlight
+import UniformTypeIdentifiers
+
+func makeSearchableItem(
+    id: String,
+    title: String,
+    description: String,
+    thumbnailData: Data? = nil
+) -> CSSearchableItem {
+    let attributes = CSSearchableItemAttributeSet(contentType: .text)
+    attributes.title = title
+    attributes.contentDescription = description
+    attributes.thumbnailData = thumbnailData
+
+    // Optional: improve search ranking and categorization
+    attributes.keywords = ["recipe", "cooking"]
+    attributes.displayName = title
+    attributes.contentURL = URL(string: "myapp://recipes/\(id)")
+
+    let item = CSSearchableItem(
+        uniqueIdentifier: id,
+        domainIdentifier: "com.myapp.recipes",
+        attributeSet: attributes
+    )
+    // Items expire after 30 days by default; customize if needed
+    item.expirationDate = Date.now.addingTimeInterval(60 * 60 * 24 * 90)
+    return item
+}
+```
+
+### CSSearchableIndex — Indexing and Deletion
+
+Use `CSSearchableIndex` to add, update, and remove items. The `default()`
+index works for most apps. Use a named index with a protection class for
+sensitive content.
+
+Docs: [CSSearchableIndex](https://sosumi.ai/documentation/corespotlight/cssearchableindex)
+
+```swift
+import CoreSpotlight
+
+// Index a single item (add or update)
+func indexItem(_ item: CSSearchableItem) async throws {
+    try await CSSearchableIndex.default().indexSearchableItems([item])
+}
+
+// Delete specific items by identifier
+func deleteItems(identifiers: [String]) async throws {
+    try await CSSearchableIndex.default().deleteSearchableItems(
+        withIdentifiers: identifiers
+    )
+}
+
+// Delete all items in a domain (e.g., after user deletes a category)
+func deleteItemsInDomain(_ domain: String) async throws {
+    try await CSSearchableIndex.default().deleteSearchableItems(
+        withDomainIdentifiers: [domain]
+    )
+}
+
+// Delete everything (e.g., on logout)
+func deleteAllItems() async throws {
+    try await CSSearchableIndex.default().deleteAllSearchableItems()
+}
+```
+
+### Batch Indexing Patterns
+
+For large data sets, index in batches to minimize memory pressure and handle
+errors gracefully. Use `beginBatch()` / `endBatch(withClientState:)` to
+track progress and resume after crashes.
+
+```swift
+import CoreSpotlight
+
+func batchIndexRecipes(_ recipes: [Recipe]) async throws {
+    let index = CSSearchableIndex(name: "recipes")
+
+    // Simple batched approach -- chunk into groups
+    let batchSize = 100
+    for batch in stride(from: 0, to: recipes.count, by: batchSize) {
+        let end = min(batch + batchSize, recipes.count)
+        let items = recipes[batch..<end].map { recipe in
+            makeSearchableItem(
+                id: recipe.id,
+                title: recipe.name,
+                description: recipe.summary,
+                thumbnailData: recipe.thumbnailData
+            )
+        }
+        try await index.indexSearchableItems(items)
+    }
+}
+
+// Client-state-based batching for crash recovery
+func batchIndexWithState(_ recipes: [Recipe]) async throws {
+    let index = CSSearchableIndex(name: "recipes")
+
+    // Check where we left off
+    let lastState = try await index.fetchLastClientState()
+    let startOffset = lastState.flatMap { Int(String(data: $0, encoding: .utf8) ?? "") } ?? 0
+
+    let batchSize = 100
+    for batch in stride(from: startOffset, to: recipes.count, by: batchSize) {
+        let end = min(batch + batchSize, recipes.count)
+        let items = recipes[batch..<end].map { recipe in
+            makeSearchableItem(
+                id: recipe.id,
+                title: recipe.name,
+                description: recipe.summary
+            )
+        }
+
+        index.beginBatch()
+        try await index.indexSearchableItems(items)
+
+        let stateData = "\(end)".data(using: .utf8)!
+        try await index.endBatch(withClientState: stateData)
+    }
+}
+```
+
+### Protected Index for Sensitive Content
+
+Use a named index with a data protection class to encrypt indexed content:
+
+```swift
+let protectedIndex = CSSearchableIndex(
+    name: "secure-notes",
+    protectionClass: .complete  // Only accessible when device is unlocked
+)
+
+try await protectedIndex.indexSearchableItems(sensitiveItems)
+```
+
+### Handling Search Results (NSUserActivity)
+
+When a user taps a Spotlight result, the system delivers an `NSUserActivity`
+with `activityType` set to `CSSearchableItemActionType`. Extract the item
+identifier from `userInfo` to navigate to the correct content.
+
+```swift
+import CoreSpotlight
+import UIKit
+
+// UIKit: In AppDelegate or SceneDelegate
+func application(
+    _ application: UIApplication,
+    continue userActivity: NSUserActivity,
+    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+) -> Bool {
+    if userActivity.activityType == CSSearchableItemActionType,
+       let identifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+        navigateToItem(withIdentifier: identifier)
+        return true
+    }
+    return false
+}
+
+// SwiftUI: Use onContinueUserActivity
+struct ContentView: View {
+    var body: some View {
+        NavigationStack {
+            RecipeListView()
+        }
+        .onContinueUserActivity(CSSearchableItemActionType) { activity in
+            if let id = activity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                navigateToRecipe(id: id)
+            }
+        }
+    }
+}
+```
+
+### Query Continuation
+
+When a user taps "Search in App" from Spotlight, handle the query string:
+
+```swift
+// activityType == CSQueryContinuationActionType
+.onContinueUserActivity(CSQueryContinuationActionType) { activity in
+    if let query = activity.userInfo?[CSSearchQueryString] as? String {
+        searchViewModel.searchText = query
     }
 }
 ```

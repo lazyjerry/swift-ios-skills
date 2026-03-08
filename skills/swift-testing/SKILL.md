@@ -14,15 +14,12 @@ Swift Testing is the modern testing framework for Swift (Xcode 16+, Swift 6+). P
 - [@Test Traits](#test-traits)
 - [#expect and #require](#expect-and-require)
 - [@Suite and Test Organization](#suite-and-test-organization)
-- [Parameterized Tests](#parameterized-tests)
-- [Confirmation (Async Event Testing)](#confirmation-async-event-testing)
-- [Tags](#tags)
 - [Known Issues](#known-issues)
-- [TestScoping (Custom Test Lifecycle)](#testscoping-custom-test-lifecycle)
-- [Mocking and Test Doubles](#mocking-and-test-doubles)
-- [Testable Architecture](#testable-architecture)
-- [Async and Concurrent Test Patterns](#async-and-concurrent-test-patterns)
-- [XCTest: UI Testing](#xctest-ui-testing)
+- [Additional Patterns](#additional-patterns)
+- [Parameterized Tests In Depth](#parameterized-tests-in-depth)
+- [Tags and Suites In Depth](#tags-and-suites-in-depth)
+- [Async Testing Patterns](#async-testing-patterns)
+- [Traits In Depth](#traits-in-depth)
 - [Common Mistakes](#common-mistakes)
 - [Test Attachments](#test-attachments)
 - [Exit Testing](#exit-testing)
@@ -94,55 +91,9 @@ let first = try #require(items.first)
 
 ## @Suite and Test Organization
 
-See `references/testing-patterns.md` for suite organization, parameterized tests, confirmation patterns, and known-issue handling.
-
-## Parameterized Tests
-
-Use `@Test(arguments:)` for parameterized cases. See `references/testing-patterns.md` for full examples.
-
-```swift
-@Test("Email validation", arguments: [
-    ("user@example.com", true),
-    ("user@", false),
-    ("@example.com", false),
-    ("", false),
-])
-func validateEmail(email: String, isValid: Bool) {
-    #expect(EmailValidator.isValid(email) == isValid)
-}
-
-// From CaseIterable
-@Test(arguments: Currency.allCases)
-func currencyHasSymbol(currency: Currency) {
-    #expect(currency.symbol.isEmpty == false)
-}
-
-// Two collections: cartesian product of all combinations
-@Test(arguments: [1, 2, 3], ["a", "b"])
-func combinations(number: Int, letter: String) {
-    #expect(number > 0)
-}
-
-// Use zip for 1:1 pairing instead of cartesian product
-@Test(arguments: zip(["USD", "EUR"], ["$", "€"]))
-func currencySymbols(code: String, symbol: String) {
-    #expect(Currency(code: code).symbol == symbol)
-}
-```
-
-Each argument combination runs as an independent test case reported separately.
-
-## Confirmation (Async Event Testing)
-
-Use `confirmation` for async event testing. See `references/testing-patterns.md` for full examples.
-
-## Tags
-
-Tags must be declared as static members in an extension on `Tag`. See `references/testing-patterns.md` for tag patterns.
+See `references/testing-patterns.md` for suite organization, confirmation patterns, and known-issue handling.
 
 ## Known Issues
-
-Use `withKnownIssue` to mark expected failures. See `references/testing-patterns.md` for full patterns.
 
 Mark expected failures so they do not cause test failure:
 
@@ -162,40 +113,306 @@ withKnownIssue {
 } when: {
     !hasPropane
 }
-
-// Match specific issues only
-try withKnownIssue {
-    let level = try #require(foodTruck.batteryLevel)
-    #expect(level >= 0.8)
-} matching: { issue in
-    guard case .expectationFailed(let expectation) = issue.kind else { return false }
-    return expectation.isRequired
-}
 ```
 
 If no known issues are recorded, Swift Testing records a distinct issue notifying you the problem may be resolved.
 
-## TestScoping (Custom Test Lifecycle)
+## Additional Patterns
 
-Use `TestScoping` to consolidate setup/teardown logic. See `references/testing-patterns.md` for full examples.
+See `references/testing-patterns.md` for complete examples of:
 
-## Mocking and Test Doubles
+- **TestScoping** -- custom test lifecycle with setup/teardown consolidation
+- **Mocking and Test Doubles** -- protocol-based doubles and testable architecture
+- **View Model Testing** -- environment injection and dependency isolation
+- **Async Patterns** -- clock injection and error path testing
+- **XCUITest** -- page objects, performance testing, snapshot testing, and test file organization
 
-See `references/testing-patterns.md` for mocking patterns, protocol-based doubles, and testable architecture examples.
+## Parameterized Tests In Depth
 
-## Testable Architecture
+### @Test with Arguments
 
-See `references/testing-patterns.md` for view model testing and environment injection examples.
+Pass any `Sendable` & `Collection` to `arguments:`. Each element runs as an independent test case.
 
-## Async and Concurrent Test Patterns
+```swift
+// Enum-based: runs one case per enum value
+enum Environment: String, CaseIterable, Sendable {
+    case development, staging, production
+}
 
-See `references/testing-patterns.md` for async test patterns, clock injection, and error path testing.
+@Test("Base URL is valid for all environments", arguments: Environment.allCases)
+func baseURLIsValid(env: Environment) throws {
+    let url = try #require(URL(string: Config.baseURL(for: env)))
+    #expect(url.scheme == "https")
+}
+```
 
-## XCTest: UI Testing
+### Ranges as Arguments
 
-Swift Testing does not support UI testing. Use XCTest with XCUITest for all UI tests. See `references/testing-patterns.md` for UI test and snapshot examples.
+```swift
+@Test("Fibonacci is positive for small inputs", arguments: 1...20)
+func fibonacciPositive(n: Int) {
+    #expect(fibonacci(n) > 0)
+}
+```
 
-See `references/testing-patterns.md` for page object, performance testing, snapshot testing, and test file organization patterns.
+### Multiple Parameter Sources
+
+Two argument collections produce a **cartesian product** (every combination):
+
+```swift
+@Test(arguments: ["light", "dark"], ["iPhone", "iPad"])
+func snapshotTest(colorScheme: String, device: String) {
+    // Runs 4 combinations: light+iPhone, light+iPad, dark+iPhone, dark+iPad
+    let config = SnapshotConfig(colorScheme: colorScheme, device: device)
+    #expect(config.isValid)
+}
+```
+
+Use `zip` for **1:1 pairing** (avoids cartesian product):
+
+```swift
+@Test(arguments: zip(
+    [200, 201, 204],
+    ["OK", "Created", "No Content"]
+))
+func httpStatusDescription(code: Int, expected: String) {
+    #expect(HTTPStatus(code).description == expected)
+}
+```
+
+### Custom Argument Generators
+
+Create a `CustomTestArgumentProviding` conformance or use computed static properties:
+
+```swift
+struct APIEndpoint: Sendable {
+    let path: String
+    let expectedStatus: Int
+
+    static let testCases: [APIEndpoint] = [
+        .init(path: "/users", expectedStatus: 200),
+        .init(path: "/missing", expectedStatus: 404),
+    ]
+}
+
+@Test("API returns expected status", arguments: APIEndpoint.testCases)
+func apiStatus(endpoint: APIEndpoint) async throws {
+    let response = try await client.get(endpoint.path)
+    #expect(response.statusCode == endpoint.expectedStatus)
+}
+```
+
+## Tags and Suites In Depth
+
+### Custom Tag Definitions
+
+Declare tags as static members on `Tag`:
+
+```swift
+extension Tag {
+    @Tag static var networking: Self
+    @Tag static var database: Self
+    @Tag static var slow: Self
+    @Tag static var critical: Self
+    @Tag static var smoke: Self
+}
+```
+
+### Filtering Tests by Tag
+
+Run tagged tests from Xcode Test Plans or the command line:
+
+```bash
+# Run only tests tagged .networking
+swift test --filter tag:networking
+
+# Exclude slow tests
+swift test --skip tag:slow
+```
+
+In Xcode, configure Test Plans to include/exclude tags for different CI configurations (smoke tests vs full suite).
+
+### @Suite for Grouping
+
+```swift
+@Suite("Shopping Cart Operations")
+struct ShoppingCartTests {
+    let cart: ShoppingCart
+
+    // init acts as setUp -- runs before each test in the suite
+    init() {
+        cart = ShoppingCart()
+        cart.add(Product(name: "Widget", price: 9.99))
+    }
+
+    @Test func itemCount() {
+        #expect(cart.items.count == 1)
+    }
+
+    @Test func totalPrice() {
+        #expect(cart.total == 9.99)
+    }
+}
+```
+
+### Suite-Level Setup and Teardown
+
+Use `init` for setup and `deinit` for teardown. For async cleanup, use a `TestScoping` trait:
+
+```swift
+@Suite(.tags(.database))
+struct DatabaseTests {
+    let db: TestDatabase
+
+    init() async throws {
+        db = try await TestDatabase.createTemporary()
+    }
+
+    // deinit works for synchronous cleanup (struct suites only use init)
+    // For async teardown, use TestScoping trait instead
+
+    @Test func insertRecord() async throws {
+        try await db.insert(Record(id: 1, name: "Test"))
+        let count = try await db.count()
+        #expect(count == 1)
+    }
+}
+```
+
+## Async Testing Patterns
+
+### Testing Async Functions
+
+`@Test` functions can be `async` and `throws` directly:
+
+```swift
+@Test func fetchUserProfile() async throws {
+    let service = UserService(client: MockHTTPClient())
+    let user = try await service.fetchProfile(id: 42)
+    #expect(user.name == "Alice")
+}
+```
+
+### Testing Actor-Isolated Code
+
+Access actor-isolated state with `await`:
+
+```swift
+actor Counter {
+    private(set) var value = 0
+    func increment() { value += 1 }
+}
+
+@Test func counterIncrements() async {
+    let counter = Counter()
+    await counter.increment()
+    await counter.increment()
+    let value = await counter.value
+    #expect(value == 2)
+}
+```
+
+### Timeout for Hanging Tests
+
+Use `.timeLimit` to prevent tests from hanging indefinitely:
+
+```swift
+@Test(.timeLimit(.seconds(5)))
+func networkCallCompletes() async throws {
+    let result = try await api.fetchData()
+    #expect(result.isEmpty == false)
+}
+```
+
+If the test exceeds the time limit, it fails immediately with a clear timeout diagnostic.
+
+### Confirmation (Replacing XCTestExpectation)
+
+`confirmation` replaces `XCTestExpectation` / `fulfill()` / `waitForExpectations`. It verifies that an event occurs the expected number of times:
+
+```swift
+@Test func notificationPosted() async throws {
+    // Expects the closure to call confirm() exactly once
+    try await confirmation("UserDidLogin posted") { confirm in
+        let center = NotificationCenter.default
+        let observer = center.addObserver(
+            forName: .userDidLogin, object: nil, queue: .main
+        ) { _ in
+            confirm()
+        }
+        await loginService.login(user: "test", password: "pass")
+        center.removeObserver(observer)
+    }
+}
+
+// Expect multiple confirmations
+@Test func batchProcessing() async throws {
+    try await confirmation("Items processed", expectedCount: 3) { confirm in
+        processor.onItemComplete = { _ in confirm() }
+        await processor.process(items: [a, b, c])
+    }
+}
+```
+
+## Traits In Depth
+
+### Conditional Traits
+
+```swift
+// Enable only on CI
+@Test(.enabled(if: ProcessInfo.processInfo.environment["CI"] != nil))
+func integrationTest() async throws { ... }
+
+// Disable with a reason
+@Test(.disabled("Blocked by #123 -- server migration"))
+func brokenEndpoint() async throws { ... }
+
+// Bug reference -- links test to an issue tracker
+@Test(.bug("https://github.com/org/repo/issues/42", "Intermittent timeout"))
+func flakyNetworkTest() async throws { ... }
+```
+
+### Time Limits
+
+```swift
+@Test(.timeLimit(.minutes(2)))
+func longRunningImport() async throws {
+    try await importer.importLargeDataset()
+}
+
+// Apply time limit to entire suite
+@Suite(.timeLimit(.seconds(30)))
+struct FastTests {
+    @Test func quick1() { ... }
+    @Test func quick2() { ... }
+}
+```
+
+### Custom Trait Definitions
+
+Create reusable traits for common test configurations:
+
+```swift
+struct DatabaseTrait: TestTrait, SuiteTrait, TestScoping {
+    func provideScope(
+        for test: Test,
+        testCase: Test.Case?,
+        performing function: @Sendable () async throws -> Void
+    ) async throws {
+        let db = try await TestDatabase.setUp()
+        defer { Task { await db.tearDown() } }
+        try await function()
+    }
+}
+
+extension Trait where Self == DatabaseTrait {
+    static var database: Self { .init() }
+}
+
+// Usage: any test with .database trait gets a fresh database
+@Test(.database)
+func insertUser() async throws { ... }
+```
 
 ## Common Mistakes
 

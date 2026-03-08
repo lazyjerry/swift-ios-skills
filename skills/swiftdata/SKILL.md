@@ -329,4 +329,6 @@ struct DetailView: View {
   model inheritance, undo/redo, and performance patterns.
 - See `references/swiftdata-queries.md` for @Query variants, FetchDescriptor
   deep dive, sectioned queries, dynamic queries, and background fetch patterns.
+- See `references/core-data-coexistence.md` for standalone Core Data patterns
+  and Core Data to SwiftData migration strategies.
 

@@ -20,6 +20,7 @@ behavior changes.
 - [Actor Reentrancy](#actor-reentrancy)
 - [AsyncSequence and AsyncStream](#asyncsequence-and-asyncstream)
 - [@Observable and Concurrency](#observable-and-concurrency)
+- [Synchronization Primitives](#synchronization-primitives)
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
 - [References](#references)
@@ -341,6 +342,23 @@ single-value callbacks. Resume exactly once.
 - Use `Observations { }` (SE-0475) for async observation of `@Observable`
   properties as an `AsyncSequence`.
 
+## Synchronization Primitives
+
+When actors are not the right fit — synchronous access, performance-critical
+paths, or bridging C/ObjC — use low-level synchronization primitives:
+
+- **`Mutex<Value>`** (iOS 18+, `Synchronization` module): Preferred lock for
+  new code. Stores protected state inside the lock. `withLock { }` pattern.
+- **`OSAllocatedUnfairLock`** (iOS 16+, `os` module): Use when targeting
+  older iOS versions. Supports ownership assertions for debugging.
+- **`Atomic<Value>`** (iOS 18+, `Synchronization` module): Lock-free atomics
+  for simple counters and flags. Requires explicit memory ordering.
+
+**Key rule:** Never put locks inside actors (double synchronization), and never
+hold a lock across `await` (deadlock risk). See
+`references/synchronization-primitives.md` for full API details, code examples,
+and a decision guide for choosing locks vs actors.
+
 ## Common Mistakes
 
 1. **Blocking the main actor.** Heavy computation on `@MainActor` freezes UI.
@@ -385,4 +403,6 @@ single-value callbacks. Resume exactly once.
   mode quick-reference guide.
 - See `references/swiftui-concurrency.md` for SwiftUI-specific concurrency
   guidance.
+- See `references/synchronization-primitives.md` for Mutex, OSAllocatedUnfairLock,
+  and guidance on choosing locks vs actors.
 
