@@ -57,6 +57,22 @@ Or install a themed bundle:
 /plugin install ios-platform-skills@swift-ios-skills
 ```
 
+### Claude Web App / Claude Desktop
+
+1. Download the skill folder(s) you want from this repo
+2. Zip each skill folder
+3. Go to **Settings > Capabilities** and enable "Code execution and file creation"
+4. Go to **Customize > Skills**, click **+**, then **Upload a skill**
+5. Upload the zip
+
+### ChatGPT
+
+1. Download the skill folder(s) you want from this repo
+2. Zip each skill folder
+3. Click your profile icon in ChatGPT and select **Skills**
+4. Click **New skill** and select **Upload from your computer**
+5. Upload the zip
+
 ### OpenAI Codex
 
 ```
