@@ -463,7 +463,10 @@ actor FoundationModelCoordinator {
         if session == nil {
             session = LanguageModelSession()
         }
-        let response = try await session!.respond(to: prompt)
+        guard let activeSession = session else {
+            throw FoundationModelError.sessionUnavailable
+        }
+        let response = try await activeSession.respond(to: prompt)
         return response.content
     }
 }

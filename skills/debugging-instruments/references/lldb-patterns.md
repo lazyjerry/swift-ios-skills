@@ -25,7 +25,7 @@ Complete LLDB command reference for iOS debugging. Companion to the main `debugg
 | `p expr` | LLDB formatter on expression result | Yes — runs code | Medium |
 | `v varname` | Reads frame memory directly | No | Fast |
 
-```
+```text
 (lldb) po myArray                      # Calls CustomDebugStringConvertible
 (lldb) p myArray                       # Shows type + formatted value
 (lldb) v myArray                       # Fastest, no code execution
@@ -38,7 +38,7 @@ or custom string output. Use `p` when you need type information.
 
 ### Register and Memory
 
-```
+```text
 (lldb) register read                   # All registers
 (lldb) register read x0 x1            # Specific registers (ARM64)
 (lldb) memory read 0x600003a04000      # Read raw memory
@@ -49,7 +49,7 @@ or custom string output. Use `p` when you need type information.
 
 ### File and Line
 
-```
+```text
 (lldb) br set -f ViewModel.swift -l 42
 (lldb) br set -f ViewModel.swift -l 42 -c "count > 10"
 (lldb) br set -f ViewModel.swift -l 42 --one-shot true   # Delete after first hit
@@ -57,7 +57,7 @@ or custom string output. Use `p` when you need type information.
 
 ### Function and Method Names
 
-```
+```text
 (lldb) br set -n viewDidLoad                     # Any function named viewDidLoad
 (lldb) br set -n "MyApp.ViewModel.loadData()"    # Fully qualified Swift name
 (lldb) br set -S "setValue:forKey:"              # ObjC selector
@@ -67,7 +67,7 @@ or custom string output. Use `p` when you need type information.
 
 ### Breakpoint Actions
 
-```
+```text
 (lldb) br set -n loadData
 (lldb) br command add 1
 > po "loadData called at \(Date())"
@@ -78,7 +78,7 @@ or custom string output. Use `p` when you need type information.
 
 ### Logpoints (Auto-Continue Breakpoints)
 
-```
+```text
 (lldb) br set -f File.swift -l 42
 (lldb) br modify 1 --auto-continue true
 (lldb) br command add 1
@@ -91,7 +91,7 @@ Equivalent to Xcode's "Log Message" breakpoint action with auto-continue.
 
 ### Listing and Managing
 
-```
+```text
 (lldb) br list                         # Show all breakpoints
 (lldb) br disable 1                    # Disable breakpoint 1
 (lldb) br enable 1                     # Re-enable
@@ -104,7 +104,7 @@ Equivalent to Xcode's "Log Message" breakpoint action with auto-continue.
 
 ### Swift Expressions
 
-```
+```text
 (lldb) expr myArray.count
 (lldb) expr myArray.filter { $0.isActive }.count
 (lldb) expr let result = myFunc(); print(result)
@@ -114,7 +114,7 @@ Equivalent to Xcode's "Log Message" breakpoint action with auto-continue.
 
 ### Objective-C Expressions (for UIKit internals)
 
-```
+```text
 (lldb) e -l objc -- (void)[CATransaction flush]
 (lldb) e -l objc -- (void)[[UIApplication sharedApplication] _performMemoryWarning]
 (lldb) e -l objc -- (BOOL)[(id)0x7fc... isKindOfClass:[UIView class]]
@@ -123,7 +123,7 @@ Equivalent to Xcode's "Log Message" breakpoint action with auto-continue.
 
 ### Modifying State at Runtime
 
-```
+```text
 (lldb) e self.debugLabel.text = "Modified in debugger"
 (lldb) e self.view.backgroundColor = UIColor.red
 (lldb) e -l objc -- (void)[CATransaction flush]   # Force redraw
@@ -131,7 +131,7 @@ Equivalent to Xcode's "Log Message" breakpoint action with auto-continue.
 
 ### Calling Functions
 
-```
+```text
 (lldb) e self.viewModel.reset()
 (lldb) e UserDefaults.standard.set(true, forKey: "debug_mode")
 (lldb) e NotificationCenter.default.post(name: .init("DebugReload"), object: nil)
@@ -139,7 +139,7 @@ Equivalent to Xcode's "Log Message" breakpoint action with auto-continue.
 
 ## Watchpoints
 
-```
+```text
 (lldb) w set v self.score                          # Watch for writes
 (lldb) w set v self.score -w read                 # Watch for reads
 (lldb) w set v self.score -w read_write           # Watch both
@@ -154,7 +154,7 @@ sparingly for tracking unexpected mutations.
 
 ## Thread and Stack Navigation
 
-```
+```text
 (lldb) thread list                                 # All threads with status
 (lldb) thread select 3                             # Switch to thread 3
 (lldb) bt                                          # Backtrace current thread
@@ -169,7 +169,7 @@ sparingly for tracking unexpected mutations.
 
 ### Thread Return (skip execution)
 
-```
+```text
 (lldb) thread return                               # Return from current frame
 (lldb) thread return false                         # Return false from a Bool func
 ```
@@ -179,7 +179,7 @@ Useful for bypassing a crash or testing a different code path.
 
 ## Memory Inspection
 
-```
+```text
 (lldb) memory read 0x600003a04000                  # Default format
 (lldb) memory read -s4 -fx -c8 addr               # 8 x 4-byte hex words
 (lldb) memory read -f s addr                       # Read as C string
@@ -191,7 +191,7 @@ Useful for bypassing a crash or testing a different code path.
 
 ### Swift Metadata Inspection
 
-```
+```text
 (lldb) e -l swift -- print(type(of: myObject))
 (lldb) e -l swift -- dump(myObject)                # Full mirror dump
 (lldb) e -l swift -- Mirror(reflecting: myObject).children.map { $0.label }
@@ -201,7 +201,7 @@ Useful for bypassing a crash or testing a different code path.
 
 Add type summaries to `.lldbinit` for cleaner debugger output:
 
-```
+```text
 # ~/.lldbinit
 
 # Show CLLocationCoordinate2D as "lat, lon"
@@ -221,7 +221,7 @@ type summary add MyApp.UserProfile \
 
 ### Inline Python
 
-```
+```text
 (lldb) script import os
 (lldb) script print(os.getpid())
 (lldb) script lldb.debugger.GetSelectedTarget().GetProcess().GetNumThreads()
@@ -253,13 +253,13 @@ def __lldb_init_module(debugger, internal_dict):
 
 Load in `.lldbinit`:
 
-```
+```text
 command script import ~/lldb_commands/dump_views.py
 ```
 
 Then use in LLDB:
 
-```
+```text
 (lldb) dump_views
 ```
 
@@ -281,7 +281,7 @@ Set these in Xcode's Breakpoint Navigator for common debugging scenarios:
 
 Place commonly used configuration in `~/.lldbinit`:
 
-```
+```text
 # Custom aliases
 command alias -- pp e -l swift -- import Foundation
 command alias -- pjson e -l swift -- print(String(data: try! JSONSerialization.data(withJSONObject: %1, options: .prettyPrinted), encoding: .utf8)!)

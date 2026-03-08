@@ -35,7 +35,7 @@ Current version: 9.0 (November 2025). Requires Python 3.10-3.13.
 
 ## Architecture Overview
 
-```
+```text
 Your App (SwiftUI / UIKit)
   |-- Vision, Natural Language, SoundAnalysis, Foundation Models
   |-- Core ML (model loading, prediction, compilation)

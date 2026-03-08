@@ -1,6 +1,6 @@
 ---
 name: tipkit
-description: "Implement, review, or improve in-app tips and onboarding using Apple's TipKit framework. Use when adding feature discovery tooltips, onboarding flows, contextual tips, first-run experiences, or coach marks to iOS/macOS/visionOS apps. Trigger when working with Tip protocol, TipView, popoverTip, tip rules, tip events, or feature education UI."
+description: "Implement, review, or improve in-app tips and onboarding using Apple's TipKit framework. Use when adding feature discovery tooltips, onboarding flows, contextual tips, first-run experiences, coach marks, or working with Tip protocol, TipView, popoverTip, tip rules, tip events, or feature education UI."
 ---
 
 # TipKit
@@ -292,7 +292,9 @@ struct OnboardingView: View {
 
     var body: some View {
         VStack {
-            TipView(tipGroup.currentTip!)
+            if let currentTip = tipGroup.currentTip {
+                TipView(currentTip)
+            }
 
             Button("Next") {
                 tipGroup.currentTip?.invalidate(reason: .actionPerformed)
@@ -401,7 +403,9 @@ VStack {
 
 // CORRECT: Use TipGroup to sequence them
 let group = TipGroup(.ordered) { TipA(); TipB(); TipC() }
-TipView(group.currentTip!)
+if let currentTip = group.currentTip {
+    TipView(currentTip)
+}
 ```
 
 ### DON'T: Forget to invalidate tips after the user performs the action

@@ -712,7 +712,7 @@ App Group container.
 
 ### Common Xcode Issues
 
-```
+```text
 // ERROR: "Widget extension must include at least one widget"
 // FIX: Ensure @main is on the WidgetBundle, not a widget struct.
 

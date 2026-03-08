@@ -20,7 +20,7 @@ description: "Debug iOS apps and profile performance using LLDB, Memory Graph De
 
 ### Essential Commands
 
-```
+```text
 (lldb) po myObject              # Print object description (calls debugDescription)
 (lldb) p myInt                  # Print with type info (uses LLDB formatter)
 (lldb) v myLocal                # Frame variable — fast, no code execution
@@ -36,7 +36,7 @@ execute code and cannot trigger side effects.
 
 ### Breakpoint Management
 
-```
+```text
 (lldb) br set -f ViewModel.swift -l 42          # Break at file:line
 (lldb) br set -n viewDidLoad                     # Break on function name
 (lldb) br set -S setValue:forKey:                 # Break on ObjC selector
@@ -52,7 +52,7 @@ execute code and cannot trigger side effects.
 
 ### Expression Evaluation
 
-```
+```text
 (lldb) expr myArray.count                        # Evaluate Swift expression
 (lldb) e -l swift -- import UIKit                # Import framework in LLDB
 (lldb) e -l swift -- self.view.backgroundColor = .red  # Modify state at runtime
@@ -64,7 +64,7 @@ to see the change immediately without resuming execution.
 
 ### Watchpoints
 
-```
+```text
 (lldb) w set v self.score                        # Break when score changes
 (lldb) w set v self.score -w read               # Break when score is read
 (lldb) w modify 1 -c "self.score > 100"         # Conditional watchpoint
@@ -81,7 +81,7 @@ the value.
 Set breakpoints on methods without knowing the file. Useful for framework
 or system code:
 
-```
+```text
 (lldb) br set -n "UIViewController.viewDidLoad"
 (lldb) br set -r ".*networkError.*"              # Regex on symbol name
 (lldb) br set -n malloc_error_break              # Catch malloc corruption
@@ -236,7 +236,7 @@ func loadData() async {
 
 ### SPM Dependency Resolution
 
-```
+```text
 # Common: version conflict
 error: Dependencies could not be resolved because root depends on 'Package' 1.0.0..<2.0.0
 
@@ -330,7 +330,7 @@ Without Malloc Stack Logging, the Memory Graph Debugger shows leaked
 objects but cannot display allocation backtraces, making it difficult to
 find the code that created them.
 
-```
+```swift
 // WRONG — open Memory Graph without enabling Malloc Stack Logging
 // Result: leaked objects visible but no allocation backtrace
 
@@ -344,7 +344,7 @@ find the code that created them.
 In Release (optimized) builds, the compiler may inline functions, eliminate
 variables, and reorder code. LLDB cannot display optimized-away values.
 
-```
+```swift
 // WRONG — profiling with Debug build, debugging with Release build
 // Debug builds: extra runtime checks distort perf measurements
 // Release builds: variables show as "<optimized out>" in debugger
@@ -359,7 +359,7 @@ variables, and reorder code. LLDB cannot display optimized-away values.
 Breaking on every iteration wastes time and makes it hard to find the
 specific case you care about.
 
-```
+```swift
 // WRONG — breakpoint on line inside loop, stops 10,000 times
 for item in items {
     process(item)  // breakpoint here stops on EVERY item

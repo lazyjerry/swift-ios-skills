@@ -284,7 +284,7 @@ final class MetricsCollector: Sendable {
 
 ### Decision Guide
 
-```
+```text
 Need shared mutable state protection?
 ├── Can all access be async?
 │   ├── Yes → Use an actor

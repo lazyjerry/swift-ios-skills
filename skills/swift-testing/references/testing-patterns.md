@@ -464,7 +464,7 @@ Exit testing runs the closure in a subprocess. The test passes if the process ex
 
 ## Test File Organization
 
-```
+```text
 Tests/AppTests/          # Swift Testing (Models/, ViewModels/, Services/)
 Tests/AppUITests/        # XCTest UI tests (Pages/, Flows/)
 Tests/Fixtures/          # Test data (JSON, images)

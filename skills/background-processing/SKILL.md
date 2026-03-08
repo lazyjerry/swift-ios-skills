@@ -327,7 +327,7 @@ func application(
 
 // In URLSessionDelegate — call stored handler when events finish:
 func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-    DispatchQueue.main.async {
+    Task { @MainActor in
         self.backgroundSessionCompletionHandler?()
         self.backgroundSessionCompletionHandler = nil
     }

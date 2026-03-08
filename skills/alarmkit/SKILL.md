@@ -138,7 +138,7 @@ let alarm = try await AlarmManager.shared.schedule(
 
 ### Alarm State Transitions
 
-```
+```text
 cancel(id:)
     |
 scheduled --> countdown --> alerting

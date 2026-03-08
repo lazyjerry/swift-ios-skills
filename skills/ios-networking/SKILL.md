@@ -147,14 +147,20 @@ struct Endpoint: Sendable {
     var headers: [String: String] = [:]
 
     func url(relativeTo baseURL: URL) -> URL {
-        var components = URLComponents(
+        guard let components = URLComponents(
             url: baseURL.appendingPathComponent(path),
             resolvingAgainstBaseURL: true
-        )!
-        if !queryItems.isEmpty {
-            components.queryItems = queryItems
+        ) else {
+            preconditionFailure("Invalid URL components for path: \(path)")
         }
-        return components.url!
+        var mutableComponents = components
+        if !queryItems.isEmpty {
+            mutableComponents.queryItems = queryItems
+        }
+        guard let url = mutableComponents.url else {
+            preconditionFailure("Failed to construct URL from components")
+        }
+        return url
     }
 }
 ```

@@ -1,6 +1,6 @@
 ---
 name: swiftui-performance
-description: Audit and improve SwiftUI runtime performance. Use for slow rendering, janky scrolling, high CPU, memory usage, excessive view updates, layout thrash, body evaluation cost, identity churn, view lifetime issues, lazy loading, Instruments profiling guidance, and performance audit requests.
+description: "Audit and improve SwiftUI runtime performance. Use when diagnosing slow rendering, janky scrolling, high CPU, memory usage, excessive view updates, layout thrash, body evaluation cost, identity churn, view lifetime issues, lazy loading, Instruments profiling guidance, and performance audit requests."
 ---
 
 # SwiftUI Performance

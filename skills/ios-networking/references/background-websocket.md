@@ -801,9 +801,14 @@ func authenticatedWebSocket(
     token: String
 ) -> URLSessionWebSocketTask {
     // Option 1: Token as query parameter
-    var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)!
+    guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+        preconditionFailure("Invalid URL components for: \(baseURL)")
+    }
     components.queryItems = [URLQueryItem(name: "token", value: token)]
-    let task = URLSession.shared.webSocketTask(with: components.url!)
+    guard let authenticatedURL = components.url else {
+        preconditionFailure("Failed to construct URL from components")
+    }
+    let task = URLSession.shared.webSocketTask(with: authenticatedURL)
 
     // Option 2: Token as custom header (use URLRequest)
     var request = URLRequest(url: baseURL)

@@ -1,6 +1,6 @@
 ---
 name: swift-testing
-description: "Swift Testing framework guide for writing tests with @Test, @Suite, #expect, #require, confirmation, parameterized tests, test tags, traits, withKnownIssue, XCTest UI testing, XCUITest, test plan, mocking, test doubles, testable architecture, snapshot testing, async test patterns, test organization, and test-driven development in Swift. Use when writing or migrating tests with Swift Testing framework, implementing parameterized tests, working with test traits, converting XCTest to Swift Testing, or setting up test organization and mocking patterns."
+description: "Write and migrate tests using the Swift Testing framework with @Test, @Suite, #expect, #require, confirmation, parameterized tests, test tags, traits, withKnownIssue, XCTest UI testing, XCUITest, test plan, mocking, test doubles, testable architecture, snapshot testing, async test patterns, test organization, and test-driven development in Swift. Use when writing or migrating tests with Swift Testing framework, implementing parameterized tests, working with test traits, converting XCTest to Swift Testing, or setting up test organization and mocking patterns."
 ---
 
 # Swift Testing
@@ -9,7 +9,6 @@ Swift Testing is the modern testing framework for Swift (Xcode 16+, Swift 6+). P
 
 ## Contents
 
-- [References](#references)
 - [Basic Tests](#basic-tests)
 - [@Test Traits](#test-traits)
 - [#expect and #require](#expect-and-require)
@@ -25,10 +24,7 @@ Swift Testing is the modern testing framework for Swift (Xcode 16+, Swift 6+). P
 - [Exit Testing](#exit-testing)
 - [Review Checklist](#review-checklist)
 - [MCP Integration](#mcp-integration)
-
-## References
-
-- Testing patterns: `references/testing-patterns.md`
+- [References](#references)
 
 ---
 
@@ -465,3 +461,7 @@ Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See `
 ## MCP Integration
 
 - **xcodebuildmcp**: Build and run tests directly — full suites, individual functions, tag-filtered runs.
+
+## References
+
+- Testing patterns: `references/testing-patterns.md`

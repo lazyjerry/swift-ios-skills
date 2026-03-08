@@ -251,20 +251,21 @@ when you need `.always` authorization or full accuracy.
 // NSLocationAlwaysAndWhenInUseUsageDescription (only if .always needed)
 
 // Check authorization and guide user to Settings when denied
-func checkAuthorization() {
-    let manager = CLLocationManager()
-    switch manager.authorizationStatus {
-    case .notDetermined:
-        manager.requestWhenInUseAuthorization()
-    case .denied, .restricted:
-        // Show alert with Settings deep link
-        if let url = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(url)
+struct LocationPermissionView: View {
+    @Environment(\.openURL) private var openURL
+
+    var body: some View {
+        ContentUnavailableView {
+            Label("Location Access Denied", systemImage: "location.slash")
+        } description: {
+            Text("Enable location access in Settings to use this feature.")
+        } actions: {
+            Button("Open Settings") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    openURL(url)
+                }
+            }
         }
-    case .authorizedWhenInUse, .authorizedAlways:
-        break // Ready to use
-    @unknown default:
-        break
     }
 }
 ```

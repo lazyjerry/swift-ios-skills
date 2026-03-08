@@ -58,7 +58,7 @@ extension View {
 
 - Keep URL parsing and decision logic inside the router.
 - Avoid handling deep links in multiple places; one entry point is enough.
-- Always provide a fallback to `OpenURLAction` or `UIApplication.shared.open`.
+- Always provide a fallback to `@Environment(\.openURL)` via `OpenURLAction`.
 
 ## Pitfalls
 
@@ -98,7 +98,7 @@ Key rules:
 
 In your app's `.entitlements` file (or Signing & Capabilities in Xcode), add:
 
-```
+```text
 com.apple.developer.associated-domains = [
     "applinks:example.com",
     "applinks:www.example.com"

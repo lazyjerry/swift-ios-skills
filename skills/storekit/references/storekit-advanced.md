@@ -266,8 +266,9 @@ let signature = Product.SubscriptionOffer.Signature(
 )
 
 // 2. Purchase with the offer
+guard let offerID = offer.id else { throw StoreError.invalidOffer }
 let result = try await product.purchase(options: [
-    .promotionalOffer(offerID: offer.id!, signature: signature)
+    .promotionalOffer(offerID: offerID, signature: signature)
 ])
 ```
 

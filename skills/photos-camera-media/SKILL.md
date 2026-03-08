@@ -218,6 +218,7 @@ When the user denies access, guide them to Settings. Never repeatedly prompt or 
 ```swift
 struct PermissionDeniedView: View {
     let message: String
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         ContentUnavailableView {
@@ -227,7 +228,7 @@ struct PermissionDeniedView: View {
         } actions: {
             Button("Open Settings") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(url)
+                    openURL(url)
                 }
             }
         }
@@ -490,12 +491,11 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 - [ ] Camera session started on background thread; stopped in `onDisappear`
 - [ ] Permission denial handled with Settings deep link
 - [ ] `AVCaptureSession` owned by model, not created inside `UIViewRepresentable`
-- [ ] `NSMicrophoneUsageDescription` included if recording video with audio
 - [ ] Media asset types and picker results are `Sendable` when passed across concurrency boundaries
 
 ## References
 
 - `references/photospicker-patterns.md` — Picker patterns, media loading, HEIC handling
-- `references/camera-capture.md` — AVCaptureSession setup, photo/video capture, QR scanning
-- `references/image-loading-caching.md` — AsyncImage, caching, downsampling, prefetching
-- `references/av-playback.md` — AVPlayer, streaming, audio session, background audio, Now Playing
+- `references/camera-capture.md` — AVCaptureSession, photo/video capture, QR scanning
+- `references/image-loading-caching.md` — AsyncImage, caching, downsampling
+- `references/av-playback.md` — AVPlayer, streaming, audio session, background audio

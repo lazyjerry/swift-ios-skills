@@ -759,8 +759,12 @@ struct MyApp: App {
     let container: ModelContainer
 
     init() {
-        container = try! ModelContainer(for: Trip.self)
-        container.mainContext.undoManager = UndoManager()
+        do {
+            container = try ModelContainer(for: Trip.self)
+            container.mainContext.undoManager = UndoManager()
+        } catch {
+            fatalError("Failed to create ModelContainer: \(error)")
+        }
     }
 
     var body: some Scene {

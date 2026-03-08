@@ -9,7 +9,6 @@ Every user-facing view must be usable with VoiceOver, Switch Control, Voice Cont
 
 ## Contents
 
-- [References](#references)
 - [Core Principles](#core-principles)
 - [How VoiceOver Reads Elements](#how-voiceover-reads-elements)
 - [SwiftUI Accessibility Modifiers](#swiftui-accessibility-modifiers)
@@ -24,10 +23,7 @@ Every user-facing view must be usable with VoiceOver, Switch Control, Voice Cont
 - [Testing Accessibility](#testing-accessibility)
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
-
-## References
-
-- Detailed patterns: `references/a11y-patterns.md`
+- [References](#references)
 
 ---
 
@@ -298,4 +294,8 @@ For every user-facing view, verify:
 - [ ] Icon-only buttons have labels
 - [ ] Heading traits set on section headers
 - [ ] Custom accessibility types and notification payloads are `Sendable` when passed across concurrency boundaries
+
+## References
+
+- Detailed patterns: `references/a11y-patterns.md`
 

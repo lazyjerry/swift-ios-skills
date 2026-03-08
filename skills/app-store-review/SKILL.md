@@ -1,6 +1,6 @@
 ---
 name: app-store-review
-description: "App Store review preparation and rejection prevention. Covers App Store review guidelines, app rejection reasons, PrivacyInfo.xcprivacy privacy manifest requirements, required API reason codes, in-app purchase IAP and StoreKit rules, App Store Guidelines compliance, ATT App Tracking Transparency, EU DMA Digital Markets Act, HIG compliance checklist, app submission preparation, review preparation, metadata requirements, entitlements, widgets, and Live Activities review rules. Use when preparing for App Store submission, fixing rejection reasons, auditing privacy manifests, implementing ATT consent flow, configuring StoreKit IAP, or checking HIG compliance."
+description: "Prepare for App Store review and prevent rejections. Covers App Store review guidelines, app rejection reasons, PrivacyInfo.xcprivacy privacy manifest requirements, required API reason codes, in-app purchase IAP and StoreKit rules, App Store Guidelines compliance, ATT App Tracking Transparency, EU DMA Digital Markets Act, HIG compliance checklist, app submission preparation, review preparation, metadata requirements, entitlements, widgets, and Live Activities review rules. Use when preparing for App Store submission, fixing rejection reasons, auditing privacy manifests, implementing ATT consent flow, configuring StoreKit IAP, or checking HIG compliance."
 ---
 
 # App Store Review Preparation
@@ -195,9 +195,8 @@ Every entitlement must be justified. Apple reviews these closely:
 
 Usage descriptions in Info.plist must be specific about what data is accessed and why:
 
-```
+```xml
 // REJECTED -- too vague
-"This app needs your location."
 
 // APPROVED -- specific purpose
 "Your location is used to show nearby restaurants on the map."

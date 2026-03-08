@@ -80,14 +80,18 @@ try await center.requestAuthorization(
 When the user has denied notifications, guide them to Settings. Do not repeatedly prompt or nag.
 
 ```swift
-@MainActor
-func openNotificationSettings() {
-    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-    UIApplication.shared.open(url)
+struct NotificationSettingsButton: View {
+    @Environment(\.openURL) private var openURL
+
+    var body: some View {
+        Button("Open Settings") {
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                openURL(url)
+            }
+        }
+    }
 }
 
-// Usage: show a button/banner explaining why notifications matter,
-// then call openNotificationSettings() on tap.
 ```
 
 ## APNs Registration
@@ -490,11 +494,8 @@ let category = UNNotificationCategory(
 - [ ] `UNUserNotificationCenterDelegate` set in `App.init` or `application(_:didFinishLaunching:)`
 - [ ] Foreground (`willPresent`) and tap (`didReceive`) handling implemented
 - [ ] Categories/actions registered at launch if interactive notifications needed
-- [ ] Badge count managed; notification grouping with `threadIdentifier` configured
 - [ ] Silent push configured (Background Modes enabled); `UIApplicationDelegateAdaptor` for APNs
-- [ ] Sensitive data not in payload directly (uses service extension)
 
 ## References
-
-- `references/notification-patterns.md` — AppDelegate setup, APNs success/failure callbacks, simulator behavior, deep-link router, silent push, token refresh, debugging
-- `references/rich-notifications.md` — Service Extension (media, decryption), Content Extension (custom UI), attachments, communication notifications
+- `references/notification-patterns.md` — AppDelegate setup, APNs callbacks, deep-link router, silent push, debugging
+- `references/rich-notifications.md` — Service Extension, Content Extension, attachments, communication notifications

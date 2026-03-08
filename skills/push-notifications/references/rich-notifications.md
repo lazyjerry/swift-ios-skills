@@ -303,7 +303,8 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
             // Update UI to show "liked" state
             animateLikeConfirmation()
             // Dismiss after a short delay
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            Task {
+                try? await Task.sleep(for: .seconds(0.5))
                 completion(.dismiss)
             }
 
@@ -311,7 +312,8 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
             if let textResponse = response as? UNTextInputNotificationResponse {
                 // Handle reply inline without opening the app
                 showReplySentConfirmation(text: textResponse.userText)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                Task {
+                    try? await Task.sleep(for: .seconds(1.0))
                     completion(.dismiss)
                 }
             }

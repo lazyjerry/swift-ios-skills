@@ -92,7 +92,7 @@ Open the `.xcstrings` file in Xcode to use the visual editor:
 
 Use structured key names for large projects:
 
-```
+```text
 onboarding.welcome.title        -> "Welcome"
 onboarding.welcome.subtitle     -> "Get started in minutes"
 settings.notifications.toggle   -> "Enable Notifications"
@@ -184,7 +184,7 @@ Each Swift package target that contains user-facing strings needs its own String
 ```
 
 ### Directory structure
-```
+```text
 Sources/
   SharedUI/
     Resources/
@@ -219,13 +219,13 @@ public struct SaveButton: View {
 5. Fill in plural forms for each language
 
 ### English plural forms
-```
+```text
 one:   "%lld item in your cart"
 other: "%lld items in your cart"
 ```
 
 ### Arabic plural forms (all six categories)
-```
+```text
 zero:  "لا توجد عناصر في سلتك"
 one:   "عنصر واحد في سلتك"
 two:   "عنصران في سلتك"

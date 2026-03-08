@@ -11,19 +11,19 @@ SwiftUI integration patterns.
 Use the LLDB console to trigger tasks instantly during development. The app must
 be running in the debugger with a breakpoint hit or paused.
 
-```
+```swift
 e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.example.app.refresh"]
 ```
 
 For processing tasks:
 
-```
+```swift
 e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateLaunchForTaskWithIdentifier:@"com.example.app.db-cleanup"]
 ```
 
 To simulate early termination (expiration):
 
-```
+```swift
 e -l objc -- (void)[[BGTaskScheduler sharedScheduler] _simulateExpirationForTaskWithIdentifier:@"com.example.app.refresh"]
 ```
 
@@ -179,7 +179,7 @@ func application(
 
 // In your URLSessionDelegate
 func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-    DispatchQueue.main.async {
+    Task { @MainActor in
         self.completionHandler?()
         self.completionHandler = nil
     }

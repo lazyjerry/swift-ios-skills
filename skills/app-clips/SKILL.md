@@ -115,7 +115,7 @@ Configure experiences in **App Store Connect** after uploading a build containin
 
 For custom URLs (not the default Apple-generated link), add entries to the Associated Domains entitlement and host an AASA file:
 
-```
+```text
 appclips:example.com
 ```
 
