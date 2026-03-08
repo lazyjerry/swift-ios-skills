@@ -71,7 +71,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         let authCode = credential.authorizationCode  // Short-lived code for server exchange
 
         // Save userID to Keychain for credential state checks
-        // See ../ios-security/SKILL.md for Keychain patterns
+        // See references/keychain-biometric.md for Keychain patterns
         saveUserID(userID)
 
         // Send identityToken and authCode to your server
@@ -210,7 +210,7 @@ func sendTokenToServer(credential: ASAuthorizationAppleIDCredential) async throw
         throw AuthError.serverValidationFailed
     }
     let session = try JSONDecoder().decode(SessionResponse.self, from: data)
-    // Store session token in Keychain -- see ../ios-security/SKILL.md
+    // Store session token in Keychain -- see references/keychain-biometric.md
     try KeychainHelper.save(session.accessToken, forKey: "accessToken")
 }
 ```
@@ -349,7 +349,7 @@ passwordField.textContentType = .password
 ## Biometric Authentication
 
 Use `LAContext` from LocalAuthentication for Face ID / Touch ID. See
-`../ios-security/SKILL.md` for full biometric patterns, Keychain +
+`references/keychain-biometric.md` for full biometric patterns, Keychain +
 biometric integration, and `SecAccessControl` flags.
 
 ```swift
@@ -462,7 +462,7 @@ controller.performRequests()
 UserDefaults.standard.set(tokenString, forKey: "identityToken")
 
 // DO: Store in Keychain
-// See ../ios-security/SKILL.md for Keychain patterns
+// See references/keychain-biometric.md for Keychain patterns
 try KeychainHelper.save(tokenData, forKey: "identityToken")
 ```
 
@@ -484,7 +484,7 @@ try KeychainHelper.save(tokenData, forKey: "identityToken")
 
 ## References
 
-- Keychain & biometric patterns: `../ios-security/SKILL.md`
+- Keychain & biometric patterns: `references/keychain-biometric.md`
 - [AuthenticationServices](https://sosumi.ai/documentation/authenticationservices)
 - [ASAuthorizationAppleIDProvider](https://sosumi.ai/documentation/authenticationservices/asauthorizationappleidprovider)
 - [ASAuthorizationAppleIDCredential](https://sosumi.ai/documentation/authenticationservices/asauthorizationappleidcredential)

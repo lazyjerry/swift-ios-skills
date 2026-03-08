@@ -1,6 +1,14 @@
+---
+name: device-integrity
+description: "Verify device legitimacy and app integrity using DeviceCheck (DCDevice per-device bits) and App Attest (DCAppAttestService key generation, attestation, and assertion flows). Use when implementing fraud prevention, detecting compromised devices, validating app authenticity with Apple's servers, protecting sensitive API endpoints with attested requests, or adding device verification to your backend architecture."
+---
+
 # Device Integrity
 
-DeviceCheck and App Attest patterns for verifying device legitimacy and app integrity. Overflow reference for the `ios-security` skill.
+Verify that requests to your server come from a genuine Apple device running
+your unmodified app. DeviceCheck provides per-device bits for simple flags
+(e.g., "claimed promo offer"). App Attest uses Secure Enclave keys and Apple
+attestation to cryptographically prove app legitimacy on each request.
 
 ## Contents
 
@@ -12,10 +20,15 @@ DeviceCheck and App Attest patterns for verifying device legitimacy and app inte
 - [Server Verification Guidance](#server-verification-guidance)
 - [Error Handling](#error-handling)
 - [Common Patterns](#common-patterns)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
 
 ## DCDevice (DeviceCheck Tokens)
 
-[`DCDevice`](https://sosumi.ai/documentation/devicecheck/dcdevice) generates a unique, ephemeral token that identifies a device. The token is sent to your server, which then communicates with Apple's servers to read or set two per-device bits. Available on iOS 11+.
+[`DCDevice`](https://sosumi.ai/documentation/devicecheck/dcdevice) generates a
+unique, ephemeral token that identifies a device. The token is sent to your
+server, which then communicates with Apple's servers to read or set two
+per-device bits. Available on iOS 11+.
 
 ### Token Generation
 
@@ -60,22 +73,26 @@ Your server uses the device token to call Apple's DeviceCheck API endpoints:
 | `https://api.devicecheck.apple.com/v1/update_two_bits` | Set the two bits for a device |
 | `https://api.devicecheck.apple.com/v1/validate_device_token` | Validate a device token without reading bits |
 
-The server authenticates with a DeviceCheck private key from the Apple Developer portal, creating a signed JWT for each request.
+The server authenticates with a DeviceCheck private key from the Apple Developer
+portal, creating a signed JWT for each request.
 
 ### What the Two Bits Are For
 
-Apple stores two Boolean values per device per developer team. You decide what they mean. Common uses:
+Apple stores two Boolean values per device per developer team. You decide what
+they mean. Common uses:
 
 - **Bit 0:** Device has claimed a promotional offer.
 - **Bit 1:** Device has been flagged for fraud.
 
-Bits persist across app reinstall, device reset does not clear them. You control when to reset them via the server API.
-
-> **Docs:** [DCDevice](https://sosumi.ai/documentation/devicecheck/dcdevice) | [Accessing and modifying per-device data](https://sosumi.ai/documentation/devicecheck/accessing-and-modifying-per-device-data)
+Bits persist across app reinstall; device reset does not clear them. You control
+when to reset them via the server API.
 
 ## DCAppAttestService (App Attest)
 
-[`DCAppAttestService`](https://sosumi.ai/documentation/devicecheck/dcappattestservice) validates that a specific instance of your app on a specific device is legitimate. It uses a hardware-backed key in the Secure Enclave to create cryptographic attestations and assertions. Available on iOS 14+.
+[`DCAppAttestService`](https://sosumi.ai/documentation/devicecheck/dcappattestservice)
+validates that a specific instance of your app on a specific device is
+legitimate. It uses a hardware-backed key in the Secure Enclave to create
+cryptographic attestations and assertions. Available on iOS 14+.
 
 The flow has three phases:
 1. **Key generation** -- create a key pair in the Secure Enclave.
@@ -98,7 +115,9 @@ guard attestService.isSupported else {
 
 ## App Attest Key Generation
 
-Generate a cryptographic key pair stored in the Secure Enclave. The returned `keyId` is a string identifier you persist (e.g., in Keychain) for later attestation and assertion calls.
+Generate a cryptographic key pair stored in the Secure Enclave. The returned
+`keyId` is a string identifier you persist (e.g., in Keychain) for later
+attestation and assertion calls.
 
 ```swift
 import DeviceCheck
@@ -151,11 +170,14 @@ actor AppAttestManager {
 }
 ```
 
-**Important:** Generate the key once and persist the `keyId`. Generating a new key invalidates any previous attestation.
+**Important:** Generate the key once and persist the `keyId`. Generating a new
+key invalidates any previous attestation.
 
 ## App Attest Attestation Flow
 
-Attestation proves that the key was generated on a genuine Apple device running your unmodified app. You perform attestation once per key, then store the attestation object on your server.
+Attestation proves that the key was generated on a genuine Apple device running
+your unmodified app. You perform attestation once per key, then store the
+attestation object on your server.
 
 ### Client-Side Attestation
 
@@ -232,7 +254,8 @@ See [Validating apps that connect to your server](https://sosumi.ai/documentatio
 
 ## App Attest Assertion Flow
 
-After attestation, use assertions to sign individual requests. Each assertion proves the request came from the attested app instance.
+After attestation, use assertions to sign individual requests. Each assertion
+proves the request came from the attested app instance.
 
 ### Client-Side Assertion
 
@@ -288,8 +311,6 @@ Your server must:
 3. Verify the signature using the stored public key from attestation.
 4. Confirm the `clientDataHash` matches the SHA-256 of the received request body.
 5. Update the stored counter to prevent replay attacks.
-
-> **Docs:** [Establishing your app's integrity](https://sosumi.ai/documentation/devicecheck/establishing-your-app-s-integrity) | [Validating apps that connect to your server](https://sosumi.ai/documentation/devicecheck/validating-apps-that-connect-to-your-server)
 
 ## Server Verification Guidance
 
@@ -370,7 +391,9 @@ extension AppAttestManager {
 
 ### Handling Invalidated Keys
 
-If `attestKey` returns `DCError.invalidKey`, the Secure Enclave key has been invalidated (e.g., OS update, Secure Enclave reset). Delete the stored `keyId` from Keychain and generate a new key:
+If `attestKey` returns `DCError.invalidKey`, the Secure Enclave key has been
+invalidated (e.g., OS update, Secure Enclave reset). Delete the stored `keyId`
+from Keychain and generate a new key:
 
 ```swift
 extension AppAttestManager {
@@ -446,7 +469,8 @@ actor DeviceIntegrityManager {
 
 ### Gradual Rollout
 
-Apple recommends a gradual rollout when adopting App Attest. Not all devices support it, and server infrastructure must be ready.
+Apple recommends a gradual rollout when adopting App Attest. Not all devices
+support it, and server infrastructure must be ready.
 
 ```swift
 /// Check feature flag before requiring App Attest.
@@ -463,16 +487,16 @@ func shouldRequireAppAttest() -> Bool {
 
 ### Environment Entitlement
 
-Set the App Attest environment in your entitlements file. Use `development` during testing and `production` for App Store builds:
+Set the App Attest environment in your entitlements file. Use `development`
+during testing and `production` for App Store builds:
 
 ```xml
 <key>com.apple.developer.devicecheck.appattest-environment</key>
 <string>production</string>
 ```
 
-When the entitlement is missing, the system uses `development` in debug builds and `production` for App Store and TestFlight builds.
-
-> **Docs:** [Preparing to use the App Attest service](https://sosumi.ai/documentation/devicecheck/preparing-to-use-the-app-attest-service) | [App Attest Environment entitlement](https://sosumi.ai/documentation/bundleresources/entitlements/com.apple.developer.devicecheck.appattest-environment)
+When the entitlement is missing, the system uses `development` in debug builds
+and `production` for App Store and TestFlight builds.
 
 ### Error Type
 
@@ -486,3 +510,23 @@ enum DeviceIntegrityError: Error {
     case serverVerificationFailed
 }
 ```
+
+## Common Mistakes
+
+1. **Generating a new key on every launch.** Generate once, persist the `keyId` in Keychain.
+2. **Skipping the fallback for unsupported devices.** Not all devices support App Attest. Use `DCDevice` tokens as fallback.
+3. **Trusting attestation client-side.** All verification must happen on your server.
+4. **Not implementing replay protection.** The server must track and increment the assertion counter.
+5. **Missing the environment entitlement.** Without it, debug builds use `development` and App Store uses `production`. Mismatches cause attestation failures.
+6. **Not handling `DCError.invalidKey`.** Keys can be invalidated by OS updates. Detect and regenerate.
+
+## Review Checklist
+
+- [ ] `DCAppAttestService.isSupported` checked before use; fallback to `DCDevice` when unsupported
+- [ ] Key generated once and `keyId` persisted in Keychain
+- [ ] Attestation performed once per key; attestation object sent to server
+- [ ] Server validates attestation against Apple's App Attest root CA
+- [ ] Assertions generated for each sensitive request; server verifies signature and counter
+- [ ] `DCError` cases handled: `.serverUnavailable` with retry, `.invalidKey` with key regeneration
+- [ ] App Attest environment entitlement set correctly for debug vs. production
+- [ ] Gradual rollout considered; feature flag in place for enabling/disabling
