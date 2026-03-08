@@ -83,33 +83,33 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 
 | Skill | What it covers |
 |-------|---------------|
-| [swiftui-patterns](skills/swiftui-patterns/) | @Observable, NavigationStack, view composition, sheets, TabView, MV-pattern architecture |
 | [swiftui-animation](skills/swiftui-animation/) | Spring animations, PhaseAnimator, KeyframeAnimator, matchedGeometryEffect, SF Symbols |
-| [swiftui-liquid-glass](skills/swiftui-liquid-glass/) | iOS 26 Liquid Glass, glassEffect, GlassEffectContainer, morphing transitions |
-| [swiftui-performance](skills/swiftui-performance/) | Rendering performance, view update optimization, layout thrash, Instruments profiling |
-| [swiftui-uikit-interop](skills/swiftui-uikit-interop/) | UIViewRepresentable, UIHostingController, Coordinator, incremental UIKit-to-SwiftUI migration |
 | [swiftui-gestures](skills/swiftui-gestures/) | Tap, drag, magnify, rotate, long press, simultaneous and sequential gestures |
 | [swiftui-layout-components](skills/swiftui-layout-components/) | Grid, LazyVGrid, Layout protocol, ViewThatFits, custom layouts |
+| [swiftui-liquid-glass](skills/swiftui-liquid-glass/) | iOS 26 Liquid Glass, glassEffect, GlassEffectContainer, morphing transitions |
 | [swiftui-navigation](skills/swiftui-navigation/) | NavigationStack, NavigationSplitView, programmatic navigation, deep linking |
+| [swiftui-patterns](skills/swiftui-patterns/) | @Observable, NavigationStack, view composition, sheets, TabView, MV-pattern architecture |
+| [swiftui-performance](skills/swiftui-performance/) | Rendering performance, view update optimization, layout thrash, Instruments profiling |
+| [swiftui-uikit-interop](skills/swiftui-uikit-interop/) | UIViewRepresentable, UIHostingController, Coordinator, incremental UIKit-to-SwiftUI migration |
 
 ### Core Swift
 
 | Skill | What it covers |
 |-------|---------------|
+| [codable-patterns](skills/codable-patterns/) | Codable, custom encoding/decoding, nested containers, migration strategies |
+| [swift-charts](skills/swift-charts/) | Bar, line, area, pie, donut charts, scrolling, selection, annotations |
 | [swift-concurrency](skills/swift-concurrency/) | Swift 6.2 concurrency, Sendable, actors, structured concurrency, data-race safety |
+| [swift-language](skills/swift-language/) | Swift 6.2 features, macros, result builders, property wrappers |
 | [swift-testing](skills/swift-testing/) | Swift Testing framework, @Test, @Suite, #expect, parameterized tests, mocking |
 | [swiftdata](skills/swiftdata/) | @Model, @Query, #Predicate, ModelContainer, migrations, CloudKit sync, @ModelActor |
-| [swift-charts](skills/swift-charts/) | Bar, line, area, pie, donut charts, scrolling, selection, annotations |
-| [codable-patterns](skills/codable-patterns/) | Codable, custom encoding/decoding, nested containers, migration strategies |
-| [swift-language](skills/swift-language/) | Swift 6.2 features, macros, result builders, property wrappers |
 
 ### App Experience Frameworks
 
 | Skill | What it covers |
 |-------|---------------|
 | [alarmkit](skills/alarmkit/) | AlarmKit alarms and countdown timers, Live Activity integration, AlarmAttributes, AlarmButton |
-| [app-intents](skills/app-intents/) | Siri, Shortcuts, Spotlight, Apple Intelligence, AppEntity, AppShortcutsProvider |
 | [app-clips](skills/app-clips/) | App Clip experiences, invocation, size limits, shared data |
+| [app-intents](skills/app-intents/) | Siri, Shortcuts, Spotlight, Apple Intelligence, AppEntity, AppShortcutsProvider |
 | [live-activities](skills/live-activities/) | ActivityKit, Dynamic Island, Lock Screen Live Activities |
 | [mapkit-location](skills/mapkit-location/) | MapKit, CoreLocation, annotations, geocoding, directions, geofencing |
 | [photos-camera-media](skills/photos-camera-media/) | PhotosPicker, AVCaptureSession, photo library, video recording, media permissions |
@@ -144,16 +144,16 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 
 | Skill | What it covers |
 |-------|---------------|
-| [ios-networking](skills/ios-networking/) | URLSession async/await, REST APIs, downloads/uploads, WebSockets, pagination, retry, caching |
-| [ios-security](skills/ios-security/) | Keychain, CryptoKit, Secure Enclave, ATS, certificate pinning, data protection, biometric Keychain access |
+| [app-store-review](skills/app-store-review/) | App Review guidelines, rejection prevention, privacy manifests, ATT, HIG compliance |
 | [authentication](skills/authentication/) | Sign in with Apple, ASAuthorizationController, passkeys, biometric auth (LAContext), credential management |
+| [background-processing](skills/background-processing/) | BGTaskScheduler, background refresh, URLSession background transfers |
+| [debugging-instruments](skills/debugging-instruments/) | Xcode debugger, Instruments, os_signpost, MetricKit, crash symbolication |
 | [device-integrity](skills/device-integrity/) | DeviceCheck (DCDevice per-device bits), App Attest (DCAppAttestService attestation and assertion flows) |
 | [ios-accessibility](skills/ios-accessibility/) | VoiceOver, Dynamic Type, custom rotors, accessibility focus, assistive-technology support |
 | [ios-localization](skills/ios-localization/) | String Catalogs, pluralization, FormatStyle, right-to-left layout |
-| [background-processing](skills/background-processing/) | BGTaskScheduler, background refresh, URLSession background transfers |
-| [debugging-instruments](skills/debugging-instruments/) | Xcode debugger, Instruments, os_signpost, MetricKit, crash symbolication |
+| [ios-networking](skills/ios-networking/) | URLSession async/await, REST APIs, downloads/uploads, WebSockets, pagination, retry, caching |
+| [ios-security](skills/ios-security/) | Keychain, CryptoKit, Secure Enclave, ATS, certificate pinning, data protection, biometric Keychain access |
 | [metrickit-diagnostics](skills/metrickit-diagnostics/) | MXMetricManager, hang diagnostics, crash reports, power metrics |
-| [app-store-review](skills/app-store-review/) | App Review guidelines, rejection prevention, privacy manifests, ATT, HIG compliance |
 
 ### Hardware & Device Integration
 
