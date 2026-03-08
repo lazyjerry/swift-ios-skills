@@ -5,7 +5,7 @@ description: "Build SwiftUI views with modern MV architecture, state management,
 
 # SwiftUI Patterns
 
-Modern SwiftUI patterns targeting iOS 26+ with Swift 6.2. Covers architecture, state management, navigation, view composition, and component usage. Patterns are backward-compatible to iOS 17 unless noted.
+Modern SwiftUI patterns targeting iOS 26+ with Swift 6.2. Covers architecture, state management, view composition, environment wiring, async loading, design polish, and platform/share integration. Navigation and layout patterns live in dedicated sibling skills. Patterns are backward-compatible to iOS 17 unless noted.
 
 ## Contents
 
@@ -74,7 +74,7 @@ struct FeedView: View {
 }
 ```
 
-For MV pattern rationale and extended examples, see `references/mv-patterns.md`.
+For MV pattern rationale, app wiring, and lightweight client examples, see `references/architecture-patterns.md`.
 
 ## State Management
 
@@ -302,7 +302,7 @@ Never create manual `Task` in `onAppear` unless you need to store a reference fo
 
 ## Component Reference
 
-For layout, grids, lists, forms, controls, and scrollview patterns, see the dedicated `swiftui-layout-components` skill. For component-specific reference files, see `references/components-index.md`.
+For layout, grids, lists, forms, controls, and scrollview patterns, see the dedicated `swiftui-layout-components` skill.
 
 ## HIG Alignment
 
@@ -314,7 +314,7 @@ Follow Apple Human Interface Guidelines for layout, typography, color, and acces
 - Support adaptive layouts via `horizontalSizeClass`
 - Provide VoiceOver labels (`.accessibilityLabel`) and support Dynamic Type accessibility sizes by switching layout orientation
 
-See `references/hig-patterns.md` for full HIG pattern examples.
+See `references/design-polish.md` for HIG, theming, haptics, focus, transitions, and loading patterns.
 
 ## Writing Tools (iOS 18+)
 
@@ -372,11 +372,10 @@ TextField("Search…", text: $query)
 
 ## References
 
-- Component guides: `references/components-index.md`
-- MV pattern deep-dive: `references/mv-patterns.md`
-- HIG patterns: `references/hig-patterns.md`
+- Architecture, app wiring, and lightweight clients: `references/architecture-patterns.md`
+- Design polish (HIG, theming, haptics, transitions, loading, focus): `references/design-polish.md`
 - Deprecated API migration: `references/deprecated-migration.md`
-- Transferable, drag/drop, ShareLink: `references/transferable.md`
+- Platform and sharing patterns (Transferable, media, menus, macOS settings): `references/platform-and-sharing.md`
 - Navigation patterns: see `swiftui-navigation` skill
 - Layout & components: see `swiftui-layout-components` skill
 

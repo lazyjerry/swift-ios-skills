@@ -81,7 +81,7 @@ LazyVGrid(columns: columns, spacing: 4) {
 
 Use `.aspectRatio` for cell sizing. Never place `GeometryReader` inside lazy containers -- it forces eager measurement and defeats lazy loading. Use `.onGeometryChange` (iOS 18+) if you need to read dimensions.
 
-See `../swiftui-patterns/references/grids.md` for full grid patterns and design choices.
+See `references/grids.md` for full grid patterns and design choices.
 
 ## List Patterns
 
@@ -110,7 +110,7 @@ List {
 
 **iOS 26:** Apply `.scrollEdgeEffectStyle(.soft, for: .top)` for modern scroll edge effects.
 
-See `../swiftui-patterns/references/list.md` for full list patterns including feed lists with scroll-to-top.
+See `references/list.md` for full list patterns including feed lists with scroll-to-top.
 
 ## ScrollView
 
@@ -152,7 +152,7 @@ ScrollViewReader { proxy in
 - `.backgroundExtensionEffect()` -- mirror/blur at safe area edges (use sparingly, one per screen)
 - `.safeAreaBar(edge:)` -- attach bar views that integrate with scroll effects
 
-See `../swiftui-patterns/references/scrollview.md` for full scroll patterns and iOS 26 edge effects.
+See `references/scrollview.md` for full scroll patterns and iOS 26 edge effects.
 
 ## Form and Controls
 
@@ -189,56 +189,116 @@ Use `@FocusState` to manage keyboard focus in input-heavy forms. Wrap in `Naviga
 | `DatePicker` | Date/time selection |
 | `TextField` | Text input with `.keyboardType`, `.textInputAutocapitalization` |
 
-See `../swiftui-patterns/references/form.md` and `../swiftui-patterns/references/controls.md` for full examples.
+Bind controls directly to `@State`, `@Binding`, or `@AppStorage`. Group related controls in `Form` sections. Use `.disabled(...)` to reflect locked or inherited settings. Use `Label` inside toggles to combine icon + text when it adds clarity.
+
+```swift
+// Toggle sections
+Form {
+  Section("Notifications") {
+    Toggle("Mentions", isOn: $preferences.notificationsMentionsEnabled)
+    Toggle("Follows", isOn: $preferences.notificationsFollowsEnabled)
+  }
+}
+
+// Slider with value text
+Section("Font Size") {
+  Slider(value: $fontSizeScale, in: 0.5...1.5, step: 0.1)
+  Text("Scale: \(String(format: "%.1f", fontSizeScale))")
+}
+
+// Picker for enums
+Picker("Default Visibility", selection: $visibility) {
+  ForEach(Visibility.allCases, id: \.self) { option in
+    Text(option.title).tag(option)
+  }
+}
+```
+
+Avoid `.pickerStyle(.segmented)` for large sets; use menu or inline styles. Don't hide labels for sliders; always show context.
+
+See `references/form.md` for full form examples.
 
 ## Searchable
 
 Add native search UI with `.searchable`. Use `.searchScopes` for multiple modes and `.task(id:)` for debounced async results.
 
 ```swift
-List {
-    ForEach(results) { result in
-        SearchRow(result: result)
+@MainActor
+struct ExploreView: View {
+  @State private var searchQuery = ""
+  @State private var searchScope: SearchScope = .all
+  @State private var isSearching = false
+  @State private var results: [SearchResult] = []
+
+  var body: some View {
+    List {
+      if isSearching {
+        ProgressView()
+      } else {
+        ForEach(results) { result in
+          SearchRow(result: result)
+        }
+      }
     }
-}
-.searchable(
-    text: $searchQuery,
-    placement: .navigationBarDrawer(displayMode: .always),
-    prompt: "Search"
-)
-.searchScopes($searchScope) {
-    ForEach(SearchScope.allCases, id: \.self) { scope in
+    .searchable(
+      text: $searchQuery,
+      placement: .navigationBarDrawer(displayMode: .always),
+      prompt: Text("Search")
+    )
+    .searchScopes($searchScope) {
+      ForEach(SearchScope.allCases, id: \.self) { scope in
         Text(scope.title)
+      }
     }
-}
-.task(id: searchQuery) {
-    guard !searchQuery.isEmpty else { results = []; return }
-    try? await Task.sleep(for: .milliseconds(250))  // Debounce
+    .task(id: searchQuery) {
+      await runSearch()
+    }
+  }
+
+  private func runSearch() async {
+    guard !searchQuery.isEmpty else {
+      results = []
+      return
+    }
+    isSearching = true
+    defer { isSearching = false }
+    try? await Task.sleep(for: .milliseconds(250))
     results = await fetchResults(query: searchQuery, scope: searchScope)
+  }
 }
 ```
 
-See `../swiftui-patterns/references/searchable.md` for full searchable patterns.
+Show a placeholder when search is empty. Debounce input to avoid overfetching. Keep search state local to the view. Avoid running searches for empty strings.
 
 ## Overlay and Presentation
 
 Use `.overlay(alignment:)` for transient UI (toasts, banners) without affecting layout.
 
 ```swift
-content
-    .overlay(alignment: .top) {
+struct AppRootView: View {
+  @State private var toast: Toast?
+
+  var body: some View {
+    content
+      .overlay(alignment: .top) {
         if let toast {
-            ToastView(toast: toast)
-                .transition(.move(edge: .top).combined(with: .opacity))
+          ToastView(toast: toast)
+            .transition(.move(edge: .top).combined(with: .opacity))
+            .onAppear {
+              Task {
+                try? await Task.sleep(for: .seconds(2))
+                withAnimation { self.toast = nil }
+              }
+            }
         }
-    }
+      }
+  }
+}
 ```
 
-For global toast state, use a dedicated observable (e.g., `ToastCenter`). Keep overlays lightweight and auto-dismissible.
+Prefer overlays for transient UI rather than embedding in layout stacks. Use transitions and short auto-dismiss timers. Keep overlays aligned to a clear edge (`.top` or `.bottom`). Avoid overlays that block all interaction unless explicitly needed. Don't stack many overlays; use a queue or replace the current toast.
 
 **fullScreenCover:** Use `.fullScreenCover(item:)` for immersive presentations that cover the entire screen (media viewers, onboarding flows).
-
-See `../swiftui-patterns/references/overlay.md` for full overlay and toast patterns.
 
 ## Common Mistakes
 
@@ -268,12 +328,9 @@ See `../swiftui-patterns/references/overlay.md` for full overlay and toast patte
 
 ## References
 
-- Grid patterns: `../swiftui-patterns/references/grids.md`
-- List and section patterns: `../swiftui-patterns/references/list.md`
-- ScrollView and lazy stacks: `../swiftui-patterns/references/scrollview.md`
-- Form patterns: `../swiftui-patterns/references/form.md`
-- Controls (Toggle, Picker, Slider): `../swiftui-patterns/references/controls.md`
-- Searchable patterns: `../swiftui-patterns/references/searchable.md`
-- Overlay and toasts: `../swiftui-patterns/references/overlay.md`
+- Grid patterns: `references/grids.md`
+- List and section patterns: `references/list.md`
+- ScrollView and lazy stacks: `references/scrollview.md`
+- Form patterns: `references/form.md`
 - Architecture and state management: see `swiftui-patterns` skill
 - Navigation patterns: see `swiftui-navigation` skill
