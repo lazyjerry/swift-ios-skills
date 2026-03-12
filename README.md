@@ -1,6 +1,6 @@
 # Swift iOS Skills — Agent Skills for iOS 26+ & SwiftUI Development
 
-[![License: GPLv2](https://img.shields.io/badge/License-GPLv2-blue.svg)](LICENSE)
+[![License: PolyForm Perimeter](https://img.shields.io/badge/License-PolyForm%20Perimeter%201.0.0-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/dpearson2699/swift-ios-skills)](https://github.com/dpearson2699/swift-ios-skills/stargazers)
 [![Swift 6.2](https://img.shields.io/badge/Swift-6.2-F05138.svg)](https://swift.org)
 [![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20macOS-000000.svg?logo=apple)](https://developer.apple.com)
@@ -205,6 +205,8 @@ skills/
 
 `SKILL.md` contains YAML frontmatter (`name`, `description`) and markdown instructions. The `references/` folder holds longer examples, advanced patterns, and lookup tables that the main file points to.
 
+This repository contains original instructional content and examples for Apple platform development. Where Apple frameworks, APIs, documentation, WWDC sessions, or trademarks are referenced, those materials remain the property of Apple Inc. The license for this repository applies to this project's original content only and does not claim ownership of or relicense Apple's documentation, trademarks, sample code, or other third-party materials.
+
 ## Compatibility
 
 These skills work with any agent that supports the [Agent Skills standard](https://agentskills.io), including:
@@ -237,4 +239,14 @@ To upgrade Claude Code bundles, reinstall the bundles you use (old bundle names 
 
 ## License
 
-GPLv2 -- see [LICENSE](LICENSE)
+[PolyForm Perimeter 1.0.0](https://polyformproject.org/licenses/perimeter/1.0.0/) -- see [LICENSE](LICENSE)
+
+**What this means in practice:**
+
+- Using these skills to build your iOS app -- allowed
+- Using these skills inside a closed-source commercial workflow -- allowed
+- Forking the repo and contributing back -- allowed
+- Sharing the skills with a teammate -- allowed
+- Taking the skills, rebranding them as "Premium iOS Agent Skills," and selling them -- not allowed (that's a competing product)
+
+This project is not affiliated with, endorsed by, or sponsored by Apple Inc.
