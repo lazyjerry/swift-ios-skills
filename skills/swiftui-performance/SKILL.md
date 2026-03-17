@@ -466,7 +466,7 @@ Use computed properties on `@Observable` models to derive state without introduc
 2. **Observing an entire model when only one property is needed.** Break large `@Observable` models into focused ones, or use computed properties/closures to narrow observation scope.
 3. **Using `GeometryReader` inside ScrollView items.** GeometryReader forces eager sizing and defeats lazy loading. Prefer `.onGeometryChange` (iOS 18+) or measure outside the lazy container.
 4. **Calling `DateFormatter()` or `NumberFormatter()` inside `body`.** These are expensive to create. Make them static or move them outside the view.
-5. **Animating non-equatable state.** If SwiftUI cannot determine equality, it redraws every frame. Conform state to `Equatable` or use `.animation(_:value:)` with an explicit value.
+5. **Animating non-equatable state.** If SwiftUI cannot determine equality, it redraws every frame. Conform state to `Equatable`, then use `.animation(_:value:)` for simple value-bound changes or `.animation(_:body:)` for narrower modifier-scoped implicit animation.
 6. **Large flat `List` without identifiers.** Use `id:` or make items `Identifiable` so SwiftUI can diff efficiently instead of rebuilding the entire list.
 7. **Unnecessary `@State` wrapper objects.** Wrapping a simple value type in a class for `@State` defeats value semantics. Use plain `@State` with structs.
 8. **Blocking `MainActor` with synchronous I/O.** File reads, JSON parsing of large payloads, and image decoding should happen off the main actor. Use `Task.detached` or a custom actor.
@@ -478,7 +478,7 @@ Use computed properties on `@Observable` models to derive state without introduc
 - [ ] `@Observable` models expose only the properties views actually read
 - [ ] Heavy computation is off `MainActor` (image processing, parsing)
 - [ ] `GeometryReader` is not inside a `LazyVStack`/`LazyHStack`/`List`
-- [ ] Animations use explicit `value:` parameter
+- [ ] Implicit animations use `.animation(_:value:)` for value-bound changes or `.animation(_:body:)` for narrower modifier scope
 - [ ] No synchronous network/file I/O on the main thread
 - [ ] Profiling done on Release build, real device
 - [ ] `@Observable` view models are `@MainActor`-isolated; types crossing concurrency boundaries are `Sendable`

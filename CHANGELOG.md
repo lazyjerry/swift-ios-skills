@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.1
+
+- Update `swiftui-animation` to cover `.animation(_:body:)` alongside `.animation(_:value:)`, and tighten wording around bare `.animation(_:)` and scoped transactions to match Apple docs.
+- Update `swiftui-performance` to reference both value-bound and modifier-scoped implicit animation patterns.
+- Bump Claude marketplace bundle versions to 2.0.1.
+
 ## v2.0.0
 
 ### New skills (33 added)
