@@ -452,8 +452,7 @@ lifecycle-aware loading and cache eviction.
 ## References
 
 - Patterns and code: `references/coreml-swift-integration.md`
-- Model conversion (Python): `apple-on-device-ai` skill, `../apple-on-device-ai/references/coreml-conversion.md`
-- Model optimization: `apple-on-device-ai` skill, `../apple-on-device-ai/references/coreml-optimization.md`
+- Model conversion and optimization (Python-side): covered in the `apple-on-device-ai` skill
 - Apple docs: [Core ML](https://sosumi.ai/documentation/coreml) |
   [MLModel](https://sosumi.ai/documentation/coreml/mlmodel) |
   [MLComputePlan](https://sosumi.ai/documentation/coreml/mlcomputeplan-1w21n)
