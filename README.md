@@ -21,7 +21,7 @@ Every skill is self-contained. No skill depends on another. Install only what yo
 Install all skills:
 
 ```
-npx skills add dpearson2699/swift-ios-skills --all
+npx skills add dpearson2699/swift-ios-skills
 ```
 
 Install specific skills:
