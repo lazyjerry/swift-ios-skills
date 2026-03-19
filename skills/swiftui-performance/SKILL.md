@@ -16,7 +16,6 @@ description: "Audit and improve SwiftUI runtime performance. Use when diagnosing
 - [Common Code Smells (and Fixes)](#common-code-smells-and-fixes)
 - [5. Verify](#5-verify)
 - [Outputs](#outputs)
-- [MCP Tool Notes](#mcp-tool-notes)
 - [Instruments Profiling](#instruments-profiling)
 - [Identity and Lifetime](#identity-and-lifetime)
 - [Lazy Loading Patterns](#lazy-loading-patterns)
@@ -59,7 +58,8 @@ Provide:
 ## 2. Guide the User to Profile
 
 Explain how to collect data with Instruments:
-- Use the SwiftUI template in Instruments (always profile a **Release build**).
+- Use the SwiftUI template in Instruments.
+- Profile a **Release build** on a real device when possible.
 - Reproduce the exact interaction (scroll, navigation, animation).
 - Capture SwiftUI timeline and Time Profiler.
 - Export or screenshot the relevant lanes and the call tree.
@@ -197,10 +197,6 @@ Provide:
 - A short metrics table (before/after if available).
 - Top issues (ordered by impact).
 - Proposed fixes with estimated effort.
-
-## MCP Tool Notes
-
-- **xcodebuildmcp**: When building for profiling, use Release configuration. Debug builds include extra runtime checks that distort performance measurements. Always profile Release builds on a real device when possible.
 
 ## Instruments Profiling
 

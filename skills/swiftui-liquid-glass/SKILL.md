@@ -13,7 +13,6 @@ description: "Implement, review, or improve SwiftUI Liquid Glass effects for iOS
 - [Code Examples](#code-examples)
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
-- [Available MCP Tools](#available-mcp-tools)
 - [References](#references)
 
 ## Overview
@@ -313,10 +312,6 @@ Liquid Glass requires iOS 26+. Gate with `if #available(iOS 26, *)` and provide 
 - [ ] **Accessibility**: Tested with Reduce Transparency and Reduce Motion enabled.
 - [ ] **Button styles**: Standard `.glass` / `.glassProminent` used for buttons.
 - [ ] Ensure types driving Liquid Glass effects are Sendable; apply glass effects on @MainActor context
-
-## Available MCP Tools
-
-- **xcodebuildmcp**: If available, use to build and test your project directly.
 
 ## References
 

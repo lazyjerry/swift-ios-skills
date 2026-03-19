@@ -23,7 +23,6 @@ Swift Testing is the modern testing framework for Swift (Xcode 16+, Swift 6+). P
 - [Test Attachments](#test-attachments)
 - [Exit Testing](#exit-testing)
 - [Review Checklist](#review-checklist)
-- [MCP Integration](#mcp-integration)
 - [References](#references)
 
 ---
@@ -457,10 +456,6 @@ Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See `
 - [ ] Mocks conform to protocols, not subclass concrete types
 - [ ] No shared mutable state between tests
 - [ ] Cancellation tested for cancellable async operations
-
-## MCP Integration
-
-- **xcodebuildmcp**: Build and run tests directly — full suites, individual functions, tag-filtered runs.
 
 ## References
 
