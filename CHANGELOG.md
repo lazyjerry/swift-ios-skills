@@ -1,11 +1,19 @@
 # Changelog
 
-## v2.0.1
+## v2.1.0
 
 - Rename `codable-patterns` to `swift-codable` to improve discoverability and align it with the repo's `swift-*` core-language taxonomy.
 - Tighten discovery wording for `swift-codable`, `alarmkit`, `app-clips`, and `app-intents` in skill metadata and the README catalog.
+- Clarify installation guidance in `README.md`, including skills CLI usage and the direct install command for all skills.
+- Remove stale MCP appendix/tool-note sections from `swiftui-liquid-glass`, `swift-testing`, and `swiftui-performance`; keep Release-build and real-device profiling guidance inline in the performance skill.
+- Add `firebase-debug.log` to `.gitignore`.
+- Bump Claude marketplace bundle versions to 2.1.0.
+
+## v2.0.1
+
 - Update `swiftui-animation` to cover `.animation(_:body:)` alongside `.animation(_:value:)`, and tighten wording around bare `.animation(_:)` and scoped transactions to match Apple docs.
-- Update `swiftui-performance` to reference both value-bound and modifier-scoped implicit animation patterns.
+- Switch the repository license to PolyForm Perimeter 1.0.0 and update the README badge/license text.
+- Add `.playwright-mcp` and `tmp` to `.gitignore`.
 - Bump Claude marketplace bundle versions to 2.0.1.
 
 ## v2.0.0
