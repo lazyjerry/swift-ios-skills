@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.1
+
+- Consolidate repeated sibling-skill cross-references in `swiftui-patterns` into a single scope-boundary note; remove redundant redirect sections and sibling-skill routing from frontmatter description.
+- Consolidate repeated `apple-on-device-ai` cross-references in `coreml` and remove cross-skill file paths that violated self-containment.
+- Bump Claude marketplace bundle versions to 2.1.1.
+
 ## v2.1.0
 
 - Rename `codable-patterns` to `swift-codable` to improve discoverability and align it with the repo's `swift-*` core-language taxonomy.
