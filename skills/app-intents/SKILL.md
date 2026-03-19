@@ -1,6 +1,6 @@
 ---
 name: app-intents
-description: "Implement, review, or improve App Intents for Siri, Shortcuts, Spotlight, widgets, and Apple Intelligence. Use when creating AppIntent actions, defining AppEntity models with EntityQuery, building AppShortcutsProvider phrases, adding Spotlight indexing with IndexedEntity, integrating assistant schemas for Apple Intelligence, migrating from SiriKit to App Intents, building interactive widgets with WidgetConfigurationIntent, creating Control Center widgets, implementing SnippetIntent for visual intelligence, or wiring focus filters with SetFocusFilterIntent."
+description: "Implement App Intents for Siri, Shortcuts, Spotlight, widgets, Control Center, and Apple Intelligence on iOS. Covers AppIntent actions, AppEntity and EntityQuery models, AppShortcutsProvider phrases, IndexedEntity Spotlight indexing, WidgetConfigurationIntent, SnippetIntent, and assistant schemas. Use when exposing app actions or entities to system surfaces."
 ---
 
 # App Intents (iOS 26+)

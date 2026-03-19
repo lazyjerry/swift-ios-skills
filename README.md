@@ -14,21 +14,70 @@ Compatible with [Claude Code](https://claude.ai/code), [OpenAI Codex](https://de
 
 Every skill is self-contained. No skill depends on another. Install only what you need.
 
+## Contents
+
+- [Install](#install)
+  - [Recommended: any agent via skills CLI](#recommended-any-agent-via-skills-cli)
+  - [Claude Code](#claude-code-via-plugin-marketplace)
+  - [OpenAI Codex](#openai-codex)
+  - [Claude Web App / Claude Desktop](#claude-web-app--claude-desktop)
+  - [ChatGPT](#chatgpt)
+- [Plugin Bundles](#plugin-bundles-claude-code)
+- [Skills](#skills)
+  - [SwiftUI](#swiftui)
+  - [Core Swift](#core-swift)
+  - [App Experience Frameworks](#app-experience-frameworks)
+  - [Data & Service Frameworks](#data--service-frameworks)
+  - [AI & Machine Learning](#ai--machine-learning)
+  - [iOS Engineering](#ios-engineering)
+  - [Hardware & Device Integration](#hardware--device-integration)
+  - [Platform Integration](#platform-integration)
+- [Structure](#structure)
+- [Compatibility](#compatibility)
+- [Upgrading from v1.x](#upgrading-from-v1x)
+- [License](#license)
+
 ## Install
 
-### Any agent (via [skills CLI](https://github.com/vercel-labs/skills))
+### Recommended: any agent via [skills CLI](https://github.com/vercel-labs/skills)
 
-Install all skills:
+The skills CLI is the recommended install method.
+
+Interactive install (recommended):
 
 ```
 npx skills add dpearson2699/swift-ios-skills
 ```
 
-Install specific skills:
+Running the default command opens the skills CLI UI so you can choose which skills to install and which agent(s) to install them for.
+
+Install everything for any coding agent:
 
 ```
-npx skills add dpearson2699/swift-ios-skills --skill swiftui-patterns --skill swiftdata
+npx skills add dpearson2699/swift-ios-skills --all
 ```
+
+Use `--all` when you want the full set of 56 skills installed automatically for any coding agent.
+
+Install specific skills directly:
+
+```
+npx skills add dpearson2699/swift-ios-skills --skill <skill-name> --skill <skill-name>
+```
+
+Check for updates to installed skills:
+
+```
+npx skills check
+```
+
+Update installed skills to the latest versions:
+
+```
+npx skills update
+```
+
+Use these after installing through the skills CLI.
 
 ### Claude Code (via plugin marketplace)
 
@@ -57,6 +106,12 @@ Or install a themed bundle:
 /plugin install ios-platform-skills@swift-ios-skills
 ```
 
+### OpenAI Codex
+
+```
+$skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/main/skills/<skill-name>
+```
+
 ### Claude Web App / Claude Desktop
 
 1. Download the skill folder(s) you want from this repo
@@ -73,19 +128,13 @@ Or install a themed bundle:
 4. Click **New skill** and select **Upload from your computer**
 5. Upload the zip
 
-### OpenAI Codex
-
-```
-$skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/main/skills/<skill-name>
-```
-
 ## Plugin Bundles (Claude Code)
 
 | Plugin | Skills included |
 |--------|----------------|
 | **all-ios-skills** | All 56 skills |
 | **swiftui-skills** | swiftui-animation, swiftui-gestures, swiftui-layout-components, swiftui-liquid-glass, swiftui-navigation, swiftui-patterns, swiftui-performance, swiftui-uikit-interop |
-| **swift-core-skills** | codable-patterns, swift-charts, swift-concurrency, swift-language, swift-testing, swiftdata |
+| **swift-core-skills** | swift-codable, swift-charts, swift-concurrency, swift-language, swift-testing, swiftdata |
 | **ios-app-framework-skills** | alarmkit, app-clips, app-intents, live-activities, mapkit-location, photos-camera-media, push-notifications, storekit, tipkit, widgetkit |
 | **ios-data-framework-skills** | cloudkit-sync, contacts-framework, eventkit-calendar, healthkit, musickit-audio, passkit-wallet, weatherkit |
 | **ios-ai-ml-skills** | apple-on-device-ai, coreml, natural-language, speech-recognition, vision-framework |
@@ -112,7 +161,7 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 
 | Skill | What it covers |
 |-------|---------------|
-| [codable-patterns](skills/codable-patterns/) | Codable, custom encoding/decoding, nested containers, migration strategies |
+| [swift-codable](skills/swift-codable/) | Swift Codable, JSONDecoder, JSONEncoder, CodingKeys, custom decoding, nested JSON |
 | [swift-charts](skills/swift-charts/) | Bar, line, area, pie, donut charts, scrolling, selection, annotations |
 | [swift-concurrency](skills/swift-concurrency/) | Swift 6.2 concurrency, Sendable, actors, structured concurrency, data-race safety |
 | [swift-language](skills/swift-language/) | Swift 6.2 features, macros, result builders, property wrappers |
@@ -123,9 +172,9 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 
 | Skill | What it covers |
 |-------|---------------|
-| [alarmkit](skills/alarmkit/) | AlarmKit alarms and countdown timers, Live Activity integration, AlarmAttributes, AlarmButton |
-| [app-clips](skills/app-clips/) | App Clip experiences, invocation, size limits, shared data |
-| [app-intents](skills/app-intents/) | Siri, Shortcuts, Spotlight, Apple Intelligence, AppEntity, AppShortcutsProvider |
+| [alarmkit](skills/alarmkit/) | AlarmKit system alarms and countdown timers, Lock Screen, Dynamic Island, Live Activities |
+| [app-clips](skills/app-clips/) | App Clips, invocation URLs, NFC, QR, App Clip Codes, App Group handoff |
+| [app-intents](skills/app-intents/) | App Intents for Siri, Shortcuts, Spotlight, widgets, and Apple Intelligence |
 | [live-activities](skills/live-activities/) | ActivityKit, Dynamic Island, Lock Screen Live Activities |
 | [mapkit-location](skills/mapkit-location/) | MapKit, CoreLocation, annotations, geocoding, directions, geofencing |
 | [photos-camera-media](skills/photos-camera-media/) | PhotosPicker, AVCaptureSession, photo library, video recording, media permissions |

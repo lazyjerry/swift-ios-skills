@@ -36,7 +36,7 @@
       "category": "development",
       "strict": false,
       "skills": [
-        "./skills/codable-patterns",
+        "./skills/swift-codable",
         "./skills/swift-charts",
         "./skills/swift-concurrency",
         "./skills/swift-language",
@@ -170,7 +170,7 @@
         "./skills/background-processing",
         "./skills/callkit-voip",
         "./skills/cloudkit-sync",
-        "./skills/codable-patterns",
+        "./skills/swift-codable",
         "./skills/contacts-framework",
         "./skills/core-bluetooth",
         "./skills/core-motion",

@@ -1,6 +1,6 @@
 ---
 name: app-clips
-description: "Build lightweight App Clip experiences for instant iOS app access without full installation. Covers target setup, invocation URL handling, experience configuration, size limits, invocation methods (NFC, QR, App Clip Codes, Safari banners, Maps, Messages), NSUserActivity handling, data migration to the full app via shared App Group containers, SKOverlay for full-app promotion, location confirmation with APActivationPayload, lifecycle considerations, and capability limitations. Use when creating App Clips or configuring App Clip invocation and data migration."
+description: "Build iOS App Clips with invocation URLs, NFC, QR codes, App Clip Codes, Safari banners, Maps, Messages, and shared App Group data handoff to the full app. Covers target setup, experience configuration, size limits, NSUserActivity handling, SKOverlay promotion, location confirmation, and capability limits. Use when creating App Clips or wiring App Clip invocation and full-app migration."
 ---
 
 # App Clips

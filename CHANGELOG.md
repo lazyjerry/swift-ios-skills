@@ -2,6 +2,8 @@
 
 ## v2.0.1
 
+- Rename `codable-patterns` to `swift-codable` to improve discoverability and align it with the repo's `swift-*` core-language taxonomy.
+- Tighten discovery wording for `swift-codable`, `alarmkit`, `app-clips`, and `app-intents` in skill metadata and the README catalog.
 - Update `swiftui-animation` to cover `.animation(_:body:)` alongside `.animation(_:value:)`, and tighten wording around bare `.animation(_:)` and scoped transactions to match Apple docs.
 - Update `swiftui-performance` to reference both value-bound and modifier-scoped implicit animation patterns.
 - Bump Claude marketplace bundle versions to 2.0.1.
