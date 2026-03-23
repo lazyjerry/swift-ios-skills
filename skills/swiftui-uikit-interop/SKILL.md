@@ -1,6 +1,6 @@
 ---
 name: swiftui-uikit-interop
-description: "Bridge UIKit and SwiftUI — wrap UIKit views/view controllers in SwiftUI using UIViewRepresentable/UIViewControllerRepresentable, embed SwiftUI in UIKit with UIHostingController, and handle the Coordinator delegate pattern. Use when integrating camera previews, map views, web views, mail compose, document scanners, PDF renderers, text views with attributed text, or any third-party UIKit SDK into a SwiftUI app. Also use when migrating a UIKit app to SwiftUI incrementally, or when needing UIKit features not yet available in native SwiftUI."
+description: "Bridges UIKit and SwiftUI by wrapping UIKit views and view controllers in SwiftUI with UIViewRepresentable and UIViewControllerRepresentable, embedding SwiftUI in UIKit with UIHostingController, and coordinating delegate callbacks. Use when integrating camera previews, map views, mail compose, document scanners, PDF renderers, text views with attributed text, or other UIKit-only or third-party UIKit SDK surfaces into a SwiftUI app, or when migrating a UIKit app to SwiftUI incrementally."
 ---
 
 # SwiftUI-UIKit Interop

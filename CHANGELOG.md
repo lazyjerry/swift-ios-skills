@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.2.0
+
+- Add `swiftui-webkit`, a new SwiftUI skill for native WebKit-for-SwiftUI APIs including `WebView`, `WebPage`, navigation policies, JavaScript calls, observable page state, and custom URL schemes.
+- Narrow `swiftui-uikit-interop` back to generic interop guidance by removing `WKWebView` and `SFSafariViewController` recipes from its representable reference file and demoting web-content ownership.
+- Update the README catalog and marketplace metadata to include `swiftui-webkit`, add it to the `swiftui-skills` and `all-ios-skills` bundles, and raise the total skill count from 56 to 57.
+- Bump Claude marketplace bundle versions to 2.2.0.
+
 ## v2.1.1
 
 - Consolidate repeated sibling-skill cross-references in `swiftui-patterns` into a single scope-boundary note; remove redundant redirect sections and sibling-skill routing from frontmatter description.
