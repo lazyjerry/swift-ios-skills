@@ -466,7 +466,7 @@ struct ARContainerView: View {
 
 ## References
 
-- Extended patterns (physics, animations, lighting, ECS): `references/realitykit-patterns.md`
+- Extended patterns (physics, animations, lighting, ECS): [references/realitykit-patterns.md](references/realitykit-patterns.md)
 - [RealityKit framework](https://sosumi.ai/documentation/realitykit)
 - [RealityView](https://sosumi.ai/documentation/realitykit/realityview)
 - [RealityViewCameraContent](https://sosumi.ai/documentation/realitykit/realityviewcameracontent)

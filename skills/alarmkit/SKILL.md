@@ -13,7 +13,7 @@ AlarmKit builds on Live Activities -- every alarm creates a system-managed Live
 Activity with templated UI. You configure the presentation via `AlarmAttributes`
 and `AlarmPresentation` rather than building custom widget views.
 
-See `references/alarmkit-patterns.md` for complete code patterns including
+See [references/alarmkit-patterns.md](references/alarmkit-patterns.md) for complete code patterns including
 authorization, scheduling, countdown timers, snooze handling, and widget setup.
 
 ```swift
@@ -431,7 +431,7 @@ struct AlarmActivityWidget: Widget {
 
 ## References
 
-- Patterns and code: `references/alarmkit-patterns.md`
+- Patterns and code: [references/alarmkit-patterns.md](references/alarmkit-patterns.md)
 - Apple docs: [AlarmKit](https://sosumi.ai/documentation/alarmkit) |
   [AlarmManager](https://sosumi.ai/documentation/alarmkit/alarmmanager) |
   [AlarmAttributes](https://sosumi.ai/documentation/alarmkit/alarmattributes) |

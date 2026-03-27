@@ -447,7 +447,7 @@ newSession.activate(on: .main) { event in
 
 ## References
 
-- Extended patterns (custom filtering, batch setup, removal handling, error recovery): `references/accessorysetupkit-patterns.md`
+- Extended patterns (custom filtering, batch setup, removal handling, error recovery): [references/accessorysetupkit-patterns.md](references/accessorysetupkit-patterns.md)
 - [AccessorySetupKit framework](https://sosumi.ai/documentation/accessorysetupkit)
 - [ASAccessorySession](https://sosumi.ai/documentation/accessorysetupkit/asaccessorysession)
 - [ASDiscoveryDescriptor](https://sosumi.ai/documentation/accessorysetupkit/asdiscoverydescriptor)

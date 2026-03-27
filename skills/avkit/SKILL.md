@@ -184,7 +184,7 @@ VideoPlayer(player: player) {
 `VideoPlayer` does not expose all `AVPlayerViewController` properties. For PiP
 configuration, delegate callbacks, or playback speed control, wrap
 `AVPlayerViewController` in a `UIViewControllerRepresentable`. See the full
-pattern in `references/avkit-patterns.md`.
+pattern in [references/avkit-patterns.md](references/avkit-patterns.md).
 
 ## Picture-in-Picture
 
@@ -235,7 +235,7 @@ func playerViewController(
 
 For custom player UIs, use `AVPictureInPictureController` with an `AVPlayerLayer`
 or sample buffer content source. Check `isPictureInPictureSupported()` first.
-See `references/avkit-patterns.md` for full custom player and sample buffer
+See [references/avkit-patterns.md](references/avkit-patterns.md) for full custom player and sample buffer
 PiP patterns.
 
 ```swift
@@ -461,7 +461,7 @@ struct PlayerView: View {
 
 ## References
 
-- Advanced patterns (custom player UI, interstitials, background playback, error handling): `references/avkit-patterns.md`
+- Advanced patterns (custom player UI, interstitials, background playback, error handling): [references/avkit-patterns.md](references/avkit-patterns.md)
 - [AVKit framework](https://sosumi.ai/documentation/avkit)
 - [AVPlayerViewController](https://sosumi.ai/documentation/avkit/avplayerviewcontroller)
 - [VideoPlayer (SwiftUI)](https://sosumi.ai/documentation/avkit/videoplayer)

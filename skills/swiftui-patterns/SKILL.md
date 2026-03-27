@@ -74,7 +74,7 @@ struct FeedView: View {
 }
 ```
 
-For MV pattern rationale, app wiring, and lightweight client examples, see `references/architecture-patterns.md`.
+For MV pattern rationale, app wiring, and lightweight client examples, see [references/architecture-patterns.md](references/architecture-patterns.md).
 
 ## State Management
 
@@ -306,7 +306,7 @@ Follow Apple Human Interface Guidelines for layout, typography, color, and acces
 - Support adaptive layouts via `horizontalSizeClass`
 - Provide VoiceOver labels (`.accessibilityLabel`) and support Dynamic Type accessibility sizes by switching layout orientation
 
-See `references/design-polish.md` for HIG, theming, haptics, focus, transitions, and loading patterns.
+See [references/design-polish.md](references/design-polish.md) for HIG, theming, haptics, focus, transitions, and loading patterns.
 
 ## Writing Tools (iOS 18+)
 
@@ -342,7 +342,7 @@ TextField("Search…", text: $query)
 8. Using `NavigationView` -- deprecated; use `NavigationStack`
 9. Inline closures in body -- extract complex closures to methods
 10. `.sheet(isPresented:)` when state represents a model -- use `.sheet(item:)` instead
-11. **Using `AnyView` for type erasure** -- causes identity resets and disables diffing. Use `@ViewBuilder`, `Group`, or generics instead. See `references/deprecated-migration.md`
+11. **Using `AnyView` for type erasure** -- causes identity resets and disables diffing. Use `@ViewBuilder`, `Group`, or generics instead. See [references/deprecated-migration.md](references/deprecated-migration.md)
 
 ## Review Checklist
 
@@ -364,8 +364,8 @@ TextField("Search…", text: $query)
 
 ## References
 
-- Architecture, app wiring, and lightweight clients: `references/architecture-patterns.md`
-- Design polish (HIG, theming, haptics, transitions, loading, focus): `references/design-polish.md`
-- Deprecated API migration: `references/deprecated-migration.md`
-- Platform and sharing patterns (Transferable, media, menus, macOS settings): `references/platform-and-sharing.md`
+- Architecture, app wiring, and lightweight clients: [references/architecture-patterns.md](references/architecture-patterns.md)
+- Design polish (HIG, theming, haptics, transitions, loading, focus): [references/design-polish.md](references/design-polish.md)
+- Deprecated API migration: [references/deprecated-migration.md](references/deprecated-migration.md)
+- Platform and sharing patterns (Transferable, media, menus, macOS settings): [references/platform-and-sharing.md](references/platform-and-sharing.md)
 

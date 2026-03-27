@@ -48,7 +48,7 @@ Design your labels, values, and hints with this reading order in mind.
 
 ## SwiftUI Accessibility Modifiers
 
-See `references/a11y-patterns.md` for detailed SwiftUI modifier examples (labels, hints, traits, grouping, custom controls, adjustable actions, and custom actions).
+See [references/a11y-patterns.md](references/a11y-patterns.md) for detailed SwiftUI modifier examples (labels, hints, traits, grouping, custom controls, adjustable actions, and custom actions).
 
 ## Focus Management
 
@@ -138,11 +138,11 @@ UIAccessibility.post(notification: .screenChanged, argument: newScreenView)
 
 ## Dynamic Type
 
-See `references/a11y-patterns.md` for Dynamic Type and adaptive layout examples, including @ScaledMetric and minimum tap target patterns.
+See [references/a11y-patterns.md](references/a11y-patterns.md) for Dynamic Type and adaptive layout examples, including @ScaledMetric and minimum tap target patterns.
 
 ## Custom Rotors
 
-Rotors let VoiceOver users quickly navigate to specific content types. Add custom rotors for content-heavy screens. See `references/a11y-patterns.md` for complete rotor examples.
+Rotors let VoiceOver users quickly navigate to specific content types. Add custom rotors for content-heavy screens. See [references/a11y-patterns.md](references/a11y-patterns.md) for complete rotor examples.
 
 ## System Accessibility Preferences
 
@@ -242,7 +242,7 @@ overlayView.accessibilityViewIsModal = true
 
 ## Accessibility Custom Content
 
-See `references/a11y-patterns.md` for UIKit accessibility patterns and custom content examples.
+See [references/a11y-patterns.md](references/a11y-patterns.md) for UIKit accessibility patterns and custom content examples.
 
 ```swift
 ProductRow(product: product)
@@ -297,5 +297,5 @@ For every user-facing view, verify:
 
 ## References
 
-- Detailed patterns: `references/a11y-patterns.md`
+- Detailed patterns: [references/a11y-patterns.md](references/a11y-patterns.md)
 

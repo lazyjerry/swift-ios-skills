@@ -487,7 +487,7 @@ func handleRefresh(task: BGAppRefreshTask) {
 
 ## References
 
-- See `references/background-task-patterns.md` for extended patterns, background
+- See [references/background-task-patterns.md](references/background-task-patterns.md) for extended patterns, background
   URLSession edge cases, debugging with simulated launches, and background push
   best practices.
 - [BGTaskScheduler](https://sosumi.ai/documentation/backgroundtasks/bgtaskscheduler)

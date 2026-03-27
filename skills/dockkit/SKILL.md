@@ -359,7 +359,7 @@ for await state in accessory.trackingStates {
 
 Use `selectSubjects(_:)` to lock tracking onto specific subjects by UUID.
 Pass an empty array to return to automatic selection. See
-`references/dockkit-patterns.md` for speaker-tracking and saliency
+[references/dockkit-patterns.md](references/dockkit-patterns.md) for speaker-tracking and saliency
 filtering recipes.
 
 ## Accessory Events
@@ -485,7 +485,7 @@ available.
 
 ## References
 
-- Extended patterns (Vision integration, service architecture, custom animations): `references/dockkit-patterns.md`
+- Extended patterns (Vision integration, service architecture, custom animations): [references/dockkit-patterns.md](references/dockkit-patterns.md)
 - [DockKit framework](https://sosumi.ai/documentation/dockkit)
 - [DockAccessoryManager](https://sosumi.ai/documentation/dockkit/dockaccessorymanager)
 - [DockAccessory](https://sosumi.ai/documentation/dockkit/dockaccessory)

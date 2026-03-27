@@ -474,7 +474,7 @@ the system attempts unsupported operations.
 
 ## References
 
-- Extended patterns (PIV commands, TLV parsing, generic token drivers, APDU helpers, secure PIN): `references/cryptotokenkit-patterns.md`
+- Extended patterns (PIV commands, TLV parsing, generic token drivers, APDU helpers, secure PIN): [references/cryptotokenkit-patterns.md](references/cryptotokenkit-patterns.md)
 - [CryptoTokenKit framework](https://sosumi.ai/documentation/cryptotokenkit)
 - [TKTokenDriver](https://sosumi.ai/documentation/cryptotokenkit/tktokendriver)
 - [TKToken](https://sosumi.ai/documentation/cryptotokenkit/tktoken)

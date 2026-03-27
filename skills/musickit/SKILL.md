@@ -384,7 +384,7 @@ center.skipForwardCommand.isEnabled = false
 
 ## References
 
-- Extended patterns (SwiftUI integration, genre browsing, playlist management): `references/musickit-patterns.md`
+- Extended patterns (SwiftUI integration, genre browsing, playlist management): [references/musickit-patterns.md](references/musickit-patterns.md)
 - [MusicKit framework](https://sosumi.ai/documentation/musickit)
 - [MusicAuthorization](https://sosumi.ai/documentation/musickit/musicauthorization)
 - [ApplicationMusicPlayer](https://sosumi.ai/documentation/musickit/applicationmusicplayer)

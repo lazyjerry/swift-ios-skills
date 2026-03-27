@@ -304,7 +304,7 @@ func endWorkout(
 }
 ```
 
-For full workout lifecycle management including pause/resume, delegate handling, and multi-device mirroring, see `references/healthkit-patterns.md`.
+For full workout lifecycle management including pause/resume, delegate handling, and multi-device mirroring, see [references/healthkit-patterns.md](references/healthkit-patterns.md).
 
 ## Common Data Types
 
@@ -486,7 +486,7 @@ let query = HKStatisticsQueryDescriptor(
 
 ## References
 
-- Extended patterns (workouts, anchored queries, SwiftUI integration): `references/healthkit-patterns.md`
+- Extended patterns (workouts, anchored queries, SwiftUI integration): [references/healthkit-patterns.md](references/healthkit-patterns.md)
 - [HealthKit framework](https://sosumi.ai/documentation/healthkit)
 - [HKHealthStore](https://sosumi.ai/documentation/healthkit/hkhealthstore)
 - [HKSampleQueryDescriptor](https://sosumi.ai/documentation/healthkit/hksamplequerydescriptor)

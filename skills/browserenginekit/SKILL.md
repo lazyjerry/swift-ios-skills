@@ -311,7 +311,7 @@ host app displays via `LayerHierarchyHostingView`. Handles are passed over
 XPC. Use `LayerHierarchyHostingTransactionCoordinator` to synchronize layer
 updates atomically across processes.
 
-See `references/browserenginekit-patterns.md` for detailed layer hosting
+See [references/browserenginekit-patterns.md](references/browserenginekit-patterns.md) for detailed layer hosting
 examples and transaction coordination.
 
 ## Text Interaction
@@ -327,7 +327,7 @@ Key integration points:
 - `BETextInteraction` for selection gestures, edit menus, and context menus
 - `BEScrollView` and `BEScrollViewDelegate` for custom scroll handling
 
-See `references/browserenginekit-patterns.md` for detailed text interaction
+See [references/browserenginekit-patterns.md](references/browserenginekit-patterns.md) for detailed text interaction
 implementation.
 
 ## Sandbox and Security
@@ -384,7 +384,7 @@ access token, initialize the monitor with source/destination URLs and a
 `Progress` object, then call `beginMonitoring()` to show the system download
 UI. Use `resumeMonitoring(placeholderURL:)` to resume interrupted downloads.
 
-See `references/browserenginekit-patterns.md` for full download management
+See [references/browserenginekit-patterns.md](references/browserenginekit-patterns.md) for full download management
 examples.
 
 ## Common Mistakes
@@ -477,7 +477,7 @@ unsupported devices can download the app and hit runtime failures.
 
 ## References
 
-- Extended patterns (text interaction, layer hosting, scroll views, XPC communication, content filtering): `references/browserenginekit-patterns.md`
+- Extended patterns (text interaction, layer hosting, scroll views, XPC communication, content filtering): [references/browserenginekit-patterns.md](references/browserenginekit-patterns.md)
 - [BrowserEngineKit framework](https://sosumi.ai/documentation/browserenginekit)
 - [Designing your browser architecture](https://sosumi.ai/documentation/browserenginekit/designing-your-browser-architecture)
 - [Creating browser extensions in Xcode](https://sosumi.ai/documentation/browserenginekit/creating-browser-extensions-in-xcode)

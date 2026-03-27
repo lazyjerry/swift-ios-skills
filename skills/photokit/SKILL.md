@@ -7,7 +7,7 @@ description: "Implement, review, or improve photo picking, camera capture, and m
 
 Modern patterns for photo picking, camera capture, image loading, and media permissions targeting iOS 26+ with Swift 6.2. Patterns are backward-compatible to iOS 16 unless noted.
 
-See `references/photokit-patterns.md` for complete picker recipes and `references/camera-capture.md` for AVCaptureSession patterns.
+See [references/photokit-patterns.md](references/photokit-patterns.md) for complete picker recipes and [references/camera-capture.md](references/camera-capture.md) for AVCaptureSession patterns.
 
 ## Contents
 
@@ -249,7 +249,7 @@ Omitting a required key causes a runtime crash when the permission dialog would 
 
 ## Camera Capture Basics
 
-Manage camera sessions in a dedicated `@Observable` model. The representable view only displays the preview. See `references/camera-capture.md` for complete patterns.
+Manage camera sessions in a dedicated `@Observable` model. The representable view only displays the preview. See [references/camera-capture.md](references/camera-capture.md) for complete patterns.
 
 ### Minimal Camera Manager
 
@@ -495,6 +495,6 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 
 ## References
 
-- `references/photokit-patterns.md` — Picker patterns, media loading, HEIC handling
-- `references/camera-capture.md` — AVCaptureSession, photo/video capture, QR scanning
-- `references/image-loading-caching.md` — AsyncImage, caching, downsampling, `references/av-playback.md` — AVPlayer, streaming, background audio
+- [references/photokit-patterns.md](references/photokit-patterns.md) — Picker patterns, media loading, HEIC handling
+- [references/camera-capture.md](references/camera-capture.md) — AVCaptureSession, photo/video capture, QR scanning
+- [references/image-loading-caching.md](references/image-loading-caching.md) — AsyncImage, caching, downsampling, [references/av-playback.md](references/av-playback.md) — AVPlayer, streaming, background audio

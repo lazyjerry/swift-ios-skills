@@ -73,7 +73,7 @@ Apple rejects apps that are too simple or are just websites in a wrapper:
 
 This is the fastest-growing rejection category (Guideline 5.1.1). A privacy manifest is **required** if your app or any of its dependencies uses certain categories of APIs.
 
-**See:** `references/privacy-manifest.md` for the full structure, reason codes, and checklists.
+**See:** [references/privacy-manifest.md](references/privacy-manifest.md) for the full structure, reason codes, and checklists.
 
 ### Summary
 
@@ -125,7 +125,7 @@ All digital content and services must use Apple's In-App Purchase system:
 
 ## HIG Compliance Checklist
 
-See `references/review-checklists.md` for the full HIG checklist (navigation, modals, widgets, system feature support, launch screen, empty states). This section stays intentionally brief to keep SKILL.md concise.
+See [references/review-checklists.md](references/review-checklists.md) for the full HIG checklist (navigation, modals, widgets, system feature support, launch screen, empty states). This section stays intentionally brief to keep SKILL.md concise.
 
 ## App Tracking Transparency (ATT)
 
@@ -323,7 +323,7 @@ If the Resolution Center exchange does not resolve the issue:
 
 ## Review Checklist
 
-Quick-check before every submission (full version in `references/review-checklists.md`):
+Quick-check before every submission (full version in [references/review-checklists.md](references/review-checklists.md)):
 
 - [ ] No placeholder/test content; all features functional; demo credentials provided
 - [ ] App name matches functionality; screenshots are real; no prices in description
@@ -336,5 +336,5 @@ Quick-check before every submission (full version in `references/review-checklis
 
 ## References
 
-- Review checklists: `references/review-checklists.md`
-- Privacy manifest guide: `references/privacy-manifest.md`
+- Review checklists: [references/review-checklists.md](references/review-checklists.md)
+- Privacy manifest guide: [references/privacy-manifest.md](references/privacy-manifest.md)

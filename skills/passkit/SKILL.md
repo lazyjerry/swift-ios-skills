@@ -387,7 +387,7 @@ func paymentAuthorizationControllerDidFinish(
 
 ## References
 
-- Extended patterns (recurring payments, coupon codes, multi-merchant): `references/wallet-passes.md`
+- Extended patterns (recurring payments, coupon codes, multi-merchant): [references/wallet-passes.md](references/wallet-passes.md)
 - [PassKit framework](https://sosumi.ai/documentation/passkit)
 - [PKPaymentRequest](https://sosumi.ai/documentation/passkit/pkpaymentrequest)
 - [PKPaymentAuthorizationController](https://sosumi.ai/documentation/passkit/pkpaymentauthorizationcontroller)

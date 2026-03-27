@@ -14,7 +14,7 @@ Targets Swift 6.2 / watchOS 26+.
 > **Beta-sensitive.** RelevanceKit shipped with watchOS 26. Re-check Apple
 > documentation before making strong claims about API availability or behavior.
 
-See `references/relevancekit-patterns.md` for complete code patterns including
+See [references/relevancekit-patterns.md](references/relevancekit-patterns.md) for complete code patterns including
 relevant widgets, timeline provider integration, grouping, previews, and
 permission handling.
 
@@ -460,7 +460,7 @@ bypass Smart Stack rotation limits during development.
 
 ## References
 
-- `references/relevancekit-patterns.md` -- extended patterns, full provider
+- [references/relevancekit-patterns.md](references/relevancekit-patterns.md) -- extended patterns, full provider
   implementations, permission handling, and grouping strategies
 - [RelevanceKit documentation](https://sosumi.ai/documentation/relevancekit)
 - [RelevantContext](https://sosumi.ai/documentation/relevancekit/relevantcontext)

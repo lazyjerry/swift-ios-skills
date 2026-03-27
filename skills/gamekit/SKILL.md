@@ -63,7 +63,7 @@ func authenticatePlayer() {
 ```
 
 Guard on `GKLocalPlayer.local.isAuthenticated` before calling any GameKit API.
-For server-side identity verification, see `references/gamekit-patterns.md`.
+For server-side identity verification, see [references/gamekit-patterns.md](references/gamekit-patterns.md).
 
 ## Access Point
 
@@ -176,7 +176,7 @@ func loadTopScores(
 
 `GKLeaderboard.Entry` provides `player`, `rank`, `score`, `formattedScore`,
 `context`, and `date`. For recurring leaderboard timing, leaderboard images,
-and leaderboard sets, see `references/gamekit-patterns.md`.
+and leaderboard sets, see [references/gamekit-patterns.md](references/gamekit-patterns.md).
 
 ## Achievements
 
@@ -302,7 +302,7 @@ Data modes: `.reliable` (TCP-like, ordered, guaranteed) and `.unreliable`
 `.unreliable` for frequent position updates. Register the local player as a
 listener (`GKLocalPlayer.local.register(self)`) to receive invitations through
 `GKInviteEventListener`. For programmatic matchmaking and custom match UI, see
-`references/gamekit-patterns.md`.
+[references/gamekit-patterns.md](references/gamekit-patterns.md).
 
 ## Turn-Based Multiplayer
 
@@ -488,7 +488,7 @@ func returnToMenu() {
 
 ## References
 
-- See `references/gamekit-patterns.md` for voice chat, saved games, custom match
+- See [references/gamekit-patterns.md](references/gamekit-patterns.md) for voice chat, saved games, custom match
   UI, leaderboard images, challenge handling, and rule-based matchmaking.
 - [GameKit documentation](https://sosumi.ai/documentation/gamekit)
 - [GKLocalPlayer](https://sosumi.ai/documentation/gamekit/gklocalplayer)

@@ -471,8 +471,8 @@ SubscriptionStoreView(groupID: "group_id")
 
 ## References
 
-- See `references/app-review-guidelines.md` for IAP rules (Guideline 3.1.1),
+- See [references/app-review-guidelines.md](references/app-review-guidelines.md) for IAP rules (Guideline 3.1.1),
   subscription display requirements, and rejection prevention.
-- See `references/storekit-advanced.md` for subscription control styles,
+- See [references/storekit-advanced.md](references/storekit-advanced.md) for subscription control styles,
   offer management, testing patterns, and advanced subscription handling.
 

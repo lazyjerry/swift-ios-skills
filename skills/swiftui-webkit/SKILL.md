@@ -79,7 +79,7 @@ struct ArticleDetailView: View {
 }
 ```
 
-See `references/loading-and-observation.md` for full examples.
+See [references/loading-and-observation.md](references/loading-and-observation.md) for full examples.
 
 ## Loading and Observing with WebPage
 
@@ -133,7 +133,7 @@ Task {
 }
 ```
 
-See `references/loading-and-observation.md` for stronger patterns and the load-sequence examples.
+See [references/loading-and-observation.md](references/loading-and-observation.md) for stronger patterns and the load-sequence examples.
 
 ## Navigation Policies
 
@@ -168,7 +168,7 @@ final class ArticleNavigationDecider: WebPage.NavigationDeciding {
 
 Keep app-level deep-link routing in the navigation skill. This skill owns navigation that happens inside embedded web content.
 
-See `references/navigation-and-javascript.md` for complete patterns.
+See [references/navigation-and-javascript.md](references/navigation-and-javascript.md) for complete patterns.
 
 ## JavaScript Integration
 
@@ -198,7 +198,7 @@ let result = try await page.callJavaScript(
 
 Important boundary: the native SwiftUI WebKit API clearly supports Swift-to-JavaScript calls, but it does not expose an obvious direct replacement for `WKScriptMessageHandler`. If you need coarse JS-to-native signaling, a custom navigation or callback-URL pattern can work, but document it as a workaround pattern, not a guaranteed one-to-one replacement.
 
-See `references/navigation-and-javascript.md`.
+See [references/navigation-and-javascript.md](references/navigation-and-javascript.md).
 
 ## Local Content and Custom URL Schemes
 
@@ -221,7 +221,7 @@ Use this for:
 
 Do not overuse custom schemes for normal remote content. Prefer standard HTTPS for server-hosted pages.
 
-See `references/local-content-and-custom-schemes.md`.
+See [references/local-content-and-custom-schemes.md](references/local-content-and-custom-schemes.md).
 
 ## WebView Customization
 
@@ -267,7 +267,7 @@ Apple’s HIG also applies here: support back/forward navigation when appropriat
 
 ## References
 
-- Loading and observation: `references/loading-and-observation.md`
-- Navigation and JavaScript: `references/navigation-and-javascript.md`
-- Local content and custom schemes: `references/local-content-and-custom-schemes.md`
-- Migration and fallbacks: `references/migration-and-fallbacks.md`
+- Loading and observation: [references/loading-and-observation.md](references/loading-and-observation.md)
+- Navigation and JavaScript: [references/navigation-and-javascript.md](references/navigation-and-javascript.md)
+- Local content and custom schemes: [references/local-content-and-custom-schemes.md](references/local-content-and-custom-schemes.md)
+- Migration and fallbacks: [references/migration-and-fallbacks.md](references/migration-and-fallbacks.md)

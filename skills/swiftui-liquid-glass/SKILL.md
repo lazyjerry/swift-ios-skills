@@ -23,7 +23,7 @@ and light, and reacts to touch and pointer interactions. Standard SwiftUI compon
 (tab bars, toolbars, navigation bars, sheets) adopt Liquid Glass automatically when
 built with the iOS 26 SDK. Use the APIs below for custom views and controls.
 
-See `references/liquid-glass.md` for the full API reference with additional examples.
+See [references/liquid-glass.md](references/liquid-glass.md) for the full API reference with additional examples.
 
 ## Workflow
 
@@ -315,6 +315,6 @@ Liquid Glass requires iOS 26+. Gate with `if #available(iOS 26, *)` and provide 
 
 ## References
 
-- Full API guide: `references/liquid-glass.md`
+- Full API guide: [references/liquid-glass.md](references/liquid-glass.md)
 - Apple docs: [Applying Liquid Glass to custom views](https://sosumi.ai/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views)
 - Apple docs: [Adopting Liquid Glass](https://sosumi.ai/documentation/technologyoverviews/adopting-liquid-glass)

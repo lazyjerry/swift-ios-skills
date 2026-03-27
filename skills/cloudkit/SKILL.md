@@ -477,7 +477,7 @@ try await privateDB.save(sub)
 
 ## References
 
-- See `references/cloudkit-patterns.md` for CKFetchRecordZoneChangesOperation
+- See [references/cloudkit-patterns.md](references/cloudkit-patterns.md) for CKFetchRecordZoneChangesOperation
   incremental sync, CKShare collaboration, record zone management, CKAsset
   file storage, batch operations, and CloudKit Dashboard usage.
 - [CloudKit Framework](https://sosumi.ai/documentation/cloudkit)

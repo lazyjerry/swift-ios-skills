@@ -373,7 +373,7 @@ struct Record: Decodable {
 }
 ```
 
-See `references/swift-patterns-extended.md` for additional Codable patterns
+See [references/swift-patterns-extended.md](references/swift-patterns-extended.md) for additional Codable patterns
 (enums with associated values, date strategies, unkeyed containers).
 
 ## Modern Collection APIs
@@ -453,7 +453,7 @@ let date = try Date("Mar 15, 2024", strategy: .dateTime.month().day().year())
 
 ## String Interpolation
 
-Extend `DefaultStringInterpolation` for domain-specific formatting. Use `"""` for multi-line strings (indentation is relative to the closing `"""`). See `references/swift-patterns-extended.md` for custom interpolation examples.
+Extend `DefaultStringInterpolation` for domain-specific formatting. Use `"""` for multi-line strings (indentation is relative to the closing `"""`). See [references/swift-patterns-extended.md](references/swift-patterns-extended.md) for custom interpolation examples.
 
 ## Common Mistakes
 
@@ -495,4 +495,4 @@ Extend `DefaultStringInterpolation` for domain-specific formatting. Use `"""` fo
 
 ## References
 
-- Extended patterns and Codable examples: `references/swift-patterns-extended.md`
+- Extended patterns and Codable examples: [references/swift-patterns-extended.md](references/swift-patterns-extended.md)

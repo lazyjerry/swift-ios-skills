@@ -153,7 +153,7 @@ let impression = try await AppImpression(compactJWS: signedJWSString)
 
 The JWS contains the ad network ID, advertised item ID, publisher item ID,
 source identifier, timestamp, and optional re-engagement eligibility flag. See
-`references/adattributionkit-patterns.md`
+[references/adattributionkit-patterns.md](references/adattributionkit-patterns.md)
 for JWS generation details.
 
 ### Check device support
@@ -479,7 +479,7 @@ func handlePostback(request: Request) -> Response {
 
 ## References
 
-- `references/adattributionkit-patterns.md`
+- [references/adattributionkit-patterns.md](references/adattributionkit-patterns.md)
   -- postback verification, server handling, testing, SKAdNetwork migration,
   alternative marketplaces, attribution rules configuration
 - [Apple: AdAttributionKit](https://sosumi.ai/documentation/adattributionkit)

@@ -7,7 +7,7 @@ description: "Bridges UIKit and SwiftUI by wrapping UIKit views and view control
 
 Bridge UIKit and SwiftUI in both directions. Wrap UIKit views and view controllers for use in SwiftUI, embed SwiftUI views inside UIKit screens, and synchronize state across the boundary. Targets iOS 26+ with Swift 6.2 patterns; notes backward-compatible to iOS 16 unless stated otherwise.
 
-See `references/representable-recipes.md` for complete wrapping recipes and `references/hosting-migration.md` for UIKit-to-SwiftUI migration patterns.
+See [references/representable-recipes.md](references/representable-recipes.md) for complete wrapping recipes and [references/hosting-migration.md](references/hosting-migration.md) for UIKit-to-SwiftUI migration patterns.
 
 ## Contents
 
@@ -421,8 +421,8 @@ If passing closures across isolation boundaries, ensure they are `@Sendable` or 
 
 ## References
 
-- Wrapping recipes: `references/representable-recipes.md`
-- Migration patterns: `references/hosting-migration.md`
+- Wrapping recipes: [references/representable-recipes.md](references/representable-recipes.md)
+- Migration patterns: [references/hosting-migration.md](references/hosting-migration.md)
 - Apple docs: [UIViewRepresentable](https://sosumi.ai/documentation/SwiftUI/UIViewRepresentable)
 - Apple docs: [UIViewControllerRepresentable](https://sosumi.ai/documentation/SwiftUI/UIViewControllerRepresentable)
 - Apple docs: [UIHostingController](https://sosumi.ai/documentation/SwiftUI/UIHostingController)

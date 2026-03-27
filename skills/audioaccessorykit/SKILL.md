@@ -357,7 +357,7 @@ do {
 
 ## References
 
-- Extended patterns (registration flow, placement monitoring, multi-device coordination): `references/audioaccessorykit-patterns.md`
+- Extended patterns (registration flow, placement monitoring, multi-device coordination): [references/audioaccessorykit-patterns.md](references/audioaccessorykit-patterns.md)
 - [AudioAccessoryKit framework](https://sosumi.ai/documentation/audioaccessorykit)
 - [Supporting automatic audio switching](https://sosumi.ai/documentation/audioaccessorykit/supporting-automatic-audio-switching)
 - [AccessoryControlDevice](https://sosumi.ai/documentation/audioaccessorykit/accessorycontroldevice)

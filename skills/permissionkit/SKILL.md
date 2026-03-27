@@ -432,7 +432,7 @@ PermissionButton(question: question) {
 
 ## References
 
-- Extended patterns (response handling, multi-topic, UIKit): `references/permissionkit-patterns.md`
+- Extended patterns (response handling, multi-topic, UIKit): [references/permissionkit-patterns.md](references/permissionkit-patterns.md)
 - [PermissionKit framework](https://sosumi.ai/documentation/permissionkit)
 - [AskCenter](https://sosumi.ai/documentation/permissionkit/askcenter)
 - [PermissionQuestion](https://sosumi.ai/documentation/permissionkit/permissionquestion)

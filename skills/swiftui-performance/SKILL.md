@@ -481,7 +481,7 @@ Use computed properties on `@Observable` models to derive state without introduc
 
 ## References
 
-- Demystify SwiftUI performance (WWDC23): `references/demystify-swiftui-performance-wwdc23.md`
-- Optimizing SwiftUI performance with Instruments: `references/optimizing-swiftui-performance-instruments.md`
-- Understanding hangs in your app: `references/understanding-hangs-in-your-app.md`
-- Understanding and improving SwiftUI performance: `references/understanding-improving-swiftui-performance.md`
+- Demystify SwiftUI performance (WWDC23): [references/demystify-swiftui-performance-wwdc23.md](references/demystify-swiftui-performance-wwdc23.md)
+- Optimizing SwiftUI performance with Instruments: [references/optimizing-swiftui-performance-instruments.md](references/optimizing-swiftui-performance-instruments.md)
+- Understanding hangs in your app: [references/understanding-hangs-in-your-app.md](references/understanding-hangs-in-your-app.md)
+- Understanding and improving SwiftUI performance: [references/understanding-improving-swiftui-performance.md](references/understanding-improving-swiftui-performance.md)

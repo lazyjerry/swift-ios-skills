@@ -438,7 +438,7 @@ DragGesture()
 
 ## References
 
-- See `references/gesture-patterns.md` for drag-to-reorder, pinch-to-zoom, combined rotate+scale, velocity calculations, and SwiftUI/UIKit gesture interop.
+- See [references/gesture-patterns.md](references/gesture-patterns.md) for drag-to-reorder, pinch-to-zoom, combined rotate+scale, velocity calculations, and SwiftUI/UIKit gesture interop.
 - [Gesture protocol](https://sosumi.ai/documentation/swiftui/gesture)
 - [TapGesture](https://sosumi.ai/documentation/swiftui/tapgesture)
 - [LongPressGesture](https://sosumi.ai/documentation/swiftui/longpressgesture)

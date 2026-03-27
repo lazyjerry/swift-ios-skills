@@ -470,7 +470,7 @@ func sensorReader(_ reader: SRSensorReader, fetching: SRFetchRequest, failedWith
 
 ## References
 
-- Extended patterns (delegate wiring, multi-sensor manager, sample type details): `references/sensorkit-patterns.md`
+- Extended patterns (delegate wiring, multi-sensor manager, sample type details): [references/sensorkit-patterns.md](references/sensorkit-patterns.md)
 - [SensorKit framework](https://sosumi.ai/documentation/sensorkit)
 - [SRSensorReader](https://sosumi.ai/documentation/sensorkit/srsensorreader)
 - [SRSensor](https://sosumi.ai/documentation/sensorkit/srsensor)

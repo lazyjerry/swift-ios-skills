@@ -319,7 +319,7 @@ func startSharePlay() async throws {
 ```
 
 For `ShareLink` (SwiftUI) and direct `activity.activate()` patterns, see
-`references/shareplay-patterns.md`.
+[references/shareplay-patterns.md](references/shareplay-patterns.md).
 
 ## GroupSessionJournal: File Transfer
 
@@ -470,7 +470,7 @@ final class ActivityManager {
 
 ## References
 
-- Extended patterns (collaborative canvas, spatial Personas, custom templates): `references/shareplay-patterns.md`
+- Extended patterns (collaborative canvas, spatial Personas, custom templates): [references/shareplay-patterns.md](references/shareplay-patterns.md)
 - [GroupActivities framework](https://sosumi.ai/documentation/groupactivities)
 - [GroupActivity protocol](https://sosumi.ai/documentation/groupactivities/groupactivity)
 - [GroupSession](https://sosumi.ai/documentation/groupactivities/groupsession)

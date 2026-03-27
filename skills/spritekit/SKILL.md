@@ -482,7 +482,7 @@ Set `physicsWorld.contactDelegate = self` in `didMove(to:)`, not in
 
 ## References
 
-- See `references/spritekit-patterns.md` for tile maps, texture atlases, shaders,
+- See [references/spritekit-patterns.md](references/spritekit-patterns.md) for tile maps, texture atlases, shaders,
   scene transitions, game loop patterns, audio, and SceneKit embedding.
 - [SpriteKit documentation](https://sosumi.ai/documentation/spritekit)
 - [SKScene](https://sosumi.ai/documentation/spritekit/skscene)

@@ -371,7 +371,7 @@ struct DocumentScreen: View {
 ```
 
 For interactive wrappers with page tracking, annotation hit detection, and
-coordinator patterns, see `references/pdfkit-patterns.md`.
+coordinator patterns, see [references/pdfkit-patterns.md](references/pdfkit-patterns.md).
 
 ### Page Overlays (iOS 16+)
 
@@ -479,7 +479,7 @@ func updateUIView(_ pdfView: PDFView, context: Context) {
 
 ## References
 
-- Extended patterns (forms, watermarks, merging, printing, overlays, outlines, custom drawing): `references/pdfkit-patterns.md`
+- Extended patterns (forms, watermarks, merging, printing, overlays, outlines, custom drawing): [references/pdfkit-patterns.md](references/pdfkit-patterns.md)
 - [PDFKit framework](https://sosumi.ai/documentation/pdfkit)
 - [PDFView](https://sosumi.ai/documentation/pdfkit/pdfview)
 - [PDFDocument](https://sosumi.ai/documentation/pdfkit/pdfdocument)

@@ -405,7 +405,7 @@ Options: `.allowsCameraControl`, `.autoenablesDefaultLighting`,
 `.jitteringEnabled`, `.temporalAntialiasingEnabled`.
 
 For render loop control, wrap `SCNView` in `UIViewRepresentable` with an
-`SCNSceneRendererDelegate` coordinator. See `references/scenekit-patterns.md`.
+`SCNSceneRendererDelegate` coordinator. See [references/scenekit-patterns.md](references/scenekit-patterns.md).
 
 ## Common Mistakes
 
@@ -482,7 +482,7 @@ light.light?.attenuationEndDistance = 10
 
 ## References
 
-- See `references/scenekit-patterns.md` for custom geometry, shader modifiers,
+- See [references/scenekit-patterns.md](references/scenekit-patterns.md) for custom geometry, shader modifiers,
   node constraints, morph targets, hit testing, scene serialization, render loop
   delegates, performance optimization, SpriteKit overlay, LOD, and Metal shaders.
 - [SceneKit documentation](https://sosumi.ai/documentation/scenekit)

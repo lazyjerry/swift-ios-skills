@@ -49,7 +49,7 @@ let msg = "Hello"                 // just a String, invisible to Xcode
 
 Xcode adds discovered keys to the String Catalog automatically. Mark translations as Needs Review, Translated, or Stale in the editor.
 
-For detailed String Catalog workflows, migration, and testing strategies, see `references/string-catalogs.md`.
+For detailed String Catalog workflows, migration, and testing strategies, see [references/string-catalogs.md](references/string-catalogs.md).
 
 ## String Types -- Decision Guide
 
@@ -265,7 +265,7 @@ items.formatted(.list(type: .and))    // "Apples, Oranges, and Bananas" (EN)
                                       // "Apples, Oranges et Bananas" (FR)
 ```
 
-For the complete FormatStyle reference, custom styles, and RTL layout, see `references/formatstyle-locale.md`.
+For the complete FormatStyle reference, custom styles, and RTL layout, see [references/formatstyle-locale.md](references/formatstyle-locale.md).
 
 ## Right-to-Left (RTL) Layout
 
@@ -413,6 +413,6 @@ Use Xcode scheme settings to override the app language without changing device l
 
 ## References
 
-- FormatStyle patterns: `references/formatstyle-locale.md`
-- String Catalogs guide: `references/string-catalogs.md`
+- FormatStyle patterns: [references/formatstyle-locale.md](references/formatstyle-locale.md)
+- String Catalogs guide: [references/string-catalogs.md](references/string-catalogs.md)
 

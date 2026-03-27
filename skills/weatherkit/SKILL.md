@@ -396,7 +396,7 @@ actor WeatherCache {
 
 ## References
 
-- Extended patterns (SwiftUI dashboard, charts integration, historical statistics): `references/weatherkit-patterns.md`
+- Extended patterns (SwiftUI dashboard, charts integration, historical statistics): [references/weatherkit-patterns.md](references/weatherkit-patterns.md)
 - [WeatherKit framework](https://sosumi.ai/documentation/weatherkit)
 - [WeatherService](https://sosumi.ai/documentation/weatherkit/weatherservice)
 - [WeatherAttribution](https://sosumi.ai/documentation/weatherkit/weatherattribution)

@@ -401,7 +401,7 @@ recognizer.processString("chat")
 
 ## References
 
-- Extended patterns (custom models, contextual embeddings, gazetteers): `references/translation-patterns.md`
+- Extended patterns (custom models, contextual embeddings, gazetteers): [references/translation-patterns.md](references/translation-patterns.md)
 - [Natural Language framework](https://sosumi.ai/documentation/naturallanguage)
 - [NLTokenizer](https://sosumi.ai/documentation/naturallanguage/nltokenizer)
 - [NLTagger](https://sosumi.ai/documentation/naturallanguage/nltagger)

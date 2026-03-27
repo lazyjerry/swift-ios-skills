@@ -469,7 +469,7 @@ try eventStore.save(event, span: .thisEvent)
 
 ## References
 
-- Extended patterns (SwiftUI wrappers, predicate queries, batch operations): `references/eventkit-patterns.md`
+- Extended patterns (SwiftUI wrappers, predicate queries, batch operations): [references/eventkit-patterns.md](references/eventkit-patterns.md)
 - [EventKit framework](https://sosumi.ai/documentation/eventkit)
 - [EKEventStore](https://sosumi.ai/documentation/eventkit/ekeventstore)
 - [EKEvent](https://sosumi.ai/documentation/eventkit/ekevent)

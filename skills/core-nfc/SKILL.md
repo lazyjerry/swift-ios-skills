@@ -481,7 +481,7 @@ tag.queryNDEFStatus { status, capacity, error in
 
 ## References
 
-- Extended patterns (ISO 7816 commands, multi-tag scanning, NDEF locking): `references/nfc-patterns.md`
+- Extended patterns (ISO 7816 commands, multi-tag scanning, NDEF locking): [references/nfc-patterns.md](references/nfc-patterns.md)
 - [Core NFC framework](https://sosumi.ai/documentation/corenfc)
 - [NFCNDEFReaderSession](https://sosumi.ai/documentation/corenfc/nfcndefreadersession)
 - [NFCTagReaderSession](https://sosumi.ai/documentation/corenfc/nfctagreadersession)

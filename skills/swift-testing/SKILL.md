@@ -86,7 +86,7 @@ let first = try #require(items.first)
 
 ## @Suite and Test Organization
 
-See `references/testing-patterns.md` for suite organization, confirmation patterns, and known-issue handling.
+See [references/testing-patterns.md](references/testing-patterns.md) for suite organization, confirmation patterns, and known-issue handling.
 
 ## Known Issues
 
@@ -114,7 +114,7 @@ If no known issues are recorded, Swift Testing records a distinct issue notifyin
 
 ## Additional Patterns
 
-See `references/testing-patterns.md` for complete examples of:
+See [references/testing-patterns.md](references/testing-patterns.md) for complete examples of:
 
 - **TestScoping** -- custom test lifecycle with setup/teardown consolidation
 - **Mocking and Test Doubles** -- protocol-based doubles and testable architecture
@@ -423,7 +423,7 @@ func insertUser() async throws { ... }
 
 ## Test Attachments
 
-Attach diagnostic data to test results for debugging failures. See `references/testing-patterns.md` for full examples.
+Attach diagnostic data to test results for debugging failures. See [references/testing-patterns.md](references/testing-patterns.md) for full examples.
 
 ```swift
 @Test func generateReport() async throws {
@@ -435,7 +435,7 @@ Attach diagnostic data to test results for debugging failures. See `references/t
 
 ## Exit Testing
 
-Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See `references/testing-patterns.md` for details.
+Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See [references/testing-patterns.md](references/testing-patterns.md) for details.
 
 ```swift
 @Test func invalidInputCausesExit() async {
@@ -459,4 +459,4 @@ Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See `
 
 ## References
 
-- Testing patterns: `references/testing-patterns.md`
+- Testing patterns: [references/testing-patterns.md](references/testing-patterns.md)

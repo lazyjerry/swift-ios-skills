@@ -485,7 +485,7 @@ try KeychainHelper.save(tokenData, forKey: "identityToken")
 
 ## References
 
-- Keychain & biometric patterns: `references/keychain-biometric.md`
+- Keychain & biometric patterns: [references/keychain-biometric.md](references/keychain-biometric.md)
 - [AuthenticationServices](https://sosumi.ai/documentation/authenticationservices)
 - [ASAuthorizationAppleIDProvider](https://sosumi.ai/documentation/authenticationservices/asauthorizationappleidprovider)
 - [ASAuthorizationAppleIDCredential](https://sosumi.ai/documentation/authenticationservices/asauthorizationappleidcredential)

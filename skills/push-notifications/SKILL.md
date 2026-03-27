@@ -377,7 +377,7 @@ func handleNotificationTap(userInfo: [AnyHashable: Any]) async {
 }
 ```
 
-See `references/notification-patterns.md` for the full deep-linking handler with tab switching.
+See [references/notification-patterns.md](references/notification-patterns.md) for the full deep-linking handler with tab switching.
 
 ## Notification Actions and Categories
 
@@ -497,5 +497,5 @@ let category = UNNotificationCategory(
 - [ ] Silent push configured (Background Modes enabled); `UIApplicationDelegateAdaptor` for APNs
 
 ## References
-- `references/notification-patterns.md` — AppDelegate setup, APNs callbacks, deep-link router, silent push, debugging
-- `references/rich-notifications.md` — Service Extension, Content Extension, attachments, communication notifications
+- [references/notification-patterns.md](references/notification-patterns.md) — AppDelegate setup, APNs callbacks, deep-link router, silent push, debugging
+- [references/rich-notifications.md](references/rich-notifications.md) — Service Extension, Content Extension, attachments, communication notifications

@@ -169,13 +169,13 @@ The client accepts a `baseURL`, optional custom `URLSession`, `JSONDecoder`,
 and an array of `RequestMiddleware` interceptors. Each method builds a
 `URLRequest` from the endpoint, applies middleware, executes the request,
 validates the status code, and decodes the result. See
-`references/urlsession-patterns.md` for the complete `APIClient` implementation
+[references/urlsession-patterns.md](references/urlsession-patterns.md) for the complete `APIClient` implementation
 with convenience methods, request builder, and test setup.
 
 ### Lightweight Closure-Based Client
 
 For apps using the MV pattern, use closure-based clients for testability
-and SwiftUI preview support. See `references/lightweight-clients.md` for
+and SwiftUI preview support. See [references/lightweight-clients.md](references/lightweight-clients.md) for
 the full pattern (struct of async closures, injected via init).
 
 ### Request Middleware / Interceptors
@@ -318,7 +318,7 @@ func withRetry<T: Sendable>(
 
 Build cursor-based or offset-based pagination with `AsyncSequence`.
 Always check `Task.isCancelled` between pages. See
-`references/urlsession-patterns.md` for complete `CursorPaginator` and
+[references/urlsession-patterns.md](references/urlsession-patterns.md) for complete `CursorPaginator` and
 offset-based implementations.
 
 ## Network Reachability
@@ -427,15 +427,15 @@ a 500 with an error body require different handling.
 
 ## References
 
-- See `references/urlsession-patterns.md` for complete API client
+- See [references/urlsession-patterns.md](references/urlsession-patterns.md) for complete API client
   implementation, multipart uploads, download progress, URLProtocol
   mocking, retry/backoff, certificate pinning, request logging, and
   pagination implementations.
-- See `references/background-websocket.md` for background URLSession
+- See [references/background-websocket.md](references/background-websocket.md) for background URLSession
   configuration, background downloads/uploads, WebSocket patterns with
   structured concurrency, and reconnection strategies.
-- See `references/lightweight-clients.md` for the lightweight closure-based
+- See [references/lightweight-clients.md](references/lightweight-clients.md) for the lightweight closure-based
   client pattern (struct of async closures, injected via init for testability
   and preview support).
-- See `references/network-framework.md` for Network.framework (NWConnection,
+- See [references/network-framework.md](references/network-framework.md) for Network.framework (NWConnection,
   NWListener, NWBrowser, NWPathMonitor) and low-level TCP/UDP/WebSocket patterns.

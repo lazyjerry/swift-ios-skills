@@ -377,7 +377,7 @@ if activity.walking && activity.confidence == .high {
 
 ## References
 
-- Extended patterns (SwiftUI integration, batched sensor manager, headphone motion): `references/motion-patterns.md`
+- Extended patterns (SwiftUI integration, batched sensor manager, headphone motion): [references/motion-patterns.md](references/motion-patterns.md)
 - [CoreMotion framework](https://sosumi.ai/documentation/coremotion)
 - [CMMotionManager](https://sosumi.ai/documentation/coremotion/cmmotionmanager)
 - [CMPedometer](https://sosumi.ai/documentation/coremotion/cmpedometer)

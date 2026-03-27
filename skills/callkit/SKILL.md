@@ -446,7 +446,7 @@ func pushRegistry(
 
 ## References
 
-- Extended patterns (hold, mute, group calls, delegate lifecycle): `references/callkit-patterns.md`
+- Extended patterns (hold, mute, group calls, delegate lifecycle): [references/callkit-patterns.md](references/callkit-patterns.md)
 - [CallKit framework](https://sosumi.ai/documentation/callkit)
 - [CXProvider](https://sosumi.ai/documentation/callkit/cxprovider)
 - [CXCallController](https://sosumi.ai/documentation/callkit/cxcallcontroller)

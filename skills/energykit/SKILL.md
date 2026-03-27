@@ -322,7 +322,7 @@ func queryEnergyInsights(deviceID: String, venueID: UUID) async throws {
 
 Use `runtimeInsights(forDeviceID:using:atVenue:)` for runtime data instead
 of energy. Granularity options: `.hourly`, `.daily`, `.weekly`, `.monthly`,
-`.yearly`. See `references/energykit-patterns.md` for full insight examples.
+`.yearly`. See [references/energykit-patterns.md](references/energykit-patterns.md) for full insight examples.
 
 ## Common Mistakes
 
@@ -444,7 +444,7 @@ let guidanceStream = service.guidance(using: query, at: venue.id)
 
 ## References
 
-- Extended patterns (full app architecture, SwiftUI dashboard): `references/energykit-patterns.md`
+- Extended patterns (full app architecture, SwiftUI dashboard): [references/energykit-patterns.md](references/energykit-patterns.md)
 - [EnergyKit framework](https://sosumi.ai/documentation/energykit)
 - [ElectricityGuidance](https://sosumi.ai/documentation/energykit/electricityguidance)
 - [ElectricityGuidance.Service](https://sosumi.ai/documentation/energykit/electricityguidance/service)

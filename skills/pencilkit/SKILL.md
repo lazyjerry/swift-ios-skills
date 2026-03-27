@@ -375,7 +375,7 @@ if drawing1 == drawing2 { }
 
 ## References
 
-- Extended PencilKit patterns (advanced strokes, Scribble, delegate): `references/pencilkit-patterns.md`
+- Extended PencilKit patterns (advanced strokes, Scribble, delegate): [references/pencilkit-patterns.md](references/pencilkit-patterns.md)
 - [PencilKit framework](https://sosumi.ai/documentation/pencilkit)
 - [PKCanvasView](https://sosumi.ai/documentation/pencilkit/pkcanvasview)
 - [PKDrawing](https://sosumi.ai/documentation/pencilkit/pkdrawing-swift.struct)

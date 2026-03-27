@@ -481,7 +481,7 @@ if let metadata = characteristic.metadata,
 
 ## References
 
-- Extended patterns (Matter extension, delegate wiring, SwiftUI): `references/matter-commissioning.md`
+- Extended patterns (Matter extension, delegate wiring, SwiftUI): [references/matter-commissioning.md](references/matter-commissioning.md)
 - [HomeKit framework](https://sosumi.ai/documentation/homekit)
 - [HMHomeManager](https://sosumi.ai/documentation/homekit/hmhomemanager)
 - [HMHome](https://sosumi.ai/documentation/homekit/hmhome)

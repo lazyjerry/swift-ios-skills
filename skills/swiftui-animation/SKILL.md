@@ -500,4 +500,4 @@ Apply `.navigationTransition(.zoom(sourceID:in:))` on the outermost destination 
 
 ## References
 
-- See `references/animation-advanced.md` for CustomAnimation protocol, full Spring variants, all Transition types, symbol effect details, Transaction system, UnitCurve types, and performance guidance.
+- See [references/animation-advanced.md](references/animation-advanced.md) for CustomAnimation protocol, full Spring variants, all Transition types, symbol effect details, Transaction system, UnitCurve types, and performance guidance.

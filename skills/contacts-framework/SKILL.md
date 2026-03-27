@@ -413,7 +413,7 @@ func loadContacts() async throws -> [CNContact] {
 
 ## References
 
-- Extended patterns (multi-select picker, vCard export, search optimization): `references/contacts-patterns.md`
+- Extended patterns (multi-select picker, vCard export, search optimization): [references/contacts-patterns.md](references/contacts-patterns.md)
 - [Contacts framework](https://sosumi.ai/documentation/contacts)
 - [CNContactStore](https://sosumi.ai/documentation/contacts/cncontactstore)
 - [CNContactFetchRequest](https://sosumi.ai/documentation/contacts/cncontactfetchrequest)

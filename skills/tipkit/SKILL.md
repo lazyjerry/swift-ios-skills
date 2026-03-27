@@ -488,7 +488,7 @@ struct DataLossTip: Tip {
 
 ## References
 
-- See `references/tipkit-patterns.md` for complete implementation patterns
+- See [references/tipkit-patterns.md](references/tipkit-patterns.md) for complete implementation patterns
   including custom styles, event-based rules, tip groups, testing strategies,
   onboarding flows, and SwiftUI preview configuration.
 

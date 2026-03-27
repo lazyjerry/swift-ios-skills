@@ -10,8 +10,8 @@ MapKit and modern CoreLocation async APIs. Use `Map` with `MapContentBuilder`
 for views, `CLLocationUpdate.liveUpdates()` for streaming location, and
 `CLMonitor` for geofencing.
 
-See `references/mapkit-patterns.md` for extended MapKit patterns and
-`references/mapkit-corelocation-patterns.md` for CoreLocation patterns.
+See [references/mapkit-patterns.md](references/mapkit-patterns.md) for extended MapKit patterns and
+[references/mapkit-corelocation-patterns.md](references/mapkit-corelocation-patterns.md) for CoreLocation patterns.
 
 ## Contents
 
@@ -481,5 +481,5 @@ func lookupPlace(name: String, coordinate: CLLocationCoordinate2D) async throws 
 
 ## References
 
-- `references/mapkit-patterns.md` — Map setup, annotations, search, routes, clustering, Look Around, snapshots.
-- `references/mapkit-corelocation-patterns.md` — CLLocationUpdate, CLMonitor, CLServiceSession, background location, testing.
+- [references/mapkit-patterns.md](references/mapkit-patterns.md) — Map setup, annotations, search, routes, clustering, Look Around, snapshots.
+- [references/mapkit-corelocation-patterns.md](references/mapkit-corelocation-patterns.md) — CLLocationUpdate, CLMonitor, CLServiceSession, background location, testing.

@@ -354,7 +354,7 @@ import AppMigrationKit
 `DeviceToDeviceExportProperties` on the result exposes `uncompressedBytes`,
 `compressedBytes` (nil if not compressible), `sizeEstimate`, and `version`.
 
-See `references/appmigrationkit-patterns.md` for additional test patterns.
+See [references/appmigrationkit-patterns.md](references/appmigrationkit-patterns.md) for additional test patterns.
 
 ## Common Mistakes
 
@@ -462,7 +462,7 @@ if let status = MigrationStatus.importStatus {
 
 ## References
 
-- Extended patterns (combined extension, versioned migration, file enumeration, error recovery): `references/appmigrationkit-patterns.md`
+- Extended patterns (combined extension, versioned migration, file enumeration, error recovery): [references/appmigrationkit-patterns.md](references/appmigrationkit-patterns.md)
 - [AppMigrationKit framework](https://sosumi.ai/documentation/appmigrationkit)
 - [AppMigrationExtension](https://sosumi.ai/documentation/appmigrationkit/appmigrationextension)
 - [ResourcesExportingWithOptions](https://sosumi.ai/documentation/appmigrationkit/resourcesexportingwithoptions)

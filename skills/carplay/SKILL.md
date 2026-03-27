@@ -11,7 +11,7 @@ types, navigation guidance, audio playback, communication, point-of-interest
 categories, entitlement setup, and simulator testing.
 Targets Swift 6.2 / iOS 26+.
 
-See `references/carplay-patterns.md` for extended patterns including full
+See [references/carplay-patterns.md](references/carplay-patterns.md) for extended patterns including full
 navigation sessions, dashboard scenes, and advanced template composition.
 
 ## Contents
@@ -452,7 +452,7 @@ Failure leaves the list in a loading state.
 
 ## References
 
-- Extended patterns (dashboard, instrument cluster, full nav flow, tab composition): `references/carplay-patterns.md`
+- Extended patterns (dashboard, instrument cluster, full nav flow, tab composition): [references/carplay-patterns.md](references/carplay-patterns.md)
 - [CarPlay framework](https://sosumi.ai/documentation/carplay)
 - [CPTemplateApplicationSceneDelegate](https://sosumi.ai/documentation/carplay/cptemplateapplicationscenedelegate)
 - [CPInterfaceController](https://sosumi.ai/documentation/carplay/cpinterfacecontroller)

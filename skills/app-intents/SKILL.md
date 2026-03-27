@@ -143,7 +143,7 @@ var document: IntentFile
 var distance: Measurement<UnitLength>
 ```
 
-See `references/appintents-advanced.md` for all initializer variants.
+See [references/appintents-advanced.md](references/appintents-advanced.md) for all initializer variants.
 
 ## AppEntity
 
@@ -234,7 +234,7 @@ struct AppSettingsQuery: UniqueAppEntityQuery {
 }
 ```
 
-See `references/appintents-advanced.md` for `EntityPropertyQuery` with
+See [references/appintents-advanced.md](references/appintents-advanced.md) for `EntityPropertyQuery` with
 filter/sort support.
 
 ## AppEnum
@@ -486,4 +486,4 @@ struct ProductValueQuery: IntentValueQuery {
 
 ## References
 
-- See `references/appintents-advanced.md` for @Parameter variants, EntityPropertyQuery, assistant schemas, focus filters, SiriKit migration, error handling, confirmation flows, authentication, URL-representable types, and Spotlight indexing details.
+- See [references/appintents-advanced.md](references/appintents-advanced.md) for @Parameter variants, EntityPropertyQuery, assistant schemas, focus filters, SiriKit migration, error handling, confirmation flows, authentication, URL-representable types, and Spotlight indexing details.

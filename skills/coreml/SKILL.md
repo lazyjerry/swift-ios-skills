@@ -13,7 +13,7 @@ Target iOS 26+ with Swift 6.2, backward-compatible to iOS 14 unless noted.
 > palettization, pruning), and framework selection live in the `apple-on-device-ai`
 > skill. This skill owns Swift integration only.
 
-See `references/coreml-swift-integration.md` for complete code patterns including
+See [references/coreml-swift-integration.md](references/coreml-swift-integration.md) for complete code patterns including
 actor-based caching, batch inference, image preprocessing, and testing.
 
 ## Contents
@@ -233,7 +233,7 @@ let fromData = try MLMultiArray(dataPointer: UnsafeMutableRawPointer(mutating: d
                                  strides: [1])
 ```
 
-See `references/coreml-swift-integration.md` for advanced MLMultiArray patterns
+See [references/coreml-swift-integration.md](references/coreml-swift-integration.md) for advanced MLMultiArray patterns
 including NLP tokenization and audio feature extraction.
 
 ## Image Preprocessing
@@ -270,7 +270,7 @@ func createPixelBuffer(from cgImage: CGImage, width: Int, height: Int) -> CVPixe
 ```
 
 For additional preprocessing patterns (normalization, center-cropping), see
-`references/coreml-swift-integration.md`.
+[references/coreml-swift-integration.md](references/coreml-swift-integration.md).
 
 ## Multi-Model Pipelines
 
@@ -397,7 +397,7 @@ let model = try await MLModel.load(contentsOf: modelURL, configuration: config)
   Register for `UIApplication.didReceiveMemoryWarningNotification` and release
   cached models when under pressure.
 
-See `references/coreml-swift-integration.md` for an actor-based model manager with
+See [references/coreml-swift-integration.md](references/coreml-swift-integration.md) for an actor-based model manager with
 lifecycle-aware loading and cache eviction.
 
 ## Common Mistakes
@@ -451,7 +451,7 @@ lifecycle-aware loading and cache eviction.
 
 ## References
 
-- Patterns and code: `references/coreml-swift-integration.md`
+- Patterns and code: [references/coreml-swift-integration.md](references/coreml-swift-integration.md)
 - Model conversion and optimization (Python-side): covered in the `apple-on-device-ai` skill
 - Apple docs: [Core ML](https://sosumi.ai/documentation/coreml) |
   [MLModel](https://sosumi.ai/documentation/coreml/mlmodel) |

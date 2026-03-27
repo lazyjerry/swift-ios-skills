@@ -463,7 +463,7 @@ for try await changes in history {
 
 ### 6. Misinterpreting credit/debit on liability accounts
 
-Both asset and liability accounts use `.debit` for outgoing money. But `.credit` means different things: on an asset account it means money received; on a liability account it means a payment or refund that increases available credit. See `references/financekit-patterns.md` for a full interpretation table.
+Both asset and liability accounts use `.debit` for outgoing money. But `.credit` means different things: on an asset account it means money received; on a liability account it means a payment or refund that increases available credit. See [references/financekit-patterns.md](references/financekit-patterns.md) for a full interpretation table.
 
 ## Review Checklist
 
@@ -485,7 +485,7 @@ Both asset and liability accounts use `.debit` for outgoing money. But `.credit`
 
 ## References
 
-- Extended patterns (predicates, sorting, pagination, currency formatting, background updates): `references/financekit-patterns.md`
+- Extended patterns (predicates, sorting, pagination, currency formatting, background updates): [references/financekit-patterns.md](references/financekit-patterns.md)
 - [FinanceKit framework](https://sosumi.ai/documentation/financekit)
 - [FinanceKitUI framework](https://sosumi.ai/documentation/financekitui)
 - [FinanceStore](https://sosumi.ai/documentation/financekit/financestore)

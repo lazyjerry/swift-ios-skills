@@ -418,5 +418,5 @@ cannot run simultaneously with Address Sanitizer.
 - [Reducing your app's memory use](https://sosumi.ai/documentation/xcode/reducing-your-app-s-memory-use)
 - [Profiling apps using Instruments](https://sosumi.ai/tutorials/instruments)
 - [Analyzing the performance of your shipping app](https://sosumi.ai/documentation/xcode/analyzing-the-performance-of-your-shipping-app)
-- LLDB command reference: `references/lldb-patterns.md`
-- Instruments template guide: `references/instruments-guide.md`
+- LLDB command reference: [references/lldb-patterns.md](references/lldb-patterns.md)
+- Instruments template guide: [references/instruments-guide.md](references/instruments-guide.md)

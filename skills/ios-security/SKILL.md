@@ -215,7 +215,7 @@ let isValid = HMAC<SHA256>.isValidAuthenticationCode(signature, authenticating: 
 ```
 
 For digital signatures (P256/ECDSA), key agreement (Curve25519), ChaChaPoly,
-and HKDF key derivation, see `references/cryptokit-advanced.md`.
+and HKDF key derivation, see [references/cryptokit-advanced.md](references/cryptokit-advanced.md).
 
 ## Secure Enclave
 
@@ -452,14 +452,14 @@ private let apiKey = Secrets.value(for: "API_KEY")
 
 ### Jailbreak Detection
 
-Check for known jailbreak file paths (`/Applications/Cydia.app`, `/usr/sbin/sshd`, etc.) and sandbox escape. Jailbreak detection is not foolproof -- use it as one layer, not the only layer. See `references/cryptokit-advanced.md` for full implementation.
+Check for known jailbreak file paths (`/Applications/Cydia.app`, `/usr/sbin/sshd`, etc.) and sandbox escape. Jailbreak detection is not foolproof -- use it as one layer, not the only layer. See [references/cryptokit-advanced.md](references/cryptokit-advanced.md) for full implementation.
 
 ## Privacy Manifests
 
 Apps and SDKs must declare data access in `PrivacyInfo.xcprivacy`. See
-`references/privacy-manifest.md` for required-reason API declarations and
+[references/privacy-manifest.md](references/privacy-manifest.md) for required-reason API declarations and
 security-related data collection details. For submission requirements and
-compliance checklists, see `references/app-review-guidelines.md`.
+compliance checklists, see [references/app-review-guidelines.md](references/app-review-guidelines.md).
 
 ## Common Mistakes
 
@@ -489,8 +489,8 @@ compliance checklists, see `references/app-review-guidelines.md`.
 
 ## References
 
-- CryptoKit advanced patterns: `references/cryptokit-advanced.md`
-- Privacy manifest guide: `references/privacy-manifest.md`
-- App Review security guidelines: `references/app-review-guidelines.md`
-- File storage directory guide and protection: `references/file-storage-patterns.md`
+- CryptoKit advanced patterns: [references/cryptokit-advanced.md](references/cryptokit-advanced.md)
+- Privacy manifest guide: [references/privacy-manifest.md](references/privacy-manifest.md)
+- App Review security guidelines: [references/app-review-guidelines.md](references/app-review-guidelines.md)
+- File storage directory guide and protection: [references/file-storage-patterns.md](references/file-storage-patterns.md)
 

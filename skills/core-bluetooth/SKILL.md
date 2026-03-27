@@ -479,7 +479,7 @@ if characteristic.properties.contains(.write) {
 
 ## References
 
-- Extended patterns (reconnection strategies, data parsing, SwiftUI integration): `references/ble-patterns.md`
+- Extended patterns (reconnection strategies, data parsing, SwiftUI integration): [references/ble-patterns.md](references/ble-patterns.md)
 - [Core Bluetooth framework](https://sosumi.ai/documentation/corebluetooth)
 - [CBCentralManager](https://sosumi.ai/documentation/corebluetooth/cbcentralmanager)
 - [CBPeripheral](https://sosumi.ai/documentation/corebluetooth/cbperipheral)
