@@ -95,11 +95,11 @@ body:
   - type: input
     id: file
     attributes:
-      label: Affected File
-      description: "Path to the specific file (e.g., `skills/apple-on-device-ai/SKILL.md` or `skills/apple-on-device-ai/references/foundation-models.md`)"
-      placeholder: "skills/<skill>/SKILL.md"
+      label: Reference File (if applicable)
+      description: "Only needed if the issue is in a specific reference doc, not the main SKILL.md."
+      placeholder: "skills/<skill>/references/example.md"
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: what-is-wrong
@@ -134,7 +134,7 @@ body:
       description: Where did you encounter this issue?
       placeholder: |
         - Coding agent: Claude Code / Cursor / Copilot / other
-        - Xcode version: 26.0 beta 2
+        - Xcode version: 26.4
         - Target platform: iOS 26 / iPadOS 26 / macOS 26
         - Swift version: 6.3
     validations:
