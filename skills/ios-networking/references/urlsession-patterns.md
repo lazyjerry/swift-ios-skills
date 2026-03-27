@@ -465,8 +465,7 @@ func downloadWithProgress(
 ```
 
 For large files, prefer `URLSessionDownloadTask` with a delegate for
-better memory efficiency and background support. See
-`references/background-websocket.md`.
+better memory efficiency and background support.
 
 ### Download to File with Progress (Delegate-Based)
 
