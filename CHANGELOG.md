@@ -1,5 +1,62 @@
 # Changelog
 
+## v3.0.0
+
+### Skill renames
+
+12 existing skills renamed to use Apple Kit framework names for consistency:
+
+- `live-activities` -> `activitykit`
+- `mapkit-location` -> `mapkit`
+- `photos-camera-media` -> `photokit`
+- `homekit-matter` -> `homekit`
+- `callkit-voip` -> `callkit`
+- `metrickit-diagnostics` -> `metrickit`
+- `pencilkit-drawing` -> `pencilkit`
+- `passkit-wallet` -> `passkit`
+- `musickit-audio` -> `musickit`
+- `cloudkit-sync` -> `cloudkit`
+- `eventkit-calendar` -> `eventkit`
+- `realitykit-ar` -> `realitykit`
+
+### New skills
+
+19 new Apple Kit framework skills, all grounded in official Apple documentation:
+
+- `avkit` -- AVPlayerViewController, VideoPlayer, Picture-in-Picture, AirPlay, subtitles
+- `gamekit` -- Game Center, leaderboards, achievements, real-time and turn-based multiplayer
+- `cryptokit` -- SHA256, HMAC, AES-GCM, ChaChaPoly, P256/Curve25519 signing, Secure Enclave
+- `pdfkit` -- PDFView, PDFDocument, annotations, text search, form filling, thumbnails
+- `paperkit` -- PaperMarkupViewController, markup editing, drawing, shapes (iOS 26)
+- `spritekit` -- SKScene, SKSpriteNode, SKAction, physics, particles, SpriteView
+- `scenekit` -- SCNView, SCNScene, 3D geometry, materials, lighting, physics, SceneView
+- `financekit` -- Apple Card, Apple Cash, Wallet orders, transactions, account balances
+- `accessorysetupkit` -- Privacy-preserving BLE/Wi-Fi accessory discovery, picker UI
+- `adattributionkit` -- Privacy-preserving ad attribution, postbacks, conversion values
+- `carplay` -- CarPlay templates, navigation, audio, communication, EV charging apps
+- `appmigrationkit` -- Cross-platform data transfer, export/import extensions (iOS 26)
+- `browserenginekit` -- Alternative browser engines (EU), process management, web content
+- `dockkit` -- DockAccessoryManager, camera subject tracking, motor control, framing
+- `sensorkit` -- Research-grade sensor data, ambient light, keyboard metrics (approved studies)
+- `tabletopkit` -- Multiplayer spatial board games, pieces, cards, dice (visionOS)
+- `relevancekit` -- Widget relevance signals, time/location-based providers (watchOS 26)
+- `audioaccessorykit` -- Audio accessory features, automatic switching (iOS 26.4)
+- `cryptotokenkit` -- TKTokenDriver, TKSmartCard, security tokens, certificate-based auth
+
+### Bundle changes
+
+- Add `apple-kit-skills` bundle containing all 39 Apple Kit framework skills.
+- Add `ios-gaming-skills` bundle containing `gamekit`, `spritekit`, `scenekit`, `tabletopkit`.
+- Distribute new skills into existing themed bundles.
+- Update `all-ios-skills` count from 57 to 76.
+- Fix all renamed skill paths across all existing bundles.
+
+### Other changes
+
+- Remove PaperKit content from `pencilkit` (now standalone `paperkit` skill).
+- Update README catalog, descriptions, counts, install commands, and upgrade guidance.
+- Bump Claude marketplace bundle versions to 3.0.0.
+
 ## v2.2.0
 
 - Add `swiftui-webkit`, a new SwiftUI skill for native WebKit-for-SwiftUI APIs including `WebView`, `WebPage`, navigation policies, JavaScript calls, observable page state, and custom URL schemes.
