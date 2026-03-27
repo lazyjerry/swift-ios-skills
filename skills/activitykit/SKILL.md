@@ -6,7 +6,7 @@ description: "Implement, review, or improve Live Activities and Dynamic Island e
 # ActivityKit
 
 Build real-time, glanceable experiences on the Lock Screen, Dynamic Island,
-StandBy, CarPlay, and Mac menu bar using ActivityKit. Patterns target iOS 26+
+StandBy, CarPlay, and a paired Mac using ActivityKit. Patterns target iOS 26+
 with Swift 6.2, backward-compatible to iOS 16.1 unless noted.
 
 See [references/activitykit-patterns.md](references/activitykit-patterns.md) for complete code patterns including push payload formats, concurrent activities, state observation, and testing.
@@ -181,7 +181,7 @@ iOS 16.1+ displays Live Activities here. Design this layout first.
 struct DeliveryActivityWidget: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DeliveryAttributes.self) { context in
-            // Lock Screen / StandBy / CarPlay / Mac menu bar content
+            // Lock Screen / StandBy / CarPlay / paired Mac content
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text(context.attributes.restaurantName)
@@ -433,9 +433,9 @@ let activity = try Activity.request(
 )
 ```
 
-### Mac Menu Bar & CarPlay (iOS 26+)
+### Paired Mac & CarPlay (iOS 26+)
 
-Live Activities automatically appear in macOS Tahoe menu bar (via iPhone Mirroring) and CarPlay Home Screen. No additional code needed — ensure Lock Screen layout is legible at smaller scales.
+Live Activities automatically appear on a paired Mac running macOS Tahoe and on the CarPlay Home Screen. No additional code needed — ensure Lock Screen layout is legible at smaller scales.
 
 ### Channel-Based Push (iOS 18+)
 
