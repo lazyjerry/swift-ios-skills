@@ -6,8 +6,8 @@ description: "Implement, review, or improve in-app purchases and subscriptions u
 # StoreKit 2 In-App Purchases and Subscriptions
 
 Implement in-app purchases, subscriptions, and paywalls using StoreKit 2 on
-iOS 26+. Use only the modern `Product`, `Transaction`, `StoreView`, and
-`SubscriptionStoreView` APIs. Never use the deprecated original StoreKit
+iOS 26+. Use the modern `Product`, `Transaction`, `StoreView`, and
+`SubscriptionStoreView` APIs. Avoid the older original StoreKit APIs
 (`SKProduct`, `SKPaymentQueue`, `SKStoreReviewController`).
 
 ## Contents
@@ -366,15 +366,15 @@ let transaction = verification.unsafePayloadValue
 let transaction = try checkVerified(verification)
 ```
 
-### 4. Using deprecated original StoreKit APIs
+### 4. Using legacy original StoreKit APIs
 
 ```swift
-// WRONG: Original StoreKit (deprecated)
+// AVOID: Original StoreKit (legacy)
 let request = SKProductsRequest(productIdentifiers: ["com.app.premium"])
 SKPaymentQueue.default().add(payment)
 SKStoreReviewController.requestReview()
 
-// CORRECT: StoreKit 2
+// PREFERRED: StoreKit 2
 let products = try await Product.products(for: ["com.app.premium"])
 let result = try await product.purchase()
 try await AppStore.requestReview(in: windowScene)
