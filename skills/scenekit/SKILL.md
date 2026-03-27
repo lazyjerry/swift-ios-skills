@@ -52,7 +52,8 @@ disabled in production where custom camera control is needed.
 
 ```swift
 let scene = SCNScene()                                          // Empty
-let scene = SCNScene(named: "art.scnassets/ship.scn")!          // .scn asset catalog
+guard let scene = SCNScene(named: "art.scnassets/ship.scn")     // .scn asset catalog
+    else { fatalError("Missing scene asset") }
 let scene = try SCNScene(url: Bundle.main.url(                  // .usdz from bundle
     forResource: "spaceship", withExtension: "usdz")!)
 ```
@@ -365,10 +366,10 @@ collide with geometry via `colliderNodes`.
 SceneKit loads `.usdz`, `.scn`, `.dae`, `.obj`, and `.abc`. Prefer `.usdz`.
 
 ```swift
-let scene = SCNScene(named: "art.scnassets/ship.scn")!
+guard let scene = SCNScene(named: "art.scnassets/ship.scn") else { return }
 let scene = try SCNScene(url: Bundle.main.url(
     forResource: "model", withExtension: "usdz")!)
-let modelNode = scene.rootNode.childNode(withName: "mesh", recursively: true)!
+guard let modelNode = scene.rootNode.childNode(withName: "mesh", recursively: true) else { return }
 ```
 
 Use `SCNReferenceNode` with `.onDemand` loading policy for large models.
@@ -376,7 +377,7 @@ Use `SCNSceneSource` to inspect or selectively load entries from a file.
 
 ## SwiftUI Integration
 
-`SceneView` (iOS 14+) embeds SceneKit in SwiftUI:
+`SceneView` embeds SceneKit in SwiftUI:
 
 ```swift
 import SwiftUI

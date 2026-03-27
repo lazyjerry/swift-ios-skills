@@ -132,7 +132,7 @@ let observation = playerVC.observe(\.isReadyForDisplay) { observed, _ in
 
 ## SwiftUI VideoPlayer
 
-The `VideoPlayer` SwiftUI view wraps AVKit's playback UI. Available on iOS 14+.
+The `VideoPlayer` SwiftUI view wraps AVKit's playback UI.
 
 ### Basic Usage
 

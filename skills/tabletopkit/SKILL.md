@@ -205,7 +205,7 @@ to position children. Return one of:
 - `.planarOverlapping(layout:animationDuration:)` -- cards fanned or overlapping
 - `.volumetric(layout:animationDuration:)` -- full 3D layout
 
-See [tabletopkit-patterns.md](references/tabletopkit-patterns.md) for card fan, grid, and overlap layout examples.
+See `references/tabletopkit-patterns.md` for card fan, grid, and overlap layout examples.
 
 ## Player Seats
 
@@ -361,7 +361,7 @@ All take `height:in:` (or `radius:in:` for sphere) and optional `restitution:`.
 
 Start interactions from code: `game.startInteraction(onEquipmentID: pieceID)`.
 
-See [tabletopkit-patterns.md](references/tabletopkit-patterns.md) for group
+See `references/tabletopkit-patterns.md` for group
 toss, predetermined outcomes, interaction acceptance/rejection, and destination
 restriction patterns.
 
@@ -441,7 +441,7 @@ class GroupActivityManager {
 Implement `TabletopGame.MultiplayerDelegate` for `joinAccepted()`,
 `playerJoined(_:)`, `didRejectPlayer(_:reason:)`, and
 `multiplayerSessionFailed(reason:)`. See
-[tabletopkit-patterns.md](references/tabletopkit-patterns.md) for custom
+`references/tabletopkit-patterns.md` for custom
 network coordinators and arbiter role management.
 
 ## Common Mistakes
@@ -485,7 +485,7 @@ network coordinators and arbiter role management.
 
 ## References
 
-- [references/tabletopkit-patterns.md](references/tabletopkit-patterns.md) -- extended patterns for observer implementation, custom actions, dice simulation, card overlap, and network coordination
+- `references/tabletopkit-patterns.md` -- extended patterns for observer implementation, custom actions, dice simulation, card overlap, and network coordination
 - [Apple Documentation: TabletopKit](https://sosumi.ai/documentation/tabletopkit)
 - [Creating tabletop games (sample code)](https://sosumi.ai/documentation/tabletopkit/creating-tabletop-games)
 - [Synchronizing group gameplay with TabletopKit (sample code)](https://sosumi.ai/documentation/tabletopkit/synchronizing-group-gameplay-with-tabletopkit)

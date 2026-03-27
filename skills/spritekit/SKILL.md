@@ -353,7 +353,7 @@ emitter moves: `emitter.targetNode = self`.
 
 ## SwiftUI Integration
 
-`SpriteView` embeds a SpriteKit scene in SwiftUI (iOS 14+).
+`SpriteView` embeds a SpriteKit scene in SwiftUI.
 
 ```swift
 import SwiftUI
