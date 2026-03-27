@@ -4,6 +4,15 @@ Overflow reference for the background-processing skill. Contains debugging tips,
 advanced background URLSession patterns, background push best practices, and
 SwiftUI integration patterns.
 
+## Contents
+
+- [Debugging Background Tasks](#debugging-background-tasks)
+- [Advanced BGProcessingTask Patterns](#advanced-bgprocessingtask-patterns)
+- [Background URLSession — Extended Patterns](#background-urlsession--extended-patterns)
+- [Background Push — Extended Patterns](#background-push--extended-patterns)
+- [SwiftUI BackgroundTask Modifier](#swiftui-backgroundtask-modifier)
+- [BGContinuedProcessingTask — Extended Patterns](#bgcontinuedprocessingtask--extended-patterns)
+
 ## Debugging Background Tasks
 
 ### Simulating Task Launches in Xcode
