@@ -322,7 +322,7 @@ logger.info("Network response received, bytes: \(data.count)")
 ```
 
 `Logger` messages appear in Console.app with filtering by subsystem and
-category, and `.debug` messages are automatically excluded from release builds.
+category, and `.debug` messages are written to the in-memory log store only (not persisted to disk in release builds).
 
 ### DON'T: Forget to enable Malloc Stack Logging before memory debugging
 

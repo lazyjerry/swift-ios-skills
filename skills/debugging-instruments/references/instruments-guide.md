@@ -156,8 +156,9 @@ redraws, or identity churn in lists.
 1. Select the **SwiftUI** template in Instruments.
 2. Record while interacting with the UI.
 3. Check these lanes:
-   - **View Body**: shows each body evaluation with the view type
-   - **View Properties**: tracks property changes that trigger updates
+   - **Update Groups**: shows batches of view updates triggered together
+   - **Long View Body Updates**: highlights body evaluations exceeding a time threshold
+   - **Cause and Effect Graph**: traces why a view was re-evaluated
 4. Look for views with excessive body evaluations during a single interaction.
 
 ### Tips
