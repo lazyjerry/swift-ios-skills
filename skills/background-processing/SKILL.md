@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         BGTaskScheduler.shared.register(
             forTaskWithIdentifier: "com.example.app.refresh",
-            using: nil  // nil = main queue
+            using: nil  // nil = default background queue
         ) { task in
             self.handleAppRefresh(task: task as! BGAppRefreshTask)
         }
@@ -208,6 +208,8 @@ prioritizing tasks that report minimal progress first.
 import BackgroundTasks
 
 func startExport() {
+    // Register the task handler at app launch, not here.
+    // BGTaskScheduler requires registration before app launch completes.
     let request = BGContinuedProcessingTaskRequest(
         identifier: "com.example.app.export",
         title: "Exporting Photos",
@@ -216,17 +218,6 @@ func startExport() {
     // .queue: begin as soon as possible if can't run immediately
     // .fail: fail submission if can't run immediately
     request.strategy = .queue
-
-    BGTaskScheduler.shared.register(
-        forTaskWithIdentifier: "com.example.app.export",
-        using: nil
-    ) { task in
-        let continuedTask = task as! BGContinuedProcessingTask
-
-        Task {
-            await self.performExport(task: continuedTask)
-        }
-    }
 
     do {
         try BGTaskScheduler.shared.submit(request)
@@ -260,7 +251,7 @@ func performExport(task: BGContinuedProcessingTask) async {
 Check whether the system supports the resources your task needs:
 
 ```swift
-let supported = BGTaskScheduler.shared.supportedResources
+let supported = BGTaskScheduler.supportedResources
 if supported.contains(.gpu) {
     request.requiredResources = .gpu
 }
