@@ -233,7 +233,7 @@ See [references/deeplinks.md](references/deeplinks.md) for full examples of AASA
 3. Using `.sheet(isPresented:)` when state represents a model -- use `.sheet(item:)` instead
 4. Storing view instances in `NavigationPath` -- store lightweight `Hashable` route data
 5. Nesting `@Observable` router objects inside other `@Observable` objects
-6. Using deprecated `.tabItem { }` API -- use `Tab(value:)` with `TabView(selection:)`
+6. Prefer `Tab(value:)` with `TabView(selection:)` over the older `.tabItem { }` API
 7. Assuming `tabBarMinimizeBehavior` works on iPad -- it is iPhone only
 8. Handling deep links in multiple places -- centralize URL parsing in the router
 9. Hard-coding sheet frame dimensions -- use `.presentationSizing(.form)` instead
