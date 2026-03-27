@@ -109,7 +109,7 @@ Common surprises:
 ```swift
 // DON'T
 var body: some View {
-    Text(items.sorted(by: \ .date).map(\ .title).joined(separator: ", "))
+    Text(items.sorted(by: \.date).map(\.title).joined(separator: ", "))
 }
 
 // DO
