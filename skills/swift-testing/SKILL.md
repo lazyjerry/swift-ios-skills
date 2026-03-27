@@ -215,14 +215,12 @@ extension Tag {
 
 ### Filtering Tests by Tag
 
-Run tagged tests from Xcode Test Plans or the command line:
+Run tagged tests from Xcode Test Plans or the command line. Tag-based filtering
+syntax varies by toolchain — verify the exact flags for your Swift version:
 
 ```bash
-# Run only tests tagged .networking
+# Filter by tag (tooling-specific — verify syntax for your Swift version)
 swift test --filter tag:networking
-
-# Exclude slow tests
-swift test --skip tag:slow
 ```
 
 In Xcode, configure Test Plans to include/exclude tags for different CI configurations (smoke tests vs full suite).
