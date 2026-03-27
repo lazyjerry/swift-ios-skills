@@ -255,9 +255,9 @@ let config = ModelConfiguration(
 let container = try ModelContainer(for: Note.self, configurations: config)
 ```
 
-**CloudKit model rules**: use optionals for all non-String properties; avoid
-`#Unique`; keep models flat; use `@Attribute(.externalStorage)` for large data;
-avoid complex relationship graphs.
+**CloudKit model rules**: all relationships must be optional; avoid
+`#Unique` (unique constraints are unsupported); keep models flat; use
+`@Attribute(.externalStorage)` for large data; avoid complex relationship graphs.
 
 ## NSUbiquitousKeyValueStore
 

@@ -216,8 +216,7 @@ func userDidAcceptCloudKitShare(with metadata: CKShare.Metadata) {
     let container = CKContainer(identifier: metadata.containerIdentifier)
     Task {
         do {
-            let share = try await container.accept(metadata)
-            print("Accepted share: \(share.url?.absoluteString ?? "")")
+            try await container.accept([metadata])
             // Fetch shared records from container.sharedCloudDatabase
         } catch {
             print("Accept failed: \(error)")
