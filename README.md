@@ -136,7 +136,7 @@ $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/m
 | Plugin | Skills included |
 |--------|----------------|
 | **all-ios-skills** | All 76 skills |
-| **apple-kit-skills** | All 39 Apple Kit framework skills |
+| **apple-kit-skills** | 39 Apple Kit framework skills plus CarPlay |
 | **swiftui-skills** | swiftui-animation, swiftui-gestures, swiftui-layout-components, swiftui-liquid-glass, swiftui-navigation, swiftui-patterns, swiftui-performance, swiftui-uikit-interop, swiftui-webkit |
 | **swift-core-skills** | swift-codable, swift-charts, swift-concurrency, swift-language, swift-testing, swiftdata |
 | **ios-app-framework-skills** | activitykit, adattributionkit, alarmkit, app-clips, app-intents, avkit, carplay, mapkit, paperkit, pdfkit, photokit, push-notifications, storekit, tipkit, widgetkit |
