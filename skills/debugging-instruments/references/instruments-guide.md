@@ -328,7 +328,7 @@ func fetchUser(id: String) async throws -> User {
 ### Integration with MetricKit
 
 Signposts emitted through `MXMetricManager.makeLogHandle(category:)` are
-also reported in MetricKit payloads. See the `metrickit-diagnostics` skill
+also reported in MetricKit payloads. See the `metrickit` skill
 for details on custom signpost metrics.
 
 ## Automation and CI Integration

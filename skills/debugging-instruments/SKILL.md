@@ -192,7 +192,7 @@ A hang occurs when the main thread is blocked for > 250ms (noticeable) or
 - **Thread Checker** (Xcode Diagnostics): warns about non-main-thread UI calls
 - **os_signpost** and `OSSignposter`: mark intervals for Instruments
 - **MetricKit** hang diagnostics: production hang detection (see
-  `metrickit-diagnostics` skill for `MXHangDiagnostic`)
+  `metrickit` skill for `MXHangDiagnostic`)
 
 ```swift
 import os
