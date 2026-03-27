@@ -1,6 +1,6 @@
 ---
 name: swiftui-gestures
-description: "Implement, review, or improve SwiftUI gesture handling. Use when adding tap, long press, drag, magnify, or rotate gestures, composing gestures with simultaneously/sequenced/exclusively, managing transient state with @GestureState, resolving parent/child gesture conflicts with highPriorityGesture or simultaneousGesture, building custom Gesture protocol conformances, or migrating from deprecated MagnificationGesture/RotationGesture to MagnifyGesture/RotateGesture."
+description: "Implement, review, or improve SwiftUI gesture handling. Use when adding tap, long press, drag, magnify, or rotate gestures, composing gestures with simultaneously/sequenced/exclusively, managing transient state with @GestureState, resolving parent/child gesture conflicts with highPriorityGesture or simultaneousGesture, building custom Gesture protocol conformances, or migrating from deprecated MagnificationGesture to MagnifyGesture or using the newer RotateGesture."
 ---
 
 # SwiftUI Gestures (iOS 26+)
@@ -147,7 +147,7 @@ Image("photo")
 
 ## RotateGesture (iOS 17+)
 
-Replaces the deprecated `RotationGesture`. Tracks two-finger rotation angle.
+`RotateGesture` is the newer alternative to `RotationGesture`. Tracks two-finger rotation angle.
 
 ```swift
 @State private var angle = Angle.zero
@@ -394,12 +394,11 @@ LongPressGesture(minimumDuration: 2.0)
 
 ```swift
 // DON'T: Deprecated since iOS 17
-MagnificationGesture()   // deprecated
-RotationGesture()        // deprecated
+MagnificationGesture()   // deprecated — use MagnifyGesture()
 
-// DO: Use modern replacements
+// PREFER: Newer gesture types
 MagnifyGesture()         // iOS 17+
-RotateGesture()          // iOS 17+
+RotateGesture()          // iOS 17+ (newer alternative to RotationGesture)
 ```
 
 ### 5. Heavy computation in onChanged
