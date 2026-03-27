@@ -94,7 +94,7 @@ Install everything:
 /plugin install all-ios-skills@swift-ios-skills
 ```
 
-Or install a themed bundle:
+Or install a themed bundle (bundles limit how many skills load into the context window — if you want everything, use `all-ios-skills` above instead of installing multiple bundles):
 
 ```
 /plugin install swiftui-skills@swift-ios-skills
