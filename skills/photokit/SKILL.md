@@ -491,11 +491,10 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 - [ ] Camera session started on background thread; stopped in `onDisappear`
 - [ ] Permission denial handled with Settings deep link
 - [ ] `AVCaptureSession` owned by model, not created inside `UIViewRepresentable`
-- [ ] Media asset types and picker results are `Sendable` when passed across concurrency boundaries
+- [ ] Media asset types and picker results are `Sendable` across concurrency boundaries
 
 ## References
 
 - `references/photokit-patterns.md` — Picker patterns, media loading, HEIC handling
 - `references/camera-capture.md` — AVCaptureSession, photo/video capture, QR scanning
-- `references/image-loading-caching.md` — AsyncImage, caching, downsampling
-- `references/av-playback.md` — AVPlayer, streaming, audio session, background audio
+- `references/image-loading-caching.md` — AsyncImage, caching, downsampling, `references/av-playback.md` — AVPlayer, streaming, background audio
