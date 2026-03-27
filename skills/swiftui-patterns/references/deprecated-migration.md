@@ -1094,4 +1094,4 @@ Constant-range `ForEach(0..<n)` is only safe when the range never changes. For d
 
 ### Migration Notes
 
-`.navigationBarLeading` and `.navigationBarTrailing` are renamed to `.topBarLeading` and `.topBarTrailing` (iOS 16+). The new names work consistently across NavigationStack and NavigationSplitView contexts. The old names still compile but are deprecated.
+`.navigationBarLeading` and `.navigationBarTrailing` were renamed to `.topBarLeading` and `.topBarTrailing` (iOS 16+). The new names work consistently across NavigationStack and NavigationSplitView contexts. Prefer the new names for cross-platform consistency.
