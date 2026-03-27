@@ -485,3 +485,4 @@ Use computed properties on `@Observable` models to derive state without introduc
 - Optimizing SwiftUI performance with Instruments: [references/optimizing-swiftui-performance-instruments.md](references/optimizing-swiftui-performance-instruments.md)
 - Understanding hangs in your app: [references/understanding-hangs-in-your-app.md](references/understanding-hangs-in-your-app.md)
 - Understanding and improving SwiftUI performance: [references/understanding-improving-swiftui-performance.md](references/understanding-improving-swiftui-performance.md)
+- WWDC transcript sources: [references/wwdc-session-sources.md](references/wwdc-session-sources.md)
