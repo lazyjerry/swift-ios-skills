@@ -46,7 +46,7 @@ Text("Hello, world")                        // extracted
 Label("Settings", systemImage: "gear")      // extracted
 Button("Save") { }                          // extracted
 Toggle("Enable notifications", isOn: $on)   // extracted
-NavigationTitle("Home")                      // extracted
+.navigationTitle("Home")                     // extracted
 Section("Account") { }                      // extracted
 
 // NOT extracted -- computed or variable strings
