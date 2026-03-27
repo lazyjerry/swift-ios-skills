@@ -5,9 +5,7 @@ description: "Implement, review, or improve photo picking, camera capture, and m
 
 # PhotoKit
 
-Modern patterns for photo picking, camera capture, image loading, and media permissions targeting iOS 26+ with Swift 6.2. Patterns are backward-compatible to iOS 16 unless noted.
-
-See [references/photokit-patterns.md](references/photokit-patterns.md) for complete picker recipes and [references/camera-capture.md](references/camera-capture.md) for AVCaptureSession patterns.
+Modern patterns for photo picking, camera capture, image loading, and media permissions targeting iOS 26+ with Swift 6.2. Patterns are backward-compatible to iOS 16 unless noted. See [references/photokit-patterns.md](references/photokit-patterns.md) for complete picker recipes and [references/camera-capture.md](references/camera-capture.md) for AVCaptureSession patterns.
 
 ## Contents
 

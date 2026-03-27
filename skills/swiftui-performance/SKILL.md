@@ -5,9 +5,10 @@ description: "Audit and improve SwiftUI runtime performance. Use when diagnosing
 
 # SwiftUI Performance
 
+Audit SwiftUI view performance end-to-end, from instrumentation and baselining to root-cause analysis and concrete remediation steps.
+
 ## Contents
 
-- [Overview](#overview)
 - [Workflow Decision Tree](#workflow-decision-tree)
 - [1. Code-First Review](#1-code-first-review)
 - [2. Guide the User to Profile](#2-guide-the-user-to-profile)
@@ -23,10 +24,6 @@ description: "Audit and improve SwiftUI runtime performance. Use when diagnosing
 - [Common Mistakes](#common-mistakes)
 - [Review Checklist](#review-checklist)
 - [References](#references)
-
-## Overview
-
-Audit SwiftUI view performance end-to-end, from instrumentation and baselining to root-cause analysis and concrete remediation steps.
 
 ## Workflow Decision Tree
 

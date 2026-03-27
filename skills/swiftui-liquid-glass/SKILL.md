@@ -5,18 +5,6 @@ description: "Implement, review, or improve SwiftUI Liquid Glass effects for iOS
 
 # SwiftUI Liquid Glass
 
-## Contents
-
-- [Overview](#overview)
-- [Workflow](#workflow)
-- [Core API Summary](#core-api-summary)
-- [Code Examples](#code-examples)
-- [Common Mistakes](#common-mistakes)
-- [Review Checklist](#review-checklist)
-- [References](#references)
-
-## Overview
-
 Liquid Glass is the dynamic translucent material introduced in iOS 26 (and iPadOS 26,
 macOS 26, tvOS 26, watchOS 26). It blurs content behind it, reflects surrounding color
 and light, and reacts to touch and pointer interactions. Standard SwiftUI components
@@ -24,6 +12,15 @@ and light, and reacts to touch and pointer interactions. Standard SwiftUI compon
 built with the iOS 26 SDK. Use the APIs below for custom views and controls.
 
 See [references/liquid-glass.md](references/liquid-glass.md) for the full API reference with additional examples.
+
+## Contents
+
+- [Workflow](#workflow)
+- [Core API Summary](#core-api-summary)
+- [Code Examples](#code-examples)
+- [Common Mistakes](#common-mistakes)
+- [Review Checklist](#review-checklist)
+- [References](#references)
 
 ## Workflow
 

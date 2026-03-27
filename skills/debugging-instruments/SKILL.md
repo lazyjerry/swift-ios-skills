@@ -5,6 +5,8 @@ description: "Debug iOS apps and profile performance using LLDB, Memory Graph De
 
 # Debugging and Instruments
 
+Diagnose crashes, memory leaks, retain cycles, main thread hangs, and performance bottlenecks in iOS apps using LLDB, Memory Graph Debugger, and Instruments. Covers breakpoint workflows, memory graph analysis, hang detection, build failure triage, and Instruments profiling for CPU, memory, energy, and network.
+
 ## Contents
 
 - [LLDB Debugging](#lldb-debugging)

@@ -27,7 +27,7 @@ Access financial data from Apple Wallet including Apple Card, Apple Cash, and Ap
 
 ### Requirements
 
-1. **Managed entitlement** -- request `com.apple.developer.financekit` from Apple via the [FinanceKit request form](https://developer.apple.com/contact/request/financekit/). This is a managed capability; Apple reviews each application.
+1. **Managed entitlement** -- request `com.apple.developer.financekit` from Apple via the [FinanceKit entitlement request form](https://developer.apple.com/contact/request/financekit/). This is a managed capability; Apple reviews each application.
 2. **Organization-level Apple Developer account** (individual accounts are not eligible).
 3. **Account Holder role** required to request the entitlement.
 
