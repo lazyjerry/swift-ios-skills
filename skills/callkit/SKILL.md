@@ -1,9 +1,9 @@
 ---
-name: callkit-voip
+name: callkit
 description: "Implement VoIP calling with CallKit and PushKit. Use when building incoming/outgoing call flows, registering for VoIP push notifications, configuring CXProvider and CXCallController, handling call actions, coordinating audio sessions, or creating Call Directory extensions for caller ID and call blocking."
 ---
 
-# CallKit + PushKit VoIP
+# CallKit
 
 Build VoIP calling features that integrate with the native iOS call UI using
 CallKit and PushKit. Covers incoming/outgoing call flows, VoIP push

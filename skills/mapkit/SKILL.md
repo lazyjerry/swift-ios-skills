@@ -1,9 +1,9 @@
 ---
-name: mapkit-location
+name: mapkit
 description: "Implement, review, or improve maps and location features in iOS/macOS apps using MapKit and CoreLocation. Use when working with Map views, annotations, markers, polylines, user location tracking, geocoding, reverse geocoding, search/autocomplete, directions and routes, geofencing, region monitoring, CLLocationUpdate async streams, or location authorization flows. Also use when working with maps, coordinates, addresses, places, directions, distance calculations, or location-based features in Swift apps."
 ---
 
-# MapKit and CoreLocation
+# MapKit
 
 Build map-based and location-aware features targeting iOS 17+ with SwiftUI
 MapKit and modern CoreLocation async APIs. Use `Map` with `MapContentBuilder`
@@ -11,7 +11,7 @@ for views, `CLLocationUpdate.liveUpdates()` for streaming location, and
 `CLMonitor` for geofencing.
 
 See `references/mapkit-patterns.md` for extended MapKit patterns and
-`references/corelocation-patterns.md` for CoreLocation patterns.
+`references/mapkit-corelocation-patterns.md` for CoreLocation patterns.
 
 ## Contents
 
@@ -482,4 +482,4 @@ func lookupPlace(name: String, coordinate: CLLocationCoordinate2D) async throws 
 ## References
 
 - `references/mapkit-patterns.md` — Map setup, annotations, search, routes, clustering, Look Around, snapshots.
-- `references/corelocation-patterns.md` — CLLocationUpdate, CLMonitor, CLServiceSession, background location, testing.
+- `references/mapkit-corelocation-patterns.md` — CLLocationUpdate, CLMonitor, CLServiceSession, background location, testing.

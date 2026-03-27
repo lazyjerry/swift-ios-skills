@@ -1,9 +1,9 @@
 ---
-name: cloudkit-sync
+name: cloudkit
 description: "Implement, review, or improve CloudKit and iCloud sync in iOS/macOS apps. Use when working with CKContainer, CKRecord, CKQuery, CKSubscription, CKSyncEngine, CKShare, NSUbiquitousKeyValueStore, or iCloud Drive file coordination; when syncing SwiftData models via ModelConfiguration with cloudKitDatabase; when handling CKError codes for conflict resolution, network failures, or quota limits; or when checking iCloud account status before performing sync operations."
 ---
 
-# CloudKit and iCloud Sync
+# CloudKit
 
 Sync data across devices using CloudKit, iCloud key-value storage, and iCloud
 Drive. Covers container setup, record CRUD, queries, subscriptions, CKSyncEngine,

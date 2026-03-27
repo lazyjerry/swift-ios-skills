@@ -1,9 +1,9 @@
 ---
-name: pencilkit-drawing
+name: pencilkit
 description: "Add Apple Pencil drawing, canvas views, tool pickers, and ink serialization using PencilKit. Use when building drawing apps, annotation features, handwriting capture, signature fields, or any Apple Pencil-powered experience on iOS/iPadOS/visionOS."
 ---
 
-# PencilKit Drawing
+# PencilKit
 
 Capture Apple Pencil and finger input using `PKCanvasView`, manage drawing
 tools with `PKToolPicker`, serialize drawings with `PKDrawing`, and wrap
@@ -302,7 +302,7 @@ when you need more than freeform drawing.
 
 PaperKit uses PencilKit under the hood -- `PaperMarkupViewController` accepts
 `PKTool` for its `drawingTool` property and `PaperMarkup` can append a
-`PKDrawing`. See `references/paperkit-integration.md` for PaperKit patterns.
+`PKDrawing`.
 
 ## Common Mistakes
 
@@ -376,7 +376,6 @@ if drawing1 == drawing2 { }
 ## References
 
 - Extended PencilKit patterns (advanced strokes, Scribble, delegate): `references/pencilkit-patterns.md`
-- PaperKit integration patterns: `references/paperkit-integration.md`
 - [PencilKit framework](https://sosumi.ai/documentation/pencilkit)
 - [PKCanvasView](https://sosumi.ai/documentation/pencilkit/pkcanvasview)
 - [PKDrawing](https://sosumi.ai/documentation/pencilkit/pkdrawing-swift.struct)

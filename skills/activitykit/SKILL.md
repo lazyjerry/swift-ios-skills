@@ -1,15 +1,15 @@
 ---
-name: live-activities
+name: activitykit
 description: "Implement, review, or improve Live Activities and Dynamic Island experiences in iOS apps using ActivityKit. Use when building real-time updating widgets for the Lock Screen and Dynamic Island — delivery tracking, sports scores, ride-sharing status, workout timers, media playback, or any time-sensitive information that updates in real time. Also use when working with ActivityKit, ActivityAttributes, Activity lifecycle (request/update/end), Dynamic Island layouts (compact/minimal/expanded), push-to-update Live Activities, or Lock Screen live widgets."
 ---
 
-# Live Activities and Dynamic Island
+# ActivityKit
 
 Build real-time, glanceable experiences on the Lock Screen, Dynamic Island,
 StandBy, CarPlay, and Mac menu bar using ActivityKit. Patterns target iOS 26+
 with Swift 6.2, backward-compatible to iOS 16.1 unless noted.
 
-See `references/live-activity-patterns.md` for complete code patterns including push payload formats, concurrent activities, state observation, and testing.
+See `references/activitykit-patterns.md` for complete code patterns including push payload formats, concurrent activities, state observation, and testing.
 
 ## Contents
 
@@ -497,4 +497,4 @@ let activity = try Activity.request(
 
 ## References
 
-- See `references/live-activity-patterns.md` for patterns and code examples
+- See `references/activitykit-patterns.md` for patterns and code examples

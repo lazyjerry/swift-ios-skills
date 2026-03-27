@@ -1,13 +1,13 @@
 ---
-name: photos-camera-media
-description: "Implement, review, or improve photo picking, camera capture, and media handling in iOS apps. Use when working with PhotosPicker, PHPickerViewController, camera capture sessions (AVCaptureSession), photo library access, image loading and display, video recording, or media permissions. Also use when selecting photos from the library, taking pictures, recording video, processing images, or handling photo/camera privacy permissions in Swift apps."
+name: photokit
+description: "Implement, review, or improve photo picking, camera capture, and media handling in iOS apps using PhotoKit and AVFoundation. Use when working with PhotosPicker, PHPickerViewController, camera capture sessions (AVCaptureSession), photo library access, image loading and display, video recording, or media permissions. Also use when selecting photos from the library, taking pictures, recording video, processing images, or handling photo/camera privacy permissions in Swift apps."
 ---
 
-# Photos, Camera & Media
+# PhotoKit
 
 Modern patterns for photo picking, camera capture, image loading, and media permissions targeting iOS 26+ with Swift 6.2. Patterns are backward-compatible to iOS 16 unless noted.
 
-See `references/photospicker-patterns.md` for complete picker recipes and `references/camera-capture.md` for AVCaptureSession patterns.
+See `references/photokit-patterns.md` for complete picker recipes and `references/camera-capture.md` for AVCaptureSession patterns.
 
 ## Contents
 
@@ -495,7 +495,7 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 
 ## References
 
-- `references/photospicker-patterns.md` — Picker patterns, media loading, HEIC handling
+- `references/photokit-patterns.md` — Picker patterns, media loading, HEIC handling
 - `references/camera-capture.md` — AVCaptureSession, photo/video capture, QR scanning
 - `references/image-loading-caching.md` — AsyncImage, caching, downsampling
 - `references/av-playback.md` — AVPlayer, streaming, audio session, background audio

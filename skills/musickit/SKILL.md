@@ -1,9 +1,9 @@
 ---
-name: musickit-audio
+name: musickit
 description: "Integrate Apple Music playback, catalog search, and Now Playing metadata using MusicKit and MediaPlayer. Use when adding music search, Apple Music subscription flows, queue management, playback controls, remote command handling, or Now Playing info to iOS apps."
 ---
 
-# MusicKit + MediaPlayer
+# MusicKit
 
 Search the Apple Music catalog, manage playback with `ApplicationMusicPlayer`,
 check subscriptions, and publish Now Playing metadata via `MPNowPlayingInfoCenter`

@@ -1,9 +1,9 @@
 ---
-name: metrickit-diagnostics
+name: metrickit
 description: "Collect and analyze on-device performance metrics and crash diagnostics using MetricKit. Use when setting up MXMetricManager, handling MXMetricPayload or MXDiagnosticPayload, processing crash/hang/disk-write diagnostics via MXCallStackTree, adding custom signpost metrics, or uploading telemetry to an analytics backend."
 ---
 
-# MetricKit Diagnostics
+# MetricKit
 
 Collect aggregated performance metrics and crash diagnostics from production
 devices using MetricKit. The framework delivers daily metric payloads (CPU,
