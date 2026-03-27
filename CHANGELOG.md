@@ -57,6 +57,31 @@
 - Update README catalog, descriptions, counts, install commands, and upgrade guidance.
 - Bump Claude marketplace bundle versions to 3.0.0.
 
+### API accuracy fixes
+
+- Fix 15+ incorrect deprecation claims across skills (RotationGesture, .tabItem, .navigationBarLeading/Trailing, IntentTimelineProvider, original StoreKit APIs were not deprecated).
+- Correct API usage in activitykit, background-processing, cloudkit, debugging-instruments, energykit, shareplay-activities, swift-concurrency, and swift-testing.
+- Clarify BrowserEngineKit EU/Japan distribution requirements.
+
+### Structural improvements
+
+- Add missing scope statements to debugging-instruments, swiftui-liquid-glass, and swiftui-performance.
+- Trim photokit SKILL.md to under 500-line limit.
+- Refactor metrickit and device-integrity to extract deep detail into reference files.
+- Expand thin reference files in swiftui-layout-components, swiftui-performance, and swiftui-webkit.
+- Add Contents sections to reference files in background-processing, swiftui-gestures, and swiftui-navigation.
+- Convert all reference paths from backtick to markdown link syntax across all 76 skills.
+
+### Link and cross-reference fixes
+
+- Normalize all Sosumi documentation paths to lowercase.
+- Repair broken self-anchor links across skills.
+- Replace stale pre-rename skill names in reference file intros.
+- Remove broken reference to background-websocket.md in ios-networking.
+- Fix malformed key-path syntax in swiftui-performance reference.
+- Clarify themed bundle purpose in README (context window management, not disk savings).
+- Update apple-kit-skills description to include CarPlay.
+
 ## v2.2.0
 
 - Add `swiftui-webkit`, a new SwiftUI skill for native WebKit-for-SwiftUI APIs including `WebView`, `WebPage`, navigation policies, JavaScript calls, observable page state, and custom URL schemes.
