@@ -1,6 +1,6 @@
 # Deprecated API Migration Guide
 
-A comprehensive mapping of deprecated-to-modern SwiftUI and iOS APIs from iOS 15 through iOS 26. Each section shows the old pattern, the modern replacement, and migration notes. Target iOS 26 with Swift 6.2; backward-compatible to iOS 16 unless noted.
+A comprehensive mapping of deprecated-to-modern SwiftUI and iOS APIs from iOS 15 through iOS 26. Each section shows the old pattern, the modern replacement, and migration notes. Target iOS 26 with Swift 6.3; backward-compatible to iOS 16 unless noted.
 
 ## Contents
 - NavigationView to NavigationStack

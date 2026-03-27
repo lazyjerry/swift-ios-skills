@@ -8,7 +8,7 @@ description: "Create multiplayer spatial board games using TabletopKit on vision
 Create multiplayer spatial board games on a virtual table surface using
 TabletopKit. Handles game layout, equipment interaction, player seating, turn
 management, state synchronization, and RealityKit rendering. **visionOS 2.0+
-only.** Targets Swift 6.2.
+only.** Targets Swift 6.3.
 
 ## Contents
 

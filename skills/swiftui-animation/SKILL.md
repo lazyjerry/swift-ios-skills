@@ -6,7 +6,7 @@ description: "Implement, review, or improve SwiftUI animations and transitions. 
 # SwiftUI Animation (iOS 26+)
 
 Review, write, and fix SwiftUI animations. Apply modern animation APIs with
-correct timing, transitions, and accessibility handling using Swift 6.2 patterns.
+correct timing, transitions, and accessibility handling using Swift 6.3 patterns.
 
 ## Contents
 

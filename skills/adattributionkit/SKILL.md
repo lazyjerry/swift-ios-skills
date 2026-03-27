@@ -5,7 +5,7 @@ description: "Measure ad effectiveness with privacy-preserving attribution using
 
 # AdAttributionKit
 
-Privacy-preserving ad attribution for iOS 17.4+ / Swift 6.2. AdAttributionKit
+Privacy-preserving ad attribution for iOS 17.4+ / Swift 6.3. AdAttributionKit
 lets ad networks measure conversions (installs and re-engagements) without
 exposing user-level data. It supports the App Store and alternative
 marketplaces, and interoperates with SKAdNetwork.

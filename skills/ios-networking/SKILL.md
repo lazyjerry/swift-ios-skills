@@ -6,7 +6,7 @@ description: "Build, review, or improve networking code in iOS/macOS apps using 
 # iOS Networking
 
 Modern networking patterns for iOS 26+ using URLSession with async/await and
-structured concurrency. All examples target Swift 6.2. No third-party
+structured concurrency. All examples target Swift 6.3. No third-party
 dependencies required -- URLSession covers the vast majority of networking
 needs.
 

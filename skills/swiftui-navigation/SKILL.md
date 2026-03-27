@@ -5,7 +5,7 @@ description: "Implement SwiftUI navigation patterns including NavigationStack, N
 
 # SwiftUI Navigation
 
-Navigation patterns for SwiftUI apps targeting iOS 26+ with Swift 6.2. Covers push navigation, multi-column layouts, sheet presentation, tab architecture, and deep linking. Patterns are backward-compatible to iOS 17 unless noted.
+Navigation patterns for SwiftUI apps targeting iOS 26+ with Swift 6.3. Covers push navigation, multi-column layouts, sheet presentation, tab architecture, and deep linking. Patterns are backward-compatible to iOS 17 unless noted.
 
 ## Contents
 

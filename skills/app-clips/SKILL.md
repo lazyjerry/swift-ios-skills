@@ -5,7 +5,7 @@ description: "Build iOS App Clips with invocation URLs, NFC, QR codes, App Clip 
 
 # App Clips
 
-Lightweight, instantly-available versions of your iOS app for in-the-moment experiences or demos. Targets iOS 26+ / Swift 6.2 unless noted.
+Lightweight, instantly-available versions of your iOS app for in-the-moment experiences or demos. Targets iOS 26+ / Swift 6.3 unless noted.
 
 ## Contents
 

@@ -5,7 +5,7 @@ description: "Access Apple Card, Apple Cash, and Wallet financial data using Fin
 
 # FinanceKit
 
-Access financial data from Apple Wallet including Apple Card, Apple Cash, and Apple Card Savings. FinanceKit provides on-device, offline access to accounts, balances, and transactions with user-controlled authorization. Targets Swift 6.2 / iOS 26+. Query APIs are available from iOS 17.4; background delivery requires iOS 26.
+Access financial data from Apple Wallet including Apple Card, Apple Cash, and Apple Card Savings. FinanceKit provides on-device, offline access to accounts, balances, and transactions with user-controlled authorization. Targets Swift 6.3 / iOS 26+. Query APIs are available from iOS 17.4; background delivery requires iOS 26.
 
 ## Contents
 

@@ -7,7 +7,7 @@ description: "Control smart-home accessories and commission Matter devices using
 
 Control home automation accessories and commission Matter devices. HomeKit manages
 the home/room/accessory model, action sets, and triggers. MatterSupport handles
-device commissioning into your ecosystem. Targets Swift 6.2 / iOS 26+.
+device commissioning into your ecosystem. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

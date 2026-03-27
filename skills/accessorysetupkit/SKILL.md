@@ -8,7 +8,7 @@ description: "Discover and configure Bluetooth and Wi-Fi accessories using Acces
 Privacy-preserving accessory discovery and setup for Bluetooth and Wi-Fi
 devices. Replaces broad Bluetooth/Wi-Fi permission prompts with a
 system-provided picker that grants per-accessory access with a single tap.
-Available iOS 18+ / Swift 6.2.
+Available iOS 18+ / Swift 6.3.
 
 After setup, apps continue using CoreBluetooth and NetworkExtension for
 communication. AccessorySetupKit handles only the discovery and authorization

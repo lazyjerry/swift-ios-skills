@@ -8,7 +8,7 @@ description: "Access security tokens and smart cards using CryptoTokenKit. Use w
 Access security tokens and the cryptographic assets they store using the
 CryptoTokenKit framework. Covers token driver extensions, smart card
 communication, token sessions, keychain integration, and certificate-based
-authentication. Targets Swift 6.2.
+authentication. Targets Swift 6.3.
 
 **Platform availability:** CryptoTokenKit is primarily a macOS framework.
 Smart card reader access (`TKSmartCard`, `TKSmartCardSlotManager`) requires

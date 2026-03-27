@@ -8,7 +8,7 @@ description: "Support audio accessory features like automatic switching using Au
 Automatic audio switching and intelligent audio routing for third-party audio
 accessories. Enables companion apps to register audio accessories with the
 system, report device placement, and declare capabilities so the system can
-seamlessly switch audio output. Available iOS 26.4+ / Swift 6.2.
+seamlessly switch audio output. Available iOS 26.4+ / Swift 6.3.
 
 > **Beta-sensitive.** AudioAccessoryKit is new in iOS 26.4 and may change before GM.
 > Re-check current Apple documentation before relying on specific API details.

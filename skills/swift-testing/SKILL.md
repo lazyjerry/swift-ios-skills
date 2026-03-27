@@ -272,6 +272,17 @@ struct DatabaseTests {
 }
 ```
 
+### Warning-Severity Issues
+
+Record issues that surface in test output but don't fail the test. Use for performance regressions, deprecated paths, or non-critical checks you want to track.
+
+```swift
+Issue.record(
+    "Processing took \(elapsed)s — exceeds 2s target",
+    severity: .warning
+)
+```
+
 ## Async Testing Patterns
 
 ### Testing Async Functions
@@ -347,6 +358,19 @@ If the test exceeds the time limit, it fails immediately with a clear timeout di
 }
 ```
 
+### Programmatic Cancellation
+
+Stop a test without marking it passed or failed. The test is recorded as "cancelled" — distinct from failure or a known issue.
+
+```swift
+@Test func requiresNetwork() throws {
+    guard NetworkMonitor.shared.isConnected else {
+        try Test.cancel("No network — skipping integration test")
+    }
+    // ... test continues if connected
+}
+```
+
 ## Traits In Depth
 
 ### Conditional Traits
@@ -419,6 +443,18 @@ Attach diagnostic data to test results for debugging failures. See [references/t
 }
 ```
 
+Image attachments are available via cross-import overlays — import both `Testing` and a UI framework:
+
+```swift
+import Testing
+import UIKit
+
+@Test func renderedChart() async throws {
+    let image = renderer.image { ctx in chartView.drawHierarchy(in: bounds, afterScreenUpdates: true) }
+    Attachment(image, named: "chart.png").record()
+}
+```
+
 ## Exit Testing
 
 Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See [references/testing-patterns.md](references/testing-patterns.md) for details.
@@ -458,3 +494,4 @@ Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See [
 ## References
 
 - Testing patterns: [references/testing-patterns.md](references/testing-patterns.md)
+- Advanced testing (warnings, cancellation, image attachments): [references/testing-advanced.md](references/testing-advanced.md)

@@ -10,7 +10,7 @@ description: "Create child communication safety experiences using PermissionKit 
 Request permission from a parent or guardian to modify a child's communication
 rules. PermissionKit creates communication safety experiences that let children
 ask for exceptions to communication limits set by their parents. Targets
-Swift 6.2 / iOS 26+.
+Swift 6.3 / iOS 26+.
 
 ## Contents
 

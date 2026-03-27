@@ -6,7 +6,7 @@ description: "Implement Swift Codable models for JSON and property-list encoding
 # Swift Codable
 
 Encode and decode Swift types using `Codable` (`Encodable & Decodable`) with
-`JSONEncoder`, `JSONDecoder`, and related APIs. Targets Swift 6.2 / iOS 26+.
+`JSONEncoder`, `JSONDecoder`, and related APIs. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

@@ -7,7 +7,7 @@ description: "Integrate Apple Music playback, catalog search, and Now Playing me
 
 Search the Apple Music catalog, manage playback with `ApplicationMusicPlayer`,
 check subscriptions, and publish Now Playing metadata via `MPNowPlayingInfoCenter`
-and `MPRemoteCommandCenter`. Targets Swift 6.2 / iOS 26+.
+and `MPRemoteCommandCenter`. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

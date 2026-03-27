@@ -9,7 +9,7 @@ Provide on-device contextual clues that increase a widget's visibility in the
 Smart Stack on Apple Watch. RelevanceKit tells the system *when* a widget is
 relevant -- by time, location, fitness state, sleep schedule, or connected
 hardware -- so the Smart Stack can surface the right widget at the right moment.
-Targets Swift 6.2 / watchOS 26+.
+Targets Swift 6.3 / watchOS 26+.
 
 > **Beta-sensitive.** RelevanceKit shipped with watchOS 26. Re-check Apple
 > documentation before making strong claims about API availability or behavior.

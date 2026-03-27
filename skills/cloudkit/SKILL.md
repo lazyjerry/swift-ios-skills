@@ -8,7 +8,7 @@ description: "Implement, review, or improve CloudKit and iCloud sync in iOS/macO
 Sync data across devices using CloudKit, iCloud key-value storage, and iCloud
 Drive. Covers container setup, record CRUD, queries, subscriptions, CKSyncEngine,
 SwiftData integration, conflict resolution, and error handling. Targets iOS 26+
-with Swift 6.2; older availability noted where relevant.
+with Swift 6.3; older availability noted where relevant.
 
 ## Contents
 

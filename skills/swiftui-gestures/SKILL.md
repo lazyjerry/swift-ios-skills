@@ -7,7 +7,7 @@ description: "Implement, review, or improve SwiftUI gesture handling. Use when a
 
 Review, write, and fix SwiftUI gesture interactions. Apply modern gesture APIs
 with correct composition, state management, and conflict resolution using
-Swift 6.2 patterns.
+Swift 6.3 patterns.
 
 ## Contents
 

@@ -7,7 +7,7 @@ description: "Build augmented reality experiences with RealityKit and ARKit on i
 
 Build AR experiences on iOS using RealityKit for rendering and ARKit for world
 tracking. Covers `RealityView`, entity management, raycasting, scene
-understanding, and gesture-based interactions. Targets Swift 6.2 / iOS 26+.
+understanding, and gesture-based interactions. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

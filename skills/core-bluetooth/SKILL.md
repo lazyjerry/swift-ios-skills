@@ -8,7 +8,7 @@ description: "Scan, connect, and communicate with Bluetooth Low Energy periphera
 Scan for, connect to, and exchange data with Bluetooth Low Energy (BLE) devices.
 Covers the central role (scanning and connecting to peripherals), the peripheral
 role (advertising services), background modes, and state restoration.
-Targets Swift 6.2 / iOS 26+.
+Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

@@ -7,7 +7,7 @@ description: "Build shared real-time experiences using GroupActivities and Share
 
 Build shared real-time experiences using the GroupActivities framework. SharePlay
 connects people over FaceTime or iMessage, synchronizing media playback, app state,
-or custom data. Targets Swift 6.2 / iOS 26+.
+or custom data. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

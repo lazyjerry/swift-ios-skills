@@ -5,7 +5,7 @@ description: "Read, write, and query Apple Health data using HealthKit. Covers H
 
 # HealthKit
 
-Read and write health and fitness data from the Apple Health store. Covers authorization, queries, writing samples, background delivery, and workout sessions. Targets Swift 6.2 / iOS 26+.
+Read and write health and fitness data from the Apple Health store. Covers authorization, queries, writing samples, background delivery, and workout sessions. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

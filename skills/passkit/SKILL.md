@@ -7,7 +7,7 @@ description: "Integrate Apple Pay payments and Wallet passes using PassKit. Use 
 
 Accept Apple Pay payments for physical goods and services, and add passes to
 the user's Wallet. Covers payment buttons, payment requests, authorization,
-Wallet passes, and merchant configuration. Targets Swift 6.2 / iOS 26+.
+Wallet passes, and merchant configuration. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

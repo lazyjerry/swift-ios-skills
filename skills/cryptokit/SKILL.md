@@ -9,7 +9,7 @@ Apple CryptoKit provides a Swift-native API for cryptographic operations:
 hashing, message authentication, symmetric encryption, public-key signing,
 key agreement, and Secure Enclave key storage. Available on iOS 13+.
 Prefer CryptoKit over CommonCrypto or raw Security framework APIs in all
-new code targeting Swift 6.2+.
+new code targeting Swift 6.3+.
 
 ## Contents
 

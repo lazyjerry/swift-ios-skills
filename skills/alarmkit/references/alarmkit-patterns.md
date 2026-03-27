@@ -2,7 +2,7 @@
 
 Complete implementation patterns for AlarmKit alarms, countdown timers,
 authorization, state observation, and Live Activity integration. All patterns
-target iOS 26+ / iPadOS 26+ with Swift 6.2.
+target iOS 26+ / iPadOS 26+ with Swift 6.3.
 
 ## Contents
 - Complete Alarm Scheduling Flow

@@ -8,7 +8,7 @@ description: "Access accelerometer, gyroscope, magnetometer, pedometer, and acti
 Read device sensor data -- accelerometer, gyroscope, magnetometer, pedometer, and
 activity recognition -- on iOS and watchOS. CoreMotion fuses raw sensor inputs into
 processed device-motion data and provides pedometer/activity APIs for fitness and
-navigation use cases. Targets Swift 6.2 / iOS 26+.
+navigation use cases. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

@@ -6,7 +6,7 @@ description: "Implement computer vision features including text recognition (OCR
 # Vision Framework
 
 Detect text, faces, barcodes, objects, and body poses in images and video using
-on-device computer vision. Patterns target iOS 26+ with Swift 6.2,
+on-device computer vision. Patterns target iOS 26+ with Swift 6.3,
 backward-compatible where noted.
 
 See [references/vision-requests.md](references/vision-requests.md) for complete code patterns and

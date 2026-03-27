@@ -7,7 +7,7 @@ description: "Create, read, and manage calendar events and reminders using Event
 
 Create, read, and manage calendar events and reminders. Covers authorization,
 event and reminder CRUD, recurrence rules, alarms, and EventKitUI editors.
-Targets Swift 6.2 / iOS 26+.
+Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

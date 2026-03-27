@@ -6,7 +6,7 @@ description: "Implement, review, or improve data persistence using SwiftData. Us
 # SwiftData
 
 Persist, query, and manage structured data in iOS 26+ apps using SwiftData
-with Swift 6.2.
+with Swift 6.3.
 
 ## Contents
 

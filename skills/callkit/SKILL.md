@@ -8,7 +8,7 @@ description: "Implement VoIP calling with CallKit and PushKit. Use when building
 Build VoIP calling features that integrate with the native iOS call UI using
 CallKit and PushKit. Covers incoming/outgoing call flows, VoIP push
 registration, audio session coordination, and call directory extensions.
-Targets Swift 6.2 / iOS 26+.
+Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

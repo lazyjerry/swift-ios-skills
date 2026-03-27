@@ -1,5 +1,18 @@
 # Changelog
 
+## v3.1.0
+
+### Swift 6.3 update
+
+- Bump all skills from Swift 6.2 to Swift 6.3 targeting.
+- Add `async defer` (SE-0493) and clock epochs (SE-0473) to `swift-concurrency`.
+- Add `@c` (SE-0495), `@specialized` (SE-0460), `@inline(always)` guarantee (SE-0496), `@export` (SE-0497), `@section`/`@used` (SE-0492), and module selectors (SE-0491) to `swift-language`.
+- Add warning-severity issues (ST-0013), programmatic test cancellation (ST-0016), exit test value capturing (ST-0012), and image attachments (ST-0014) to `swift-testing`.
+- Integrate Swift 6.3 features into existing topical sections instead of version-siloed sections.
+- Rename version-based reference files to topic-based names (`swift-6-2-concurrency.md` → `concurrency-patterns.md`, `swift-6-3-features.md` → `swift-attributes-interop.md`, `swift-6-3-testing.md` → `testing-advanced.md`).
+- Update README badge and description for Swift 6.3.
+- Bump marketplace bundle versions to 3.1.0.
+
 ## v3.0.0
 
 ### Skill renames

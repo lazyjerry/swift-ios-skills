@@ -5,7 +5,7 @@ description: "Implement, review, or debug push notifications in iOS/macOS apps â
 
 # Push Notifications
 
-Implement, review, and debug local and remote notifications on iOS/macOS using `UserNotifications` and APNs. Covers permission flow, token registration, payload structure, foreground handling, notification actions, grouping, and rich notifications. Targets iOS 26+ with Swift 6.2, backward-compatible to iOS 16 unless noted.
+Implement, review, and debug local and remote notifications on iOS/macOS using `UserNotifications` and APNs. Covers permission flow, token registration, payload structure, foreground handling, notification actions, grouping, and rich notifications. Targets iOS 26+ with Swift 6.3, backward-compatible to iOS 16 unless noted.
 
 ## Contents
 

@@ -7,7 +7,7 @@ description: "Add drawings, shapes, and a consistent markup experience using Pap
 
 > **Beta-sensitive.** PaperKit is new in iOS/iPadOS 26, macOS 26, and visionOS 26. API surface may change. Verify details against current Apple documentation before shipping.
 
-PaperKit provides a unified markup experience — the same framework powering markup in Notes, Screenshots, QuickLook, and Journal. It combines PencilKit drawing with structured markup elements (shapes, text boxes, images, lines) in a single canvas managed by `PaperMarkupViewController`. Requires Swift 6.2 and the iOS 26+ SDK.
+PaperKit provides a unified markup experience — the same framework powering markup in Notes, Screenshots, QuickLook, and Journal. It combines PencilKit drawing with structured markup elements (shapes, text boxes, images, lines) in a single canvas managed by `PaperMarkupViewController`. Requires Swift 6.3 and the iOS 26+ SDK.
 
 ## Contents
 

@@ -9,7 +9,7 @@ Build apps that display on the vehicle's CarPlay screen using the CarPlay
 framework's template-based UI system. Covers scene lifecycle, template
 types, navigation guidance, audio playback, communication, point-of-interest
 categories, entitlement setup, and simulator testing.
-Targets Swift 6.2 / iOS 26+.
+Targets Swift 6.3 / iOS 26+.
 
 See [references/carplay-patterns.md](references/carplay-patterns.md) for extended patterns including full
 navigation sessions, dashboard scenes, and advanced template composition.

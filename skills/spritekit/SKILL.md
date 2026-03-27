@@ -6,7 +6,7 @@ description: "Build 2D games and animations using SpriteKit. Use when creating g
 # SpriteKit
 
 Build 2D games and interactive animations for iOS 26+ using SpriteKit and
-Swift 6.2. Covers scene lifecycle, node hierarchy, actions, physics, particles,
+Swift 6.3. Covers scene lifecycle, node hierarchy, actions, physics, particles,
 camera, touch handling, and SwiftUI integration.
 
 ## Contents

@@ -7,7 +7,7 @@ description: "Implement, review, or improve Live Activities and Dynamic Island e
 
 Build real-time, glanceable experiences on the Lock Screen, Dynamic Island,
 StandBy, CarPlay, and a paired Mac using ActivityKit. Patterns target iOS 26+
-with Swift 6.2, backward-compatible to iOS 16.1 unless noted.
+with Swift 6.3, backward-compatible to iOS 16.1 unless noted.
 
 See [references/activitykit-patterns.md](references/activitykit-patterns.md) for complete code patterns including push payload formats, concurrent activities, state observation, and testing.
 

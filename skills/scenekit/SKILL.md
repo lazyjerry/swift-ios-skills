@@ -6,7 +6,7 @@ description: "Build 3D scenes and visualizations using SceneKit. Use when creati
 # SceneKit
 
 Apple's high-level 3D rendering framework for building scenes and visualizations
-on iOS using Swift 6.2. Provides a node-based scene graph, built-in geometry
+on iOS using Swift 6.3. Provides a node-based scene graph, built-in geometry
 primitives, physically based materials, lighting, animation, and physics.
 
 **Deprecation notice (WWDC 2025):** SceneKit is officially deprecated across all

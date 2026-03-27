@@ -7,7 +7,7 @@ description: "Display and manipulate PDF documents using PDFKit. Use when embedd
 
 Display, navigate, search, annotate, and manipulate PDF documents with
 `PDFView`, `PDFDocument`, `PDFPage`, `PDFAnnotation`, and `PDFSelection`.
-Targets Swift 6.2 / iOS 26+.
+Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

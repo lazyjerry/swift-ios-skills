@@ -7,7 +7,7 @@ description: "Read, create, update, and pick contacts using the Contacts and Con
 
 Fetch, create, update, and pick contacts from the user's Contacts database using
 `CNContactStore`, `CNSaveRequest`, and `CNContactPickerViewController`. Targets
-Swift 6.2 / iOS 26+.
+Swift 6.3 / iOS 26+.
 
 ## Contents
 

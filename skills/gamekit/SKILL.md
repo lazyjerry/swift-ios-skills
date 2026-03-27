@@ -5,7 +5,7 @@ description: "Integrate Game Center features using GameKit. Use when authenticat
 
 # GameKit
 
-Integrate Game Center features into iOS 26+ games using GameKit and Swift 6.2.
+Integrate Game Center features into iOS 26+ games using GameKit and Swift 6.3.
 Provides player authentication, leaderboards, achievements, multiplayer
 matchmaking, access point, dashboard, challenges, and saved games.
 

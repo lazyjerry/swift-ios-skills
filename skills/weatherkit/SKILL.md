@@ -7,7 +7,7 @@ description: "Fetch current, hourly, and daily weather forecasts and display req
 
 Fetch current conditions, hourly and daily forecasts, weather alerts, and
 historical statistics using `WeatherService`. Display required Apple Weather
-attribution. Targets Swift 6.2 / iOS 26+.
+attribution. Targets Swift 6.3 / iOS 26+.
 
 ## Contents
 

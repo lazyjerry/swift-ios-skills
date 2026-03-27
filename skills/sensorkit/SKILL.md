@@ -9,7 +9,7 @@ Collect research-grade sensor data from iOS and watchOS devices for approved
 research studies. SensorKit provides access to ambient light, motion, device
 usage, keyboard metrics, visits, phone/messaging usage, speech metrics, face
 metrics, wrist temperature, heart rate, ECG, and PPG data. Targets
-Swift 6.2 / iOS 26+.
+Swift 6.3 / iOS 26+.
 
 **SensorKit is restricted to Apple-approved research studies.** Apps must submit
 a research proposal to Apple and receive the `com.apple.developer.sensorkit.reader.allow`

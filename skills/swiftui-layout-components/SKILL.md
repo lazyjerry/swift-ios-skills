@@ -5,7 +5,7 @@ description: "Build SwiftUI layouts using stacks, grids, lists, scroll views, fo
 
 # SwiftUI Layout & Components
 
-Layout and component patterns for SwiftUI apps targeting iOS 26+ with Swift 6.2. Covers stack and grid layouts, list patterns, scroll views, forms, controls, search, and overlays. Patterns are backward-compatible to iOS 17 unless noted.
+Layout and component patterns for SwiftUI apps targeting iOS 26+ with Swift 6.3. Covers stack and grid layouts, list patterns, scroll views, forms, controls, search, and overlays. Patterns are backward-compatible to iOS 17 unless noted.
 
 ## Contents
 

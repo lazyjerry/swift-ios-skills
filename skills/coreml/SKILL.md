@@ -7,7 +7,7 @@ description: "Integrate and optimize Core ML models in iOS apps for on-device ma
 
 Load, configure, and run Core ML models in iOS apps. This skill covers the
 Swift side: model loading, prediction, MLTensor, profiling, and deployment.
-Target iOS 26+ with Swift 6.2, backward-compatible to iOS 14 unless noted.
+Target iOS 26+ with Swift 6.3, backward-compatible to iOS 14 unless noted.
 
 > **Scope boundary:** Python-side model conversion, optimization (quantization,
 > palettization, pruning), and framework selection live in the `apple-on-device-ai`

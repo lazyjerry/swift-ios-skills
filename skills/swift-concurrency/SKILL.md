@@ -1,11 +1,11 @@
 ---
 name: swift-concurrency
-description: "Resolve Swift concurrency compiler errors, adopt Swift 6.2 approachable concurrency (SE-0466), and write data-race-safe async code. Use when fixing Sendable conformance errors, actor isolation warnings, or strict concurrency diagnostics; when adopting default MainActor isolation, @concurrent, nonisolated(nonsending), or Task.immediate; when designing actor-based architectures, structured concurrency with TaskGroup, or background work offloading; or when migrating from @preconcurrency to full Swift 6 strict concurrency."
+description: "Resolve Swift concurrency compiler errors, adopt approachable concurrency (SE-0466), and write data-race-safe async code. Use when fixing Sendable conformance errors, actor isolation warnings, or strict concurrency diagnostics; when adopting default MainActor isolation, @concurrent, nonisolated(nonsending), or Task.immediate; when designing actor-based architectures, structured concurrency with TaskGroup, or background work offloading; or when migrating from @preconcurrency to full Swift 6 strict concurrency."
 ---
 
-# Swift 6.2 Concurrency
+# Swift Concurrency
 
-Review, fix, and write concurrent Swift code targeting Swift 6.2+. Apply actor
+Review, fix, and write concurrent Swift code targeting Swift 6.3+. Apply actor
 isolation, Sendable safety, and modern concurrency patterns with minimal
 behavior changes.
 
@@ -106,7 +106,7 @@ of hopping to the global concurrent executor. This is the
 ```swift
 class PhotoProcessor {
     func extractSticker(data: Data, with id: String?) async -> Sticker? {
-        // In Swift 6.2, this runs on the caller's actor (e.g., MainActor)
+        // In Swift 6.2+, this runs on the caller's actor (e.g., MainActor)
         // instead of hopping to a background thread.
         // ...
     }
@@ -223,6 +223,15 @@ If `ImageExporter` were `nonisolated`, adding a `StickerModel` would fail:
 "Main actor-isolated conformance of 'StickerModel' to 'Exportable' cannot be
 used in nonisolated context."
 
+### Clock Epochs
+
+`ContinuousClock` and `SuspendingClock` now expose `.epoch` (SE-0473), enabling instant comparison and conversion between clock types.
+
+```swift
+let continuous = ContinuousClock()
+let elapsed = continuous.now - continuous.epoch  // Duration since system boot
+```
+
 ## Actor Isolation Rules
 
 1. All mutable shared state MUST be protected by an actor or global actor.
@@ -250,6 +259,18 @@ used in nonisolated context."
    modify. Plan to remove it.
 
 ## Structured Concurrency Patterns
+
+### Async Defer
+
+`defer` blocks can now contain `await` (SE-0493). Use for async cleanup — closing connections, flushing buffers, or releasing resources that require an async call.
+
+```swift
+func fetchData() async throws -> Data {
+    let connection = try await openConnection()
+    defer { await connection.close() }
+    return try await connection.read()
+}
+```
 
 **Task:** Unstructured, inherits caller context.
 ```swift
@@ -391,7 +412,7 @@ and a decision guide for choosing locks vs actors.
 
 ## References
 
-- See [references/swift-6-2-concurrency.md](references/swift-6-2-concurrency.md) for detailed Swift 6.2 changes,
+- See [references/concurrency-patterns.md](references/concurrency-patterns.md) for detailed approachable concurrency patterns,
   patterns, and migration examples.
 - See [references/approachable-concurrency.md](references/approachable-concurrency.md) for the approachable concurrency
   mode quick-reference guide.
