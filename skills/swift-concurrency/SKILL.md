@@ -192,12 +192,6 @@ for await _ in Observations { model.count } {
 }
 ```
 
-### SE-0481: weak let (Proposed — Swift 6.2+)
-
-Immutable weak references (`weak let`) that enable `Sendable` conformance for
-types holding weak references. Proposed in SE-0481; may not yet be available in
-shipping toolchains.
-
 ### Isolated Conformances
 
 A conformance that needs MainActor state is called an *isolated conformance*.
