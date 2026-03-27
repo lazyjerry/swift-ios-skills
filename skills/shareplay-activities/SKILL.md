@@ -301,9 +301,8 @@ func startSharePlay() async throws {
 
     switch await activity.prepareForActivation() {
     case .activationPreferred:
-        // Present the sharing controller
-        let controller = try GroupActivitySharingController(activity)
-        present(controller, animated: true)
+        // Already in a FaceTime/iMessage session — activate directly
+        _ = try await activity.activate()
 
     case .activationDisabled:
         // SharePlay is disabled or unavailable
@@ -316,6 +315,14 @@ func startSharePlay() async throws {
         break
     }
 }
+```
+
+When no conversation is active (i.e., `isEligibleForGroupSession` is false),
+use `GroupActivitySharingController` to let the user pick contacts first:
+
+```swift
+let controller = try GroupActivitySharingController(activity)
+present(controller, animated: true)
 ```
 
 For `ShareLink` (SwiftUI) and direct `activity.activate()` patterns, see
