@@ -1,6 +1,6 @@
 # PencilKit Extended Patterns
 
-Overflow reference for the `pencilkit-drawing` skill. Contains advanced patterns
+Overflow reference for the `pencilkit` skill. Contains advanced patterns
 that exceed the main skill file's scope.
 
 ## Contents

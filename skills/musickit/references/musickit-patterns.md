@@ -1,6 +1,6 @@
 # MusicKit + MediaPlayer Extended Patterns
 
-Overflow reference for the `musickit-audio` skill. Contains advanced patterns that exceed the main skill file's scope.
+Overflow reference for the `musickit` skill. Contains advanced patterns that exceed the main skill file's scope.
 
 ## Contents
 

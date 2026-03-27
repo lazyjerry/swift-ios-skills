@@ -1,6 +1,6 @@
 # EventKit Extended Patterns
 
-Overflow reference for the `eventkit-calendar` skill. Contains advanced patterns that exceed the main skill file's scope.
+Overflow reference for the `eventkit` skill. Contains advanced patterns that exceed the main skill file's scope.
 
 ## Contents
 

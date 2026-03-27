@@ -1,6 +1,6 @@
 # CallKit + PushKit Extended Patterns
 
-Overflow reference for the `callkit-voip` skill. Contains advanced patterns that exceed the main skill file's scope.
+Overflow reference for the `callkit` skill. Contains advanced patterns that exceed the main skill file's scope.
 
 ## Contents
 

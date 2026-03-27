@@ -1,6 +1,6 @@
 # PassKit Extended Patterns
 
-Overflow reference for the `passkit-wallet` skill. Contains advanced patterns that exceed the main skill file's scope.
+Overflow reference for the `passkit` skill. Contains advanced patterns that exceed the main skill file's scope.
 
 ## Contents
 

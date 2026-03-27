@@ -1,6 +1,6 @@
 # RealityKit + ARKit Extended Patterns
 
-Overflow reference for the `realitykit-ar` skill. Contains advanced patterns that exceed the main skill file's scope.
+Overflow reference for the `realitykit` skill. Contains advanced patterns that exceed the main skill file's scope.
 
 ## Contents
 

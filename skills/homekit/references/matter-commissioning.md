@@ -1,6 +1,6 @@
 # HomeKit + Matter Extended Patterns
 
-Overflow reference for the `homekit-matter` skill. Contains advanced patterns
+Overflow reference for the `homekit` skill. Contains advanced patterns
 that exceed the main skill file's scope.
 
 ## Contents
