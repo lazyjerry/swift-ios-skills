@@ -9,7 +9,7 @@ the patterns most commonly needed alongside Sign in with Apple and OAuth flows.
 - [Storing Tokens in Keychain](#storing-tokens-in-keychain)
 - [Reading Tokens from Keychain](#reading-tokens-from-keychain)
 - [Deleting Tokens from Keychain](#deleting-tokens-from-keychain)
-- [kSecAttrAccessible Values](#ksecattracccessible-values)
+- [kSecAttrAccessible Values](#ksecattraccessible-values)
 - [Biometric Authentication with LAContext](#biometric-authentication-with-lacontext)
 - [Biometric-Protected Keychain Items](#biometric-protected-keychain-items)
 - [SecAccessControl Flags](#secaccesscontrol-flags)

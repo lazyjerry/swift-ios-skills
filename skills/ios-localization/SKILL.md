@@ -16,7 +16,7 @@ Localize iOS 26+ apps using String Catalogs, modern string types, FormatStyle, a
 - [FormatStyle -- Locale-Aware Formatting](#formatstyle-locale-aware-formatting)
 - [Right-to-Left (RTL) Layout](#right-to-left-rtl-layout)
 - [Common Mistakes](#common-mistakes)
-- [Localization Review Checklist](#localization-review-checklist)
+- [Localization Review Checklist](#review-checklist)
 - [References](#references)
 
 ## String Catalogs (.xcstrings)
@@ -62,7 +62,7 @@ SwiftUI views accept `LocalizedStringKey` for their text parameters. String lite
 Text("Welcome back")
 Label("Profile", systemImage: "person")
 Button("Delete") { deleteItem() }
-NavigationTitle("Home")
+.navigationTitle("Home")
 ```
 
 Use `LocalizedStringKey` when passing strings directly to SwiftUI view initializers. Do not construct `LocalizedStringKey` manually in most cases.
