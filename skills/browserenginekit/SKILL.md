@@ -11,8 +11,9 @@ capability management, and system integration for browser apps that implement
 their own HTML/CSS/JavaScript engine. Targets Swift 6.2 / iOS 26+.
 
 BrowserEngineKit is a specialized framework. Alternative browser engines are
-currently supported for distribution in the EU (and Japan with additional
-requirements). Development and testing can occur anywhere. The companion
+currently supported for distribution in the EU. Japan requires Memory Integrity
+Enforcement (MIE) for alternative browser engine distribution. Development and
+testing can occur anywhere. The companion
 frameworks BrowserEngineCore (low-level primitives) and BrowserKit (eligibility
 checks, data transfer) support the overall browser engine workflow.
 
@@ -487,4 +488,3 @@ unsupported devices can download the app and hit runtime failures.
 - [BrowserKit framework](https://sosumi.ai/documentation/browserkit)
 - [BrowserEngineCore framework](https://sosumi.ai/documentation/browserenginecore)
 - [Sample: Developing a browser app with an alternative engine](https://sosumi.ai/documentation/browserenginekit/developing-a-browser-app-that-uses-an-alternative-browser-engine)
-- [Using alternative browser engines in the EU](https://developer.apple.com/support/alternative-browser-engines/)
