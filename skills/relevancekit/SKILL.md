@@ -462,9 +462,9 @@ bypass Smart Stack rotation limits during development.
 
 - `references/relevancekit-patterns.md` -- extended patterns, full provider
   implementations, permission handling, and grouping strategies
-- [RelevanceKit documentation](https://developer.apple.com/documentation/relevancekit)
-- [RelevantContext](https://developer.apple.com/documentation/relevancekit/relevantcontext)
-- [Increasing the visibility of widgets in Smart Stacks](https://developer.apple.com/documentation/widgetkit/widget-suggestions-in-smart-stacks)
-- [RelevanceConfiguration](https://developer.apple.com/documentation/widgetkit/relevanceconfiguration)
-- [RelevanceEntriesProvider](https://developer.apple.com/documentation/widgetkit/relevanceentriesprovider)
+- [RelevanceKit documentation](https://sosumi.ai/documentation/relevancekit)
+- [RelevantContext](https://sosumi.ai/documentation/relevancekit/relevantcontext)
+- [Increasing the visibility of widgets in Smart Stacks](https://sosumi.ai/documentation/widgetkit/widget-suggestions-in-smart-stacks)
+- [RelevanceConfiguration](https://sosumi.ai/documentation/widgetkit/relevanceconfiguration)
+- [RelevanceEntriesProvider](https://sosumi.ai/documentation/widgetkit/relevanceentriesprovider)
 - [What's new in watchOS 26 (WWDC25 session 334)](https://developer.apple.com/videos/play/wwdc2025/334/)

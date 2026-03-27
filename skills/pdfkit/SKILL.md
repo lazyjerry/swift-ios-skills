@@ -268,7 +268,7 @@ let link = PDFAnnotation(
     bounds: CGRect(x: 50, y: 500, width: 200, height: 20),
     forType: .link, withProperties: nil
 )
-link.url = URL(string: "https://developer.apple.com")
+link.url = URL(string: "https://example.com")
 page.addAnnotation(link)
 
 // Internal page link
@@ -480,13 +480,13 @@ func updateUIView(_ pdfView: PDFView, context: Context) {
 ## References
 
 - Extended patterns (forms, watermarks, merging, printing, overlays, outlines, custom drawing): `references/pdfkit-patterns.md`
-- [PDFKit framework](https://developer.apple.com/documentation/pdfkit)
-- [PDFView](https://developer.apple.com/documentation/pdfkit/pdfview)
-- [PDFDocument](https://developer.apple.com/documentation/pdfkit/pdfdocument)
-- [PDFPage](https://developer.apple.com/documentation/pdfkit/pdfpage)
-- [PDFAnnotation](https://developer.apple.com/documentation/pdfkit/pdfannotation)
-- [PDFSelection](https://developer.apple.com/documentation/pdfkit/pdfselection)
-- [PDFThumbnailView](https://developer.apple.com/documentation/pdfkit/pdfthumbnailview)
-- [PDFPageOverlayViewProvider](https://developer.apple.com/documentation/pdfkit/pdfpageoverlayviewprovider)
-- [Adding Widgets to a PDF Document](https://developer.apple.com/documentation/pdfkit/adding-widgets-to-a-pdf-document)
-- [Adding Custom Graphics to a PDF](https://developer.apple.com/documentation/pdfkit/adding-custom-graphics-to-a-pdf)
+- [PDFKit framework](https://sosumi.ai/documentation/pdfkit)
+- [PDFView](https://sosumi.ai/documentation/pdfkit/pdfview)
+- [PDFDocument](https://sosumi.ai/documentation/pdfkit/pdfdocument)
+- [PDFPage](https://sosumi.ai/documentation/pdfkit/pdfpage)
+- [PDFAnnotation](https://sosumi.ai/documentation/pdfkit/pdfannotation)
+- [PDFSelection](https://sosumi.ai/documentation/pdfkit/pdfselection)
+- [PDFThumbnailView](https://sosumi.ai/documentation/pdfkit/pdfthumbnailview)
+- [PDFPageOverlayViewProvider](https://sosumi.ai/documentation/pdfkit/pdfpageoverlayviewprovider)
+- [Adding Widgets to a PDF Document](https://sosumi.ai/documentation/pdfkit/adding-widgets-to-a-pdf-document)
+- [Adding Custom Graphics to a PDF](https://sosumi.ai/documentation/pdfkit/adding-custom-graphics-to-a-pdf)

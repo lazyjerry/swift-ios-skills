@@ -486,9 +486,9 @@ network coordinators and arbiter role management.
 ## References
 
 - [references/tabletopkit-patterns.md](references/tabletopkit-patterns.md) -- extended patterns for observer implementation, custom actions, dice simulation, card overlap, and network coordination
-- [Apple Documentation: TabletopKit](https://developer.apple.com/documentation/tabletopkit)
-- [Creating tabletop games (sample code)](https://developer.apple.com/documentation/tabletopkit/creating-tabletop-games)
-- [Synchronizing group gameplay with TabletopKit (sample code)](https://developer.apple.com/documentation/tabletopkit/synchronizing-group-gameplay-with-tabletopkit)
-- [Simulating dice rolls as a component for your game (sample code)](https://developer.apple.com/documentation/tabletopkit/simulating-dice-rolls-as-a-component-for-your-game)
-- [Implementing playing card overlap and physical characteristics (sample code)](https://developer.apple.com/documentation/tabletopkit/implementing-playing-card-overlap-and-physical-characteristics)
+- [Apple Documentation: TabletopKit](https://sosumi.ai/documentation/tabletopkit)
+- [Creating tabletop games (sample code)](https://sosumi.ai/documentation/tabletopkit/creating-tabletop-games)
+- [Synchronizing group gameplay with TabletopKit (sample code)](https://sosumi.ai/documentation/tabletopkit/synchronizing-group-gameplay-with-tabletopkit)
+- [Simulating dice rolls as a component for your game (sample code)](https://sosumi.ai/documentation/tabletopkit/simulating-dice-rolls-as-a-component-for-your-game)
+- [Implementing playing card overlap and physical characteristics (sample code)](https://sosumi.ai/documentation/tabletopkit/implementing-playing-card-overlap-and-physical-characteristics)
 - [WWDC24 session 10091: Build a spatial board game](https://developer.apple.com/wwdc24/10091/)

@@ -10,6 +10,9 @@ accessories. Enables companion apps to register audio accessories with the
 system, report device placement, and declare capabilities so the system can
 seamlessly switch audio output. Available iOS 26.4+ / Swift 6.2.
 
+> **Beta-sensitive.** AudioAccessoryKit is new in iOS 26.4 and may change before GM.
+> Re-check current Apple documentation before relying on specific API details.
+
 AudioAccessoryKit builds on top of AccessorySetupKit. The accessory must first
 be paired via AccessorySetupKit before it can be registered for audio features.
 The central type is `AccessoryControlDevice`, which manages registration,

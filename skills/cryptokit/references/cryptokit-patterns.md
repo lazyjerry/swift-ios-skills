@@ -461,7 +461,7 @@ Set to `true` if the app:
 - Encrypts data sent to third-party servers
 
 When `true`, an export compliance review or proper classification is
-required. See Apple's [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying-with-encryption-export-regulations)
+required. See Apple's [Complying with Encryption Export Regulations](https://sosumi.ai/documentation/security/complying-with-encryption-export-regulations)
 documentation.
 
 ## Performance Considerations

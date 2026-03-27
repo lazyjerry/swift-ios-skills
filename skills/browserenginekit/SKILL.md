@@ -478,13 +478,13 @@ unsupported devices can download the app and hit runtime failures.
 ## References
 
 - Extended patterns (text interaction, layer hosting, scroll views, XPC communication, content filtering): `references/browserenginekit-patterns.md`
-- [BrowserEngineKit framework](https://developer.apple.com/documentation/browserenginekit)
-- [Designing your browser architecture](https://developer.apple.com/documentation/browserenginekit/designing-your-browser-architecture)
-- [Creating browser extensions in Xcode](https://developer.apple.com/documentation/browserenginekit/creating-browser-extensions-in-xcode)
-- [Managing the browser extension life cycle](https://developer.apple.com/documentation/browserenginekit/managing-the-browser-extension-lifecycle)
-- [Using XPC to communicate with browser extensions](https://developer.apple.com/documentation/browserenginekit/using-xpc-to-communicate-with-browser-extensions)
-- [Web Browser Engine Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.web-browser-engine.host)
-- [BrowserKit framework](https://developer.apple.com/documentation/browserkit)
-- [BrowserEngineCore framework](https://developer.apple.com/documentation/browserenginecore)
-- [Sample: Developing a browser app with an alternative engine](https://developer.apple.com/documentation/browserenginekit/developing-a-browser-app-that-uses-an-alternative-browser-engine)
+- [BrowserEngineKit framework](https://sosumi.ai/documentation/browserenginekit)
+- [Designing your browser architecture](https://sosumi.ai/documentation/browserenginekit/designing-your-browser-architecture)
+- [Creating browser extensions in Xcode](https://sosumi.ai/documentation/browserenginekit/creating-browser-extensions-in-xcode)
+- [Managing the browser extension life cycle](https://sosumi.ai/documentation/browserenginekit/managing-the-browser-extension-lifecycle)
+- [Using XPC to communicate with browser extensions](https://sosumi.ai/documentation/browserenginekit/using-xpc-to-communicate-with-browser-extensions)
+- [Web Browser Engine Entitlement](https://sosumi.ai/documentation/bundleresources/entitlements/com.apple.developer.web-browser-engine.host)
+- [BrowserKit framework](https://sosumi.ai/documentation/browserkit)
+- [BrowserEngineCore framework](https://sosumi.ai/documentation/browserenginecore)
+- [Sample: Developing a browser app with an alternative engine](https://sosumi.ai/documentation/browserenginekit/developing-a-browser-app-that-uses-an-alternative-browser-engine)
 - [Using alternative browser engines in the EU](https://developer.apple.com/support/alternative-browser-engines/)

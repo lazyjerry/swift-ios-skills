@@ -9,6 +9,9 @@ One-time cross-platform data transfer for app resources. Enables apps to
 export data from one platform (e.g., Android) and import it on iOS during
 device setup or onboarding. iOS 26+ / iPadOS 26+ / Swift 6.2.
 
+> **Beta-sensitive.** AppMigrationKit is new in iOS 26 and may change before GM.
+> Re-check current Apple documentation before relying on specific API details.
+
 AppMigrationKit uses an app extension model. The system orchestrates the
 transfer between devices. The app provides an extension conforming to export
 and import protocols, and the system calls that extension at the appropriate

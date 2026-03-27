@@ -452,6 +452,6 @@ let key = try SecureEnclave.P256.Signing.PrivateKey()
 ## References
 
 - Extended patterns (key serialization, Insecure module, Keychain integration, AES key wrapping, HPKE): [references/cryptokit-patterns.md](references/cryptokit-patterns.md)
-- Apple documentation: [CryptoKit](https://developer.apple.com/documentation/cryptokit)
-- Apple sample: [Performing Common Cryptographic Operations](https://developer.apple.com/documentation/cryptokit/performing-common-cryptographic-operations)
-- Apple sample: [Storing CryptoKit Keys in the Keychain](https://developer.apple.com/documentation/cryptokit/storing-cryptokit-keys-in-the-keychain)
+- Apple documentation: [CryptoKit](https://sosumi.ai/documentation/cryptokit)
+- Apple sample: [Performing Common Cryptographic Operations](https://sosumi.ai/documentation/cryptokit/performing-common-cryptographic-operations)
+- Apple sample: [Storing CryptoKit Keys in the Keychain](https://sosumi.ai/documentation/cryptokit/storing-cryptokit-keys-in-the-keychain)

@@ -486,11 +486,11 @@ available.
 ## References
 
 - Extended patterns (Vision integration, service architecture, custom animations): `references/dockkit-patterns.md`
-- [DockKit framework](https://developer.apple.com/documentation/dockkit)
-- [DockAccessoryManager](https://developer.apple.com/documentation/dockkit/dockaccessorymanager)
-- [DockAccessory](https://developer.apple.com/documentation/dockkit/dockaccessory)
-- [Controlling a DockKit accessory using your camera app](https://developer.apple.com/documentation/dockkit/controlling-a-dockkit-accessory-using-your-camera-app)
-- [Track custom objects in a frame](https://developer.apple.com/documentation/dockkit/track-custom-objects-in-a-frame)
-- [Modify rotation and positioning programmatically](https://developer.apple.com/documentation/dockkit/modify-rotation-and-positioning-behavior-programmatically)
+- [DockKit framework](https://sosumi.ai/documentation/dockkit)
+- [DockAccessoryManager](https://sosumi.ai/documentation/dockkit/dockaccessorymanager)
+- [DockAccessory](https://sosumi.ai/documentation/dockkit/dockaccessory)
+- [Controlling a DockKit accessory using your camera app](https://sosumi.ai/documentation/dockkit/controlling-a-dockkit-accessory-using-your-camera-app)
+- [Track custom objects in a frame](https://sosumi.ai/documentation/dockkit/track-custom-objects-in-a-frame)
+- [Modify rotation and positioning programmatically](https://sosumi.ai/documentation/dockkit/modify-rotation-and-positioning-behavior-programmatically)
 - [Integrate with motorized iPhone stands using DockKit -- WWDC23](https://developer.apple.com/videos/play/wwdc2023/10304/)
 - [What's new in DockKit -- WWDC24](https://developer.apple.com/videos/play/wwdc2024/10164/)

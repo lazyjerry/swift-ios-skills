@@ -478,8 +478,7 @@ func returnToMenu() {
 - [ ] Access point configured and toggled appropriately during gameplay
 - [ ] `GKGameCenterControllerDelegate` dismisses dashboard in `gameCenterViewControllerDidFinish`
 - [ ] Match delegate set immediately when match is found
-- [ ] `finishMatchmaking(for:)` called for programmatic matchmaking
-- [ ] `disconnect()` called and delegate set to `nil` when leaving a match
+- [ ] `finishMatchmaking(for:)` called for programmatic matches; `disconnect()` and nil delegate on exit
 - [ ] Turn-based match data stays under 64 KB
 - [ ] Turn-based participants have outcomes set before `endMatchInTurn`
 - [ ] Invitation listener registered with `GKLocalPlayer.local.register(_:)`

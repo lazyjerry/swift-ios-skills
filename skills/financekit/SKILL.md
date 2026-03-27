@@ -486,12 +486,12 @@ Both asset and liability accounts use `.debit` for outgoing money. But `.credit`
 ## References
 
 - Extended patterns (predicates, sorting, pagination, currency formatting, background updates): `references/financekit-patterns.md`
-- [FinanceKit framework](https://developer.apple.com/documentation/financekit)
-- [FinanceKitUI framework](https://developer.apple.com/documentation/financekitui)
-- [FinanceStore](https://developer.apple.com/documentation/financekit/financestore)
-- [Transaction](https://developer.apple.com/documentation/financekit/transaction)
-- [Account](https://developer.apple.com/documentation/financekit/account)
-- [AccountBalance](https://developer.apple.com/documentation/financekit/accountbalance)
-- [FinanceKit entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.financekit)
-- [Implementing a background delivery extension](https://developer.apple.com/documentation/financekit/implementing-a-background-delivery-extension)
+- [FinanceKit framework](https://sosumi.ai/documentation/financekit)
+- [FinanceKitUI framework](https://sosumi.ai/documentation/financekitui)
+- [FinanceStore](https://sosumi.ai/documentation/financekit/financestore)
+- [Transaction](https://sosumi.ai/documentation/financekit/transaction)
+- [Account](https://sosumi.ai/documentation/financekit/account)
+- [AccountBalance](https://sosumi.ai/documentation/financekit/accountbalance)
+- [FinanceKit entitlement](https://sosumi.ai/documentation/bundleresources/entitlements/com.apple.developer.financekit)
+- [Implementing a background delivery extension](https://sosumi.ai/documentation/financekit/implementing-a-background-delivery-extension)
 - [Meet FinanceKit (WWDC24)](https://developer.apple.com/videos/play/wwdc2024/2023/)

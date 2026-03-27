@@ -482,8 +482,8 @@ func handlePostback(request: Request) -> Response {
 - [references/adattributionkit-patterns.md](references/adattributionkit-patterns.md)
   -- postback verification, server handling, testing, SKAdNetwork migration,
   alternative marketplaces, attribution rules configuration
-- [Apple: AdAttributionKit](https://developer.apple.com/documentation/adattributionkit)
-- [Apple: Presenting ads in your app](https://developer.apple.com/documentation/adattributionkit/presenting-ads-in-your-app)
-- [Apple: Receiving ad attributions and postbacks](https://developer.apple.com/documentation/adattributionkit/receiving-ad-attributions-and-postbacks)
-- [Apple: Verifying a postback](https://developer.apple.com/documentation/adattributionkit/verifying-a-postback)
-- [Apple: SKAdNetwork interoperability](https://developer.apple.com/documentation/adattributionkit/adattributionkit-skadnetwork-interoperability)
+- [Apple: AdAttributionKit](https://sosumi.ai/documentation/adattributionkit)
+- [Apple: Presenting ads in your app](https://sosumi.ai/documentation/adattributionkit/presenting-ads-in-your-app)
+- [Apple: Receiving ad attributions and postbacks](https://sosumi.ai/documentation/adattributionkit/receiving-ad-attributions-and-postbacks)
+- [Apple: Verifying a postback](https://sosumi.ai/documentation/adattributionkit/verifying-a-postback)
+- [Apple: SKAdNetwork interoperability](https://sosumi.ai/documentation/adattributionkit/adattributionkit-skadnetwork-interoperability)

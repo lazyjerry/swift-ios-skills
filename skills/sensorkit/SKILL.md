@@ -471,10 +471,10 @@ func sensorReader(_ reader: SRSensorReader, fetching: SRFetchRequest, failedWith
 ## References
 
 - Extended patterns (delegate wiring, multi-sensor manager, sample type details): `references/sensorkit-patterns.md`
-- [SensorKit framework](https://developer.apple.com/documentation/sensorkit)
-- [SRSensorReader](https://developer.apple.com/documentation/sensorkit/srsensorreader)
-- [SRSensor](https://developer.apple.com/documentation/sensorkit/srsensor)
-- [SRDevice](https://developer.apple.com/documentation/sensorkit/srdevice)
-- [SRFetchRequest](https://developer.apple.com/documentation/sensorkit/srfetchrequest)
-- [Configuring your project for sensor reading](https://developer.apple.com/documentation/sensorkit/configuring-your-project-for-sensor-reading)
-- [com.apple.developer.sensorkit.reader.allow](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.sensorkit.reader.allow)
+- [SensorKit framework](https://sosumi.ai/documentation/sensorkit)
+- [SRSensorReader](https://sosumi.ai/documentation/sensorkit/srsensorreader)
+- [SRSensor](https://sosumi.ai/documentation/sensorkit/srsensor)
+- [SRDevice](https://sosumi.ai/documentation/sensorkit/srdevice)
+- [SRFetchRequest](https://sosumi.ai/documentation/sensorkit/srfetchrequest)
+- [Configuring your project for sensor reading](https://sosumi.ai/documentation/sensorkit/configuring-your-project-for-sensor-reading)
+- [com.apple.developer.sensorkit.reader.allow](https://sosumi.ai/documentation/bundleresources/entitlements/com.apple.developer.sensorkit.reader.allow)

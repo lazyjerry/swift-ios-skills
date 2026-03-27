@@ -279,7 +279,7 @@ features.colorMaximumLinearExposure = 4.0
 toolPicker.maximumLinearExposure = features.colorMaximumLinearExposure
 ```
 
-Use `UIScreen.main.potentialEDRHeadroom` to match the device screen's capability. Use `1.0` for SDR-only.
+Use `view.window?.windowScene?.screen.potentialEDRHeadroom` to match the device screen's capability. Use `1.0` for SDR-only.
 
 ### Shapes, Inks, and Line Markers
 
@@ -448,8 +448,8 @@ let editVC = MarkupEditViewController(supportedFeatureSet: features, additionalA
 
 ## References
 
-- [PaperKit documentation](https://developer.apple.com/documentation/paperkit)
-- [Integrating PaperKit into your app](https://developer.apple.com/documentation/paperkit/getting-started-with-paperkit)
+- [PaperKit documentation](https://sosumi.ai/documentation/paperkit)
+- [Integrating PaperKit into your app](https://sosumi.ai/documentation/paperkit/getting-started-with-paperkit)
 - [Meet PaperKit — WWDC25](https://developer.apple.com/videos/play/wwdc2025/285/)
 - [PencilKit skill](../pencilkit/SKILL.md) — PencilKit drawing, tool pickers, and PKDrawing serialization
 - [Extended patterns](references/paperkit-patterns.md) — data persistence, rendering, multi-platform setup, custom feature sets
