@@ -443,8 +443,8 @@ are legible at a glance for driver safety.
 ## Common Mistakes
 
 1. **Using IntentTimelineProvider instead of AppIntentTimelineProvider.**
-   `IntentTimelineProvider` is deprecated. Use `AppIntentTimelineProvider` with
-   the App Intents framework.
+   `IntentTimelineProvider` is the older SiriKit Intents-based provider. Prefer
+   `AppIntentTimelineProvider` with the App Intents framework for new widgets.
 
 2. **Exceeding the refresh budget.** Widgets have a daily refresh limit. Do not
    call `WidgetCenter.shared.reloadTimelines(ofKind:)` on every minor data change.
