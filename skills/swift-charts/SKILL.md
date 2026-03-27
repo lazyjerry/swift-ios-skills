@@ -483,5 +483,5 @@ Chart(data) { item in
 ## References
 
 - Extended patterns: [references/charts-patterns.md](references/charts-patterns.md)
-- Apple docs: [Swift Charts](https://sosumi.ai/documentation/Charts)
-- Apple docs: [Creating a chart using Swift Charts](https://sosumi.ai/documentation/Charts/Creating-a-chart-using-Swift-Charts)
+- Apple docs: [Swift Charts](https://sosumi.ai/documentation/charts)
+- Apple docs: [Creating a chart using Swift Charts](https://sosumi.ai/documentation/charts/Creating-a-chart-using-Swift-Charts)

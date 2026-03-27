@@ -316,5 +316,5 @@ Liquid Glass requires iOS 26+. Gate with `if #available(iOS 26, *)` and provide 
 ## References
 
 - Full API guide: [references/liquid-glass.md](references/liquid-glass.md)
-- Apple docs: [Applying Liquid Glass to custom views](https://sosumi.ai/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views)
+- Apple docs: [Applying Liquid Glass to custom views](https://sosumi.ai/documentation/swiftui/Applying-Liquid-Glass-to-custom-views)
 - Apple docs: [Adopting Liquid Glass](https://sosumi.ai/documentation/technologyoverviews/adopting-liquid-glass)

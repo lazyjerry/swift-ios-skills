@@ -423,6 +423,6 @@ If passing closures across isolation boundaries, ensure they are `@Sendable` or 
 
 - Wrapping recipes: [references/representable-recipes.md](references/representable-recipes.md)
 - Migration patterns: [references/hosting-migration.md](references/hosting-migration.md)
-- Apple docs: [UIViewRepresentable](https://sosumi.ai/documentation/SwiftUI/UIViewRepresentable)
-- Apple docs: [UIViewControllerRepresentable](https://sosumi.ai/documentation/SwiftUI/UIViewControllerRepresentable)
-- Apple docs: [UIHostingController](https://sosumi.ai/documentation/SwiftUI/UIHostingController)
+- Apple docs: [UIViewRepresentable](https://sosumi.ai/documentation/swiftui/UIViewRepresentable)
+- Apple docs: [UIViewControllerRepresentable](https://sosumi.ai/documentation/swiftui/UIViewControllerRepresentable)
+- Apple docs: [UIHostingController](https://sosumi.ai/documentation/swiftui/UIHostingController)
