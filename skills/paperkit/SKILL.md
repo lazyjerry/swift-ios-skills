@@ -450,6 +450,6 @@ let editVC = MarkupEditViewController(supportedFeatureSet: features, additionalA
 
 - [PaperKit documentation](https://sosumi.ai/documentation/paperkit)
 - [Integrating PaperKit into your app](https://sosumi.ai/documentation/paperkit/getting-started-with-paperkit)
-- [Meet PaperKit — WWDC25](https://developer.apple.com/videos/play/wwdc2025/285/)
+- [Meet PaperKit — WWDC25](https://sosumi.ai/videos/play/wwdc2025/285/)
 - The `pencilkit` skill covers PencilKit drawing, tool pickers, and PKDrawing serialization
 - [references/paperkit-patterns.md](references/paperkit-patterns.md) — data persistence, rendering, multi-platform setup, custom feature sets

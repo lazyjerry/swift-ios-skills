@@ -409,18 +409,6 @@ extension Trait where Self == DatabaseTrait {
 func insertUser() async throws { ... }
 ```
 
-## Common Mistakes
-
-1. **Testing implementation, not behavior.** Test what the code does, not how.
-2. **No error path tests.** If a function can throw, test the throw path.
-3. **Flaky async tests.** Use `confirmation` with expected counts, not `sleep` calls.
-4. **Shared mutable state between tests.** Each test sets up its own state via `init()` in `@Suite`.
-5. **Missing accessibility identifiers in UI tests.** XCUITest queries rely on them.
-6. **Using `sleep` in tests.** Use `confirmation`, clock injection, or `withKnownIssue`.
-7. **Not testing cancellation.** If code supports `Task` cancellation, verify it cancels cleanly.
-8. **Mixing XCTest and Swift Testing in one file.** Keep them in separate files.
-9. **Non-Sendable test helpers shared across tests.** Ensure test helper types are Sendable when shared across concurrent test cases. Annotate MainActor-dependent test code with `@MainActor`.
-
 ## Test Attachments
 
 Attach diagnostic data to test results for debugging failures. See [references/testing-patterns.md](references/testing-patterns.md) for full examples.
@@ -444,6 +432,18 @@ Test code that calls `exit()`, `fatalError()`, or `preconditionFailure()`. See [
     }
 }
 ```
+
+## Common Mistakes
+
+1. **Testing implementation, not behavior.** Test what the code does, not how.
+2. **No error path tests.** If a function can throw, test the throw path.
+3. **Flaky async tests.** Use `confirmation` with expected counts, not `sleep` calls.
+4. **Shared mutable state between tests.** Each test sets up its own state via `init()` in `@Suite`.
+5. **Missing accessibility identifiers in UI tests.** XCUITest queries rely on them.
+6. **Using `sleep` in tests.** Use `confirmation`, clock injection, or `withKnownIssue`.
+7. **Not testing cancellation.** If code supports `Task` cancellation, verify it cancels cleanly.
+8. **Mixing XCTest and Swift Testing in one file.** Keep them in separate files.
+9. **Non-Sendable test helpers shared across tests.** Ensure test helper types are Sendable when shared across concurrent test cases. Annotate MainActor-dependent test code with `@MainActor`.
 
 ## Review Checklist
 

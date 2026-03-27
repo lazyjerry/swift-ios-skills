@@ -186,7 +186,7 @@
     {
       "name": "apple-kit-skills",
       "source": "./",
-      "description": "All Apple Kit framework skills: 38 skills covering every Apple Kit framework from AccessorySetupKit to WidgetKit",
+      "description": "All Apple Kit framework skills: 39 skills covering every Apple Kit framework from AccessorySetupKit to WidgetKit",
       "version": "3.0.0",
       "keywords": ["ios", "apple", "kit", "framework", "activitykit", "alarmkit", "avkit", "cloudkit", "cryptokit", "eventkit", "gamekit", "healthkit", "homekit", "mapkit", "metrickit", "musickit", "paperkit", "passkit", "pdfkit", "pencilkit", "photokit", "realitykit", "scenekit", "spritekit", "storekit", "tipkit", "weatherkit", "widgetkit"],
       "category": "development",

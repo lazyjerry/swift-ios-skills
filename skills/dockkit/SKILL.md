@@ -492,5 +492,5 @@ available.
 - [Controlling a DockKit accessory using your camera app](https://sosumi.ai/documentation/dockkit/controlling-a-dockkit-accessory-using-your-camera-app)
 - [Track custom objects in a frame](https://sosumi.ai/documentation/dockkit/track-custom-objects-in-a-frame)
 - [Modify rotation and positioning programmatically](https://sosumi.ai/documentation/dockkit/modify-rotation-and-positioning-behavior-programmatically)
-- [Integrate with motorized iPhone stands using DockKit -- WWDC23](https://developer.apple.com/videos/play/wwdc2023/10304/)
-- [What's new in DockKit -- WWDC24](https://developer.apple.com/videos/play/wwdc2024/10164/)
+- [Integrate with motorized iPhone stands using DockKit -- WWDC23](https://sosumi.ai/videos/play/wwdc2023/10304/)
+- [What's new in DockKit -- WWDC24](https://sosumi.ai/videos/play/wwdc2024/10164/)

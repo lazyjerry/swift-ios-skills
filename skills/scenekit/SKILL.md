@@ -497,4 +497,4 @@ light.light?.attenuationEndDistance = 10
 - [SCNAction](https://sosumi.ai/documentation/scenekit/scnaction)
 - [SCNPhysicsBody](https://sosumi.ai/documentation/scenekit/scnphysicsbody)
 - [SCNParticleSystem](https://sosumi.ai/documentation/scenekit/scnparticlesystem)
-- [WWDC 2025 session 288: Bring your SceneKit project to RealityKit](https://developer.apple.com/videos/play/wwdc2025/288/)
+- [WWDC 2025 session 288: Bring your SceneKit project to RealityKit](https://sosumi.ai/videos/play/wwdc2025/288/)

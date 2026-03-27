@@ -10,6 +10,9 @@ EnergyKit identifies times when there is relatively cleaner or less expensive
 electricity on the grid, enabling apps to shift or reduce load accordingly.
 Targets Swift 6.2 / iOS 26+.
 
+> **Beta-sensitive.** EnergyKit is new in iOS 26 and may change before GM.
+> Re-check current Apple documentation before relying on specific API details.
+
 ## Contents
 
 - [Setup](#setup)

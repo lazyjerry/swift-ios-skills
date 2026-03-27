@@ -457,4 +457,4 @@ newSession.activate(on: .main) { event in
 - [ASMigrationDisplayItem](https://sosumi.ai/documentation/accessorysetupkit/asmigrationdisplayitem)
 - [Discovering and configuring accessories](https://sosumi.ai/documentation/accessorysetupkit/discovering-and-configuring-accessories)
 - [Setting up and authorizing a Bluetooth accessory](https://sosumi.ai/documentation/accessorysetupkit/setting-up-and-authorizing-a-bluetooth-accessory)
-- [Meet AccessorySetupKit — WWDC24](https://developer.apple.com/videos/play/wwdc2024/10203/)
+- [Meet AccessorySetupKit — WWDC24](https://sosumi.ai/videos/play/wwdc2024/10203/)

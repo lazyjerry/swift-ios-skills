@@ -475,3 +475,10 @@ enum DeviceIntegrityError: Error {
 - [ ] `DCError` cases handled: `.serverUnavailable` with retry, `.invalidKey` with key regeneration
 - [ ] App Attest environment entitlement set correctly for debug vs. production
 - [ ] Gradual rollout considered; feature flag in place for enabling/disabling
+
+## References
+
+- [DeviceCheck framework](https://sosumi.ai/documentation/devicecheck)
+- [DCDevice](https://sosumi.ai/documentation/devicecheck/dcdevice)
+- [DCAppAttestService](https://sosumi.ai/documentation/devicecheck/dcappattestservice)
+- [Establishing your app's integrity](https://sosumi.ai/documentation/devicecheck/establishing-your-app-s-integrity)

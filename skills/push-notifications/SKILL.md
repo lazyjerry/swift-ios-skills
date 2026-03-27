@@ -77,22 +77,7 @@ try await center.requestAuthorization(
 
 ### Handling Denied Permissions
 
-When the user has denied notifications, guide them to Settings. Do not repeatedly prompt or nag.
-
-```swift
-struct NotificationSettingsButton: View {
-    @Environment(\.openURL) private var openURL
-
-    var body: some View {
-        Button("Open Settings") {
-            if let url = URL(string: UIApplication.openSettingsURLString) {
-                openURL(url)
-            }
-        }
-    }
-}
-
-```
+When the user has denied notifications, guide them to Settings with `UIApplication.openSettingsURLString`. Do not repeatedly prompt or nag.
 
 ## APNs Registration
 

@@ -459,7 +459,7 @@ features.lineMarkerPositions = .single  // Single-ended arrows only
 
 ```swift
 var features = FeatureSet.latest
-features.colorMaximumLinearExposure = UIScreen.main.potentialEDRHeadroom
+features.colorMaximumLinearExposure = view.window?.windowScene?.screen.potentialEDRHeadroom ?? 1.0
 // Also set on tool picker:
 toolPicker.maximumLinearExposure = features.colorMaximumLinearExposure
 ```

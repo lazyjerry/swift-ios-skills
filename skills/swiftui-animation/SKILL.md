@@ -216,24 +216,7 @@ Replaces manual `AnimatableData` boilerplate. Attach to any type with
 animatable stored properties.
 
 ```swift
-// WRONG: Manual AnimatableData (verbose, error-prone)
-struct WaveShape: Shape, Animatable {
-    var frequency: Double
-    var amplitude: Double
-    var phase: Double
-
-    var animatableData: AnimatablePair<Double, AnimatablePair<Double, Double>> {
-        get { AnimatablePair(frequency, AnimatablePair(amplitude, phase)) }
-        set {
-            frequency = newValue.first
-            amplitude = newValue.second.first
-            phase = newValue.second.second
-        }
-    }
-    // ...
-}
-
-// CORRECT: @Animatable macro synthesizes animatableData
+// Replaces manual AnimatableData boilerplate
 @Animatable
 struct WaveShape: Shape {
     var frequency: Double
@@ -501,3 +484,4 @@ Apply `.navigationTransition(.zoom(sourceID:in:))` on the outermost destination 
 ## References
 
 - See [references/animation-advanced.md](references/animation-advanced.md) for CustomAnimation protocol, full Spring variants, all Transition types, symbol effect details, Transaction system, UnitCurve types, and performance guidance.
+- Core Animation bridging patterns: [references/core-animation-bridge.md](references/core-animation-bridge.md)

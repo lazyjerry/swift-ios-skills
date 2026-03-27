@@ -407,7 +407,7 @@ AsyncImage(url: imageURL) { phase in
 .clipShape(RoundedRectangle(cornerRadius: 12))
 ```
 
-`AsyncImage` does not cache images across view redraws. For production apps with many images, use a dedicated image loading library or implement `URLCache`-based caching.
+`AsyncImage` does not cache images across view redraws. For production apps with many images, use a dedicated image loading library or `URLCache`-based caching.
 
 ### Downsampling Large Images
 
@@ -497,4 +497,5 @@ Use `.original` for photos and artwork. Use `.template` for icons that should ad
 
 - [references/photokit-patterns.md](references/photokit-patterns.md) — Picker patterns, media loading, HEIC handling
 - [references/camera-capture.md](references/camera-capture.md) — AVCaptureSession, photo/video capture, QR scanning
-- [references/image-loading-caching.md](references/image-loading-caching.md) — AsyncImage, caching, downsampling, [references/av-playback.md](references/av-playback.md) — AVPlayer, streaming, background audio
+- [references/image-loading-caching.md](references/image-loading-caching.md) — AsyncImage, caching, downsampling
+- [references/av-playback.md](references/av-playback.md) — AVPlayer, streaming, background audio

@@ -494,4 +494,4 @@ Both asset and liability accounts use `.debit` for outgoing money. But `.credit`
 - [AccountBalance](https://sosumi.ai/documentation/financekit/accountbalance)
 - [FinanceKit entitlement](https://sosumi.ai/documentation/bundleresources/entitlements/com.apple.developer.financekit)
 - [Implementing a background delivery extension](https://sosumi.ai/documentation/financekit/implementing-a-background-delivery-extension)
-- [Meet FinanceKit (WWDC24)](https://developer.apple.com/videos/play/wwdc2024/2023/)
+- [Meet FinanceKit (WWDC24)](https://sosumi.ai/videos/play/wwdc2024/2023/)
