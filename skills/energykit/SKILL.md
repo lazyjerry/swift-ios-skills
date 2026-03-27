@@ -81,7 +81,7 @@ import EnergyKit
 
 func observeGuidance(venueID: UUID) async throws {
     let query = ElectricityGuidance.Query(suggestedAction: .shift)
-    let service = ElectricityGuidance.sharedService  // Verify access pattern against Xcode 26 SDK
+    let service = ElectricityGuidance.sharedService
 
     let guidanceStream = service.guidance(using: query, at: venueID)
 

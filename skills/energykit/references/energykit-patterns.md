@@ -90,7 +90,7 @@ final class EnergyManager {
         currentGuidance?.options.contains(.guidanceIncorporatesRatePlan) ?? false
     }
 
-    // EnergyKitError cases -- verify against Xcode 26 SDK
+    // EnergyKitError cases
     private func handleError(_ error: EnergyKitError) -> String {
         switch error {
         case .unsupportedRegion:
