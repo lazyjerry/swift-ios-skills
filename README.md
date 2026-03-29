@@ -3,7 +3,7 @@
 [![License: PolyForm Perimeter](https://img.shields.io/badge/License-PolyForm%20Perimeter%201.0.0-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/dpearson2699/swift-ios-skills)](https://github.com/dpearson2699/swift-ios-skills/stargazers)
 [![Swift 6.3](https://img.shields.io/badge/Swift-6.3-F05138.svg)](https://swift.org)
-[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20macOS-000000.svg?logo=apple)](https://developer.apple.com)
+[![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20iPadOS%20%7C%20macOS-000000.svg?logo=apple)](https://developer.apple.com)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-d97757.svg?logo=anthropic)](https://claude.ai/code)
 [![OpenAI Codex](https://img.shields.io/badge/OpenAI%20Codex-compatible-10A37F.svg?logo=data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTIyLjI4MTkgOS44MjExYTUuOTg0NyA1Ljk4NDcgMCAwIDAtLjUxNTctNC45MTA4IDYuMDQ2MiA2LjA0NjIgMCAwIDAtNi41MDk4LTIuOUE2LjA2NTEgNi4wNjUxIDAgMCAwIDQuOTgwNyA0LjE4MThhNS45ODQ3IDUuOTg0NyAwIDAgMC0zLjk5NzcgMi45IDYuMDQ2MiA2LjA0NjIgMCAwIDAgLjc0MjcgNy4wOTY2IDUuOTggNS45OCAwIDAgMCAuNTExIDQuOTEwNyA2LjA1MSA2LjA1MSAwIDAgMCA2LjUxNDYgMi45MDAxQTUuOTg0NyA1Ljk4NDcgMCAwIDAgMTMuMjU5OSAyNGE2LjA1NTcgNi4wNTU3IDAgMCAwIDUuNzcxOC00LjIwNTggNS45ODk0IDUuOTg5NCAwIDAgMCAzLjk5NzctMi45MDAxIDYuMDU1NyA2LjA1NTcgMCAwIDAtLjc0NzUtNy4wNzI5em0tOS4wMjIgMTIuNjA4MWE0LjQ3NTUgNC40NzU1IDAgMCAxLTIuODc2NC0xLjA0MDhsLjE0MTktLjA4MDQgNC43NzgzLTIuNzU4MmEuNzk0OC43OTQ4IDAgMCAwIC4zOTI3LS42ODEzdi02LjczNjlsMi4wMiAxLjE2ODZhLjA3MS4wNzEgMCAwIDEgLjAzOC4wNTJ2NS41ODI2YTQuNTA0IDQuNTA0IDAgMCAxLTQuNDk0NSA0LjQ5NDR6bS05LjY2MDctNC4xMjU0YTQuNDcwOCA0LjQ3MDggMCAwIDEtLjUzNDYtMy4wMTM3bC4xNDIuMDg1MiA0Ljc4MyAyLjc1ODJhLjc3MTIuNzcxMiAwIDAgMCAuNzgwNiAwbDUuODQyOC0zLjM2ODV2Mi4zMzI0YS4wODA0LjA4MDQgMCAwIDEtLjAzMzIuMDYxNUw5Ljc0IDE5Ljk1MDJhNC40OTkyIDQuNDk5MiAwIDAgMS02LjE0MDgtMS42NDY0ek0yLjM0MDggNy44OTU2YTQuNDg1IDQuNDg1IDAgMCAxIDIuMzY1NS0xLjk3MjhWMTEuNmEuNzY2NC43NjY0IDAgMCAwIC4zODc5LjY3NjVsNS44MTQ0IDMuMzU0My0yLjAyMDEgMS4xNjg1YS4wNzU3LjA3NTcgMCAwIDEtLjA3MSAwbC00LjgzMDMtMi43ODY1QTQuNTA0IDQuNTA0IDAgMCAxIDIuMzQwOCA3Ljg3MnptMTYuNTk2MyAzLjg1NThMMTMuMTAzOCA4LjM2NCAxNS4xMTkyIDcuMmEuMDc1Ny4wNzU3IDAgMCAxIC4wNzEgMGw0LjgzMDMgMi43OTEzYTQuNDk0NCA0LjQ5NDQgMCAwIDEtLjY3NjUgOC4xMDQydi01LjY3NzJhLjc5Ljc5IDAgMCAwLS40MDctLjY2N3ptMi4wMTA3LTMuMDIzMWwtLjE0Mi0uMDg1Mi00Ljc3MzUtMi43ODE4YS43NzU5Ljc3NTkgMCAwIDAtLjc4NTQgMEw5LjQwOSA5LjIyOTdWNi44OTc0YS4wNjYyLjA2NjIgMCAwIDEgLjAyODQtLjA2MTVsNC44MzAzLTIuNzg2NmE0LjQ5OTIgNC40OTkyIDAgMCAxIDYuNjgwMiA0LjY2ek04LjMwNjUgMTIuODYzbC0yLjAyLTEuMTYzOGEuMDgwNC4wODA0IDAgMCAxLS4wMzgtLjA1NjdWNi4wNzQyYTQuNDk5MiA0LjQ5OTIgMCAwIDEgNy4zNzU3LTMuNDUzN2wtLjE0Mi4wODA1TDguNzA0IDUuNDU5YS43OTQ4Ljc5NDggMCAwIDAtLjM5MjcuNjgxM3ptMS4wOTc2LTIuMzY1NGwyLjYwMi0xLjQ5OTggMi42MDY5IDEuNDk5OHYyLjk5OTRsLTIuNTk3NCAxLjQ5OTctMi42MDY3LTEuNDk5N1oiLz48L3N2Zz4=)](https://developers.openai.com/codex)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-standard-green.svg?logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE2IDAuNUwyOS40MjM0IDguMjVWMjMuNzVMMTYgMzEuNUwyLjU3NjYxIDIzLjc1VjguMjVMMTYgMC41WiBNMTYgNUwyNS41MjYzIDEwLjVWMjEuNUwxNiAyN0w2LjQ3MzcyIDIxLjVWMTAuNUwxNiA1WiIgZmlsbD0id2hpdGUiLz48L3N2Zz4K)](https://agentskills.io)
@@ -46,7 +46,7 @@ The skills CLI is the recommended install method.
 
 Interactive install (recommended):
 
-```
+```sh
 npx skills add dpearson2699/swift-ios-skills
 ```
 
@@ -54,7 +54,7 @@ Running the default command opens the skills CLI UI so you can choose which skil
 
 Install everything for any coding agent:
 
-```
+```sh
 npx skills add dpearson2699/swift-ios-skills --all
 ```
 
@@ -62,19 +62,19 @@ Use `--all` when you want the full set of 76 skills installed automatically for 
 
 Install specific skills directly:
 
-```
+```sh
 npx skills add dpearson2699/swift-ios-skills --skill <skill-name> --skill <skill-name>
 ```
 
 Check for updates to installed skills:
 
-```
+```sh
 npx skills check
 ```
 
 Update installed skills to the latest versions:
 
-```
+```sh
 npx skills update
 ```
 
@@ -84,19 +84,19 @@ Use these after installing through the skills CLI.
 
 Add the marketplace (one-time):
 
-```
+```sh
 /plugin marketplace add dpearson2699/swift-ios-skills
 ```
 
 Install everything:
 
-```
+```sh
 /plugin install all-ios-skills@swift-ios-skills
 ```
 
 Or install a themed bundle (bundles limit how many skills load into the context window — if you want everything, use `all-ios-skills` above instead of installing multiple bundles):
 
-```
+```sh
 /plugin install swiftui-skills@swift-ios-skills
 /plugin install swift-core-skills@swift-ios-skills
 /plugin install ios-app-framework-skills@swift-ios-skills
@@ -111,7 +111,7 @@ Or install a themed bundle (bundles limit how many skills load into the context 
 
 ### OpenAI Codex
 
-```
+```sh
 $skill-installer install https://github.com/dpearson2699/swift-ios-skills/tree/main/skills/<skill-name>
 ```
 
@@ -303,7 +303,22 @@ These skills work with any agent that supports the [Agent Skills standard](https
 v3.0 is a major release. If you previously installed v2.x skills, note the following changes:
 
 - **Skill count**: 57 skills in v2.2.0, 76 skills in v3.0.0.
-- **Skill renames**: 12 existing skills renamed to use Apple Kit framework names (e.g., `live-activities` -> `activitykit`, `mapkit-location` -> `mapkit`, `photos-camera-media` -> `photokit`). Old skill paths no longer resolve. Reinstall bundles after upgrading.
+- **Skill renames**: 12 existing skills renamed to use Apple Kit framework names. Old skill paths no longer resolve. Uninstall all skills and reinstall to upgrade.
+
+  | v2.x name | v3.0 name |
+  |-----------|-----------|
+  | `live-activities` | `activitykit` |
+  | `mapkit-location` | `mapkit` |
+  | `photos-camera-media` | `photokit` |
+  | `homekit-matter` | `homekit` |
+  | `callkit-voip` | `callkit` |
+  | `metrickit-diagnostics` | `metrickit` |
+  | `pencilkit-drawing` | `pencilkit` |
+  | `passkit-wallet` | `passkit` |
+  | `musickit-audio` | `musickit` |
+  | `cloudkit-sync` | `cloudkit` |
+  | `eventkit-calendar` | `eventkit` |
+  | `realitykit-ar` | `realitykit` |
 - **19 new Kit framework skills**: avkit, gamekit, cryptokit, pdfkit, paperkit, spritekit, scenekit, financekit, accessorysetupkit, adattributionkit, carplay, appmigrationkit, browserenginekit, dockkit, sensorkit, tabletopkit, relevancekit, audioaccessorykit, cryptotokenkit.
 - **New bundles**: `apple-kit-skills` (all 39 Apple Kit framework skills) and `ios-gaming-skills` (GameKit, SpriteKit, SceneKit, TabletopKit).
 - **PaperKit standalone**: PaperKit content removed from `pencilkit` and is now its own `paperkit` skill.
@@ -312,7 +327,7 @@ v3.0 is a major release. If you previously installed v2.x skills, note the follo
 
 To upgrade via the skills CLI:
 
-```
+```sh
 npx skills add dpearson2699/swift-ios-skills --all
 ```
 
