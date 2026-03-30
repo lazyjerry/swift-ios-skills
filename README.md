@@ -36,6 +36,7 @@ Every skill is self-contained. No skill depends on another. Install only what yo
 - [Structure](#structure)
 - [Compatibility](#compatibility)
 - [Upgrading from v2.x](#upgrading-from-v2x)
+- [Support](#support)
 - [License](#license)
 
 ## Install
@@ -332,6 +333,12 @@ npx skills add dpearson2699/swift-ios-skills --all
 ```
 
 To upgrade Claude Code bundles, reinstall the bundles you use (old skill paths will no longer resolve).
+
+## Support
+
+If these skills save you time or improve your workflow, you can support ongoing maintenance through [GitHub Sponsors](https://github.com/sponsors/dpearson2699).
+
+Support helps keep the collection current with new Apple releases, evolving framework APIs, updated examples, and compatibility work across Claude Code, Codex, Cursor, Copilot, and other agents.
 
 ## License
 
