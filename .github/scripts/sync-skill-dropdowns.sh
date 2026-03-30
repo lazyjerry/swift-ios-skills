@@ -6,12 +6,12 @@
 # with the actual contents of the skills/ directory.
 #
 # Usage:
-#   ./scripts/sync-skill-dropdowns.sh          # update in place
-#   ./scripts/sync-skill-dropdowns.sh --check  # exit 1 if out of sync (CI mode)
+#   ./.github/scripts/sync-skill-dropdowns.sh          # update in place
+#   ./.github/scripts/sync-skill-dropdowns.sh --check  # exit 1 if out of sync (CI mode)
 
 set -euo pipefail
 
-REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 SKILLS_DIR="$REPO_ROOT/skills"
 TEMPLATE_DIR="$REPO_ROOT/.github/ISSUE_TEMPLATE"
 
@@ -100,6 +100,6 @@ done
 
 if $CHECK_MODE && $dirty; then
   echo "" >&2
-  echo "Run './scripts/sync-skill-dropdowns.sh' to fix." >&2
+  echo "Run './.github/scripts/sync-skill-dropdowns.sh' to fix." >&2
   exit 1
 fi

@@ -1,6 +1,6 @@
 name: Skill Content Bug
 description: Report incorrect, outdated, or misleading content in an existing skill
-labels: ["bug", "skill-content"]
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
