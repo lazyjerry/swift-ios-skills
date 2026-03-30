@@ -329,7 +329,7 @@ v3.0 is a major release. If you previously installed v2.x skills, note the follo
 To upgrade via the skills CLI:
 
 ```sh
-npx skills add dpearson2699/swift-ios-skills --all
+npx skills add dpearson2699/swift-ios-skills
 ```
 
 To upgrade Claude Code bundles, reinstall the bundles you use (old skill paths will no longer resolve).
